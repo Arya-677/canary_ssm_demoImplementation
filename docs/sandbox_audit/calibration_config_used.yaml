@@ -1,0 +1,3 @@
+sim: {sd_host: 0.02}
+roles: {dev: {pairs: 30}, calibration: {pairs: 300}}
+families: [{name: plain, overrides: {}}]

@@ -1,0 +1,11 @@
+# Tiny pipeline check. NO accuracy should be reported from this config.
+sim: {}
+roles:
+  smoke:           {pairs: 12}
+  dev:             {pairs: 60}
+  calibration:     {pairs: 60}
+  null_validation: {pairs: 60}
+  test:            {pairs: 24}
+families:
+  - {name: baseline,      weight: 0.6, overrides: {n_affected: 3, effect_pct: 3.0, duration: 45}}
+  - {name: sparse_single, weight: 0.4, overrides: {n_affected: 1, effect_pct: 4.0, duration: 45}}

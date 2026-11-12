@@ -1,0 +1,14 @@
+# Stress suite (handbook Section 10). Run as extra `test`-style roles AFTER the main freeze; never tune on these.
+sim: {sd_host: 0.02}
+roles: {test: {pairs: 100, seed_base: 5000000}}
+families:
+  - {name: null_shock_big,    weight: 1, overrides: {shock: 0.15, n_affected: 3, effect_pct: 3.0}}
+  - {name: nonlinear_load,    weight: 1, overrides: {nonlinear_gamma: 0.3, workload_step: 0.6}}
+  - {name: changed_loadings,  weight: 1, overrides: {post_loading_scale: 1.4}}
+  - {name: heavy_tails,       weight: 1, overrides: {heavy_tail_df: 3.0}}
+  - {name: contaminated_ctl,  weight: 1, overrides: {contam_frac: 0.2, contam_scale: 0.5}}
+  - {name: missing_20,        weight: 1, overrides: {missing_rate: 0.20}}
+  - {name: class_burst,       weight: 1, overrides: {missing_rate: 0.05, burst_len: 10}}
+  - {name: late_arrivals,     weight: 1, overrides: {late_frac: 0.10}}
+  - {name: unequal_loadings,  weight: 1, overrides: {lam_host_sd: 0.3}}
+  - {name: broad_small,       weight: 1, overrides: {n_affected: 10, effect_pct: 2.2, duration: 45}}

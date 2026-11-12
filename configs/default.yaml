@@ -1,0 +1,21 @@
+# Main benchmark. Operating noise SD 0.02 (handoff Experiment 1: SD 0.01 is too easy). Counts are design choices.
+# Family names follow the pilot scenarios: S1 sparse, S2 class-wide, S3 broad, S4 weak sparse, S5 class-label errors.
+# Time a ~20-pair dry run first. Calibrate and validate on the SAME mixture you evaluate on (handoff Exp 4: a 2x
+# threshold inflation from contaminated calibration wiped out CUSUM power). Step-only nulls are audited separately
+# with configs/audit.yaml; do NOT calibrate per-family unless a causal runtime rule selects the family.
+sim: {sd_host: 0.02}
+roles:
+  dev:             {pairs: 300}    # 300 null + 300 harmed (paired)
+  calibration:     {pairs: 500}    # 500 nulls
+  null_validation: {pairs: 500}    # 500 nulls
+  test:            {pairs: 500}    # 500 null + 500 harmed (paired)
+  smoke:           {pairs: 12}
+families:
+  - {name: S1_sparse,        weight: 0.20, overrides: {n_affected: 3,  effect_pct: 3.0, duration: 45}}
+  - {name: S2_class_wide,    weight: 0.20, overrides: {affected_mode: class0, effect_pct: 3.0, duration: 45}}
+  - {name: S3_broad,         weight: 0.10, overrides: {n_affected: 10, effect_pct: 3.0, duration: 45}}
+  - {name: S4_weak_sparse,   weight: 0.10, overrides: {n_affected: 3,  effect_pct: 2.5, duration: 45}}
+  - {name: S5_label_errors,  weight: 0.10, overrides: {affected_mode: class0, effect_pct: 3.0, duration: 45, label_error: 0.3}}
+  - {name: S1_step,          weight: 0.15, overrides: {n_affected: 3,  effect_pct: 3.0, duration: 45, workload_step: 0.3365}}
+  - {name: single_canary,    weight: 0.10, overrides: {n_affected: 1,  effect_pct: 4.0, duration: 45}}
+  - {name: transient,        weight: 0.05, overrides: {n_affected: 3,  effect_pct: 3.0, duration: 10}}  # <15 min: challenge set

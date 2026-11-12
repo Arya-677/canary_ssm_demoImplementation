@@ -1,0 +1,14 @@
+# NULL audit families (handoff Experiments 4-6). Run with `audit-null` against a FROZEN model + policy.
+# Pass labels are computed from numbers: 95% CI contains 5% OR upper bound <= 8%.
+sim: {sd_host: 0.02}
+families:
+  - {name: plain,                 overrides: {}}
+  - {name: step,                  overrides: {workload_step: 0.3365}}              # log(1.4) -> ~+5% on every host
+  - {name: step_beta_heterogeneous, overrides: {workload_step: 0.3365, beta_jitter: 0.08}}
+  - {name: phi_e_0.8,             overrides: {phi_e: 0.8}}
+  - {name: student_t3,            overrides: {heavy_tail_df: 3.0}}
+  - {name: loading_shift_1.3x,    overrides: {post_loading_scale: 1.3}}
+  - {name: nonlinear_workload,    overrides: {nonlinear_gamma: 0.3, workload_step: 0.3365}}
+  - {name: missing_5pct,          overrides: {missing_rate: 0.05}}
+  - {name: missing_20pct,         overrides: {missing_rate: 0.20}}
+  - {name: white_meas_0.01,       overrides: {meas_sd: 0.01}}
