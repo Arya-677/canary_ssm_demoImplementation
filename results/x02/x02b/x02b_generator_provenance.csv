@@ -1,0 +1,2 @@
+model_dir,plain_workload_step,step_workload_step,beta_jitter,sd_host,nuisance_seen_cal_or_val
+data_audit\model_pooled_dev,0.0,0.3365,0.03,0.02,False

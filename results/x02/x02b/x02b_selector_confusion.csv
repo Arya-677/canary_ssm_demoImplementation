@@ -1,0 +1,9 @@
+dataset,true_regime,selected_regime,count,rate
+v1_exp7_1000_eval_nulls,plain,plain,500,1.0
+v1_exp7_1000_eval_nulls,plain,step,0,0.0
+v1_exp7_1000_eval_nulls,step,plain,1,0.002
+v1_exp7_1000_eval_nulls,step,step,499,0.998
+fresh_4000_per_regime,plain,plain,3997,0.99925
+fresh_4000_per_regime,plain,step,3,0.00075
+fresh_4000_per_regime,step,plain,2,0.0005
+fresh_4000_per_regime,step,step,3998,0.9995

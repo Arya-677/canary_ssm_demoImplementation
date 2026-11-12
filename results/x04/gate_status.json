@@ -1,0 +1,25 @@
+{
+ "criterion": "Gate G2: exact Beta-Binomial two-sided p >= 0.01 (with multiplicity allowance) and achieved rate <= 0.075 where n >= 2000",
+ "gate_mode": "g2",
+ "min_n_required": 2000,
+ "regime": "plain",
+ "cells": 119,
+ "evaluable_cells": 119,
+ "cells_ok": 118,
+ "failing_cells_expected_by_chance": 1.19,
+ "p_lt_001_count": 1,
+ "status": "FAIL",
+ "failing": [
+  {
+   "family": "S5_label_errors",
+   "method": "hier_rank0",
+   "n_null": 2000,
+   "alerts": 193,
+   "rate": 0.0965,
+   "ci_lo": 0.08391,
+   "ci_hi": 0.11029,
+   "expected_alerts": 99.95002,
+   "bb_pvalue_two_sided": 0.0
+  }
+ ]
+}

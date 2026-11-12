@@ -1,0 +1,17 @@
+true_regime,method,policy,alerts,n,rate,ci_lo,ci_hi,pass_upper_le_8pct,pass_contains_5pct
+plain,matched_contrast,causal_dual_regime,19,500,0.038,0.023030770806247613,0.05870729046322855,True,True
+plain,matched_contrast,single_threshold,19,500,0.038,0.023030770806247613,0.05870729046322855,True,True
+plain,adj_cusum,causal_dual_regime,32,500,0.064,0.04418421094671325,0.08915062755086343,False,True
+plain,adj_cusum,single_threshold,5,500,0.01,0.003254721407024253,0.02318138806965964,True,False
+plain,topk_cusum,causal_dual_regime,26,500,0.052,0.03424569808276793,0.07526637103062216,True,True
+plain,topk_cusum,single_threshold,4,500,0.008,0.002183908108342184,0.020355632593743928,True,False
+plain,hier_ssm,causal_dual_regime,15,500,0.03,0.016885984203873244,0.04899822570881894,True,False
+plain,hier_ssm,single_threshold,16,500,0.032,0.018399185323639912,0.05144676829164562,True,True
+step,matched_contrast,causal_dual_regime,19,500,0.038,0.023030770806247613,0.05870729046322855,True,True
+step,matched_contrast,single_threshold,46,500,0.092,0.06814330415665439,0.12080703261074256,False,False
+step,adj_cusum,causal_dual_regime,45,500,0.09,0.06640400875456909,0.11857292167734203,False,False
+step,adj_cusum,single_threshold,167,500,0.334,0.2927472479465654,0.3772296650095561,False,False
+step,topk_cusum,causal_dual_regime,38,500,0.076,0.05434078124391166,0.10282558211499361,False,False
+step,topk_cusum,single_threshold,163,500,0.326,0.2850472943400025,0.3690252768581542,False,False
+step,hier_ssm,causal_dual_regime,34,500,0.068,0.047548246632654896,0.09372964680737077,False,True
+step,hier_ssm,single_threshold,47,500,0.094,0.06988623391878121,0.12303760788956065,False,False

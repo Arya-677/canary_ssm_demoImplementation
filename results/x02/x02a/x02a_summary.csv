@@ -1,0 +1,3 @@
+world,rollouts,max_abs_diff_median,max_abs_diff_max,frac_gt_1e12,frac_gt_1e6
+meas_sd=0.0,50,0.00031174899560815206,0.0007011177070790353,1.0,1.0
+meas_sd=0.01,50,0.1567267370051666,0.4317311118721001,1.0,1.0

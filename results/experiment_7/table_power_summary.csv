@@ -1,0 +1,9 @@
+scenario,method,n,detection_rate_dual,mean_capped_dual,detection_rate_single,mean_capped_single,mean_capped_diff_dual_minus_single,ci_lo,ci_hi,power_gain_reading
+S1_plain,adj_cusum,200,0.44,83.595,0.08,113.64,-30.045,-35.266375000000004,-25.009250000000005,negative favours dual causal rule (faster / more detections)
+S1_plain,hier_ssm,200,0.41,71.05,0.43,68.69,2.36,0.585,4.745125,negative favours dual causal rule (faster / more detections)
+S1_plain,matched_contrast,200,0.3,88.77,0.305,88.18,0.59,0.0,1.77,negative favours dual causal rule (faster / more detections)
+S1_plain,topk_cusum,200,0.795,52.145,0.305,95.29,-43.145,-48.495749999999994,-37.684250000000006,negative favours dual causal rule (faster / more detections)
+S1_step,adj_cusum,200,0.01,119.24,0.23,101.305,17.935,13.659125,22.555125,negative favours dual causal rule (faster / more detections)
+S1_step,hier_ssm,200,0.345,78.965,0.425,69.33,9.635,5.554749999999999,14.335,negative favours dual causal rule (faster / more detections)
+S1_step,matched_contrast,200,0.235,96.32,0.37,82.14,14.18,9.60975,19.350125000000002,negative favours dual causal rule (faster / more detections)
+S1_step,topk_cusum,200,0.01,119.215,0.485,80.16,39.055,33.65925,44.810375,negative favours dual causal rule (faster / more detections)

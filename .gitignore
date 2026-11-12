@@ -14,14 +14,15 @@ dist/
 .coverage
 htmlcov/
 
-# Generated experiment data, artifacts, caches & outputs
+# Heavy generated raw rollout data, caches, smoke runs & resume checkpoints
 data/
 data_*/
-artifacts/
-artifacts_*/
 cache/
-results/
+artifacts_*/
 results_*/
+results/smoke_ora_check/
+.resume_*/
+**/.resume_*/
 logs/
 *.npz
 *.pkl
