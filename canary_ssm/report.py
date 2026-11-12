@@ -12,8 +12,12 @@ import pandas as pd
 from scipy.stats import binom
 
 from .metrics import DETECT_HORIZONS, betabinom_for_threshold, betabinom_validity, clopper_pearson, paired_bootstrap
+from .oracles import efficiency_ratio, is_oracle_method
 
-BASE = ["matched_contrast", "adj_ewma", "adj_cusum", "topk_cusum"]
+BASE = [
+    "matched_contrast", "adj_ewma", "adj_cusum", "topk_cusum",
+    "wmean", "ar_cusum", "glr_window", "sparse_mix_glr", "bocpd", "msprt", "mw_judge",
+]
 
 
 ALPHA, UPPER_LIMIT, MIN_N_GATE = 0.05, 0.08, 400   # legacy exploratory constant
@@ -136,6 +140,9 @@ def make_report(res_dir: Path, validation: Path | None = None, gate_mode: str = 
     # ---- null alert rates with exact binomial intervals; PASS labels computed from the numbers only
     nl = df[df["kind"] == "no_event"].assign(alerted=lambda d: d["alarm_time"].notna())
     rates = null_rate_table(nl, ["method"], min_n=min_n)
+    rates = null_rate_table(nl, ["method"], min_n=min_n)
+    rates["is_oracle"] = rates["method"].map(is_oracle_method)
+    rates["role"] = np.where(rates["is_oracle"], "ORACLE", "method")
     rates.to_csv(res / "table_null_rates.csv", index=False)
     fam = null_rate_table(nl, ["family", "method"], min_n=min_n); fam.to_csv(res / "table_null_by_family.csv", index=False)
 
@@ -171,7 +178,20 @@ def make_report(res_dir: Path, validation: Path | None = None, gate_mode: str = 
             dh = d[d["followup"] >= h]
             row[f"P_detect_{h}m"] = (dh["status"].eq("success") & (dh["delay"] <= h)).mean() if len(dh) else np.nan
         rows.append(row)
-    det = pd.DataFrame(rows); det.to_csv(res / "table_detection.csv", index=False)
+    det = pd.DataFrame(rows)
+    if not det.empty:
+        det["is_oracle"] = det["method"].map(is_oracle_method)
+        det["role"] = np.where(det["is_oracle"], "ORACLE", "method")
+        miss_cap = float(ev["followup"].mean()) if "followup" in ev.columns and not ev.empty else float("nan")
+        for om in ("oracle_cusum", "oracle_bayes"):
+            om_rows = det[det["method"] == om]
+            if not om_rows.empty:
+                ocap = float(om_rows["mean_capped_time"].iloc[0])
+                det[f"eff_ratio_{om}"] = [
+                    np.nan if bool(r["is_oracle"]) else efficiency_ratio(r["mean_capped_time"], ocap, miss_cap)
+                    for _, r in det.iterrows()
+                ]
+    det.to_csv(res / "table_detection.csv", index=False)
 
     # ---- transient challenge set (reported separately, never folded into healthy)
     tr = df[df["kind"] == "transient"]
@@ -189,12 +209,15 @@ def make_report(res_dir: Path, validation: Path | None = None, gate_mode: str = 
         hdf = pd.read_csv(hp)
         loc_cols = [c for c in ["top3_recall", "cut_precision", "cut_recall", "cut_fdp", "host_auc"] if c in hdf.columns]
         if loc_cols:
-            hdf.groupby("method")[loc_cols].mean().reset_index().to_csv(res / "table_localization.csv", index=False)
+            loc_tbl = hdf.groupby("method")[loc_cols].mean().reset_index()
+            loc_tbl["is_oracle"] = loc_tbl["method"].map(is_oracle_method)
+            loc_tbl["role"] = np.where(loc_tbl["is_oracle"], "ORACLE", "method")
+            loc_tbl.to_csv(res / "table_localization.csv", index=False)
     df.groupby("method")["brier"].mean().dropna().reset_index().to_csv(res / "table_brier.csv", index=False)
 
     # ---- paired method differences on capped time (rollout-level bootstrap)
     piv = ev.pivot_table(index="rollout_id", columns="method", values="capped")
-    best_base = min([m for m in BASE if m in piv], key=lambda m: piv[m].mean(), default=None)
+    best_base = min([m for m in BASE if m in piv and not is_oracle_method(m)], key=lambda m: piv[m].mean(), default=None)
     pairs = [("hier_ssm", "indep_ssm"), ("hier_ssm", "pooled_ssm"), ("hier_ssm", best_base)] + \
             [("hier_ssm", a) for a in ("hier_no_persist", "hier_rw", "hier_rank0", "hier_white", "hier_degraded")]
     rows = []
@@ -222,7 +245,11 @@ def _plots(res: Path, det: pd.DataFrame, methods) -> None:
     cols = [f"P_detect_{h}m" for h in DETECT_HORIZONS]
     fig, ax = plt.subplots(figsize=(7, 4.5))
     for _, r in det.iterrows():
-        ax.plot(DETECT_HORIZONS, [r[c] for c in cols], marker="o", label=r["method"])
+
+
+        lbl = f"{r['method']} [ORACLE]" if is_oracle_method(str(r["method"])) else str(r["method"])
+        ls = "--" if is_oracle_method(str(r["method"])) else "-"
+        ax.plot(DETECT_HORIZONS, [r[c] for c in cols], marker="o", linestyle=ls, label=lbl)
     ax.set_xlabel("minutes from event onset"); ax.set_ylabel("P(successful detection)")
     ax.set_title("Detection curves at calibrated false-alert budget")
     if ax.get_legend_handles_labels()[0]:

@@ -32,6 +32,8 @@ from . import manifest as man_mod
 from . import metrics as M
 from . import parallel, seeds
 from .baselines import DetectorOutput, config_grid, run_baseline
+from .baselines_extra import PREWHITENED_BASELINES
+from .oracles import ORACLE_METHODS, is_oracle_method, run_oracle
 from .factor import Adjusted
 from .hierarchy import EffectDetector, EffectParams, long_run_sd
 from .preprocess import Nuisance, adjust_roll, fit_nuisance
@@ -40,7 +42,11 @@ from .schema import KAPPA, Rollout, dict_hash, dir_hash
 from .simulate import SimConfig, Truth, simulate
 
 SEED_BASE = seeds.RANGES
-BASELINES = ["matched_contrast", "adj_ewma", "adj_cusum", "topk_cusum"]
+BASELINES = [
+    "matched_contrast", "adj_ewma", "adj_cusum", "topk_cusum",
+    "wmean", "ar_cusum", "glr_window", "sparse_mix_glr", "bocpd", "msprt", "mw_judge",
+]
+ORACLES = list(ORACLE_METHODS)
 SSMS = ["pooled_ssm", "indep_ssm", "hier_ssm"]
 ABLATIONS = ["hier_no_persist", "hier_rw", "hier_rank0", "hier_arwhite", "hier_white", "hier_huber", "hier_degraded"]
 REUSED = ("hier_rank0", "hier_arwhite", "hier_white", "hier_huber", "hier_degraded")   # reuse hier effect params
@@ -54,6 +60,13 @@ FROZEN = {
     "adj_ewma": {"alpha": 0.2},
     "adj_cusum": {"k": 0.25},
     "topk_cusum": {"K": 3, "k": 0.25},
+    "wmean": {"w": 15, "K": 1},
+    "ar_cusum": {"k": 0.25},
+    "glr_window": {"W": 30, "K": 1},
+    "sparse_mix_glr": {"p0": 0.3, "W": 30},
+    "bocpd": {"lambda_h": 120.0},
+    "msprt": {"tau": 0.5},
+    "mw_judge": {"w": 15},
     **{
         f"{m}_ssm": {
             "kind": k, "rho_g": 0.95, "rho_h": 0.95, "sd_g": 0.001,
@@ -75,7 +88,7 @@ class StrictEdgeError(RuntimeError):
 def code_version_tag() -> str:
     """Short hash of core detector/preprocess source files for safe cache invalidation."""
     pkg = Path(__file__).resolve().parent
-    parts = [pkg / n for n in ("schema.py", "factor.py", "preprocess.py", "hierarchy.py", "baselines.py", "decision.py")]
+    parts = [pkg / n for n in ("schema.py", "factor.py", "preprocess.py", "hierarchy.py", "baselines.py", "baselines_extra.py", "decision.py")]
     return dir_hash([p for p in parts if p.exists()])[:16]
 
 
@@ -309,7 +322,11 @@ def _save_adj_cache(path: Path, adj: Adjusted) -> None:
         class_id=adj.class_id,
         t0=adj.t0,
         fallback=adj.fallback,
+
+
         f_hat=adj.f_hat,
+        **(dict(ctl_r=adj.ctl_r) if adj.ctl_r is not None else {}),
+        **(dict(ctl_class_id=adj.ctl_class_id) if adj.ctl_class_id is not None else {}),
     )
 
 
@@ -327,6 +344,8 @@ def _load_adj_cache(path: Path) -> Adjusted:
         t0=int(z["t0"]),
         fallback=z["fallback"],
         f_hat=z["f_hat"],
+        ctl_r=z["ctl_r"] if "ctl_r" in z else None,
+        ctl_class_id=z["ctl_class_id"] if "ctl_class_id" in z else None,
     )
 
 
@@ -390,6 +409,13 @@ def _default_grids_dict() -> dict:
         "adj_ewma": {"alpha": [0.02, 0.05, 0.1, 0.2, 0.35, 0.5]},
         "topk_cusum": {"K": [1, 2, 3, 5, 7, 10], "k": [0.25, 0.5, 0.75, 1.0]},
         "matched_contrast": {"window": [1, 5, 10, 15, 30]},
+        "wmean": {"w": [5, 10, 15, 30, 45], "K": [1, 3, 5]},
+        "ar_cusum": {"k": [0.1, 0.25, 0.5, 0.75]},
+        "glr_window": {"W": [15, 30, 45, 60], "K": [1, 3, 5]},
+        "sparse_mix_glr": {"p0": [0.1, 0.3, 0.5], "W": [30, 60]},
+        "bocpd": {"lambda_h": [60.0, 120.0, 240.0]},
+        "msprt": {"tau": [0.25, 0.5, 1.0, 2.0]},
+        "mw_judge": {"w": [15, 30]},
         "localization_cutoff": {"range": [1, 10]},
     }
 
@@ -447,6 +473,20 @@ def candidate_grid(method: str, grids: dict | None = None) -> list[dict]:
                 return [{"K": int(K), "k": float(k)} for K in spec["K"] for k in spec["k"]]
             if method == "matched_contrast":
                 return [{"window": int(w)} for w in spec["window"]]
+            if method == "wmean":
+                return [{"w": int(w), "K": int(K)} for w in spec["w"] for K in spec["K"]]
+            if method == "ar_cusum":
+                return [{"k": float(k)} for k in spec["k"]]
+            if method == "glr_window":
+                return [{"W": int(W), "K": int(K)} for W in spec["W"] for K in spec["K"]]
+            if method == "sparse_mix_glr":
+                return [{"p0": float(p0), "W": int(W)} for p0 in spec["p0"] for W in spec["W"]]
+            if method == "bocpd":
+                return [{"lambda_h": float(lh)} for lh in spec["lambda_h"]]
+            if method == "msprt":
+                return [{"tau": float(tau)} for tau in spec["tau"]]
+            if method == "mw_judge":
+                return [{"w": int(w)} for w in spec["w"]]
         return [p for n, p in config_grid() if n == method]
 
     if method == "hier_no_persist":
@@ -551,11 +591,26 @@ def expand_grid_config(
                 new_val = max(1, int(vals[0]) - 1)
             elif direction == "high" and int(vals[-1]) < 10:
                 new_val = min(10, int(vals[-1]) + 2)
-        elif key == "window":
+        elif key in ("window", "w", "W"):
             if direction == "low" and int(vals[0]) > 1:
                 new_val = max(1, int(vals[0]) // 2)
             elif direction == "high" and int(vals[-1]) < 120:
                 new_val = min(120, int(round(vals[-1] * 1.5)))
+        elif key == "p0":
+            if direction == "low":
+                new_val = max(0.02, round(float(vals[0]) * 0.5, 6))
+            elif direction == "high":
+                new_val = min(0.95, round(float(vals[-1]) * 1.5, 6))
+        elif key == "lambda_h":
+            if direction == "low":
+                new_val = max(15.0, round(float(vals[0]) * 0.5, 6))
+            elif direction == "high":
+                new_val = min(960.0, round(float(vals[-1]) * 2.0, 6))
+        elif key == "tau":
+            if direction == "low":
+                new_val = max(0.05, round(float(vals[0]) * 0.5, 6))
+            elif direction == "high":
+                new_val = min(8.0, round(float(vals[-1]) * 2.0, 6))
         elif key == "alpha":
             if direction == "low":
                 new_val = max(0.005, round(float(vals[0]) * 0.5, 6))
@@ -619,7 +674,12 @@ class Models:
         cache = {} if cache is None else cache
         params = params if params is not None else self.selected[method]["params"]
         if method in BASELINES:
-            return run_baseline(method, self.adjusted(roll, "main", cache), **params)
+            adj = self.adjusted(roll, "main", cache)
+            if method in PREWHITENED_BASELINES and "phi" not in params:
+                n_main = self.nuis["main"]
+                phi_vec = np.array([n_main.phi_e[int(g)] for g in adj.class_id], dtype=float)
+                return run_baseline(method, adj, phi=phi_vec, **params)
+            return run_baseline(method, adj, **params)
         key, nk, override = "main", "main", None
         if method == "hier_rank0":
             key, nk = "rank0", "rank0"
@@ -635,7 +695,15 @@ class Models:
             flip = rng.choice(nc, size=int(round(self.misclass * nc)), replace=False)
             cls[flip] = 1 - cls[flip]; override = cls
         adj = self.adjusted(roll, key, cache)
+        adj = self.adjusted(roll, key, cache)
         return EffectDetector(self.nuis[nk], EffectParams(**params), name=method, class_override=override).run(adj)
+
+    def run_oracle(self, roll: Rollout, truth: Truth, method: str, cache: dict | None = None) -> DetectorOutput:
+        """Execute a clairvoyant oracle reference (`WP-E2`); NEVER called for real competitors."""
+        cache = {} if cache is None else cache
+        adj = self.adjusted(roll, "main", cache)
+        ep = self.selected.get("indep_ssm", {}).get("params")
+        return run_oracle(method, adj, truth, nuis=self.nuis["main"], effect_params=ep)
 
 
 def _safe_run(models: Models, roll, method, params, cache, failures: list):
@@ -682,6 +750,16 @@ def _simplicity_key(params: dict) -> tuple:
         return (-float(params["alpha"]),)
     if "window" in params:
         return (-float(params["window"]),)
+    if "w" in params:
+        return (-float(params["w"]), float(params.get("K", 0)))
+    if "W" in params and "p0" in params:
+        return (float(params["p0"]), -float(params["W"]))
+    if "W" in params:
+        return (-float(params["W"]), float(params.get("K", 0)))
+    if "lambda_h" in params:
+        return (-float(params["lambda_h"]),)
+    if "tau" in params:
+        return (float(params["tau"]),)
     return (0.0,)
 
 
@@ -1148,6 +1226,17 @@ def _load_or_sim_rollout(item: tuple[str | None, dict | None], truth_dir: Path |
     return roll, tr
 
 
+def _eval_all_methods(models: Models, r: Rollout, t: Truth | None, real_m: list[str], ora_m: list[str], failures: list, pol: dict | None) -> dict:
+    outs = run_methods(models, r, real_m, failures, pol) if real_m else {}
+    if ora_m:
+        if t is None:
+            raise ValueError(f"Oracle scoring {ora_m} requires truth metadata")
+        o_cache = {}
+        for om in ora_m:
+            outs[om] = models.run_oracle(r, t, om, cache=o_cache)
+    return outs
+
+
 def _score_rollouts_chunk(task: dict) -> dict:
     """Top-level worker scoring a chunk of disk paths or on-the-fly specs."""
     model_dir = Path(task["model_dir"])
@@ -1159,13 +1248,15 @@ def _score_rollouts_chunk(task: dict) -> dict:
     truth_dir = Path(task["truth_dir"]) if task.get("truth_dir") else None
     mode = task["mode"]
     regime_label = task.get("regime")
+    real_m = [m for m in methods if not is_oracle_method(m)]
+    ora_m = [m for m in methods if is_oracle_method(m)]
     failures: list[dict] = []
 
     if mode == "null_scores":
         res: list[dict] = []
         for item in task["items"]:
-            r, _ = _load_or_sim_rollout(item, None)
-            outs = run_methods(models, r, methods, failures, pol)
+            r, t = _load_or_sim_rollout(item, truth_dir if ora_m else None)
+            outs = _eval_all_methods(models, r, t, real_m, ora_m, failures, pol)
             rec = {
                 "rollout_id": r.rollout_id,
                 "t0": r.t0,
@@ -1178,8 +1269,8 @@ def _score_rollouts_chunk(task: dict) -> dict:
     if mode == "null_maxima":
         res_mx: list[dict] = []
         for item in task["items"]:
-            r, _ = _load_or_sim_rollout(item, None)
-            outs = run_methods(models, r, methods, failures, pol)
+            r, t = _load_or_sim_rollout(item, truth_dir if ora_m else None)
+            outs = _eval_all_methods(models, r, t, real_m, ora_m, failures, pol)
             res_mx.append({
                 "rollout_id": r.rollout_id,
                 "t0": r.t0,
@@ -1194,7 +1285,7 @@ def _score_rollouts_chunk(task: dict) -> dict:
             r, t = _load_or_sim_rollout(item, truth_dir)
             nc = len(r.canary_idx)
             ev = M.event_truth(t, nc)
-            for m, o in run_methods(models, r, methods, failures, pol).items():
+            for m, o in _eval_all_methods(models, r, t, real_m, ora_m, failures, pol).items():
                 thr = pview["thresholds"][m]["threshold"]
                 ta = dec.first_alarm(o.score, o.elig, thr, r.t0)
                 c = M.classify(ta, ev, r.T)
@@ -1306,9 +1397,11 @@ def _null_scores(
     failures: list,
     pol: dict | None = None,
 ) -> dict[str, list[DetectorOutput]]:
+    real_m = [m for m in methods if not is_oracle_method(m)]
+    ora_m = [m for m in methods if is_oracle_method(m)]
     res: dict[str, list[DetectorOutput]] = {}
-    for r, _ in rolls:
-        for m, o in run_methods(models, r, methods, failures, pol).items():
+    for r, t in rolls:
+        for m, o in _eval_all_methods(models, r, t, real_m, ora_m, failures, pol).items():
             res.setdefault(m, []).append(o)
     return res
 
@@ -1325,6 +1418,7 @@ def calibrate(
     regime: str | None = None,
     allow_regime_mismatch: bool = False,
     horizons: tuple[int, ...] = (30, 60, 120),
+    include_oracles: bool = False,
 ) -> dict:
     t0_wall = time.time()
     cal_dir = Path(cal_dir); out_dir = Path(out_dir); out_dir.mkdir(parents=True, exist_ok=True)
@@ -1335,7 +1429,9 @@ def calibrate(
         raise ValueError(f"Calibration data regime={man_regime!r} disagrees with requested regime={regime!r}")
     use_regime = regime or man_regime or "plain"
 
-    items, rids = _prepare_rollout_items(cal_dir, truth=False, generate_on_the_fly=generate_on_the_fly)
+    cal_methods = list(cfg["methods"]) + (list(ORACLES) if include_oracles else [])
+    items, rids = _prepare_rollout_items(cal_dir, truth=include_oracles, generate_on_the_fly=generate_on_the_fly)
+    cal_truth_dir = None if (generate_on_the_fly or not include_oracles) else (cal_dir.parent / (cal_dir.name + "_truth"))
     failures: list[dict] = []
 
     w = parallel.resolve_workers(workers, len(items))
@@ -1347,9 +1443,9 @@ def calibrate(
             "items": ch,
             "model_dir": str(model_dir),
             "cache_dir": str(cache_dir) if cache_dir is not None else None,
-            "methods": cfg["methods"],
+            "methods": cal_methods,
             "pol": None,
-            "truth_dir": None,
+            "truth_dir": str(cal_truth_dir) if cal_truth_dir is not None else None,
         } for ci, ch in enumerate(chunks)]
         chunk_outs = _run_chunked_with_resume(
             tasks, workers=w, resume_dir=out_dir if resume else None, journal_name="calibrate", desc="calibrate", log=log
@@ -1366,11 +1462,11 @@ def calibrate(
                 DetectorOutput(m, rec["outs"][m][0], rec["outs"][m][1], None, runtime_ms=rec["outs"][m][2])
                 for rec in scored_recs
             ]
-            for m in cfg["methods"]
+            for m in cal_methods
         }
     else:
-        rolls = load_role(cal_dir, truth=False)
-        outs = _null_scores(models, rolls, cfg["methods"], failures)
+        rolls = load_role(cal_dir, truth=include_oracles)
+        outs = _null_scores(models, rolls, cal_methods, failures)
         t0 = rolls[0][0].t0
         t0s = [r.t0 for r, _ in rolls]
 
@@ -1391,6 +1487,7 @@ def calibrate(
         "ecdf": {},
         "maxima": {},
         "combos": [],
+        "oracle_methods": [m for m in cal_methods if is_oracle_method(m)],
         "fit_failures_calibration": len(failures),
         "wall_time_s": 0.0,
     }
@@ -1420,12 +1517,12 @@ def calibrate(
         log(f"  [{use_regime}] {m:18s} thr={c['threshold']:.4g} (k={c['k']}/{c['B']})")
         return mx
 
-    for m in cfg["methods"]:
+    for m in cal_methods:
         mx = one(m, outs[m])
         s_mx = sorted(float(v) if np.isfinite(v) else -1e18 for v in mx)
         reg_block["ecdf"][m] = s_mx
         reg_block["maxima"][m] = s_mx
-    for c in combos_for(cfg["methods"]):
+    for c in combos_for(cal_methods):
         comb = [
             combine_outputs(c, [outs[x][i] for x in COMBOS[c]], [np.array(reg_block["ecdf"][x]) for x in COMBOS[c]])
             for i in range(len(rids))
@@ -1511,6 +1608,7 @@ def validate_null(
     generate_on_the_fly: bool = False,
     allow_regime_mismatch: bool = False,
     min_n_gate: int = 2000,
+    include_oracles: bool | None = None,
 ) -> dict:
     val_dir = Path(val_dir); policy_dir = Path(policy_dir)
     models, cfg, mh = load_models(model_dir, cache_dir=cache_dir)
@@ -1525,7 +1623,10 @@ def validate_null(
         )
     pview = get_policy_view(pol, regime=None if allow_regime_mismatch else val_regime)
 
-    items, _ = _prepare_rollout_items(val_dir, truth=False, generate_on_the_fly=generate_on_the_fly)
+    use_ora = any(is_oracle_method(m) for m in pview["thresholds"]) if include_oracles is None else bool(include_oracles)
+    val_methods = list(cfg["methods"]) + (list(ORACLES) if use_ora else [])
+    val_truth_dir = None if (generate_on_the_fly or not use_ora) else (val_dir.parent / (val_dir.name + "_truth"))
+    items, _ = _prepare_rollout_items(val_dir, truth=use_ora, generate_on_the_fly=generate_on_the_fly)
     failures: list[dict] = []
 
     w = parallel.resolve_workers(workers, len(items))
@@ -1537,9 +1638,9 @@ def validate_null(
             "items": ch,
             "model_dir": str(model_dir),
             "cache_dir": str(cache_dir) if cache_dir is not None else None,
-            "methods": cfg["methods"],
+            "methods": val_methods,
             "pol": pol,
-            "truth_dir": None,
+            "truth_dir": str(val_truth_dir) if val_truth_dir is not None else None,
         } for ci, ch in enumerate(chunks)]
         chunk_outs = _run_chunked_with_resume(
             tasks, workers=w, resume_dir=policy_dir if resume else None, journal_name="validate_null", desc="validate-null", log=log
@@ -1550,10 +1651,12 @@ def validate_null(
             failures.extend(co["failures"])
         scored_recs.sort(key=lambda d: d["rollout_id"])
     else:
-        rolls = load_role(val_dir, truth=False)
+        rolls = load_role(val_dir, truth=use_ora)
+        real_v = [m for m in val_methods if not is_oracle_method(m)]
+        ora_v = [m for m in val_methods if is_oracle_method(m)]
         scored_recs = []
-        for r, _ in rolls:
-            outs = run_methods(models, r, cfg["methods"], failures, pol)
+        for r, t in rolls:
+            outs = _eval_all_methods(models, r, t, real_v, ora_v, failures, pol)
             scored_recs.append({
                 "rollout_id": r.rollout_id,
                 "t0": r.t0,
@@ -1562,7 +1665,7 @@ def validate_null(
             })
         scored_recs.sort(key=lambda d: d["rollout_id"])
 
-    methods_all = list(cfg["methods"]) + list(pview.get("combos", []))
+    methods_all = list(val_methods) + list(pview.get("combos", []))
     rep = _alert_table_from_recs(scored_recs, methods_all, pview)
 
     # Build per-rollout null alert & maxima tables for Gate G2, Exchangeability Audit, Alpha Sweep
@@ -1711,6 +1814,7 @@ def evaluate(
     generate_on_the_fly: bool = False,
     allow_frozen: bool = False,
     allow_regime_mismatch: bool = False,
+    include_oracles: bool | None = None,
 ) -> Path:
     t0_wall = time.time()
     test_dir = Path(test_dir); out_dir = Path(out_dir); out_dir.mkdir(parents=True, exist_ok=True)
@@ -1730,6 +1834,9 @@ def evaluate(
         )
     active_regime = test_regime or pol_regime
 
+    pview_ev = get_policy_view(pol, regime=None if allow_regime_mismatch else active_regime)
+    use_ora_ev = any(is_oracle_method(m) for m in pview_ev["thresholds"]) if include_oracles is None else bool(include_oracles)
+    ev_methods = list(cfg["methods"]) + (list(ORACLES) if use_ora_ev else [])
     items, _ = _prepare_rollout_items(test_dir, truth=True, generate_on_the_fly=generate_on_the_fly)
     truth_dir = None if generate_on_the_fly else (test_dir.parent / (test_dir.name + "_truth"))
 
@@ -1742,7 +1849,7 @@ def evaluate(
         "items": ch,
         "model_dir": str(model_dir),
         "cache_dir": str(cache_dir) if cache_dir is not None else None,
-        "methods": cfg["methods"],
+        "methods": ev_methods,
         "pol": pol,
         "truth_dir": str(truth_dir) if truth_dir is not None else None,
         "regime": active_regime,

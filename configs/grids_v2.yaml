@@ -36,5 +36,29 @@ topk_cusum:
 matched_contrast:
   window: [1, 5, 10, 15, 30]
 
+wmean:
+  w: [5, 10, 15, 30, 45]
+  K: [1, 3, 5]
+
+ar_cusum:
+  k: [0.1, 0.25, 0.5, 0.75]
+
+glr_window:
+  W: [15, 30, 45, 60]
+  K: [1, 3, 5]
+
+sparse_mix_glr:
+  p0: [0.1, 0.3, 0.5]
+  W: [30, 60]
+
+bocpd:
+  lambda_h: [60.0, 120.0, 240.0]
+
+msprt:
+  tau: [0.25, 0.5, 1.0, 2.0]
+
+mw_judge:
+  w: [15, 30]
+
 localization_cutoff:
   range: [1, 10]

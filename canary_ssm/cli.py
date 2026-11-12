@@ -55,18 +55,21 @@ def main(argv=None):
     c.add_argument("--data", required=True); c.add_argument("--model", required=True); c.add_argument("--out", required=True)
     c.add_argument("--regime", default=None, help="regime label stored in policy schema v2 (default: data manifest regime)")
     c.add_argument("--allow-regime-mismatch", action="store_true")
+    c.add_argument("--oracles", action="store_true", help="include ORACLE reference upper bounds")
     _add_exec_args(c, with_resume=True, with_fly=True)
 
     v = sub.add_parser("validate-null")
     v.add_argument("--data", required=True); v.add_argument("--model", required=True); v.add_argument("--policy", required=True)
     v.add_argument("--allow-regime-mismatch", action="store_true")
     v.add_argument("--exploratory-gate", action="store_true", help="use n>=400 exploratory threshold instead of final n>=2000")
+    v.add_argument("--oracles", action="store_true", help="include ORACLE reference upper bounds")
     _add_exec_args(v, with_resume=True, with_fly=True)
 
     e = sub.add_parser("evaluate")
     e.add_argument("--data", required=True); e.add_argument("--model", required=True)
     e.add_argument("--policy", required=True); e.add_argument("--out", required=True)
     e.add_argument("--allow-frozen", action="store_true", help="allow frozen audit models (banners report as non-claim audit)")
+    e.add_argument("--oracles", action="store_true", help="include ORACLE reference upper bounds")
     e.add_argument("--allow-regime-mismatch", action="store_true")
     _add_exec_args(e, with_resume=True, with_fly=True)
 
@@ -117,7 +120,7 @@ def main(argv=None):
         E.calibrate(
             Path(a.data), Path(a.model), Path(a.out), workers=a.workers, cache_dir=cache_dir,
             resume=a.resume, generate_on_the_fly=a.generate_on_the_fly,
-            regime=a.regime, allow_regime_mismatch=a.allow_regime_mismatch,
+            regime=a.regime, allow_regime_mismatch=a.allow_regime_mismatch, include_oracles=a.oracles,
         )
     elif a.cmd == "validate-null":
         E.validate_null(
@@ -125,12 +128,14 @@ def main(argv=None):
             resume=a.resume, generate_on_the_fly=a.generate_on_the_fly,
             allow_regime_mismatch=a.allow_regime_mismatch,
             min_n_gate=400 if a.exploratory_gate else 2000,
+            include_oracles=True if a.oracles else None,
         )
     elif a.cmd == "evaluate":
         out = E.evaluate(
             Path(a.data), Path(a.model), Path(a.policy), Path(a.out), workers=a.workers,
             cache_dir=cache_dir, resume=a.resume, generate_on_the_fly=a.generate_on_the_fly,
             allow_frozen=a.allow_frozen, allow_regime_mismatch=a.allow_regime_mismatch,
+            include_oracles=True if a.oracles else None,
         )
         make_report(out)
     elif a.cmd == "audit-null":

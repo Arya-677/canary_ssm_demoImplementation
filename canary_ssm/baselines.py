@@ -116,10 +116,15 @@ def config_grid() -> list[tuple[str, dict]]:
     g += [("adj_cusum", {"k": k}) for k in (0.1, 0.25, 0.5)]
     g += [("topk_cusum", {"K": K, "k": k}) for K in (1, 3, 5, 10) for k in (0.1, 0.25, 0.5)]
     g += [("matched_contrast", {"window": 1})]
+    from .baselines_extra import extra_config_grid
+    g += extra_config_grid()
     return g
 
 
 def run_baseline(name: str, adj: Adjusted, **p) -> DetectorOutput:
+    if name not in ("adj_ewma", "adj_cusum", "topk_cusum", "matched_contrast"):
+        from .baselines_extra import run_extra_baseline
+        return run_extra_baseline(name, adj, **p)
     fn = {"adj_ewma": adjusted_ewma, "adj_cusum": adjusted_cusum, "topk_cusum": topk_cusum,
           "matched_contrast": matched_contrast}[name]
     return fn(adj, **p)

@@ -35,6 +35,8 @@ class Adjusted:
     t0: int
     fallback: np.ndarray     # (nc,) bool, class-level loading used
     f_hat: np.ndarray        # (T,)
+    ctl_r: np.ndarray | None = None          # (T, nctl) factor- & workload-adjusted control residuals
+    ctl_class_id: np.ndarray | None = None   # (nctl,) control class IDs
 
 
 def _ols_host(y, x, m):
@@ -75,6 +77,7 @@ def adjust(roll: Rollout, x_center: float, class_lambda: np.ndarray, factor_rank
     if factor_rank == 0:
         f_hat = np.zeros(T); U = np.zeros(T); lam = np.zeros(nc); fb = np.zeros(nc, bool)
         f_ok = np.ones(T, bool)
+        lamC = np.zeros(len(ctl))
     else:
         C = wadj[:, ctl]
         Cp = np.nan_to_num(C[:t0], nan=0.0)                     # missing -> 0 residual (documented)
@@ -119,4 +122,12 @@ def adjust(roll: Rollout, x_center: float, class_lambda: np.ndarray, factor_rank
             cm = np.nanmean(np.where(ctl_ok[:, roll.class_id[ctl] == g], wadj[:, ctl][:, roll.class_id[ctl] == g], np.nan), axis=1)
             for k in np.flatnonzero(cls_c == g):
                 rm[:, k] = wadj[:, can[k]] - cm
-    return Adjusted(r, obs, elig, U, lam, sigma, rm, cls_c, t0, fb, f_hat)
+    ctl_r = np.where(
+        ok[:, ctl],
+        wadj[:, ctl] - lamC[None] * np.where(np.isfinite(f_hat), f_hat, np.nan)[:, None],
+        np.nan,
+    )
+    return Adjusted(
+        r, obs, elig, U, lam, sigma, rm, cls_c, t0, fb, f_hat,
+        ctl_r=ctl_r, ctl_class_id=roll.class_id[ctl],
+    )
