@@ -61,10 +61,11 @@ class Rollout:
         return np.flatnonzero(~self.exposed)
 
     # ---------------- persistence (npz is the bulk format, CSV is the contract format)
-    def save_npz(self, path: Path) -> None:
+    def save_npz(self, path: Path, compact: bool = False) -> None:
         path = Path(path)
         path.parent.mkdir(parents=True, exist_ok=True)
-        np.savez_compressed(path, rollout_id=self.rollout_id, y=self.y, x=self.x,
+        y_arr = self.y.astype(np.float32) if compact else self.y
+        np.savez_compressed(path, rollout_id=self.rollout_id, y=y_arr, x=self.x,
                             observed=self.observed, decision_obs=self.decision_obs,
                             class_id=self.class_id, exposed=self.exposed, t0=self.t0,
                             request_count=self.request_count, meta=json.dumps(self.meta))
@@ -72,7 +73,7 @@ class Rollout:
     @staticmethod
     def load_npz(path: Path) -> "Rollout":
         z = np.load(path, allow_pickle=False)
-        return Rollout(str(z["rollout_id"]), z["y"], z["x"], z["observed"], z["decision_obs"],
+        return Rollout(str(z["rollout_id"]), z["y"].astype(np.float64), z["x"], z["observed"], z["decision_obs"],
                        z["class_id"], z["exposed"], int(z["t0"]), z["request_count"],
                        json.loads(str(z["meta"])))
 

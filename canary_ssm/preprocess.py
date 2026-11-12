@@ -33,6 +33,13 @@ class Nuisance:
     beta_pooled: float | None = None
     diagnostics: dict = field(default_factory=dict)
 
+    def to_dict(self) -> dict:
+        return asdict(self)
+
+    @staticmethod
+    def from_dict(d: dict) -> "Nuisance":
+        return Nuisance(**d)
+
     def save(self, path: Path) -> None:
         Path(path).parent.mkdir(parents=True, exist_ok=True)
         Path(path).write_text(json.dumps(asdict(self), indent=2))

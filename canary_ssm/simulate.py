@@ -94,20 +94,26 @@ class Truth:
     t0: int
     config: dict = field(default_factory=dict)
 
-    def save(self, path: Path) -> None:
+    def save(self, path: Path, compact: bool = False) -> None:
         path = Path(path); path.parent.mkdir(parents=True, exist_ok=True)
         import json
-        np.savez_compressed(path, rollout_id=self.rollout_id, a=self.a, spill=self.spill,
-                            factor=self.factor, noise=self.noise,
-                            affected_hosts=np.array(self.affected_hosts, int), harm=self.harm,
-                            family=self.family, seed=self.seed, pair_id=self.pair_id, t0=self.t0,
-                            config=json.dumps(self.config))
+        payload = dict(rollout_id=self.rollout_id, a=self.a, factor=self.factor,
+                       affected_hosts=np.array(self.affected_hosts, int), harm=self.harm,
+                       family=self.family, seed=self.seed, pair_id=self.pair_id, t0=self.t0,
+                       config=json.dumps(self.config))
+        if not compact:
+            payload["spill"] = self.spill
+            payload["noise"] = self.noise
+        np.savez_compressed(path, **payload)
 
     @staticmethod
     def load(path: Path) -> "Truth":
         import json
         z = np.load(path, allow_pickle=False)
-        return Truth(str(z["rollout_id"]), z["a"], z["spill"], z["factor"], z["noise"],
+        a = z["a"]
+        spill = z["spill"] if "spill" in z else np.zeros_like(a)
+        noise = z["noise"] if "noise" in z else np.zeros_like(a)
+        return Truth(str(z["rollout_id"]), a, spill, z["factor"], noise,
                      z["affected_hosts"].tolist(), bool(z["harm"]), str(z["family"]),
                      int(z["seed"]), int(z["pair_id"]), int(z["t0"]), json.loads(str(z["config"])))
 
