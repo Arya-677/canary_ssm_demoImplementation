@@ -1,6 +1,6 @@
 attrs==26.1.0
-# Editable install with no version control (canary_ssm==0.1.0)
--e c:\afml-exp\implementation\canary_ssm_project
+# Local editable package
+-e .
 colorama==0.4.6
 contourpy==1.4.0
 cycler==0.12.1
