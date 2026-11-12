@@ -2,7 +2,7 @@
 from __future__ import annotations
 
 import numpy as np
-from scipy.stats import beta
+from scipy.stats import beta, betabinom, rankdata
 
 from .schema import KAPPA, D_MIN
 from .simulate import Truth
@@ -77,6 +77,27 @@ def localization(out, ev: dict, landmark: int = 30, topk: int = 3, cutoff: int =
             "cut_fdp": 1 - len(cut & A) / cutoff}
 
 
+def host_auc(out, ev: dict, landmark: int = 30) -> float:
+    """ROC AUC of host scores/probabilities at `onset + landmark` (tie-aware, evaluator-only)."""
+    if not ev["has_event"] or (out.host_prob is None and out.host_score is None):
+        return np.nan
+    tl = ev["onset"] + landmark
+    if tl >= len(out.score):
+        return np.nan
+    s = np.asarray(out.host_prob[tl] if out.host_prob is not None else out.host_score[tl], float)
+    n = len(s)
+    y = np.zeros(n, dtype=bool)
+    y[list(ev["affected"])] = True
+    valid = np.isfinite(s)
+    s, y = s[valid], y[valid]
+    n_pos = int(y.sum())
+    n_neg = int(len(y) - n_pos)
+    if n_pos == 0 or n_neg == 0:
+        return np.nan
+    ranks = rankdata(s, method="average")
+    return float((ranks[y].sum() - n_pos * (n_pos + 1) / 2.0) / (n_pos * n_neg))
+
+
 def brier(out, ev: dict, t0: int) -> float:
     """Time-averaged Brier of host Pr(a>kappa) vs instantaneous J(i,t); averaged within rollout first."""
     if out.host_prob is None:
@@ -106,3 +127,52 @@ def paired_bootstrap(diff: np.ndarray, n_boot: int = 2000, seed: int = 0) -> tup
     rng = np.random.default_rng(seed)
     bs = d[rng.integers(0, d.size, (n_boot, d.size))].mean(1)
     return float(d.mean()), float(np.quantile(bs, 0.025)), float(np.quantile(bs, 0.975))
+
+
+def betabinom_validity(k_alerts: int, n_val: int, B: int, k_order: int) -> dict:
+    """Exact Beta-Binomial validity test for order-statistic thresholds under exchangeability (WP-C3).
+
+    Under continuous exchangeable null maxima M_1..M_B and validation nulls M_1'..M_n',
+    exceedance probability p = 1 - F(M_(k_order)) ~ Beta(B + 1 - k_order, k_order),
+    so the alert count K ~ BetaBinomial(n_val, B + 1 - k_order, k_order).
+    """
+    if B < 1:
+        raise ValueError(f"B must be >= 1, got {B}")
+    if k_order < 1 or k_order > B:
+        raise ValueError(f"k_order={k_order} must satisfy 1 <= k_order <= B={B}")
+    if n_val < 1:
+        raise ValueError(f"n_val must be >= 1, got {n_val}")
+    if k_alerts < 0 or k_alerts > n_val:
+        raise ValueError(f"k_alerts={k_alerts} must satisfy 0 <= k_alerts <= n_val={n_val}")
+    a = int(B + 1 - k_order)
+    b = int(k_order)
+    exp = float(n_val * a / (B + 1))
+    sd = float(betabinom.std(n_val, a, b))
+    p_lo = float(betabinom.cdf(k_alerts, n_val, a, b))
+    p_hi = 1.0 if k_alerts <= 0 else float(betabinom.sf(k_alerts - 1, n_val, a, b))
+    p_two = float(min(1.0, 2.0 * min(p_lo, p_hi)))
+    return {
+        "expected_alerts": exp,
+        "bb_sd": sd,
+        "bb_pvalue_two_sided": p_two,
+        "p_lower": p_lo,
+        "p_upper": p_hi,
+        "a": a,
+        "b": b,
+    }
+
+
+def betabinom_for_threshold(k_alerts: int, n_val: int, B: int, k_order: int) -> dict:
+    """Beta-Binomial validity test that also handles degenerate `k_order > B` (`thr = +inf`)."""
+    if k_order > B:
+        p = 1.0 if k_alerts == 0 else 0.0
+        return {
+            "expected_alerts": 0.0,
+            "bb_sd": 0.0,
+            "bb_pvalue_two_sided": p,
+            "p_lower": 1.0 if k_alerts == 0 else 0.0,
+            "p_upper": p,
+            "a": 0,
+            "b": int(B),
+        }
+    return betabinom_validity(k_alerts, n_val, B, k_order)

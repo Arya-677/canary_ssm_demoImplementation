@@ -18,3 +18,4 @@ packages = ["canary_ssm"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+markers = ["slow: marks slow reproduction tests"]

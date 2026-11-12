@@ -115,8 +115,8 @@ def test_workers_1_vs_8_and_on_the_fly_deterministic(tmp_path):
 
     methods = ["adj_cusum", "topk_cusum", "hier_ssm"]
     cache_dir = tmp_path / "cache"
-    E.fit(tmp_path / "data" / "dev", tmp_path / "model1", methods, grid_stride=6, workers=1, cache_dir=cache_dir, log=lambda *a: None)
-    E.fit(tmp_path / "data" / "dev", tmp_path / "model8", methods, grid_stride=6, workers=8, cache_dir=cache_dir, log=lambda *a: None)
+    E.fit(tmp_path / "data" / "dev", tmp_path / "model1", methods, grid_stride=6, allow_small_dev=True, workers=1, cache_dir=cache_dir, log=lambda *a: None)
+    E.fit(tmp_path / "data" / "dev", tmp_path / "model8", methods, grid_stride=6, allow_small_dev=True, workers=8, cache_dir=cache_dir, log=lambda *a: None)
 
     df_sel1 = (tmp_path / "model1" / "dev_selection.csv").read_text(encoding="utf-8")
     df_sel8 = (tmp_path / "model8" / "dev_selection.csv").read_text(encoding="utf-8")

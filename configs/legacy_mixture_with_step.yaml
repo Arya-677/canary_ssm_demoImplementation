@@ -1,8 +1,6 @@
-# Main benchmark. Operating noise SD 0.02 (handoff Experiment 1: SD 0.01 is too easy). Counts are design choices.
-# Family names follow the pilot scenarios: S1 sparse, S2 class-wide, S3 broad, S4 weak sparse, S5 class-label errors.
-# Time a ~20-pair dry run first. Calibrate and validate on the SAME mixture you evaluate on (handoff Exp 4: a 2x
-# threshold inflation from contaminated calibration wiped out CUSUM power). Step-only nulls are audited separately
-# with configs/audit.yaml; do NOT calibrate per-family unless a causal runtime rule selects the family.
+# LEGACY MIXTURE CONFIG (Revision 1 baseline only) — DO NOT USE FOR CALIBRATION.
+# Kept only for reproducing v0.1-first-full-run; mixes S1_step nulls into the plain mixture (WP-A1 fixes I-01).
+regime: legacy_mixture_with_step
 sim: {sd_host: 0.02}
 roles:
   dev:             {pairs: 300}    # 300 null + 300 harmed (paired)

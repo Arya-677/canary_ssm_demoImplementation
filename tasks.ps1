@@ -22,7 +22,7 @@ switch ($Target) {
         foreach ($r in @("dev", "calibration", "null_validation", "test")) {
             Run-Cmd "$Py -m canary_ssm.cli simulate --config configs/smoke.yaml --role $r --out data_smoke/$r"
         }
-        Run-Cmd "$Py -m canary_ssm.cli fit --data data_smoke/dev --out artifacts_smoke/model --grid-stride 4"
+        Run-Cmd "$Py -m canary_ssm.cli fit --data data_smoke/dev --out artifacts_smoke/model --grid-stride 4 --allow-small-dev"
         Run-Cmd "$Py -m canary_ssm.cli calibrate --data data_smoke/calibration --model artifacts_smoke/model --out artifacts_smoke/policy"
         Run-Cmd "$Py -m canary_ssm.cli validate-null --data data_smoke/null_validation --model artifacts_smoke/model --policy artifacts_smoke/policy"
         Run-Cmd "$Py -m canary_ssm.cli evaluate --data data_smoke/test --model artifacts_smoke/model --policy artifacts_smoke/policy --out results_smoke"

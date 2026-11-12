@@ -1,0 +1,40 @@
+# Predeclared candidate grids as data (Change Plan WP-B1, WP-B4).
+# Version and SHA-256 of this file are recorded in every model_config and experiment manifest.
+version: v2.0
+
+ssm:
+  rho: [0.9, 0.95, 0.99, 0.995, 0.999]
+  sd_g: [0.0005, 0.001, 0.002, 0.005]
+  prior_sd: [0.01, 0.02, 0.03]
+  sd_h_ratio: [1.0]
+  constrain_long_run_sd_le_kappa: true
+
+hier_no_persist:
+  rho: [0.0]
+  sd_g: [0.005, 0.01, 0.02, 0.03, 0.05]
+  prior_sd: [0.01, 0.03, 0.05]
+  sd_h_ratio: [1.0]
+  constrain_long_run_sd_le_kappa: false
+
+hier_rw:
+  rho: [0.9999]
+  sd_g: [0.0001, 0.0003, 0.001]
+  prior_sd: [0.01, 0.02, 0.03]
+  sd_h_ratio: [1.0]
+  constrain_long_run_sd_le_kappa: false
+
+adj_cusum:
+  k: [0.1, 0.25, 0.5, 0.75, 1.0, 1.5]
+
+adj_ewma:
+  alpha: [0.02, 0.05, 0.1, 0.2, 0.35, 0.5]
+
+topk_cusum:
+  K: [1, 2, 3, 5, 7, 10]
+  k: [0.25, 0.5, 0.75, 1.0]
+
+matched_contrast:
+  window: [1, 5, 10, 15, 30]
+
+localization_cutoff:
+  range: [1, 10]

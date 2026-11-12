@@ -1,7 +1,7 @@
 # Full statistical-track benchmark on Windows PowerShell. Run from repo root with the venv active.
 # Order matters: dev -> fit -> calibration -> calibrate -> null_validation -> validate -> test -> evaluate.
 $ErrorActionPreference = "Stop"
-$cfg = "configs/default.yaml"
+$cfg = "configs/plain_main.yaml"
 python -m pytest -q
 foreach ($role in "dev","calibration","null_validation","test") {
   python -m canary_ssm.cli simulate --config $cfg --role $role --out "data/$role"

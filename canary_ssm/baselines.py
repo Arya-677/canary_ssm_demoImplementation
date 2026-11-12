@@ -86,15 +86,28 @@ def adjusted_ewma(adj: Adjusted, alpha: float = 0.2) -> DetectorOutput:
 
 
 @_timed
-def matched_contrast(adj: Adjusted) -> DetectorOutput:
-    """Class-matched canary-minus-control contrast, standardised on the pre-period; mean over observed canaries."""
+def matched_contrast(adj: Adjusted, window: int = 1) -> DetectorOutput:
+    """Class-matched canary-minus-control contrast, standardised on the pre-period; optional trailing window."""
     rm = adj.rm; T, n = rm.shape
     mu = np.nanmean(rm[:adj.t0], axis=0); sd = np.maximum(np.nanstd(rm[:adj.t0], axis=0), 1e-6)
     z = (rm - mu) / sd
     z = np.where(adj.obs, z, np.nan)
-    score = np.nanmean(z, axis=1)
+    w = max(1, int(window))
+    if w == 1:
+        host = z
+        score = np.nanmean(z, axis=1)
+    else:
+        host = np.full((T, n), np.nan)
+        score = np.full(T, np.nan)
+        for t in range(adj.t0, T):
+            start = max(adj.t0, t - w + 1)
+            sub = z[start:t + 1]
+            with np.errstate(invalid="ignore"):
+                hm = np.nanmean(sub, axis=0)
+                host[t] = hm
+                score[t] = float(np.nanmean(hm)) if np.any(np.isfinite(hm)) else np.nan
     score[:adj.t0] = np.nan
-    return DetectorOutput("matched_contrast", score, adj.elig, z, params={})
+    return DetectorOutput("matched_contrast", score, adj.elig, host, params={"window": w})
 
 
 def config_grid() -> list[tuple[str, dict]]:
@@ -102,7 +115,7 @@ def config_grid() -> list[tuple[str, dict]]:
     g = [("adj_ewma", {"alpha": a}) for a in (0.05, 0.2, 0.5)]
     g += [("adj_cusum", {"k": k}) for k in (0.1, 0.25, 0.5)]
     g += [("topk_cusum", {"K": K, "k": k}) for K in (1, 3, 5, 10) for k in (0.1, 0.25, 0.5)]
-    g += [("matched_contrast", {})]
+    g += [("matched_contrast", {"window": 1})]
     return g
 
 

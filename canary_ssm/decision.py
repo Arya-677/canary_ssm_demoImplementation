@@ -9,15 +9,72 @@ from __future__ import annotations
 import math
 
 import numpy as np
+from scipy.stats import beta
 
 NORMAL, PAUSE, UNKNOWN = 0, 1, 2
 
 
-def release_max(score: np.ndarray, elig: np.ndarray, t0: int) -> float:
-    """Largest ELIGIBLE score at or after rollout time; -inf if never eligible."""
-    s = np.where(elig & np.isfinite(score), score, -np.inf)
+def release_max(score: np.ndarray, elig: np.ndarray, t0: int, horizon: int | None = None) -> float:
+    """Largest ELIGIBLE score in [t0, t0 + horizon); -inf if never eligible."""
+    end = len(score) if horizon is None else min(len(score), int(t0) + int(horizon))
+    s = np.where(elig[:end] & np.isfinite(score[:end]), score[:end], -np.inf)
     s[:t0] = -np.inf
     return float(s.max())
+
+
+def min_B_for_alpha(alpha: float) -> int:
+    """Smallest sample size B where order statistic k = ceil((B+1)(1-alpha)) <= B (WP-C6)."""
+    if not (0.0 < alpha < 1.0):
+        raise ValueError(f"alpha must be in (0, 1), got {alpha}")
+    return int(math.ceil((1.0 - alpha) / alpha))
+
+
+def thresholds_for_alpha(
+    maxima: np.ndarray,
+    alphas: tuple[float, ...] = (0.01, 0.02, 0.05, 0.10),
+) -> dict[str, dict]:
+    """Compute exact order-statistic thresholds for multiple significance levels (WP-C2)."""
+    return {f"{a}": calibrate_threshold(maxima, float(a)) for a in alphas}
+
+
+def threshold_uncertainty(
+    maxima: np.ndarray,
+    alpha: float = 0.05,
+    n_boot: int = 2000,
+    seed: int = 0,
+) -> dict:
+    """Order-statistic threshold sampling uncertainty & exact Beta quantiles for achieved FAR (WP-C2)."""
+    m = np.sort(np.asarray(maxima, float))
+    B = len(m)
+    cal = calibrate_threshold(m, alpha)
+    k = int(cal["k"])
+    rng = np.random.default_rng(seed)
+    boot_thrs = np.empty(n_boot, dtype=float)
+    for i in range(n_boot):
+        draw = np.sort(m[rng.integers(0, B, size=B)])
+        boot_thrs[i] = float("inf") if k > B else float(draw[k - 1])
+    finite_b = boot_thrs[np.isfinite(boot_thrs)]
+    boot_lo = float(np.quantile(finite_b, 0.025)) if finite_b.size else float("inf")
+    boot_hi = float(np.quantile(finite_b, 0.975)) if finite_b.size else float("inf")
+
+    if k > B:
+        far_lo, far_hi, a_b, b_b = 0.0, 0.0, 0, B
+    else:
+        a_b, b_b = int(B + 1 - k), int(k)
+        far_lo = float(beta.ppf(0.025, a_b, b_b))
+        far_hi = float(beta.ppf(0.975, a_b, b_b))
+    return {
+        "alpha": float(alpha),
+        "B": int(B),
+        "k": k,
+        "threshold": cal["threshold"],
+        "boot_lo": boot_lo,
+        "boot_hi": boot_hi,
+        "far_beta_lo": far_lo,
+        "far_beta_hi": far_hi,
+        "beta_a": a_b,
+        "beta_b": b_b,
+    }
 
 
 def calibrate_threshold(maxima: np.ndarray, alpha: float = 0.05) -> dict:

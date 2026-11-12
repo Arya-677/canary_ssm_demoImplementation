@@ -1,0 +1,18 @@
+# Step-regime configuration (every family carries shared workload step log(1.4) ~= 0.3365).
+# Calibrated and validated independently from the plain regime (Change Plan WP-A1).
+regime: step
+sim: {sd_host: 0.02}
+roles:
+  smoke:           {pairs: 12}
+  dev:             {pairs: 500}
+  calibration:     {pairs: 2000}
+  null_validation: {per_family: 2000}
+  test:            {pairs: 1000}
+families:
+  - {name: S1_sparse,       weight: 0.24, overrides: {n_affected: 3,  effect_pct: 3.0, duration: 45, workload_step: 0.3365}}
+  - {name: S2_class_wide,   weight: 0.24, overrides: {affected_mode: class0, effect_pct: 3.0, duration: 45, workload_step: 0.3365}}
+  - {name: S3_broad,        weight: 0.12, overrides: {n_affected: 10, effect_pct: 3.0, duration: 45, workload_step: 0.3365}}
+  - {name: S4_weak_sparse,  weight: 0.12, overrides: {n_affected: 3,  effect_pct: 2.5, duration: 45, workload_step: 0.3365}}
+  - {name: S5_label_errors, weight: 0.12, overrides: {affected_mode: class0, effect_pct: 3.0, duration: 45, label_error: 0.3, workload_step: 0.3365}}
+  - {name: single_canary,   weight: 0.12, overrides: {n_affected: 1,  effect_pct: 4.0, duration: 45, workload_step: 0.3365}}
+  - {name: transient,       weight: 0.04, overrides: {n_affected: 3,  effect_pct: 3.0, duration: 10, workload_step: 0.3365}}
