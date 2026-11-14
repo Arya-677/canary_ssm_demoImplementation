@@ -183,6 +183,7 @@ def run(
     emergency_offset: float | None = None,
     k_folds: int = 5,
     min_dev_nulls: int = 200,
+    grid_path: Path | str | None = None,
     cache_dir: Path | str | None = None,
     **kwargs,
 ) -> dict[str, Any]:
@@ -215,7 +216,8 @@ def run(
             params["hier_ts"] = ts_info
         elif tune:
             ts_res = tune_hier_ts(model_dir, Path(dev_dir), out_dir, workers=workers, k_folds=k_folds,
-                                  min_dev_nulls=min_dev_nulls, cache_dir=cache_dir)
+                                  min_dev_nulls=min_dev_nulls, grid_path=Path(grid_path) if grid_path else None,
+                                  cache_dir=cache_dir)
             params["hier_ts"] = ts_res["selected"]; ts_info = ts_res
         else:
             raise ValueError("hier_ts requested but neither ts_params nor tune=True was provided")
@@ -348,7 +350,21 @@ def run(
                              "ci_lo": lo, "ci_hi": hi, "p_signflip": sign_flip_pvalue(d)})
     df_c = pd.DataFrame(crow)
     if not df_c.empty:
-        df_c["p_holm"] = holm_adjust(df_c["p_signflip"].to_numpy())
+        def _hypothesis_for_contrast(c_name: str) -> str:
+            if c_name.startswith("C1_asymmetry"):
+                return "H2"
+            elif c_name.startswith("C2_pooling"):
+                return "H1"
+            elif c_name.startswith("C3_hysteresis"):
+                return "H3"
+            elif c_name.startswith("C4_classical"):
+                return "H5"
+            return "other"
+
+        df_c["hypothesis"] = df_c["contrast"].apply(_hypothesis_for_contrast)
+        df_c["p_holm"] = np.nan
+        for hyp, grp in df_c.groupby("hypothesis"):
+            df_c.loc[grp.index, "p_holm"] = holm_adjust(grp["p_signflip"].to_numpy())
     df_c.to_csv(out_dir / "table_paired_contrasts.csv", index=False)
 
     rt = pd.DataFrame([{"method": m, "mean_update_ms": float(np.mean([r["runtime_ms"][m] for r in ev_recs]))} for m in meths])
@@ -357,9 +373,19 @@ def run(
     sections = [("Calibration validity (validation nulls, exact Beta-Binomial)", _md(df_val.round(4))),
                 ("Scenario summary", _md(df_s.round(4)))]
     if not df_c.empty:
-        sections.append(("Paired contrasts (negative = first config faster; Holm over all rows)", _md(df_c.round(4))))
+        sections.append(("Paired contrasts (negative = first config faster; Holm per hypothesis)", _md(df_c.round(4))))
     sections.append(("Runtime", _md(rt.round(4))))
     write_summary_md(out_dir / "report.md", "Study: inertia vs persistence vs hysteresis", sections)
+
+    seed_ranges = []
+    for ri in range(len(regimes)):
+        seed_ranges.append(seeds.range_summary("study_inertia_cal", n_null, ri))
+        seed_ranges.append(seeds.range_summary("study_inertia_val", n_val, ri))
+    for si in range(len(scenarios)):
+        seed_ranges.append(seeds.range_summary("study_inertia_eval", n_eval, si))
+
+    grid_p = Path(grid_path or (REPO / "configs" / "grids_inertia.yaml"))
+    scen_p = Path(scenario_file or DEFAULT_SCENARIOS)
 
     manifest = man_mod.build_manifest(
         out_dir=out_dir, study="inertia", model_dir=str(model_dir), model_hash=mh, allow_frozen=bool(allow_frozen),
@@ -367,6 +393,11 @@ def run(
         n_clear=int(n_clear), hyst_frac=float(hyst_frac), emergency_offset=emergency_offset,
         scenarios=[s["name"] for s in scenarios], hier_ts=ts_info,
         n_score_failures=int(sum(r["n_fail"] for r in cal + val + ev_recs)),
+        seed_ranges=seed_ranges,
+        inertia_grid_path=str(grid_p),
+        inertia_grid_sha256=man_mod.sha256_file(grid_p) if grid_p.exists() else None,
+        scenario_file_path=str(scen_p),
+        scenario_file_sha256=man_mod.sha256_file(scen_p) if scen_p.exists() else None,
         wall_times={"study_inertia_s": round(time.time() - t_wall, 3)})
     (out_dir / "experiment_manifest.json").write_text(json.dumps(manifest, indent=1, default=str), encoding="utf-8")
     return manifest
