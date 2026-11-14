@@ -1,0 +1,275 @@
+{
+ "commit": "11f5e113f614fbefa695668dab0dcde882c2ee45-dirty",
+ "git_head": "11f5e113f614fbefa695668dab0dcde882c2ee45",
+ "git_dirty": true,
+ "branch": "main",
+ "tag": null,
+ "config": null,
+ "config_hash": null,
+ "regime": null,
+ "beta_mode": null,
+ "noise_mode": null,
+ "factor_rank": null,
+ "grid_file": null,
+ "grid_hash": null,
+ "candidate_table_hash": null,
+ "selected": null,
+ "edge_flags": null,
+ "seed_registry_version": "2.0",
+ "seed_ranges": [
+  {
+   "purpose": "study_inertia_cal",
+   "family_idx": 0,
+   "count": 2000,
+   "min_seed": 29000000,
+   "max_seed": 29001999
+  },
+  {
+   "purpose": "study_inertia_val",
+   "family_idx": 0,
+   "count": 2000,
+   "min_seed": 30000000,
+   "max_seed": 30001999
+  },
+  {
+   "purpose": "study_inertia_cal",
+   "family_idx": 1,
+   "count": 2000,
+   "min_seed": 29020000,
+   "max_seed": 29021999
+  },
+  {
+   "purpose": "study_inertia_val",
+   "family_idx": 1,
+   "count": 2000,
+   "min_seed": 30020000,
+   "max_seed": 30021999
+  },
+  {
+   "purpose": "study_inertia_eval",
+   "family_idx": 0,
+   "count": 300,
+   "min_seed": 31000000,
+   "max_seed": 31000299
+  },
+  {
+   "purpose": "study_inertia_eval",
+   "family_idx": 1,
+   "count": 300,
+   "min_seed": 31020000,
+   "max_seed": 31020299
+  },
+  {
+   "purpose": "study_inertia_eval",
+   "family_idx": 2,
+   "count": 300,
+   "min_seed": 31040000,
+   "max_seed": 31040299
+  },
+  {
+   "purpose": "study_inertia_eval",
+   "family_idx": 3,
+   "count": 300,
+   "min_seed": 31060000,
+   "max_seed": 31060299
+  },
+  {
+   "purpose": "study_inertia_eval",
+   "family_idx": 4,
+   "count": 300,
+   "min_seed": 31080000,
+   "max_seed": 31080299
+  },
+  {
+   "purpose": "study_inertia_eval",
+   "family_idx": 5,
+   "count": 300,
+   "min_seed": 31100000,
+   "max_seed": 31100299
+  },
+  {
+   "purpose": "study_inertia_eval",
+   "family_idx": 6,
+   "count": 300,
+   "min_seed": 31120000,
+   "max_seed": 31120299
+  },
+  {
+   "purpose": "study_inertia_eval",
+   "family_idx": 7,
+   "count": 300,
+   "min_seed": 31140000,
+   "max_seed": 31140299
+  },
+  {
+   "purpose": "study_inertia_eval",
+   "family_idx": 8,
+   "count": 300,
+   "min_seed": 31160000,
+   "max_seed": 31160299
+  },
+  {
+   "purpose": "study_inertia_eval",
+   "family_idx": 9,
+   "count": 300,
+   "min_seed": 31180000,
+   "max_seed": 31180299
+  },
+  {
+   "purpose": "study_inertia_eval",
+   "family_idx": 10,
+   "count": 300,
+   "min_seed": 31200000,
+   "max_seed": 31200299
+  },
+  {
+   "purpose": "study_inertia_eval",
+   "family_idx": 11,
+   "count": 300,
+   "min_seed": 31220000,
+   "max_seed": 31220299
+  },
+  {
+   "purpose": "study_inertia_eval",
+   "family_idx": 12,
+   "count": 300,
+   "min_seed": 31240000,
+   "max_seed": 31240299
+  },
+  {
+   "purpose": "study_inertia_eval",
+   "family_idx": 13,
+   "count": 300,
+   "min_seed": 31260000,
+   "max_seed": 31260299
+  },
+  {
+   "purpose": "study_inertia_eval",
+   "family_idx": 14,
+   "count": 300,
+   "min_seed": 31280000,
+   "max_seed": 31280299
+  },
+  {
+   "purpose": "study_inertia_eval",
+   "family_idx": 15,
+   "count": 300,
+   "min_seed": 31300000,
+   "max_seed": 31300299
+  }
+ ],
+ "packages": {
+  "numpy": "2.5.4",
+  "scipy": "1.18.1",
+  "pandas": "2.2.3",
+  "statsmodels": "0.15.0",
+  "matplotlib": "3.11.2",
+  "pyyaml": "6.0.3",
+  "hypothesis": "6.124.9",
+  "tabulate": "0.10.0",
+  "pytest": "9.2.0"
+ },
+ "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+ "os": "Windows-11-10.0.26300-SP0",
+ "machine": {
+  "platform": "Windows-11-10.0.26300-SP0",
+  "processor": "Intel64 Family 6 Model 167 Stepping 1, GenuineIntel",
+  "cpu_count": 12
+ },
+ "cpu_model": "Intel64 Family 6 Model 167 Stepping 1, GenuineIntel",
+ "threads": 12,
+ "wall_times": {
+  "study_inertia_s": 1139.931
+ },
+ "fit_failures": 0,
+ "model_hash": "b61ea88520a6ffc8",
+ "policy_hash": null,
+ "calib_hash": null,
+ "lockfile_hash": "cc09a118a78740bc4bfbff5c252603056cdf82355ae6845bc35119c388994afc",
+ "disk_free_bytes": 197217439744,
+ "disk_total_bytes": 499042451456,
+ "created": "2026-11-14T18:15:50",
+ "out_dir": "results\\study_inertia",
+ "study": "inertia",
+ "model_dir": "artifacts\\model_v3",
+ "allow_frozen": false,
+ "n_null": 2000,
+ "n_val": 2000,
+ "n_eval": 300,
+ "persist_m": [
+  1,
+  3,
+  5,
+  10,
+  15
+ ],
+ "methods": [
+  "indep_ssm",
+  "hier_ssm",
+  "hier_ts",
+  "adj_cusum",
+  "glr_window"
+ ],
+ "alpha": 0.05,
+ "n_clear": 5,
+ "hyst_frac": 0.5,
+ "emergency_offset": null,
+ "scenarios": [
+  "iso_spike_1host",
+  "single_host_persistent",
+  "short_3host",
+  "weak_persistent_3host",
+  "class_wide",
+  "broad_fleet",
+  "slow_drift_3host",
+  "mixed_fast_slow",
+  "regression_recovery",
+  "partial_recovery",
+  "improvement_3host",
+  "sub_boundary_2pct",
+  "periodic_workload",
+  "workload_spikes",
+  "step_no_harm_proxy",
+  "step_plus_harm"
+ ],
+ "hier_ts": {
+  "grid_version": "inertia-v1.0",
+  "n_candidates": 28,
+  "hier_ssm_budget": 42,
+  "selected": {
+   "kind": "hier",
+   "rho_g": 0.999,
+   "rho_h": 0.999,
+   "sd_g": 0.000125,
+   "sd_h_ratio": 1.0,
+   "prior_sd": 0.005,
+   "huber_c": 0.0,
+   "prior_h_ratio": 1.0
+  },
+  "argmin": {
+   "kind": "hier",
+   "rho_g": 0.999,
+   "rho_h": 0.999,
+   "sd_g": 0.000125,
+   "sd_h_ratio": 1.0,
+   "prior_sd": 0.005,
+   "huber_c": 0.0,
+   "prior_h_ratio": 1.0
+  },
+  "dev_capped_time_selected": 13.676508326561711,
+  "edge_flags": {
+   "rho_g": true,
+   "rho_h": true,
+   "sd_g": true,
+   "sd_h_ratio": true,
+   "prior_h_ratio": true
+  },
+  "n_fit_failures": 0,
+  "dev_dir": "data\\plain\\dev"
+ },
+ "n_score_failures": 0,
+ "inertia_grid_path": "C:\\afml-implementation\\configs\\grids_inertia.yaml",
+ "inertia_grid_sha256": "84a57555693c89322d7118f5da98747de07911d88898304a5cdc4114d71f844c",
+ "scenario_file_path": "C:\\afml-implementation\\configs\\inertia_scenarios.yaml",
+ "scenario_file_sha256": "459037fd19e72cbef23ec1c52fe0ba830038e76a45537b3de64dd1f0e310fffb"
+}

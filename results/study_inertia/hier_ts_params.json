@@ -1,0 +1,35 @@
+{
+ "grid_version": "inertia-v1.0",
+ "n_candidates": 28,
+ "hier_ssm_budget": 42,
+ "selected": {
+  "kind": "hier",
+  "rho_g": 0.999,
+  "rho_h": 0.999,
+  "sd_g": 0.000125,
+  "sd_h_ratio": 1.0,
+  "prior_sd": 0.005,
+  "huber_c": 0.0,
+  "prior_h_ratio": 1.0
+ },
+ "argmin": {
+  "kind": "hier",
+  "rho_g": 0.999,
+  "rho_h": 0.999,
+  "sd_g": 0.000125,
+  "sd_h_ratio": 1.0,
+  "prior_sd": 0.005,
+  "huber_c": 0.0,
+  "prior_h_ratio": 1.0
+ },
+ "dev_capped_time_selected": 13.676508326561711,
+ "edge_flags": {
+  "rho_g": true,
+  "rho_h": true,
+  "sd_g": true,
+  "sd_h_ratio": true,
+  "prior_h_ratio": true
+ },
+ "n_fit_failures": 0,
+ "dev_dir": "data\\plain\\dev"
+}
