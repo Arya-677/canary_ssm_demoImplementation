@@ -1,0 +1,6 @@
+control_id,n_reps,alarms,achieved_far,mean_max_score,safety_gate_passed
+NC-01_traffic_surge,40,19,0.475,-0.2457320134260916,False
+NC-02_db_slowdown,40,2,0.05,-0.4317424508795211,True
+NC-03_permuted_canaries,40,1,0.025,-0.5908794305537268,True
+NC-04_upstream_throttling,40,2,0.05,-0.5091945271104509,True
+NC-05_variance_doubling,40,2,0.05,-0.5091945271104481,True

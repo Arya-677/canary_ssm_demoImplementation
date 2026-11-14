@@ -1,0 +1,20 @@
+\begin{table}[htbp]
+\centering
+\caption{Decision Thresholds and Gate G2 Exact Beta-Binomial Validity Audit}
+\label{tab:table_T7_calibration_gate_g2}
+\begin{tabular}{lllllll}
+\hline
+method & threshold & n\_val & alarms & achieved\_far & binom\_pval & gate\_g2\_pass \\
+\hline
+hier\_ssm & -0.0303 & 500 & 24 & 0.0480 & 0.6101 & PASSED \\
+indep\_ssm & -0.0474 & 500 & 26 & 0.0520 & 0.4471 & PASSED \\
+no\_inertia\_ssm & -3.1976 & 500 & 21 & 0.0420 & 0.8211 & PASSED \\
+kayenta\_judge & 5.9401 & 500 & 23 & 0.0460 & 0.6879 & PASSED \\
+argo\_policy & 16.3333 & 500 & 22 & 0.0440 & 0.7591 & PASSED \\
+flagger\_policy & 9.8000 & 500 & 22 & 0.0440 & 0.7591 & PASSED \\
+slo\_threshold & 1.7221 & 500 & 16 & 0.0320 & 0.9801 & PASSED \\
+adj\_cusum & 65.6651 & 500 & 20 & 0.0400 & 0.8728 & PASSED \\
+glr\_window & 49.7862 & 500 & 18 & 0.0360 & 0.9441 & PASSED \\
+\hline
+\end{tabular}
+\end{table}

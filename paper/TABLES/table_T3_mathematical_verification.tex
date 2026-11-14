@@ -1,0 +1,20 @@
+\begin{table}[htbp]
+\centering
+\caption{Kalman Reference Fixture and Matrix Algebraic Verification}
+\label{tab:table_T3_mathematical_verification}
+\begin{tabular}{lllll}
+\hline
+Verification\_Task & Theoretical & Empirical & Abs\_Error & Result \\
+\hline
+Scalar Fixture Step 1 (Mean) & 0.6875 & 0.6875 & 0.0000 & PASSED \\
+Scalar Fixture Step 1 (Var) & 0.3438 & 0.3438 & 0.0000 & PASSED \\
+Scalar Fixture Step 2 (Mean) & 0.8344 & 0.8344 & 0.0000 & PASSED \\
+Scalar Fixture Step 2 (Var) & 0.2351 & 0.2351 & 0.0000 & PASSED \\
+Joseph PSD (Cond 1e2) & >= 0.0 & 0.0452 & 0.0000 & PASSED \\
+Joseph PSD (Cond 1e6) & >= 0.0 & 0.0001 & 0.0000 & PASSED \\
+Joseph PSD (Cond 1e12) & >= 0.0 & 0.0000 & 0.0000 & PASSED \\
+Basis Orthogonality C^T B & 0.0 & 0.0000 & 0.0000 & PASSED \\
+Basis Orthonormality B^T B & I & I & 0.0000 & PASSED \\
+\hline
+\end{tabular}
+\end{table}

@@ -1,0 +1,7 @@
+missing_mechanism,missing_rate,burst_len,power,mean_delay,median_delay,abstention_rate
+MCAR,0.0,0,1.0,4.0,0.0,0.0
+MCAR,0.05,0,0.8,6.85,6.5,0.0
+MCAR,0.1,0,0.72,10.555555555555555,8.5,0.0
+MCAR,0.2,0,0.6,17.733333333333334,17.0,0.0
+MCAR,0.4,0,0.12,22.0,27.0,0.0
+BURST,0.15,5,0.72,15.88888888888889,12.5,0.0

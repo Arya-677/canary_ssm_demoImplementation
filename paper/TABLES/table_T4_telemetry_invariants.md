@@ -1,0 +1,16 @@
+# table_T4_telemetry_invariants: Telemetry Schema, Streaming Availability, and Causal Invariants
+
+
+
+| Test_ID   | Invariant                       | Target                                   | Result   |
+|:----------|:--------------------------------|:-----------------------------------------|:---------|
+| TEL-01    | Duplicate Key Handling          | Unique host/time index                   | True     |
+| TEL-02    | Late Arrival Invariance         | Decisions <= t invariant to late arrival | True     |
+| TEL-03    | Stream Shuffling Parity         | Event time sort matches online replay    | True     |
+| TEL-04    | Missingness Masking             | Kalman sub-projection NaN-safe           | True     |
+| TEL-05    | Timestamp Monotonicity          | Non-decreasing temporal index            | True     |
+| TEL-06    | Invalid Metric Rejection        | Non-positive, inf, NaN latencies masked  | True     |
+| TEL-07    | Host Identity Lifecycle         | Partition disjointness canary vs control | True     |
+| TEL-08    | Exposure Leakage Prevention     | Zero overlap between canary & control    | True     |
+| TEL-09    | Pre-period Immutability         | Fixed nuisance params during rollout     | True     |
+| TEL-10    | Strict Causal Prefix Invariance | s_t(y_1:t) identical to s_t(y_1:T)       | True     |

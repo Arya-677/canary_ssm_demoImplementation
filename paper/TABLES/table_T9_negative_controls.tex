@@ -1,0 +1,16 @@
+\begin{table}[htbp]
+\centering
+\caption{Negative Controls Safety Evaluation (NC-01 to NC-05)}
+\label{tab:table_T9_negative_controls}
+\begin{tabular}{llllll}
+\hline
+control\_id & n\_reps & alarms & achieved\_far & mean\_max\_score & safety\_gate\_passed \\
+\hline
+NC-01\_traffic\_surge & 40 & 19 & 0.4750 & -0.2457 & FAILED \\
+NC-02\_db\_slowdown & 40 & 2 & 0.0500 & -0.4317 & PASSED \\
+NC-03\_permuted\_canaries & 40 & 1 & 0.0250 & -0.5909 & PASSED \\
+NC-04\_upstream\_throttling & 40 & 2 & 0.0500 & -0.5092 & PASSED \\
+NC-05\_variance\_doubling & 40 & 2 & 0.0500 & -0.5092 & PASSED \\
+\hline
+\end{tabular}
+\end{table}

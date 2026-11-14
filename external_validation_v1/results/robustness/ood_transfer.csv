@@ -1,0 +1,3 @@
+transfer_mode,source_threshold,target_regime,achieved_far,far_inflation
+TRANSFER-A (Source Threshold Frozen),-0.030263533629514134,step (+33.65%),0.3,0.25
+TRANSFER-B (Recalibrated on Step),-0.00010701584457897874,step (+33.65%),0.1,0.05
