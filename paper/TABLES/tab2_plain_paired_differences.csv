@@ -1,0 +1,9 @@
+A,B,mean_capped_diff_A_minus_B,ci_lo,ci_hi,reading
+hier_ssm,indep_ssm,-2.5307612095933263,-3.9762513034410847,-0.9905630865484883,negative favours A (faster / fewer misses)
+hier_ssm,pooled_ssm,-19.429614181439,-21.97612095933264,-16.978076120959333,negative favours A (faster / fewer misses)
+hier_ssm,wmean,-10.67049009384776,-12.325417101147028,-9.025964546402502,negative favours A (faster / fewer misses)
+hier_ssm,hier_no_persist,-54.81856100104275,-58.02406152241919,-51.35938477580813,negative favours A (faster / fewer misses)
+hier_ssm,hier_rw,1.1209593326381648,0.234436913451512,2.033524504692387,negative favours A (faster / fewer misses)
+hier_ssm,hier_rank0,-42.660062565172055,-45.854092805005216,-39.47904066736184,negative favours A (faster / fewer misses)
+hier_ssm,hier_white,-2.5046923879040666,-3.4358706986444214,-1.4993482794577693,negative favours A (faster / fewer misses)
+hier_ssm,hier_degraded,-0.7977059436913452,-1.908342022940563,0.3350364963503632,negative favours A (faster / fewer misses)

@@ -1,0 +1,22 @@
+\begin{table}[htbp]
+\centering
+\caption{Detection performance on unseen plain test dataset.}
+\label{tab:plain_final}
+\begin{tabular}{lrrrrrr}
+\toprule
+Method & Null FAR & Miss Rate & Premature & Late Post-Rec & Mean Capped (min) & Median Delay (min) \\
+\midrule
+hier_ssm & 3.80% & 5.11% & 0.00% & 0.31% & 15.57 & 6.0 \\
+indep_ssm & 4.90% & 5.84% & 0.00% & 0.31% & 18.1 & 9.0 \\
+hier_rw & 4.20% & 4.69% & 0.00% & 0.10% & 14.45 & 5.0 \\
+hier_huber & 4.30% & 5.11% & 0.00% & 0.31% & 15.42 & 6.0 \\
+sparse_mix_glr & 3.70% & 10.53% & 0.00% & 0.73% & 29.28 & 16.0 \\
+glr_window & 5.20% & 12.30% & 0.00% & 0.73% & 33.38 & 19.0 \\
+pooled_ssm & 4.90% & 22.94% & 0.00% & 0.73% & 35.0 & 4.0 \\
+topk_cusum & 4.60% & 13.14% & 0.00% & 1.04% & 32.01 & 15.0 \\
+adj_cusum & 5.30% & 15.54% & 0.00% & 2.82% & 44.16 & 26.0 \\
+mw_judge & 5.80% & 27.53% & 0.00% & 2.61% & 53.21 & 22.0 \\
+adj_ewma & 4.70% & 40.25% & 0.00% & 1.15% & 65.14 & 26.0 \\
+\bottomrule
+\end{tabular}
+\end{table}

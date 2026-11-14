@@ -1,0 +1,36 @@
+\begin{table}[htbp]
+\centering
+\caption{Multi-stressor robustness scenario evaluation summary.}
+\label{tab:robustness}
+\begin{tabular}{lrrrrr}
+\toprule
+scenario & method & null_alert_rate & power & miss & mean_capped \\
+\midrule
+regression_plus_contamination & adj_cusum & 3.7% & 89.3% & 9.3% & 40.24 \\
+regression_plus_contamination & glr_window & 4.7% & 93.3% & 6.3% & 29.18 \\
+regression_plus_contamination & hier_ssm & 3.7% & 95.0% & 4.0% & 20.27 \\
+regression_plus_contamination & hier_ts & 3.7% & 95.0% & 4.0% & 20.27 \\
+regression_plus_contamination & indep_ssm & 4.3% & 96.0% & 4.0% & 15.41 \\
+regression_plus_heavytail & adj_cusum & 12.7% & 95.7% & 2.7% & 29.12 \\
+regression_plus_heavytail & glr_window & 85.7% & 100.0% & 0.0% & 14.02 \\
+regression_plus_heavytail & hier_ssm & 6.0% & 99.7% & 0.3% & 12.07 \\
+regression_plus_heavytail & hier_ts & 6.0% & 99.7% & 0.3% & 12.07 \\
+regression_plus_heavytail & indep_ssm & 10.0% & 98.7% & 1.3% & 12.78 \\
+regression_plus_labelerror & adj_cusum & 3.7% & 98.3% & 1.0% & 25.26 \\
+regression_plus_labelerror & glr_window & 5.0% & 100.0% & 0.0% & 13.07 \\
+regression_plus_labelerror & hier_ssm & 6.0% & 100.0% & 0.0% & 4.43 \\
+regression_plus_labelerror & hier_ts & 6.0% & 100.0% & 0.0% & 4.43 \\
+regression_plus_labelerror & indep_ssm & 4.7% & 100.0% & 0.0% & 7.04 \\
+regression_plus_missing & adj_cusum & 3.3% & 85.0% & 11.3% & 47.07 \\
+regression_plus_missing & glr_window & 6.3% & 97.3% & 2.7% & 24.62 \\
+regression_plus_missing & hier_ssm & 4.3% & 98.7% & 1.3% & 15.44 \\
+regression_plus_missing & hier_ts & 4.3% & 98.7% & 1.3% & 15.44 \\
+regression_plus_missing & indep_ssm & 4.0% & 98.3% & 1.7% & 15.65 \\
+regression_plus_step & adj_cusum & 5.3% & 2.7% & 83.3% & 117.97 \\
+regression_plus_step & glr_window & 5.3% & 42.3% & 56.3% & 82.39 \\
+regression_plus_step & hier_ssm & 4.0% & 23.7% & 71.0% & 100.12 \\
+regression_plus_step & hier_ts & 4.0% & 23.7% & 71.0% & 100.12 \\
+regression_plus_step & indep_ssm & 5.3% & 35.3% & 63.3% & 87.87 \\
+\bottomrule
+\end{tabular}
+\end{table}
