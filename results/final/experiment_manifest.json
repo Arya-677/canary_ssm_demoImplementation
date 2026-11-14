@@ -1,0 +1,179 @@
+{
+ "commit": null,
+ "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+ "machine": {
+  "platform": "Windows-11-10.0.26300-SP0",
+  "processor": "Intel64 Family 6 Model 167 Stepping 1, GenuineIntel",
+  "cpu_count": 12
+ },
+ "model_hash": "780b41c728c091a8",
+ "calib_hash": "9c0231d75f61673b",
+ "alpha": 0.05,
+ "thresholds": {
+  "matched_contrast": 1.1634259425037725,
+  "adj_ewma": 6.599669007476437,
+  "adj_cusum": 53.02165459834539,
+  "topk_cusum": 101.63647093569823,
+  "pooled_ssm": -2.350291850877876,
+  "indep_ssm": -0.9109830079329885,
+  "hier_ssm": -0.38036307101287364,
+  "hier_no_persist": -0.43885189063501534,
+  "hier_rank0": -0.006898526842365191,
+  "hier_arwhite": -0.3804711864474817,
+  "hier_white": -0.007683097648203936,
+  "hier_huber": -0.41884013139396636,
+  "hier_degraded": -0.39647708241934887,
+  "combo_hier_topk": 0.966,
+  "combo_hier_m0": 0.974,
+  "combo_m0_topk": 0.974
+ },
+ "selected": {
+  "matched_contrast": {
+   "params": {},
+   "loc_cutoff": 5
+  },
+  "adj_ewma": {
+   "params": {
+    "alpha": 0.05
+   },
+   "loc_cutoff": 5
+  },
+  "adj_cusum": {
+   "params": {
+    "k": 0.5
+   },
+   "loc_cutoff": 5
+  },
+  "topk_cusum": {
+   "params": {
+    "K": 5,
+    "k": 0.5
+   },
+   "loc_cutoff": 5
+  },
+  "pooled_ssm": {
+   "params": {
+    "kind": "pooled",
+    "rho_g": 0.99,
+    "rho_h": 0.99,
+    "sd_g": 0.001,
+    "sd_h_ratio": 1.0,
+    "prior_sd": 0.01,
+    "huber_c": 0.0
+   },
+   "loc_cutoff": 5
+  },
+  "indep_ssm": {
+   "params": {
+    "kind": "indep",
+    "rho_g": 0.99,
+    "rho_h": 0.99,
+    "sd_g": 0.001,
+    "sd_h_ratio": 1.0,
+    "prior_sd": 0.01,
+    "huber_c": 0.0
+   },
+   "loc_cutoff": 5
+  },
+  "hier_ssm": {
+   "params": {
+    "kind": "hier",
+    "rho_g": 0.99,
+    "rho_h": 0.99,
+    "sd_g": 0.001,
+    "sd_h_ratio": 1.0,
+    "prior_sd": 0.01,
+    "huber_c": 0.0
+   },
+   "loc_cutoff": 5
+  },
+  "hier_no_persist": {
+   "params": {
+    "kind": "hier",
+    "rho_g": 0.0,
+    "rho_h": 0.0,
+    "sd_g": 0.01,
+    "sd_h_ratio": 1.0,
+    "prior_sd": 0.01,
+    "huber_c": 0.0
+   },
+   "loc_cutoff": 5
+  },
+  "hier_rank0": {
+   "params": {
+    "kind": "hier",
+    "rho_g": 0.99,
+    "rho_h": 0.99,
+    "sd_g": 0.001,
+    "sd_h_ratio": 1.0,
+    "prior_sd": 0.01,
+    "huber_c": 0.0
+   },
+   "reused_from": "hier_ssm",
+   "loc_cutoff": 5
+  },
+  "hier_arwhite": {
+   "params": {
+    "kind": "hier",
+    "rho_g": 0.99,
+    "rho_h": 0.99,
+    "sd_g": 0.001,
+    "sd_h_ratio": 1.0,
+    "prior_sd": 0.01,
+    "huber_c": 0.0
+   },
+   "reused_from": "hier_ssm",
+   "loc_cutoff": 5
+  },
+  "hier_white": {
+   "params": {
+    "kind": "hier",
+    "rho_g": 0.99,
+    "rho_h": 0.99,
+    "sd_g": 0.001,
+    "sd_h_ratio": 1.0,
+    "prior_sd": 0.01,
+    "huber_c": 0.0
+   },
+   "reused_from": "hier_ssm",
+   "loc_cutoff": 5
+  },
+  "hier_huber": {
+   "params": {
+    "kind": "hier",
+    "rho_g": 0.99,
+    "rho_h": 0.99,
+    "sd_g": 0.001,
+    "sd_h_ratio": 1.0,
+    "prior_sd": 0.01,
+    "huber_c": 0.0
+   },
+   "reused_from": "hier_ssm",
+   "loc_cutoff": 5
+  },
+  "hier_degraded": {
+   "params": {
+    "kind": "hier",
+    "rho_g": 0.99,
+    "rho_h": 0.99,
+    "sd_g": 0.001,
+    "sd_h_ratio": 1.0,
+    "prior_sd": 0.01,
+    "huber_c": 0.0
+   },
+   "reused_from": "hier_ssm",
+   "loc_cutoff": 5
+  }
+ },
+ "fit_failures_test": 0,
+ "test_manifest": {
+  "role": "test",
+  "n_pairs": 500,
+  "paired": true,
+  "seed_base": 4000000,
+  "config_hash": "137a3146ad308246",
+  "n_rollouts": 1000
+ },
+ "lockfile_hash": null,
+ "created": "2026-11-10T16:53:43"
+}

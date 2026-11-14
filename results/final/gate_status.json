@@ -1,0 +1,97 @@
+{
+ "criterion": "95% Clopper-Pearson upper bound <= 0.08 where n>=400; cells with n<400 only fail if the interval lies above 5%",
+ "cells": 128,
+ "evaluable_cells": 0,
+ "cells_ok": 117,
+ "status": "FAIL",
+ "failing": [
+  {
+   "family": "S1_step",
+   "method": "adj_cusum",
+   "n_null": 79,
+   "rate": 0.2785,
+   "ci_lo": 0.1835,
+   "ci_hi": 0.3907
+  },
+  {
+   "family": "S1_step",
+   "method": "adj_ewma",
+   "n_null": 79,
+   "rate": 0.1772,
+   "ci_lo": 0.1004,
+   "ci_hi": 0.2794
+  },
+  {
+   "family": "S1_step",
+   "method": "combo_hier_topk",
+   "n_null": 79,
+   "rate": 0.2152,
+   "ci_lo": 0.1306,
+   "ci_hi": 0.322
+  },
+  {
+   "family": "S1_step",
+   "method": "combo_m0_topk",
+   "n_null": 79,
+   "rate": 0.1646,
+   "ci_lo": 0.0906,
+   "ci_hi": 0.2649
+  },
+  {
+   "family": "S1_step",
+   "method": "hier_arwhite",
+   "n_null": 79,
+   "rate": 0.1139,
+   "ci_lo": 0.0534,
+   "ci_hi": 0.2053
+  },
+  {
+   "family": "S1_step",
+   "method": "hier_degraded",
+   "n_null": 79,
+   "rate": 0.1392,
+   "ci_lo": 0.0716,
+   "ci_hi": 0.2355
+  },
+  {
+   "family": "S1_step",
+   "method": "hier_huber",
+   "n_null": 79,
+   "rate": 0.1139,
+   "ci_lo": 0.0534,
+   "ci_hi": 0.2053
+  },
+  {
+   "family": "S1_step",
+   "method": "hier_ssm",
+   "n_null": 79,
+   "rate": 0.1139,
+   "ci_lo": 0.0534,
+   "ci_hi": 0.2053
+  },
+  {
+   "family": "S1_step",
+   "method": "hier_white",
+   "n_null": 79,
+   "rate": 0.1646,
+   "ci_lo": 0.0906,
+   "ci_hi": 0.2649
+  },
+  {
+   "family": "S1_step",
+   "method": "indep_ssm",
+   "n_null": 79,
+   "rate": 0.1772,
+   "ci_lo": 0.1004,
+   "ci_hi": 0.2794
+  },
+  {
+   "family": "S1_step",
+   "method": "topk_cusum",
+   "n_null": 79,
+   "rate": 0.2405,
+   "ci_lo": 0.1514,
+   "ci_hi": 0.3498
+  }
+ ]
+}

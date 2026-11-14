@@ -1,0 +1,33 @@
+# Python environments & caches
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+.eggs/
+build/
+dist/
+.coverage
+htmlcov/
+
+# Heavy generated raw rollout data, caches, smoke runs & resume checkpoints
+data/
+data_*/
+cache/
+artifacts_*/
+results_*/
+results/smoke_ora_check/
+.resume_*/
+**/.resume_*/
+logs/
+*.npz
+*.pkl
+*.log
+
+# OS / editor noise
+.DS_Store
+Thumbs.db

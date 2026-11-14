@@ -1,0 +1,7 @@
+sim: {sd_host: 0.02}
+families:
+  - {name: plain,                   overrides: {}}
+  - {name: step,                    overrides: {workload_step: 0.3365}}
+  - {name: step_beta_heterogeneous, overrides: {workload_step: 0.3365, beta_jitter: 0.08}}
+  - {name: phi_e_0.8,               overrides: {phi_e: 0.8}}
+  - {name: student_t3,              overrides: {heavy_tail_df: 3.0}}

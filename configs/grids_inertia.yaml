@@ -1,0 +1,16 @@
+# Predeclared candidate grid for hier_ts (two-scale hierarchy), V3. Version string is recorded in the study manifest.
+# Budget-parity rule: after the long-run-SD <= kappa pruning the grid must NOT be larger than the hier_ssm grid
+# (42 candidates in grids_v2.yaml). A test enforces this. prior_sd is fixed at the value hier_ssm selected on the SAME
+# development data (artifacts/model_v2: 0.005); the tuned dimensions are the five asymmetry knobs below.
+# The grid contains hier_ssm's own selected point (rho_g=rho_h=0.999, sd_g=0.000125, ratios 1) so hier_ts nests hier_ssm.
+version: inertia-v1.0
+hier_ts:
+  rho_g: [0.995, 0.999]
+  rho_h: [0.99, 0.999]
+  sd_g: [0.000125, 0.0005]
+  sd_h_ratio: [1.0, 4.0]
+  prior_sd: [0.005]
+  prior_h_ratio: [0.5, 1.0]
+  constrain_long_run_sd_le_kappa: true
+# Edge protocol: if a selected point sits on an edge of any axis, Antigravity must extend that axis ONE predeclared step
+# (new version string, e.g. inertia-v1.1), refit, and record both versions. Never extend after seeing validation/test data.

@@ -1,0 +1,22 @@
+# V3 scenario set for the inertia / hysteresis study (Addendum B3, F). Base noise matches configs/plain_main.yaml.
+# regime: which calibration distribution applies (plain | step). Calibrate on the distribution you evaluate on.
+# has_event is NOT declared here: it is computed by metrics.event_truth from the injected effect (a > kappa for >= 15 min).
+version: inertia-scen-v1.0
+base: {sd_host: 0.02}
+scenarios:
+  - {name: iso_spike_1host,        regime: plain, overrides: {n_affected: 1, effect_pct: 4.0, duration: 10}}                      # non-event challenge
+  - {name: single_host_persistent, regime: plain, overrides: {n_affected: 1, effect_pct: 4.0, duration: 45}}                    # pooling can suppress a real local fault
+  - {name: short_3host,            regime: plain, overrides: {n_affected: 3, effect_pct: 3.0, duration: 10}}                      # non-event challenge
+  - {name: weak_persistent_3host,  regime: plain, overrides: {n_affected: 3, effect_pct: 2.5, duration: 45}}
+  - {name: class_wide,             regime: plain, overrides: {affected_mode: class0, effect_pct: 3.0, duration: 45}}
+  - {name: broad_fleet,            regime: plain, overrides: {n_affected: 10, effect_pct: 3.0, duration: 45}}
+  - {name: slow_drift_3host,       regime: plain, overrides: {n_affected: 3, effect_pct: 3.0, shape: ramp, ramp_len: 60, duration: 100}}
+  - {name: mixed_fast_slow,        regime: plain, overrides: {n_affected: 4, effect_pct: 3.0, mixed_mode: fast_host_slow_group, slow_effect_pct: 3.0, slow_ramp_len: 40, duration: 100}}
+  - {name: regression_recovery,    regime: plain, overrides: {n_affected: 3, effect_pct: 3.5, duration: 45, decay_len: 15}}
+  - {name: partial_recovery,       regime: plain, overrides: {n_affected: 4, effect_pct: 3.0, duration: 70, mixed_mode: partial_recovery}}
+  - {name: improvement_3host,      regime: plain, overrides: {n_affected: 3, effect_pct: -3.0, duration: 45}}                     # no event
+  - {name: sub_boundary_2pct,      regime: plain, overrides: {n_affected: 3, effect_pct: 2.0, duration: 45}}                      # effect == kappa: no event
+  - {name: periodic_workload,      regime: plain, overrides: {n_affected: 3, effect_pct: 3.0, duration: 45, workload_period: 90.0, workload_amp: 0.15}}
+  - {name: workload_spikes,        regime: plain, overrides: {n_affected: 3, effect_pct: 3.0, duration: 45, spike_n: 3, spike_mag: 0.3, spike_len: 8}}
+  - {name: step_no_harm_proxy,     regime: step,  overrides: {n_affected: 3, effect_pct: 0.0, duration: 45, workload_step: 0.3365}}  # step with no real effect
+  - {name: step_plus_harm,         regime: step,  overrides: {n_affected: 3, effect_pct: 3.0, duration: 45, workload_step: 0.3365}}
