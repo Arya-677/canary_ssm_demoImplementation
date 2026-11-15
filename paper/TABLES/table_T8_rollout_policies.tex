@@ -1,0 +1,14 @@
+\begin{table}[htbp]
+\centering
+\caption{Panels B & C: SLO Rules and Progressive Rollout Policies Benchmark}
+\label{tab:table_T8_rollout_policies}
+\begin{tabular}{llllllllllllllllll}
+\hline
+panel & method & cadence\_config & action\_type & n\_null & null\_false\_action\_rate & far\_ci\_lo & far\_ci\_hi & n\_harm & protective\_action\_power & unprotected\_miss\_rate & premature\_action\_rate & mean\_action\_latency & median\_action\_latency & capped\_action\_time\_h45 & capped\_action\_time\_h120 & runtime\_ms & fidelity \\
+\hline
+Panel C: Progressive Rollout Policies & argo\_policy & Every 1m, failureLimit=3 & Canary pause / abort & 600 & 0.0533 & 0.0380 & 0.0743 & 700 & 0.6743 & 0.3257 & 0.0000 & 51.9831 & 51.0000 & 49.7086 & 74.1371 & 0.0000 & Inspired abstraction only \\
+Panel C: Progressive Rollout Policies & flagger\_policy & Every 1m, maxFailed=5, step=10\% & Progressive rollback & 600 & 0.0533 & 0.0380 & 0.0743 & 700 & 0.6743 & 0.3257 & 0.0000 & 51.9831 & 51.0000 & 49.7086 & 74.1371 & 0.0000 & Inspired abstraction only \\
+Panel B: Metric/SLO Rule & slo\_threshold & Rolling W=5m, every 1m & SLO breach contrast alarm & 600 & 0.0883 & 0.0682 & 0.1137 & 700 & 0.8214 & 0.1786 & 0.0000 & 11.6643 & 7.0000 & 17.6171 & 31.0100 & 0.0000 & Faithful within the simulator \\
+\hline
+\end{tabular}
+\end{table}

@@ -1,0 +1,10 @@
+# table_T7_inertia_hysteresis_ablations: Ablation Studies: Temporal Inertia, Two-Scale Dynamics, and Hysteresis Limits
+
+
+
+| Ablation_Mechanism                          | Detection_Power   | Capped_TTS_H45        | Delay_Penalty               | Finding                                         | Alert_Reduction              |
+|:--------------------------------------------|:------------------|:----------------------|:----------------------------|:------------------------------------------------|:-----------------------------|
+| Inertia Ablation (rho=0.0 vs rho=0.95)      | 62.00% vs 88.14%  | 20.64m vs 11.93m      | +8.71 min slower (p<0.0001) | Temporal inertia is essential for sensitivity   | nan                          |
+| Two-Scale Dynamics (hier_ts vs hier_ssm)    | 88.14% vs 88.14%  | 11.93m vs 11.93m      | 0.00 min (CI [0,0])         | Negative: extra temporal level provides no gain | nan                          |
+| Hysteresis Alert Reduction (h_off=0.5*h_on) | nan               | Weak delay +7.34m     | +4.34m beyond 3m limit      | Negative: failed preregistered 50% target       | 20.8% achieved vs 50% target |
+| Recovery Stability (dwell tracking)         | N/A               | Recovery delay +4.81m | Additional delay cost       | Negative: no recovery acceleration demonstrated | nan                          |

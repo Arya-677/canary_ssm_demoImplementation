@@ -1,0 +1,17 @@
+# table_T1_model_glossary: Model and Implementation Inventory
+
+
+
+| Model_ID       | State_Dimension   | Pooling_Type        | Dynamics                  | Role_in_Paper                | Code_Location                 |
+|:---------------|:------------------|:--------------------|:--------------------------|:-----------------------------|:------------------------------|
+| indep_ssm      | n x 1             | No Pooling          | AR(1) Inertia (rho=0.95)  | Unpooled Baseline            | canary_ssm/hierarchy.py       |
+| pooled_ssm     | 1 x 1             | Full Fleet Pooling  | AR(1) Inertia (rho=0.95)  | Complete Pooling Endpoint    | results/plain_final           |
+| hier_ssm       | n x 1 (g + b)     | Partial Pooling     | AR(1) Inertia (rho=0.95)  | Primary Proposed Model       | canary_ssm/hierarchy.py       |
+| hier_ts        | 2n x 1            | Two-Scale Hierarchy | Group + Host AR(1)        | Temporal Extension Ablation  | results/study_inertia         |
+| no_inertia_ssm | n x 1 (g + b)     | Partial Pooling     | Memoryless (rho=0.0)      | Inertia Ablation             | canary_ssm/comparators        |
+| adj_cusum      | Scalar Sum        | Factor-Residual     | Sequential CUSUM (k=0.25) | Sequential Baseline          | canary_ssm/baselines.py       |
+| glr_window     | Windowed Stat     | Factor-Residual     | Sliding GLR (W=15m)       | Windowed Change Detection    | canary_ssm/baselines_extra.py |
+| kayenta_judge  | Non-parametric    | Group-wise Test     | Rolling MWU (W=15m)       | Kayenta-Inspired Judge       | canary_ssm/comparators        |
+| slo_threshold  | Contrast Delta    | Canary vs Control   | Rolling Mean (W=5m)       | Operational SLO Rule         | canary_ssm/comparators        |
+| argo_policy    | Failure Counter   | Fleet Contrast      | AR-3 Limit Tracking       | Argo-Style Rollout Policy    | canary_ssm/comparators        |
+| flagger_policy | Failure Budget    | Fleet Contrast      | Progressive Step Checks   | Flagger-Style Rollout Policy | canary_ssm/comparators        |

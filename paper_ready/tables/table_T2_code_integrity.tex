@@ -1,0 +1,15 @@
+\begin{table}[htbp]
+\centering
+\caption{Frozen Protocol and Experimental Dataset Splits}
+\label{tab:table_T2_code_integrity}
+\begin{tabular}{llllll}
+\hline
+Split\_Role & Purpose & N\_Null & N\_Harmful & Scenarios & Tuning\_Permitted \\
+\hline
+Development & Code debugging & hyperparameter candidate bounds & 200 & 200 & Synthetic Pilots & PASSED \\
+Calibration & Null threshold determination via order statistics & 1000 & 0 & 12 Null Scenarios & FAILED \\
+Validation & Gate G2 exact Beta-Binomial validity audit & 500 & 0 & Stationary Baseline Null & FAILED \\
+Confirmatory Test & Final head-to-head benchmarking & hypothesis tests & 600 & 700 & 26 Matched Scenarios & FAILED \\
+\hline
+\end{tabular}
+\end{table}

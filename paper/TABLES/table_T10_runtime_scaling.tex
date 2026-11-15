@@ -1,0 +1,17 @@
+\begin{table}[htbp]
+\centering
+\caption{Computational Latency and Memory Scaling Across Fleet Sizes (N=10 to 500 Hosts)}
+\label{tab:table_T10_runtime_scaling}
+\begin{tabular}{llllll}
+\hline
+cluster\_size\_N & canary\_hosts\_nc & p50\_step\_ms & p95\_step\_ms & p99\_step\_ms & total\_runtime\_ms \\
+\hline
+10.0000 & 2.0000 & 0.3360 & 0.3496 & 0.3512 & 10.0803 \\
+25.0000 & 2.0000 & 0.3275 & 0.3419 & 0.3439 & 9.8245 \\
+50.0000 & 5.0000 & 0.3557 & 0.3687 & 0.3693 & 10.6718 \\
+100.0000 & 10.0000 & 0.3966 & 0.4065 & 0.4067 & 11.8982 \\
+250.0000 & 25.0000 & 0.8742 & 0.9239 & 0.9302 & 26.2247 \\
+500.0000 & 50.0000 & 2.4933 & 2.7124 & 2.7124 & 74.8002 \\
+\hline
+\end{tabular}
+\end{table}

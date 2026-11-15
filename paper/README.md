@@ -7,12 +7,12 @@ This directory contains the complete publication package for authoring the forma
 
 ### Package Contents
 
-1. [`MANUSCRIPT_SKELETON.md`](file:///c:/afml-implementation/paper/MANUSCRIPT_SKELETON.md): Complete, publication-ready academic manuscript draft with structured abstract, mathematical formulations, empirical results, and discussion.
-2. [`PAPER_OUTLINE.md`](file:///c:/afml-implementation/paper/PAPER_OUTLINE.md): Detailed sectional outline with word counts, section objectives, and target venues.
-3. [`RESULTS_EVIDENCE_MAP.md`](file:///c:/afml-implementation/paper/RESULTS_EVIDENCE_MAP.md): Traceability matrix mapping every numerical claim in the paper to its underlying CSV, row, and column.
-4. [`FIGURES/`](file:///c:/afml-implementation/paper/FIGURES/): Publication-ready figures in both vector SVG and 300 DPI raster PNG formats, accompanied by [`FIGURE_INDEX.md`](file:///c:/afml-implementation/paper/FIGURES/FIGURE_INDEX.md).
-5. [`TABLES/`](file:///c:/afml-implementation/paper/TABLES/): Publication tables in CSV, Markdown, and formatted LaTeX (`.tex`) formats, accompanied by [`TABLE_INDEX.md`](file:///c:/afml-implementation/paper/TABLES/TABLE_INDEX.md).
-6. [`REFERENCES.bib`](file:///c:/afml-implementation/paper/REFERENCES.bib): Primary-source BibTeX bibliography covering all cited literature with verified DOIs.
+1. [`MANUSCRIPT_SKELETON.md`](paper/MANUSCRIPT_SKELETON.md): Complete, publication-ready academic manuscript draft with structured abstract, mathematical formulations, empirical results, and discussion.
+2. [`PAPER_OUTLINE.md`](paper/PAPER_OUTLINE.md): Detailed sectional outline with word counts, section objectives, and target venues.
+3. [`RESULTS_EVIDENCE_MAP.md`](paper/RESULTS_EVIDENCE_MAP.md): Traceability matrix mapping every numerical claim in the paper to its underlying CSV, row, and column.
+4. [`FIGURES/`](paper/FIGURES/): Publication-ready figures in both vector SVG and 300 DPI raster PNG formats, accompanied by [`FIGURE_INDEX.md`](paper/FIGURES/FIGURE_INDEX.md).
+5. [`TABLES/`](paper/TABLES/): Publication tables in CSV, Markdown, and formatted LaTeX (`.tex`) formats, accompanied by [`TABLE_INDEX.md`](paper/TABLES/TABLE_INDEX.md).
+6. [`REFERENCES.bib`](paper/REFERENCES.bib): Primary-source BibTeX bibliography covering all cited literature with verified DOIs.
 
 ---
 

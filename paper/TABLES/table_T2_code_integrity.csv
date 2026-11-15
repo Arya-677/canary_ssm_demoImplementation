@@ -1,8 +1,5 @@
-Package,Modules,Forbidden_Imports,Ground_Truth_Access,Status
-canary_ssm.factor,2,0,None,COMPLIANT
-canary_ssm.preprocess,1,0,None,COMPLIANT
-canary_ssm.baselines,2,0,None,COMPLIANT
-canary_ssm.kalman,1,0,None,COMPLIANT
-canary_ssm.hierarchy,1,0,None,COMPLIANT
-canary_ssm.decision,1,0,None,COMPLIANT
-canary_ssm.comparators,6,0,None,COMPLIANT
+Split_Role,Purpose,N_Null,N_Harmful,Scenarios,Tuning_Permitted
+Development,Code debugging & hyperparameter candidate bounds,200,200,Synthetic Pilots,True
+Calibration,Null threshold determination via order statistics,1000,0,12 Null Scenarios,False
+Validation,Gate G2 exact Beta-Binomial validity audit,500,0,Stationary Baseline Null,False
+Confirmatory Test,Final head-to-head benchmarking & hypothesis tests,600,700,26 Matched Scenarios,False

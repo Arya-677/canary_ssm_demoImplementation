@@ -1,0 +1,11 @@
+# table_T11_hypothesis_reconciliation: Preregistered Hypotheses Reconciliation and Final Research Claim Classifications
+
+
+
+| Hypothesis                                 | Original_Prereg_Target                            | Observed_Result                                                                 | Final_Status           | Paper_Framing                                                                       |
+|:-------------------------------------------|:--------------------------------------------------|:--------------------------------------------------------------------------------|:-----------------------|:------------------------------------------------------------------------------------|
+| H1: Hierarchical Pooling Advantage         | Capped TTS reduction over independent SSM         | Class-wide -7.8m (p=0.011), Broad -4.5m (p=0.011), Single +9.46m penalty        | PARTIALLY_SUPPORTED    | Partial pooling trades broad-fleet acceleration for isolated-host penalty           |
+| H2: Two-Scale Cross-Level Inertia          | Incremental benefit of hier_ts over hier_ssm      | Mean diff 0.000 min, CI [0, 0] across 5 scenarios                               | NOT_SUPPORTED          | Negative finding: single-scale hierarchy captures all actionable dynamics           |
+| H3: Hysteresis Alert Reduction             | >= 50% non-event alert reduction with <= 3m delay | Max reduction 20.8%, weak persistent delay +7.34m                               | NOT_SUPPORTED          | Negative finding: fixed hysteresis fails the 50% threshold                          |
+| H4: Recovery Dwell Acceleration            | Faster return to normal after recovery            | Recovery delay +4.81m; no acceleration observed                                 | NOT_SUPPORTED          | Negative finding: recovery tracking incurs dwell cost rather than acceleration      |
+| H5: SSM Dominance over Classical Baselines | Universal superiority over CUSUM and GLR          | Faster in 9/11 event scenarios; slower in slow drift (+19.6m) and step (+14.9m) | NO_UNIVERSAL_DOMINANCE | SSM is superior for abrupt/correlated faults; classical baselines win on slow drift |

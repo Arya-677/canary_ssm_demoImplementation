@@ -1,21 +1,15 @@
 \begin{table}[htbp]
 \centering
-\caption{Telemetry Schema, Streaming Availability, and Causal Invariants}
+\caption{Parameter Recovery and Posterior Interval Coverage}
 \label{tab:table_T4_telemetry_invariants}
-\begin{tabular}{llll}
+\begin{tabular}{llllll}
 \hline
-Test\_ID & Invariant & Target & Result \\
+Parameter & True\_Value & Estimated\_Bias & RMSE & Nominal\_95\_Coverage & Status \\
 \hline
-TEL-01 & Duplicate Key Handling & Unique host/time index & PASSED \\
-TEL-02 & Late Arrival Invariance & Decisions <= t invariant to late arrival & PASSED \\
-TEL-03 & Stream Shuffling Parity & Event time sort matches online replay & PASSED \\
-TEL-04 & Missingness Masking & Kalman sub-projection NaN-safe & PASSED \\
-TEL-05 & Timestamp Monotonicity & Non-decreasing temporal index & PASSED \\
-TEL-06 & Invalid Metric Rejection & Non-positive, inf, NaN latencies masked & PASSED \\
-TEL-07 & Host Identity Lifecycle & Partition disjointness canary vs control & PASSED \\
-TEL-08 & Exposure Leakage Prevention & Zero overlap between canary & control & PASSED \\
-TEL-09 & Pre-period Immutability & Fixed nuisance params during rollout & PASSED \\
-TEL-10 & Strict Causal Prefix Invariance & s\_t(y\_1:t) identical to s\_t(y\_1:T) & PASSED \\
+Baseline Log-Latency (mu) & [-0.5, 0.5] & +0.000137 & 0.015903 & 99.88\% & UNBIASED \\
+Workload Sensitivity (beta) & [0.2, 1.2] & +0.002023 & 0.073695 & 98.40\% & UNBIASED \\
+AR(1) Noise Persistence (phi\_e) & 0.30 & +0.031247 & 0.072287 & 94.20\% & SLIGHT\_POS\_BIAS \\
+Latent Treatment Effect (a\_it) & 0.0296 (3\%) & -0.001840 & 0.008420 & 74.96\% & UNDERCOVERAGE\_SHRINKAGE \\
 \hline
 \end{tabular}
 \end{table}

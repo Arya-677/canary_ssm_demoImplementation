@@ -1,0 +1,22 @@
+\begin{table}[htbp]
+\centering
+\caption{Model and Implementation Inventory}
+\label{tab:table_T1_model_glossary}
+\begin{tabular}{llllll}
+\hline
+Model\_ID & State\_Dimension & Pooling\_Type & Dynamics & Role\_in\_Paper & Code\_Location \\
+\hline
+indep\_ssm & n x 1 & No Pooling & AR(1) Inertia (rho=0.95) & Unpooled Baseline & canary\_ssm/hierarchy.py \\
+pooled\_ssm & 1 x 1 & Full Fleet Pooling & AR(1) Inertia (rho=0.95) & Complete Pooling Endpoint & results/plain\_final \\
+hier\_ssm & n x 1 (g + b) & Partial Pooling & AR(1) Inertia (rho=0.95) & Primary Proposed Model & canary\_ssm/hierarchy.py \\
+hier\_ts & 2n x 1 & Two-Scale Hierarchy & Group + Host AR(1) & Temporal Extension Ablation & results/study\_inertia \\
+no\_inertia\_ssm & n x 1 (g + b) & Partial Pooling & Memoryless (rho=0.0) & Inertia Ablation & canary\_ssm/comparators \\
+adj\_cusum & Scalar Sum & Factor-Residual & Sequential CUSUM (k=0.25) & Sequential Baseline & canary\_ssm/baselines.py \\
+glr\_window & Windowed Stat & Factor-Residual & Sliding GLR (W=15m) & Windowed Change Detection & canary\_ssm/baselines\_extra.py \\
+kayenta\_judge & Non-parametric & Group-wise Test & Rolling MWU (W=15m) & Kayenta-Inspired Judge & canary\_ssm/comparators \\
+slo\_threshold & Contrast Delta & Canary vs Control & Rolling Mean (W=5m) & Operational SLO Rule & canary\_ssm/comparators \\
+argo\_policy & Failure Counter & Fleet Contrast & AR-3 Limit Tracking & Argo-Style Rollout Policy & canary\_ssm/comparators \\
+flagger\_policy & Failure Budget & Fleet Contrast & Progressive Step Checks & Flagger-Style Rollout Policy & canary\_ssm/comparators \\
+\hline
+\end{tabular}
+\end{table}
