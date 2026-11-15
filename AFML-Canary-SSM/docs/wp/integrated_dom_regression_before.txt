@@ -1,0 +1,21 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Renderer requested missing HTML ID: history-load
+    at Object.el [as getElementById] (file:///Users/pranavmenon/Documents/Codex/2026-11-14/new-chat-5/work/dashboard_integration/canary_ssm_demoImplementation-main/scripts/check_integrated_console.mjs:12:24)
+    at $ (evalmachine.<anonymous>:2:26)
+    at connection (evalmachine.<anonymous>:50:219)
+    at send (evalmachine.<anonymous>:147:67)
+    at $.onclick (evalmachine.<anonymous>:72:21)
+    at file:///Users/pranavmenon/Documents/Codex/2026-11-14/new-chat-5/work/dashboard_integration/canary_ssm_demoImplementation-main/scripts/check_integrated_console.mjs:31:29
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5) {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}
+
+Node.js v24.14.1

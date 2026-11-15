@@ -1,0 +1,51 @@
+suite_id: world-scenario-suite-v1
+generator_id: resource-world-scenarios-v1
+base_config_file: world_scenario_base.yaml
+ticks: 48
+scenarios:
+  healthy:
+    intervention: none
+  host_fault:
+    intervention: platform
+    fault:
+      kind: service_crash
+      scope: host
+      target: host-a-0
+      start_tick: 13
+      duration: 6
+      severity: 0.8
+      recovery: restart
+  rack_fault:
+    intervention: platform
+    fault:
+      kind: network_degradation
+      scope: rack
+      target: rack-a
+      start_tick: 13
+      duration: 6
+      severity: 0.9
+      recovery: restore
+  shared_demand_surge:
+    intervention: platform
+    fault:
+      kind: demand_surge
+      scope: world
+      target: world
+      start_tick: 13
+      duration: 6
+      severity: 0.75
+      recovery: restore
+  transient_degradation:
+    intervention: release
+    release_id: sample-slow-v2
+    deploy_tick: 13
+    rollback_tick: 15
+  persistent_degradation:
+    intervention: release
+    release_id: sample-slow-v2
+    deploy_tick: 13
+  recovery:
+    intervention: release
+    release_id: sample-slow-v2
+    deploy_tick: 13
+    rollback_tick: 31

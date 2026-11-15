@@ -1,0 +1,122 @@
+{
+  "checkpoint": "latched-first-crossing-v1",
+  "date": "2026-11-15",
+  "base_archive": "canary_ssm_process_memory.zip",
+  "full_suite": "566 passed, 1 warning in 139.61s (0:02:19)",
+  "focused_tests": "28 passed, 1 warning in 7.75s",
+  "conditional_statistical_example": {
+    "B": 2000,
+    "k": 1901,
+    "alpha": 0.05,
+    "rank_500": {
+      "B": 500,
+      "k": 476,
+      "alpha": 0.05,
+      "threshold": -3.3465082586498562,
+      "ties_at_threshold": 1
+    },
+    "validation_gate": {
+      "status": "PASS",
+      "minimum_B": 2000,
+      "minimum_n": 2000,
+      "bb_pvalue_two_sided": 0.6047305426933629,
+      "rejection_level": 0.01,
+      "maximum_empirical_release_rate": 0.075,
+      "note": "G2-style conditional diagnostic; Beta-Binomial continuity/exchangeability assumptions are explicit. Combined action FAR is reported separately and is not controlled at release alpha."
+    },
+    "rates": {
+      "release_alarm": {
+        "events": 92,
+        "n": 2000,
+        "rate": 0.046,
+        "exact_binomial_95_interval": [
+          0.037240902034369,
+          0.056118830543436325
+        ]
+      },
+      "platform_pause": {
+        "events": 0,
+        "n": 2000,
+        "rate": 0.0,
+        "exact_binomial_95_interval": [
+          0.0,
+          0.0018427397934059364
+        ]
+      },
+      "resource_pause": {
+        "events": 0,
+        "n": 2000,
+        "rate": 0.0,
+        "exact_binomial_95_interval": [
+          0.0,
+          0.0018427397934059364
+        ]
+      },
+      "combined_action": {
+        "events": 92,
+        "n": 2000,
+        "rate": 0.046,
+        "exact_binomial_95_interval": [
+          0.037240902034369,
+          0.056118830543436325
+        ]
+      }
+    },
+    "no_eligible_nulls": 500,
+    "resource_world_compatible": false,
+    "validation_seed_family": 28
+  },
+  "policy_hash": "f23f37bec8d6341b313bb640fbfdaa5019c61ee54e812d9044e8f7a08c1163ac",
+  "validation_hash": "1f003a18347bf82db974ae6c96196cd90bc22efe56a8f8eff993d9ce82f0b77e",
+  "hashes": {
+    "model_hash": "b9dc506a8bc20e9f16aa1ecf79fb2b5e0052bd5d58fbc27738abab86098fbb12",
+    "preprocessing_hash": "b46e080ddbac49c1be60f7f53d34e2104b19b208ce7fd31926047bd4cfe722ae",
+    "simulator_hash": "0626acf7c90b84873647660ae831b5f2f150cc4fca6dee8c36870e7cdb825087",
+    "protocol_hash": "fe411fe2bed61ddfb7d836157d61f8aff1acd1e68451137a5a37891decebbd82"
+  },
+  "http_dom": {
+    "passed": true,
+    "checks": {
+      "large_artifact_HTTP_attach": true,
+      "default_auto_rollback_off": true,
+      "before_exposure_commit": true,
+      "calibrated_producer_input_status": true,
+      "automatic_pause_reason": true,
+      "manual_rollback": true,
+      "closed_evaluation_label": true,
+      "incompatible_conditional_demo_rejected": true,
+      "raw_saved_run_browser_replay": true,
+      "policy_decisions_restore_from_checkpoint": true
+    },
+    "scope": "Actual HTTP/DOM commands with hand-authored controller contract null scores; these inputs are not physical-world calibration evidence. No browser layout claim."
+  },
+  "cli": {
+    "recalibration_reproduces_policy_hash": true,
+    "independent_validation_reproduces_receipt_hash": true,
+    "public_slice_scoring_records": 4,
+    "policy_hash": "f23f37bec8d6341b313bb640fbfdaa5019c61ee54e812d9044e8f7a08c1163ac",
+    "validation_hash": "1f003a18347bf82db974ae6c96196cd90bc22efe56a8f8eff993d9ce82f0b77e"
+  },
+  "unchanged_original_test_files": 29,
+  "unchanged_additive_files": 60,
+  "legacy_numeric_compatibility": {
+    "healthy": {
+      "all_original_trace_fields_equal": true,
+      "workload_rng_equal": true,
+      "ticks": 30
+    },
+    "slow": {
+      "all_original_trace_fields_equal": true,
+      "workload_rng_equal": true,
+      "ticks": 30
+    },
+    "leak": {
+      "all_original_trace_fields_equal": true,
+      "workload_rng_equal": true,
+      "ticks": 30
+    }
+  },
+  "non_scenario_replays": 28,
+  "scenario_members": 22,
+  "physical_world_calibration_claimed": false
+}

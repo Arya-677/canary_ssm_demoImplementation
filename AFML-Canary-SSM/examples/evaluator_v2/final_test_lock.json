@@ -1,0 +1,205 @@
+{
+  "freeze_hash": "d3d98788033eb70ca8798f02f8be0a65b5cc7a7daadae32fa8fde9c4b37124d1",
+  "inputs_materialized": false,
+  "plan": [
+    {
+      "generator": "research",
+      "scenario": "healthy",
+      "seed": 38692500,
+      "members": [
+        "null",
+        "harm"
+      ]
+    },
+    {
+      "generator": "research",
+      "scenario": "shared_surge",
+      "seed": 38712500,
+      "members": [
+        "null",
+        "harm"
+      ]
+    },
+    {
+      "generator": "research",
+      "scenario": "host_fault",
+      "seed": 38732500,
+      "members": [
+        "null",
+        "harm"
+      ]
+    },
+    {
+      "generator": "research",
+      "scenario": "rack_outage",
+      "seed": 38752500,
+      "members": [
+        "null",
+        "harm"
+      ]
+    },
+    {
+      "generator": "research",
+      "scenario": "broad_release_harm",
+      "seed": 38772500,
+      "members": [
+        "null",
+        "harm"
+      ]
+    },
+    {
+      "generator": "research",
+      "scenario": "transient_harm",
+      "seed": 38792500,
+      "members": [
+        "null",
+        "harm"
+      ]
+    },
+    {
+      "generator": "research",
+      "scenario": "memory_retention_no_latency",
+      "seed": 38812500,
+      "members": [
+        "null",
+        "harm"
+      ]
+    },
+    {
+      "generator": "research",
+      "scenario": "memory_retention_latency",
+      "seed": 38832500,
+      "members": [
+        "null",
+        "harm"
+      ]
+    },
+    {
+      "generator": "research",
+      "scenario": "contaminated_controls",
+      "seed": 38852500,
+      "members": [
+        "null",
+        "harm"
+      ]
+    },
+    {
+      "generator": "research",
+      "scenario": "missing_telemetry",
+      "seed": 38872500,
+      "members": [
+        "null",
+        "harm"
+      ]
+    },
+    {
+      "generator": "research",
+      "scenario": "recovery",
+      "seed": 38892500,
+      "members": [
+        "null",
+        "harm"
+      ]
+    },
+    {
+      "generator": "world",
+      "scenario": "healthy",
+      "seed": 33692500,
+      "members": [
+        "null",
+        "harm"
+      ]
+    },
+    {
+      "generator": "world",
+      "scenario": "shared_surge",
+      "seed": 33712500,
+      "members": [
+        "null",
+        "harm"
+      ]
+    },
+    {
+      "generator": "world",
+      "scenario": "host_fault",
+      "seed": 33732500,
+      "members": [
+        "null",
+        "harm"
+      ]
+    },
+    {
+      "generator": "world",
+      "scenario": "rack_outage",
+      "seed": 33752500,
+      "members": [
+        "null",
+        "harm"
+      ]
+    },
+    {
+      "generator": "world",
+      "scenario": "broad_release_harm",
+      "seed": 33772500,
+      "members": [
+        "null",
+        "harm"
+      ]
+    },
+    {
+      "generator": "world",
+      "scenario": "transient_harm",
+      "seed": 33792500,
+      "members": [
+        "null",
+        "harm"
+      ]
+    },
+    {
+      "generator": "world",
+      "scenario": "memory_retention_no_latency",
+      "seed": 33812500,
+      "members": [
+        "null",
+        "harm"
+      ]
+    },
+    {
+      "generator": "world",
+      "scenario": "memory_retention_latency",
+      "seed": 33832500,
+      "members": [
+        "null",
+        "harm"
+      ]
+    },
+    {
+      "generator": "world",
+      "scenario": "contaminated_controls",
+      "seed": 33852500,
+      "members": [
+        "null",
+        "harm"
+      ]
+    },
+    {
+      "generator": "world",
+      "scenario": "missing_telemetry",
+      "seed": 33872500,
+      "members": [
+        "null",
+        "harm"
+      ]
+    },
+    {
+      "generator": "world",
+      "scenario": "recovery",
+      "seed": 33892500,
+      "members": [
+        "null",
+        "harm"
+      ]
+    }
+  ],
+  "unlock": "all computed qualification gates and raw content hashes; no retuning"
+}

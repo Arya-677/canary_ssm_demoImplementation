@@ -1,0 +1,67 @@
+{
+  "checkpoint": "public-control-adjustment-v1",
+  "date": "2026-11-14",
+  "full_suite": {
+    "command": "python -m pytest -q",
+    "exit_code": 0,
+    "stdout": "........................................................................ [ 17%]\n........................................................................ [ 35%]\n........................................................................ [ 52%]\n........................................................................ [ 70%]\n........................................................................ [ 87%]\n..................................................                       [100%]\n410 passed in 139.17s (0:02:19)\n",
+    "stderr": "",
+    "elapsed_seconds": 141.03639212500275
+  },
+  "focused_suite": {
+    "command": "python -m pytest -q tests/test_public_adjustment.py",
+    "result": "25 passed in 0.75s",
+    "exit_code": 0
+  },
+  "legacy_factor_equivalence": {
+    "bitwise_equal": {
+      "0": true,
+      "1": true
+    },
+    "passed": true
+  },
+  "existing_replays": {
+    "passed": true,
+    "engine_replays": 28,
+    "verified_scenario_members": 22
+  },
+  "preservation": {
+    "passed": true,
+    "missing": [],
+    "changed_original_files": [
+      "README.md",
+      "canary_ssm/factor.py",
+      "docs/DESIGN_DECISIONS.md",
+      "docs/gap_audit.md",
+      "docs/implementation_status.md"
+    ],
+    "original_file_count": 619,
+    "saved_cli_python_equal": true,
+    "all_original_tests_and_model_artifacts_preserved": true
+  },
+  "fixture": {
+    "fixture_only": true,
+    "checks": {
+      "development_only_lineage": true,
+      "pre_loading_counts": true,
+      "one_shared_reference": true,
+      "shared_covariance_nondiagonal": true,
+      "rack_control_shortfall_masks": true,
+      "eighty_percent_rule_masks": true,
+      "exposed_control_excluded": true,
+      "future_perturbation": true,
+      "rank_zero_has_no_reference": true,
+      "contamination_challenge_explicit": true,
+      "frozen_artifact_roundtrip": true
+    },
+    "passed": true,
+    "detector_connected": false
+  },
+  "cli": {
+    "fit_exit_code": 0,
+    "apply_exit_code": 0,
+    "python_saved_and_cli_equal": true
+  },
+  "detector_connected": false,
+  "benchmark_results": null
+}

@@ -1,0 +1,167 @@
+{
+ "selected": {
+  "matched_contrast": {
+   "params": {},
+   "loc_cutoff": 5
+  },
+  "adj_ewma": {
+   "params": {
+    "alpha": 0.05
+   },
+   "loc_cutoff": 5
+  },
+  "adj_cusum": {
+   "params": {
+    "k": 0.5
+   },
+   "loc_cutoff": 5
+  },
+  "topk_cusum": {
+   "params": {
+    "K": 5,
+    "k": 0.5
+   },
+   "loc_cutoff": 5
+  },
+  "pooled_ssm": {
+   "params": {
+    "kind": "pooled",
+    "rho_g": 0.99,
+    "rho_h": 0.99,
+    "sd_g": 0.001,
+    "sd_h_ratio": 1.0,
+    "prior_sd": 0.01,
+    "huber_c": 0.0
+   },
+   "loc_cutoff": 5
+  },
+  "indep_ssm": {
+   "params": {
+    "kind": "indep",
+    "rho_g": 0.99,
+    "rho_h": 0.99,
+    "sd_g": 0.001,
+    "sd_h_ratio": 1.0,
+    "prior_sd": 0.01,
+    "huber_c": 0.0
+   },
+   "loc_cutoff": 5
+  },
+  "hier_ssm": {
+   "params": {
+    "kind": "hier",
+    "rho_g": 0.99,
+    "rho_h": 0.99,
+    "sd_g": 0.001,
+    "sd_h_ratio": 1.0,
+    "prior_sd": 0.01,
+    "huber_c": 0.0
+   },
+   "loc_cutoff": 5
+  },
+  "hier_no_persist": {
+   "params": {
+    "kind": "hier",
+    "rho_g": 0.0,
+    "rho_h": 0.0,
+    "sd_g": 0.01,
+    "sd_h_ratio": 1.0,
+    "prior_sd": 0.01,
+    "huber_c": 0.0
+   },
+   "loc_cutoff": 5
+  },
+  "hier_rank0": {
+   "params": {
+    "kind": "hier",
+    "rho_g": 0.99,
+    "rho_h": 0.99,
+    "sd_g": 0.001,
+    "sd_h_ratio": 1.0,
+    "prior_sd": 0.01,
+    "huber_c": 0.0
+   },
+   "reused_from": "hier_ssm",
+   "loc_cutoff": 5
+  },
+  "hier_arwhite": {
+   "params": {
+    "kind": "hier",
+    "rho_g": 0.99,
+    "rho_h": 0.99,
+    "sd_g": 0.001,
+    "sd_h_ratio": 1.0,
+    "prior_sd": 0.01,
+    "huber_c": 0.0
+   },
+   "reused_from": "hier_ssm",
+   "loc_cutoff": 5
+  },
+  "hier_white": {
+   "params": {
+    "kind": "hier",
+    "rho_g": 0.99,
+    "rho_h": 0.99,
+    "sd_g": 0.001,
+    "sd_h_ratio": 1.0,
+    "prior_sd": 0.01,
+    "huber_c": 0.0
+   },
+   "reused_from": "hier_ssm",
+   "loc_cutoff": 5
+  },
+  "hier_huber": {
+   "params": {
+    "kind": "hier",
+    "rho_g": 0.99,
+    "rho_h": 0.99,
+    "sd_g": 0.001,
+    "sd_h_ratio": 1.0,
+    "prior_sd": 0.01,
+    "huber_c": 0.0
+   },
+   "reused_from": "hier_ssm",
+   "loc_cutoff": 5
+  },
+  "hier_degraded": {
+   "params": {
+    "kind": "hier",
+    "rho_g": 0.99,
+    "rho_h": 0.99,
+    "sd_g": 0.001,
+    "sd_h_ratio": 1.0,
+    "prior_sd": 0.01,
+    "huber_c": 0.0
+   },
+   "reused_from": "hier_ssm",
+   "loc_cutoff": 5
+  }
+ },
+ "kappa": 0.01980262729617973,
+ "alpha": 0.05,
+ "methods": [
+  "matched_contrast",
+  "adj_ewma",
+  "adj_cusum",
+  "topk_cusum",
+  "pooled_ssm",
+  "indep_ssm",
+  "hier_ssm",
+  "hier_no_persist",
+  "hier_rank0",
+  "hier_arwhite",
+  "hier_white",
+  "hier_huber",
+  "hier_degraded"
+ ],
+ "frozen": false,
+ "beta_mode": "pooled_dev",
+ "dev_rollouts": 200,
+ "misclass": 0.2,
+ "nuisance_files": [
+  "nuisance_arwhite.json",
+  "nuisance_main.json",
+  "nuisance_rank0.json",
+  "nuisance_white.json"
+ ]
+}

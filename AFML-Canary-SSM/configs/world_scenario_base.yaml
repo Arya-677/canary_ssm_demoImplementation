@@ -1,0 +1,21 @@
+topology_file: world_scenario_topology.yaml
+engine:
+  seed: 29000000
+  tick_seconds: 5
+  demo: true
+  resources:
+    host_baseline_memory_mb: 32
+    shared_jitter: 0.1
+    paired_exogenous: true
+    trace_max_rows: 20000
+    services:
+    - service_id: scenario-service
+      arrival_rate_rps: 260
+      work_core_seconds: 0.05
+      queue_limit: 200
+      baseline_memory_mb: 32
+      temporary_mb_per_request: 1
+  telemetry:
+    enabled: true
+    max_records: 10000
+    max_windows: 20

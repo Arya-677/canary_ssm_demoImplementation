@@ -1,0 +1,4 @@
+# The dev portion of scripts/audit_quick.sh. No calibration/test data used to fit.
+sim: {sd_host: 0.02}
+roles: {dev: {pairs: 30}}
+families: [{name: plain, overrides: {}}]

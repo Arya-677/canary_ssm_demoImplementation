@@ -1,0 +1,40 @@
+{
+  "scope": "virtual-world chunk 02: static clock and replay",
+  "source_archive": "canary_ssm_topology_chunk01.zip",
+  "source_sha256": "10d7e1c91a232158a3aadb86979487dd2d0270d103bca0029948ee77a2cb9a4c",
+  "fixture_checks": {
+    "100_ticks": true,
+    "replayed_exactly": true,
+    "identical_runs": true,
+    "reset_world_rng": true,
+    "stable_phases": true,
+    "named_streams": true
+  },
+  "fixture_gate": true,
+  "runtime_manifest": {
+    "config_hash": "4ed58cb97f967c4203ef266a52ecfd50681b740bf0d21a593561f7d35af9ca92",
+    "engine_sha256": "4b714a0975938f5ac2a9f7c5bb3dd94a04ef88498df2f9eeaead218938f2e81d",
+    "python": "3.14.7 (main, Aug  5 2026, 10:29:49) [Clang 21.0.0 (clang-2100.1.1.101)]",
+    "numpy": "2.5.4",
+    "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+    "git": "not recorded by clock kernel",
+    "phase_adapter": "static-v1"
+  },
+  "full_suite": {
+    "command": "python -m pytest -q",
+    "returncode": 1,
+    "stdout": "........................................................................ [ 34%]\n.................................F...................................... [ 68%]\n...................................................................      [100%]\n=================================== FAILURES ===================================\n_____________________ test_experiment7_legacy_reproduction _____________________\n\ntmp_path = PosixPath('/private/var/folders/07/q406h8k55vv26lgdz2hsxj280000gn/T/pytest-of-pranavmenon/pytest-4/test_experiment7_legacy_reprod0')\n\n    @pytest.mark.slow\n    def test_experiment7_legacy_reproduction(tmp_path):\n        from canary_ssm.studies import study_regime\n>       man = study_regime.run(\n            model_dir=ROOT / \"data_audit\" / \"model_pooled_dev\",\n            out_dir=tmp_path / \"reg\",\n            n_null=30,\n            n_harm=10,\n            allow_frozen=True,\n            legacy_seeds=True,\n            workers=1,\n        )\n\ntests/test_p1_protocol.py:203: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \ncanary_ssm/studies/study_regime.py:110: in run\n    _, mcfg, mh = load_models(model_dir)\n                  ^^^^^^^^^^^^^^^^^^^^^^\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nmodel_dir = PosixPath('/Users/pranavmenon/Documents/Codex/2026-11-14/new-chat-5/work/canary_ssm_demoImplementation-main/data_audit/model_pooled_dev')\ncache_dir = None\n\n    def load_models(\n        model_dir: Path,\n        cache_dir: Path | None = None,\n    ) -> tuple[Models, dict, str]:\n        model_dir = Path(model_dir)\n        for need in (\"model_config.json\", \"nuisance_main.json\"):\n            if not (model_dir / need).exists():\n>               raise FileNotFoundError(f\"missing model artifact {need} in {model_dir}\")\nE               FileNotFoundError: missing model artifact model_config.json in /Users/pranavmenon/Documents/Codex/2026-11-14/new-chat-5/work/canary_ssm_demoImplementation-main/data_audit/model_pooled_dev\n\ncanary_ssm/experiments.py:1161: FileNotFoundError\n=========================== short test summary info ============================\nFAILED tests/test_p1_protocol.py::test_experiment7_legacy_reproduction - File...\n1 failed, 210 passed in 63.63s (0:01:03)\n",
+    "stderr": ""
+  },
+  "changed_file_sha256": {
+    "canary_ssm/engine.py": "4b714a0975938f5ac2a9f7c5bb3dd94a04ef88498df2f9eeaead218938f2e81d",
+    "canary_ssm/cli.py": "3d01ebc9ec5b0521c77cb425f81deea3fd8d8ac41e6d52caf066f8761f022d53",
+    "configs/world_clock.yaml": "fbba61e85676be0a54b88f6b05bc34ccaf33208d66155dfcb8041e5e4e6d8725",
+    "tests/test_engine.py": "d7f6902d6b983464517feb0e5696d5ea55a475fd6c804b051b08d88abee6caf0",
+    "docs/engine.md": "31b5d0bd342834d96e9ba598fe8a9a5f051d0791f47e957bd474c3f4ccac4c2d",
+    "README.md": "9e951715e3f64797906dd6504ce658fdbff97e855f28fb7b28873898fa5f0dca",
+    "docs/implementation_status.md": "5ae886d81c9c5a7f94c023451caf8a9b65da6e4e0365c38a5d1fe220eeaf3568",
+    "docs/wp/ENGINE-02.md": "03b37a1396abb8b55c981facef93afe878b09e6958fb52f548ede504d2572274",
+    "examples/world_clock_100_ticks.json": "81de618f920414b40b9e4f5cab6a111594a9b67dfe7d4dcbed32730fa310d7c7"
+  }
+}

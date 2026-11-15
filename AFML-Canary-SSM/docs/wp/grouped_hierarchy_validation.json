@@ -1,0 +1,111 @@
+{
+  "checkpoint": "public-constrained-hierarchy-v1",
+  "full_suite": {
+    "command": "python -m pytest -q",
+    "exit_code": 0,
+    "stdout": "........................................................................ [ 16%]\n........................................................................ [ 32%]\n........................................................................ [ 48%]\n........................................................................ [ 64%]\n........................................................................ [ 80%]\n........................................................................ [ 97%]\n.............                                                            [100%]\n445 passed in 88.95s (0:01:28)\n",
+    "stderr": "",
+    "elapsed_seconds": 90.02142566699331
+  },
+  "focused_suite": {
+    "command": "python -m pytest -q tests/test_public_hierarchy.py tests/test_public_filter.py tests/test_hierarchy_factor.py",
+    "exit_code": 0,
+    "result": "43 passed in 2.32s"
+  },
+  "new_tests": 17,
+  "comparison_compatibility": {
+    "passed": true,
+    "rank_outputs_identical_to_incoming_saved_comparisons": {
+      "0": true,
+      "1": true
+    }
+  },
+  "acceptance_manifest": {
+    "fixture_id": "constrained-hierarchy-acceptance-v1",
+    "acceptance_only": true,
+    "checks": {
+      "basis_identities": true,
+      "nonempty_rack_deviations": true,
+      "stable_cohort_order": true,
+      "peer_borrowing_without_shared_white_noise": true,
+      "diagonal_prior_dynamics_remove_pooling": true,
+      "different_group_local_dynamics": true,
+      "effect_risk_excludes_noise": true,
+      "no_thresholds": true
+    },
+    "passed": true,
+    "input_hashes": {
+      "development": "8477aac6adb0af83b92f6dcb31c1efaad613c6dafbd7308685e0954cf8fcbadb",
+      "monitoring": "59febe7e0af2b73b6cdc607d08dd814d7a939f7ef4ebd877a061441b46cbcce4"
+    },
+    "new_random_seeds": [],
+    "settings": {
+      "class": {
+        "group_by": "class_id",
+        "variant_id": "public-class-host-v1",
+        "rho_g": 0.95,
+        "rho_h": 0.95,
+        "sd_g": 0.005,
+        "sd_h": 0.005,
+        "prior_group_sd": 0.03,
+        "prior_deviation_sd": 0.03
+      },
+      "rack": {
+        "group_by": "rack_id",
+        "variant_id": "demo-rack-host-v1",
+        "rho_g": 0.95,
+        "rho_h": 0.8,
+        "sd_g": 0.005,
+        "sd_h": 0.002,
+        "prior_group_sd": 0.03,
+        "prior_deviation_sd": 0.01
+      }
+    },
+    "source_hashes": {
+      "hierarchy.py": "022fa15d2f9ea91773c4a7ced73d6bc4f495dba6bc30e08b7e2ef70a04b812b6",
+      "public_filter.py": "85e21caabbf345b562c498519b028d4ea0a8ea9b8f09d5602780f74bf118a344",
+      "public_hierarchy.py": "d42b49d01bd327b3028bb25b094e109192df50233df68d49e77ca20874e04eef",
+      "hierarchy_fixture.py": "4356afd01515a87853cf26939f8bb2ad378ff61c523aa0a24f7d30154e73ded1"
+    },
+    "git_commit": null,
+    "source_kind": "extracted_archive",
+    "versions": {
+      "python": "3.14.7",
+      "numpy": "2.5.4",
+      "scipy": "1.18.1"
+    },
+    "machine": {
+      "system": "Darwin",
+      "architecture": "arm64"
+    },
+    "elapsed_seconds": 1.2578952910043881,
+    "failures": [],
+    "dashboard_connected": false,
+    "configuration_sha256": "cde664733852aed16e274768f859cdc8a18f5b8fdedecd1f4a5e465b660932a3"
+  },
+  "cli_class_and_rack_match_saved_outputs": true,
+  "dashboard_connected": false,
+  "calibrated": false,
+  "benchmark": null,
+  "preservation": {
+    "passed": true,
+    "original_files": 647,
+    "changed_original_files": [
+      "README.md",
+      "canary_ssm/public_filter.py",
+      "docs/DESIGN_DECISIONS.md",
+      "docs/gap_audit.md",
+      "docs/implementation_status.md"
+    ],
+    "all_existing_tests_models_fixtures_preserved": true,
+    "protected_research_source_unchanged": [
+      "hierarchy.py",
+      "kalman.py",
+      "factor.py",
+      "preprocess.py",
+      "baselines.py",
+      "simulate.py",
+      "schema.py"
+    ]
+  }
+}

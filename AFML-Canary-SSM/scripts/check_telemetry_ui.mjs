@@ -1,0 +1,21 @@
+// DOM-state rendering checks against the real public-only telemetry API.
+import vm from 'node:vm';
+import fs from 'node:fs/promises';
+import assert from 'node:assert/strict';
+import {webcrypto} from 'node:crypto';
+const base=process.argv[2]??'http://127.0.0.1:8768',output=process.argv[3];
+const source=await fs.readFile(new URL('../canary_ssm/web/app.js',import.meta.url),'utf8');
+const elements=new Map();
+const document={listeners:{},getElementById(id){if(!elements.has(id))elements.set(id,{id,textContent:'',innerHTML:'',className:'',disabled:false,hidden:false,value:'',listeners:{},addEventListener(n,f){this.listeners[n]=f;}});return elements.get(id);},addEventListener(n,f){this.listeners[n]=f;}};
+const context=vm.createContext({document,location:{search:''},URLSearchParams,AbortSignal,crypto:webcrypto,performance:{now:()=>100},Date,console,setTimeout:()=>0,setInterval:()=>0,fetch:(url,options)=>fetch(new URL(url,base),options)});
+vm.runInContext(source,context);
+const run=s=>vm.runInContext(s,context),e=id=>document.getElementById(id);
+await run('fetchState()');run("selectView('monitoring')");await run('fetchPublicTelemetry()');
+assert.match(e('public-window-status').textContent,/3 committed minutes/);
+assert.match(e('public-windows').innerHTML,/MASKED/);assert.match(e('public-windows').innerHTML,/FRESH/);
+assert.equal((e('public-windows').innerHTML.match(/<tr>/g)||[]).length,4);
+assert.ok(!e('public-windows').innerHTML.includes('fault_type'));
+const data=await(await fetch(base+'/api/telemetry?decision_time=60')).json();
+assert.equal(data.windows.length,20);assert.ok(data.windows.every(r=>!r.observed));
+const result={checks:{committed_minutes_rendered:true,missing_windows_masked:true,recovery_fresh:true,three_backend_rows_rendered:true,no_truth_labels:true,committed_slice_readable:true},passed:true,verification:'Node DOM-state harness plus real HTTP; not visual verification'};
+if(output)await fs.writeFile(output,JSON.stringify(result,null,2)+'\n');console.log(JSON.stringify(result,null,2));

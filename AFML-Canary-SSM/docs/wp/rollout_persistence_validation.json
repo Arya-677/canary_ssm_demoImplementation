@@ -1,0 +1,7 @@
+{
+  "checkpoint_restore": true,
+  "restored_rollout_pause": true,
+  "outcomes_restored": true,
+  "saved_run_replay": true,
+  "read_only_mutation_rejected": true
+}

@@ -1,0 +1,24 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_________ test_current_run_uncalibrated_stream_shows_actual_method_ids _________
+
+controller = <canary_ssm.dashboard.WorldController object at 0x111c634d0>
+
+    def test_current_run_uncalibrated_stream_shows_actual_method_ids(controller):
+        artifact=json.loads((ROOT/'examples/detector_dashboard/demo-01.json').read_text())
+        metadata={k:v for k,v in artifact.items() if k not in ('frames','artifact_sha256')}
+        metadata.update(run_id=controller.engine.run_id,source_kind='external-detector-stream')
+        command(controller,'monitor_begin',{'metadata':metadata})
+        context=controller.packet()['console']['context']
+        assert context['calibration_status']=='UNCALIBRATED'
+        assert context['policy_id'] is None
+>       assert 'DETECTOR NOT CONNECTED' not in context['model_id']
+E       AssertionError: assert 'DETECTOR NOT CONNECTED' not in 'DETECTOR NOT CONNECTED'
+E         
+E         'DETECTOR NOT CONNECTED' is contained here:
+E           DETECTOR NOT CONNECTED
+
+tests/test_integrated_console.py:89: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_integrated_console.py::test_current_run_uncalibrated_stream_shows_actual_method_ids
+1 failed in 0.88s

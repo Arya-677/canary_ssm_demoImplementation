@@ -1,0 +1,116 @@
+{
+  "checkpoint": "process-memory-v1",
+  "date": "2026-11-15",
+  "base_archive": "canary_ssm_fixed_rollouts.zip",
+  "full_suite": {
+    "command": "python -m pytest -q --disable-warnings --maxfail=2",
+    "observed_summary": "538 passed, 1 warning in 331.25s (0:05:31)",
+    "passed": 538,
+    "original_suite_tests": 519,
+    "new_tests": 19
+  },
+  "fixtures": {
+    "generator_id": "resource-world-process-memory-v1",
+    "role": "development",
+    "results": {
+      "cache_plateau": {
+        "checks": {
+          "bounded_usage": true,
+          "queue_conservation": true,
+          "verified_replay": true,
+          "plateau": true,
+          "no_oom": true,
+          "warning_clears_at_plateau": true
+        },
+        "passed": true
+      },
+      "retention_no_latency_harm": {
+        "checks": {
+          "bounded_usage": true,
+          "queue_conservation": true,
+          "verified_replay": true,
+          "growing": true,
+          "no_latency_harm": true,
+          "no_pressure": true,
+          "observed_warning": true
+        },
+        "passed": true
+      },
+      "pressure_latency_harm": {
+        "checks": {
+          "bounded_usage": true,
+          "queue_conservation": true,
+          "verified_replay": true,
+          "pressure": true,
+          "latency_harm": true,
+          "no_oom": true
+        },
+        "passed": true
+      },
+      "oom": {
+        "checks": {
+          "bounded_usage": true,
+          "queue_conservation": true,
+          "verified_replay": true,
+          "oom_exit": true,
+          "stays_down": true,
+          "heap_freed_on_exit": true
+        },
+        "passed": true
+      },
+      "recovery": {
+        "checks": {
+          "bounded_usage": true,
+          "queue_conservation": true,
+          "verified_replay": true,
+          "oom_before_recovery": true,
+          "rollback_restart": true,
+          "recovered": true,
+          "latency_recovered": true
+        },
+        "passed": true
+      }
+    },
+    "passed": true,
+    "not_a_detector_benchmark": true
+  },
+  "ui": {
+    "passed": true,
+    "checks": {
+      "canonical_memory_form": true,
+      "unexecuted_registration": true,
+      "observed_advisory_label": true,
+      "request_growth_chart": true,
+      "sampled_latency_chart": true,
+      "actual_restart_button": true,
+      "visible_restart_event": true,
+      "no_detector_claim": true,
+      "checkpoint_restores_memory_and_process_state": true
+    },
+    "verification": "Actual local HTTP backend and DOM button handlers; no browser visual layout claim"
+  },
+  "replay_non_scenario_artifacts": 28,
+  "scenario_members": 22,
+  "legacy_compatibility": {
+    "healthy": {
+      "all_original_trace_fields_equal": true,
+      "workload_rng_equal": true,
+      "ticks": 30
+    },
+    "slow": {
+      "all_original_trace_fields_equal": true,
+      "workload_rng_equal": true,
+      "ticks": 30
+    },
+    "leak": {
+      "all_original_trace_fields_equal": true,
+      "workload_rng_equal": true,
+      "ticks": 30
+    }
+  },
+  "unchanged_original_test_files": 28,
+  "unchanged_statistical_additive_files": 60,
+  "inference_changed": false,
+  "calibration_or_detector_benchmarks_run": false,
+  "resource_advisory_source": "direct backend resource observations; separate from latency telemetry transport"
+}

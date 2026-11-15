@@ -1,0 +1,14 @@
+{
+  "enabled": true,
+  "variant_id": "nested-global-rack-host-v1",
+  "group_by": "rack_id",
+  "rho_global": 0.95,
+  "rho_rack": 0.9,
+  "rho_host": 0.8,
+  "sd_global": 0.005,
+  "sd_rack": 0.003,
+  "sd_host": 0.002,
+  "prior_global_sd": 0.03,
+  "prior_rack_sd": 0.02,
+  "prior_host_sd": 0.01
+}

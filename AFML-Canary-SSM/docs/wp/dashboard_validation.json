@@ -1,0 +1,81 @@
+{
+  "scope": "chunk 04: local world dashboard; no detector connected",
+  "source_archive": "canary_ssm_resources_chunk03.zip",
+  "source_sha256": "b026c4bbc3874d0041fc268ccc83f63eaf5c0a49b71717244d0ba34680f6af4d",
+  "dashboard_tests": {
+    "command": "python -m pytest -q tests/test_dashboard.py",
+    "result": "22 passed in 1.72s"
+  },
+  "full_suite": {
+    "command": "python -m pytest -q",
+    "returncode": 1,
+    "stdout": "........................................................................ [ 28%]\n.......................................................F................ [ 56%]\n........................................................................ [ 84%]\n........................................                                 [100%]\n=================================== FAILURES ===================================\n_____________________ test_experiment7_legacy_reproduction _____________________\n\ntmp_path = PosixPath('/private/var/folders/07/q406h8k55vv26lgdz2hsxj280000gn/T/pytest-of-pranavmenon/pytest-9/test_experiment7_legacy_reprod0')\n\n    @pytest.mark.slow\n    def test_experiment7_legacy_reproduction(tmp_path):\n        from canary_ssm.studies import study_regime\n>       man = study_regime.run(\n            model_dir=ROOT / \"data_audit\" / \"model_pooled_dev\",\n            out_dir=tmp_path / \"reg\",\n            n_null=30,\n            n_harm=10,\n            allow_frozen=True,\n            legacy_seeds=True,\n            workers=1,\n        )\n\ntests/test_p1_protocol.py:203: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \ncanary_ssm/studies/study_regime.py:110: in run\n    _, mcfg, mh = load_models(model_dir)\n                  ^^^^^^^^^^^^^^^^^^^^^^\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nmodel_dir = PosixPath('/Users/pranavmenon/Documents/Codex/2026-11-14/new-chat-5/work/canary_ssm_demoImplementation-main/data_audit/model_pooled_dev')\ncache_dir = None\n\n    def load_models(\n        model_dir: Path,\n        cache_dir: Path | None = None,\n    ) -> tuple[Models, dict, str]:\n        model_dir = Path(model_dir)\n        for need in (\"model_config.json\", \"nuisance_main.json\"):\n            if not (model_dir / need).exists():\n>               raise FileNotFoundError(f\"missing model artifact {need} in {model_dir}\")\nE               FileNotFoundError: missing model artifact model_config.json in /Users/pranavmenon/Documents/Codex/2026-11-14/new-chat-5/work/canary_ssm_demoImplementation-main/data_audit/model_pooled_dev\n\ncanary_ssm/experiments.py:1161: FileNotFoundError\n=========================== short test summary info ============================\nFAILED tests/test_p1_protocol.py::test_experiment7_legacy_reproduction - File...\n1 failed, 255 passed in 74.56s (0:01:14)\n",
+    "stderr": ""
+  },
+  "ui_state_checks": {
+    "checks": {
+      "topology_rendered": true,
+      "selected_host_backend_trace": true,
+      "controls_and_speed": true,
+      "refresh_reuses_run": true,
+      "stale_state": true,
+      "disconnect_reconnect_preserves_last_view": true,
+      "recorded_mode_has_no_engine_api_calls": true,
+      "no_frontend_simulator_or_detector": true
+    },
+    "passed": true,
+    "browser_layout_verified": false,
+    "verification": "Node DOM-state harness plus real local HTTP API; browser startup unavailable"
+  },
+  "static_only_checks": {
+    "checks": {
+      "recorded_mode_has_no_engine_api_calls": true,
+      "no_frontend_simulator_or_detector": true
+    },
+    "passed": true,
+    "browser_layout_verified": false,
+    "verification": "Node DOM-state harness plus real local HTTP API; browser startup unavailable"
+  },
+  "recording_equal_to_backend_generation": true,
+  "live_http_snapshot": {
+    "run_id": "6e823eb7655346b795a68c2d7bc608c4",
+    "epoch": 6,
+    "revision": 16,
+    "monitoring": "Monitoring not connected",
+    "summary": {
+      "hosts": 20,
+      "ready": 20,
+      "racks": 4,
+      "data_centers": 1
+    }
+  },
+  "browser_qa": {
+    "verified": false,
+    "reason": "Local Chrome headless startup exited 134; in-app preview opening failed. No rendered browser result claimed."
+  },
+  "recording_manifest": {
+    "config_hash": "c4c7d672ed9a179fe45476d59e6d67546320221248848a035bec76b349eb830c",
+    "engine_sha256": "2f4774e764b3d7f7b64cd917c0e396c72200350e0a2311a591fc0b6c58227027",
+    "python": "3.14.7 (main, Aug  5 2026, 10:29:49) [Clang 21.0.0 (clang-2100.1.1.101)]",
+    "numpy": "2.5.4",
+    "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+    "git": "not recorded by clock kernel",
+    "phase_adapter": "resources-v1",
+    "resource_sha256": "b065191b6d988b917f022d702b39a8509030dcf8e330d6f8bb7c3c71824d503e"
+  },
+  "file_sha256": {
+    "canary_ssm/dashboard.py": "e0e7c1ce9d4e5e0d7fa9cf8628d2d2b9ba0d30e3005348ace6fee74280976dc8",
+    "canary_ssm/cli.py": "04bfad053cde983b8f3341bc38330b80b0fba619c0d4f1da3039e9ca6b2d28e3",
+    "pyproject.toml": "f6bedb7912e8fe886095ac2b92477ac9de6f254dcc783fe8736256867523c05d",
+    "tests/test_dashboard.py": "5ff76db62fe3eab7613afb20f1a078dc3c6169ddf605a242472c63008e649213",
+    "scripts/check_dashboard_ui.mjs": "6b3c694e292b05f0f49e64eb820df6a0964afc1b7c64f66ca069c43960187755",
+    "README.md": "7ced041ae14cbc2f2f1942d03b4735d626b40bc7be4a2562a271506f16e94e46",
+    "docs/dashboard.md": "970fc641a6c562e6d3dbbb42181e9140e7486cd727065e20ee986adb4161cec0",
+    "docs/implementation_status.md": "879d0a18e79900a7d23ab97e186ee3e23ded16a0ea262db750a507ed4b966680",
+    "docs/wp/DASHBOARD-04.md": "3f90627a880fbad85b309ab3b246826ab6ccd4bb52b88f64c38c3d8b529dead4",
+    "canary_ssm/web/index.html": "c3a7f789bcceb96872a54e138074cd80a58ce2400a3241b709043d4070dc8fe8",
+    "canary_ssm/web/styles.css": "1759374f0ade6ebcdb9e017c48494dc7a355d7792a46016370fd153bb5d2ddfa",
+    "canary_ssm/web/recorded_snapshot.json": "d4f60638c70c35729484c14802debe0a256c5174be43033345a1db1b4a7ab790",
+    "canary_ssm/web/app.js": "fdd5727a4007d62f8a0c2c32c3b7f86c83abe42b9c673030b9ca59a82ac9b3cf"
+  }
+}

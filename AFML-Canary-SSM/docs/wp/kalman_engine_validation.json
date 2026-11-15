@@ -1,0 +1,105 @@
+{
+  "checkpoint": "public-gaussian-effects-v1",
+  "full_suite": {
+    "command": "python -m pytest -q",
+    "exit_code": 0,
+    "stdout": "........................................................................ [ 16%]\n........................................................................ [ 33%]\n........................................................................ [ 50%]\n........................................................................ [ 67%]\n........................................................................ [ 84%]\n....................................................................     [100%]\n428 passed in 85.43s (0:01:25)\n",
+    "stderr": "",
+    "elapsed_seconds": 86.57672883399937
+  },
+  "focused_suite": {
+    "command": "python -m pytest -q tests/test_public_filter.py tests/test_kalman.py",
+    "exit_code": 0,
+    "result": "22 passed in 1.25s"
+  },
+  "noise_fit_compatibility": {
+    "passed": true,
+    "ar_white_and_ar_only_parameters_and_likelihood_bitwise_equal": {
+      "False": true,
+      "True": true
+    }
+  },
+  "acceptance_manifest": {
+    "fixture_id": "public-gaussian-acceptance-v1",
+    "acceptance_only": true,
+    "new_random_seeds": [],
+    "input_hashes": {
+      "adjusted_rank0": "1dc3b7326164e8a2518ec9b0730da36a45db3c5d5d6263129c89ef704e5031e0",
+      "model_rank0": "2b87705857c99beaf0f6b1572c464f30ce4193aa56c92fd2af7114ac4213918c",
+      "adjusted_rank1": "cacd98e31b71f56fb2850b07fe0e93973666caf7d1061528cc7d83690c83153f",
+      "model_rank1": "1e1f1860bf879d7e89c47813f26a243c601cdbe2fc6238ffa760f2a1e69cf97c"
+    },
+    "checks": {
+      "scalar_and_multivariate_reference": true,
+      "no_pre_exposure_effects": true,
+      "full_canary_covariance": true,
+      "pooled_map": true,
+      "honest_baselines": true,
+      "uncalibrated": true
+    },
+    "passed": true,
+    "dashboard_connected": false,
+    "git_commit": null,
+    "source_kind": "extracted_archive",
+    "elapsed_seconds": 0.07022862499434268,
+    "configuration": {
+      "effects": {
+        "indep_ssm": {
+          "kind": "indep",
+          "rho_g": 0.95,
+          "rho_h": 0.95,
+          "sd_g": 0.005,
+          "sd_h_ratio": 1.0,
+          "prior_sd": 0.03,
+          "huber_c": 0.0
+        },
+        "pooled_ssm": {
+          "kind": "pooled",
+          "rho_g": 0.95,
+          "rho_h": 0.95,
+          "sd_g": 0.005,
+          "sd_h_ratio": 1.0,
+          "prior_sd": 0.03,
+          "huber_c": 0.0
+        }
+      },
+      "one_minute_seconds": 60,
+      "thresholds": null
+    },
+    "versions": {
+      "python": "3.14.7",
+      "numpy": "2.5.4",
+      "scipy": "1.18.1"
+    },
+    "machine": {
+      "system": "Darwin",
+      "architecture": "arm64"
+    },
+    "failures": [],
+    "source_hashes": {
+      "kalman.py": "70498cbbd59c7c5e2f225f9fe2984b175b5ba718a90fd2b67a250ce5f2d6aeca",
+      "preprocess.py": "ae6456713d9fa2b47e4c73ea9408482c9e1b9d5cab7b6a28947b39d1e9e916f7",
+      "public_filter.py": "9ecfb48fd8a1e8720575f87601d082351707c5213e72d93c5a5b6fe2827cfa27",
+      "kalman_fixture.py": "51ca4ce272771be6d27c8de491f3acca2ad6817f68bc490882cc9bddab9a2e6c"
+    }
+  },
+  "max_reference_error_from_csv": 1.1102230246251565e-16,
+  "cli_fixture_output_equal": true,
+  "new_tests": 18,
+  "dashboard_connected": false,
+  "calibrated": false,
+  "benchmark": null,
+  "preservation": {
+    "passed": true,
+    "original_files": 636,
+    "changed_original_files": [
+      "README.md",
+      "canary_ssm/preprocess.py",
+      "docs/DESIGN_DECISIONS.md",
+      "docs/gap_audit.md",
+      "docs/implementation_status.md"
+    ],
+    "all_existing_tests_models_fixtures_preserved": true,
+    "core_kalman_hierarchy_baselines_unchanged": true
+  }
+}

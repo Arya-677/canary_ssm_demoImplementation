@@ -1,0 +1,47 @@
+....F.....................F
+=================================== FAILURES ===================================
+_________ test_developer_truth_api_is_separate_from_read_only_polling __________
+
+    def test_developer_truth_api_is_separate_from_read_only_polling():
+        c = controller()
+        command(c, "fault", {"kind": "memory_pressure", "scope": "host", "target": "host-01-01"})
+        command(c, "fault", {"kind": "service_crash", "scope": "host", "target": "host-02-01"})
+        command(c, "step")
+        server = make_server(c, 0)
+        thread = threading.Thread(target=server.serve_forever, daemon=True);thread.start()
+        base = f"http://127.0.0.1:{server.server_port}"
+        try:
+            with urlopen(base+"/api/state") as r:
+                state = json.load(r)
+            with urlopen(base+"/api/fault-lab?developer=1") as r:
+                truth = json.load(r)
+>           assert "memory_pressure" not in json.dumps(state)
+E           assert 'memory_pressure' not in '{"schema_ve...enters": 1}}'
+E             
+E             'memory_pressure' is contained here:
+E             ?                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      ...
+E             
+E             ...Full output truncated, use '-vv' to show
+
+tests/test_console.py:118: AssertionError
+__________ test_recorded_fixture_is_engine_independent_read_only_data __________
+
+    def test_recorded_fixture_is_engine_independent_read_only_data():
+        saved = json.loads((WEB / "recorded_snapshot.json").read_text())
+        expected = recorded_fixture(load_engine_config(ROOT / "configs/world_recovery.yaml"), 50)
+>       assert saved == expected
+E       AssertionError: assert {'schema_vers...poch': 0, ...} == {'schema_vers...poch': 0, ...}
+E         
+E         Omitting 19 identical items, use -vv to show
+E         Differing items:
+E         {'history': {'host_id': 'host-01-01', 'rows': [{'tick': 1, 'simulated_seconds': 1, 'host_id': 'host-01-01', 'rack_id':...k_id': 'rack-01', ...}, {'tick': 6, 'simulated_seconds': 6, 'host_id': 'host-01-01', 'rack_id': 'rack-01', ...}, ...]}} != {'history': {'host_id': 'host-01-01', 'rows': [{'tick': 1, 'simulated_seconds': 1, 'host_id': 'host-01-01', 'rack_id':...k_id': 'rack-01', ...}, {'tick': 6, 'simulated_seconds': 6, 'host_id': 'host-01-01', 'rack_id': 'rack-01', ...}, ...]}}
+E         {'snapshot': {'tick': 50, 'simul...
+E         
+E         ...Full output truncated, use '-vv' to show
+
+tests/test_dashboard.py:199: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_console.py::test_developer_truth_api_is_separate_from_read_only_polling
+FAILED tests/test_dashboard.py::test_recorded_fixture_is_engine_independent_read_only_data
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 2 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!
+2 failed, 25 passed, 1 warning in 4.60s

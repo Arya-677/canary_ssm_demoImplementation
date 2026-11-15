@@ -1,0 +1,424 @@
+{"role": "threshold-calibration", "completed": 100, "total": 2000}
+{"role": "threshold-calibration", "completed": 200, "total": 2000}
+{"role": "threshold-calibration", "completed": 300, "total": 2000}
+{"role": "threshold-calibration", "completed": 400, "total": 2000}
+{"role": "threshold-calibration", "completed": 500, "total": 2000}
+{"role": "threshold-calibration", "completed": 600, "total": 2000}
+{"role": "threshold-calibration", "completed": 700, "total": 2000}
+{"role": "threshold-calibration", "completed": 800, "total": 2000}
+{"role": "threshold-calibration", "completed": 900, "total": 2000}
+{"role": "threshold-calibration", "completed": 1000, "total": 2000}
+{"role": "threshold-calibration", "completed": 1100, "total": 2000}
+{"role": "threshold-calibration", "completed": 1200, "total": 2000}
+{"role": "threshold-calibration", "completed": 1300, "total": 2000}
+{"role": "threshold-calibration", "completed": 1400, "total": 2000}
+{"role": "threshold-calibration", "completed": 1500, "total": 2000}
+{"role": "threshold-calibration", "completed": 1600, "total": 2000}
+{"role": "threshold-calibration", "completed": 1700, "total": 2000}
+{"role": "threshold-calibration", "completed": 1800, "total": 2000}
+{"role": "threshold-calibration", "completed": 1900, "total": 2000}
+{"role": "threshold-calibration", "completed": 2000, "total": 2000}
+{"role": "null-validation", "completed": 100, "total": 2000}
+{"role": "null-validation", "completed": 200, "total": 2000}
+{"role": "null-validation", "completed": 300, "total": 2000}
+{"role": "null-validation", "completed": 400, "total": 2000}
+{"role": "null-validation", "completed": 500, "total": 2000}
+{"role": "null-validation", "completed": 600, "total": 2000}
+{"role": "null-validation", "completed": 700, "total": 2000}
+{"role": "null-validation", "completed": 800, "total": 2000}
+{"role": "null-validation", "completed": 900, "total": 2000}
+{"role": "null-validation", "completed": 1000, "total": 2000}
+{"role": "null-validation", "completed": 1100, "total": 2000}
+{"role": "null-validation", "completed": 1200, "total": 2000}
+{"role": "null-validation", "completed": 1300, "total": 2000}
+{"role": "null-validation", "completed": 1400, "total": 2000}
+{"role": "null-validation", "completed": 1500, "total": 2000}
+{"role": "null-validation", "completed": 1600, "total": 2000}
+{"role": "null-validation", "completed": 1700, "total": 2000}
+{"role": "null-validation", "completed": 1800, "total": 2000}
+{"role": "null-validation", "completed": 1900, "total": 2000}
+{"role": "null-validation", "completed": 2000, "total": 2000}
+{
+  "fixture_id": "physical-world-first-crossing-v1",
+  "B": 2000,
+  "n_validation": 2000,
+  "gate": {
+    "status": "PASS",
+    "minimum_B": 2000,
+    "minimum_n": 2000,
+    "bb_pvalue_two_sided": 0.9419126394447365,
+    "rejection_level": 0.01,
+    "maximum_empirical_release_rate": 0.075,
+    "note": "G2-style conditional diagnostic; Beta-Binomial continuity/exchangeability assumptions are explicit. Combined action FAR is reported separately and is not controlled at release alpha."
+  },
+  "rates": {
+    "release_alarm": {
+      "events": 98,
+      "n": 2000,
+      "rate": 0.049,
+      "exact_binomial_95_interval": [
+        0.03995675692495896,
+        0.059392645124689336
+      ]
+    },
+    "platform_pause": {
+      "events": 0,
+      "n": 2000,
+      "rate": 0.0,
+      "exact_binomial_95_interval": [
+        0.0,
+        0.0018427397934059364
+      ]
+    },
+    "resource_pause": {
+      "events": 0,
+      "n": 2000,
+      "rate": 0.0,
+      "exact_binomial_95_interval": [
+        0.0,
+        0.0018427397934059364
+      ]
+    },
+    "combined_action": {
+      "events": 98,
+      "n": 2000,
+      "rate": 0.049,
+      "exact_binomial_95_interval": [
+        0.03995675692495896,
+        0.059392645124689336
+      ]
+    }
+  },
+  "policy_hash": "221f2b817cbc42a58090edf58adfd25fde96acfd7767a17cb53ca609c645c5ed",
+  "validation_hash": "23c8e0d39d39d86df6a2240be4003c5556685bd8768a820f812ca293e84a352c",
+  "freeze_hash": "f7c2a405d142e7f093d6b1906af0442c9217a3cda267d7664aff51b9809572d9",
+  "no_retuning": true,
+  "noise_diagnostics": {
+    "rack-01": {
+      "fits": [
+        {
+          "init_phi": 0.2,
+          "nll": -1988.9242928394265,
+          "success": true,
+          "boundary_hit": false,
+          "x": [
+            0.328597859515868,
+            -3.859966297494679
+          ],
+          "status": 0,
+          "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+          "iterations": 7,
+          "function_evaluations": 27,
+          "bounds": [
+            [
+              -0.95,
+              0.99
+            ],
+            [
+              -9.210340371976182,
+              -1.6094379124341003
+            ]
+          ],
+          "white_sd_fixed": 0.0001
+        },
+        {
+          "init_phi": 0.6,
+          "nll": -1988.9242928394335,
+          "success": true,
+          "boundary_hit": false,
+          "x": [
+            0.32859773944089343,
+            -3.859966196206183
+          ],
+          "status": 0,
+          "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+          "iterations": 6,
+          "function_evaluations": 24,
+          "bounds": [
+            [
+              -0.95,
+              0.99
+            ],
+            [
+              -9.210340371976182,
+              -1.6094379124341003
+            ]
+          ],
+          "white_sd_fixed": 0.0001
+        },
+        {
+          "init_phi": 0.9,
+          "nll": -1988.9242928394208,
+          "success": true,
+          "boundary_hit": false,
+          "x": [
+            0.3285977555801023,
+            -3.859966369113679
+          ],
+          "status": 0,
+          "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+          "iterations": 7,
+          "function_evaluations": 27,
+          "bounds": [
+            [
+              -0.95,
+              0.99
+            ],
+            [
+              -9.210340371976182,
+              -1.6094379124341003
+            ]
+          ],
+          "white_sd_fixed": 0.0001
+        }
+      ],
+      "success": true,
+      "boundary_hit": false
+    },
+    "rack-02": {
+      "fits": [
+        {
+          "init_phi": 0.2,
+          "nll": -1959.4978668423385,
+          "success": true,
+          "boundary_hit": false,
+          "x": [
+            0.21613449504405233,
+            -3.7844605808923304
+          ],
+          "status": 0,
+          "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+          "iterations": 8,
+          "function_evaluations": 30,
+          "bounds": [
+            [
+              -0.95,
+              0.99
+            ],
+            [
+              -9.210340371976182,
+              -1.6094379124341003
+            ]
+          ],
+          "white_sd_fixed": 0.0001
+        },
+        {
+          "init_phi": 0.6,
+          "nll": -1959.4978668425051,
+          "success": true,
+          "boundary_hit": false,
+          "x": [
+            0.2161350865178671,
+            -3.784460212115101
+          ],
+          "status": 0,
+          "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+          "iterations": 8,
+          "function_evaluations": 30,
+          "bounds": [
+            [
+              -0.95,
+              0.99
+            ],
+            [
+              -9.210340371976182,
+              -1.6094379124341003
+            ]
+          ],
+          "white_sd_fixed": 0.0001
+        },
+        {
+          "init_phi": 0.9,
+          "nll": -1959.4978668416877,
+          "success": true,
+          "boundary_hit": false,
+          "x": [
+            0.2161354327087967,
+            -3.784461472031458
+          ],
+          "status": 0,
+          "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+          "iterations": 8,
+          "function_evaluations": 30,
+          "bounds": [
+            [
+              -0.95,
+              0.99
+            ],
+            [
+              -9.210340371976182,
+              -1.6094379124341003
+            ]
+          ],
+          "white_sd_fixed": 0.0001
+        }
+      ],
+      "success": true,
+      "boundary_hit": false
+    },
+    "rack-03": {
+      "fits": [
+        {
+          "init_phi": 0.2,
+          "nll": -2054.707585298954,
+          "success": true,
+          "boundary_hit": false,
+          "x": [
+            0.19925453747323035,
+            -3.9607335151584064
+          ],
+          "status": 0,
+          "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+          "iterations": 8,
+          "function_evaluations": 30,
+          "bounds": [
+            [
+              -0.95,
+              0.99
+            ],
+            [
+              -9.210340371976182,
+              -1.6094379124341003
+            ]
+          ],
+          "white_sd_fixed": 0.0001
+        },
+        {
+          "init_phi": 0.6,
+          "nll": -2054.707585298845,
+          "success": true,
+          "boundary_hit": false,
+          "x": [
+            0.19925495009754457,
+            -3.960732933218162
+          ],
+          "status": 0,
+          "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+          "iterations": 7,
+          "function_evaluations": 27,
+          "bounds": [
+            [
+              -0.95,
+              0.99
+            ],
+            [
+              -9.210340371976182,
+              -1.6094379124341003
+            ]
+          ],
+          "white_sd_fixed": 0.0001
+        },
+        {
+          "init_phi": 0.9,
+          "nll": -2054.707585298924,
+          "success": true,
+          "boundary_hit": false,
+          "x": [
+            0.19925431870227878,
+            -3.9607334466357695
+          ],
+          "status": 0,
+          "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+          "iterations": 8,
+          "function_evaluations": 30,
+          "bounds": [
+            [
+              -0.95,
+              0.99
+            ],
+            [
+              -9.210340371976182,
+              -1.6094379124341003
+            ]
+          ],
+          "white_sd_fixed": 0.0001
+        }
+      ],
+      "success": true,
+      "boundary_hit": false
+    },
+    "rack-04": {
+      "fits": [
+        {
+          "init_phi": 0.2,
+          "nll": -1999.0102852495304,
+          "success": true,
+          "boundary_hit": false,
+          "x": [
+            0.24521358422766176,
+            -3.862625146384685
+          ],
+          "status": 0,
+          "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+          "iterations": 8,
+          "function_evaluations": 30,
+          "bounds": [
+            [
+              -0.95,
+              0.99
+            ],
+            [
+              -9.210340371976182,
+              -1.6094379124341003
+            ]
+          ],
+          "white_sd_fixed": 0.0001
+        },
+        {
+          "init_phi": 0.6,
+          "nll": -1999.0102852495609,
+          "success": true,
+          "boundary_hit": false,
+          "x": [
+            0.24521379666515766,
+            -3.8626250668906823
+          ],
+          "status": 0,
+          "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+          "iterations": 7,
+          "function_evaluations": 27,
+          "bounds": [
+            [
+              -0.95,
+              0.99
+            ],
+            [
+              -9.210340371976182,
+              -1.6094379124341003
+            ]
+          ],
+          "white_sd_fixed": 0.0001
+        },
+        {
+          "init_phi": 0.9,
+          "nll": -1999.0102852493972,
+          "success": true,
+          "boundary_hit": false,
+          "x": [
+            0.24521362467361768,
+            -3.8626255627880837
+          ],
+          "status": 0,
+          "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+          "iterations": 8,
+          "function_evaluations": 30,
+          "bounds": [
+            [
+              -0.95,
+              0.99
+            ],
+            [
+              -9.210340371976182,
+              -1.6094379124341003
+            ]
+          ],
+          "white_sd_fixed": 0.0001
+        }
+      ],
+      "success": true,
+      "boundary_hit": false
+    }
+  },
+  "resource_world_compatible": true,
+  "automatic_attachment_qualified": true
+}

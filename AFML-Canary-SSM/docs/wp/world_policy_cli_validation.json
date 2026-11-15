@@ -1,0 +1,34 @@
+{
+  "checks": {
+    "policy_rebuilt_identically": true,
+    "validation_rebuilt_identically": true,
+    "qualification_recomputed": true,
+    "calibration_world_regenerated": true,
+    "validation_world_regenerated": true,
+    "preregistered_source_unchanged": true,
+    "headless_100_tick_replay": true,
+    "rank_500_is_476": true
+  },
+  "passed": true,
+  "calibration_regeneration": {
+    "role": "threshold-calibration",
+    "index": 0,
+    "seed": 31600000,
+    "identical": true
+  },
+  "validation_regeneration": {
+    "role": "null-validation",
+    "index": 0,
+    "seed": 32600000,
+    "identical": true
+  },
+  "rank_500": {
+    "B": 500,
+    "k": 476,
+    "alpha": 0.05,
+    "threshold": -1.071502678533691,
+    "ties_at_threshold": 1
+  },
+  "policy_hash": "221f2b817cbc42a58090edf58adfd25fde96acfd7767a17cb53ca609c645c5ed",
+  "validation_hash": "23c8e0d39d39d86df6a2240be4003c5556685bd8768a820f812ca293e84a352c"
+}

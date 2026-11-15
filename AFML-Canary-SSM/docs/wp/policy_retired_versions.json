@@ -1,0 +1,193 @@
+{
+  "retired": [
+    {
+      "policy_hash": "92e81d561d080cd55d2c88e63bce928dda5250ba8a9311f0af20409ffb452726",
+      "freeze_hash": "7f2bc5ba52841e08bce544f6803821e1851456c9af63d83329fa763e3d257520",
+      "validation_hash": "3cf91f96ef31f8894b6995ab8718d78f4bc99c276e2effb4d49001eeb31ce6c9",
+      "validation_gate": {
+        "status": "PASS",
+        "minimum_B": 2000,
+        "minimum_n": 2000,
+        "bb_pvalue_two_sided": 0.22589324740334207,
+        "rejection_level": 0.01,
+        "maximum_empirical_release_rate": 0.075,
+        "note": "G2-style conditional diagnostic; Beta-Binomial continuity/exchangeability assumptions are explicit. Combined action FAR is reported separately and is not controlled at release alpha."
+      },
+      "rates": {
+        "release_alarm": {
+          "events": 83,
+          "n": 2000,
+          "rate": 0.0415,
+          "exact_binomial_95_interval": [
+            0.0331876236508509,
+            0.05118791168352146
+          ]
+        },
+        "platform_pause": {
+          "events": 0,
+          "n": 2000,
+          "rate": 0.0,
+          "exact_binomial_95_interval": [
+            0.0,
+            0.0018427397934059364
+          ]
+        },
+        "resource_pause": {
+          "events": 0,
+          "n": 2000,
+          "rate": 0.0,
+          "exact_binomial_95_interval": [
+            0.0,
+            0.0018427397934059364
+          ]
+        },
+        "combined_action": {
+          "events": 83,
+          "n": 2000,
+          "rate": 0.0415,
+          "exact_binomial_95_interval": [
+            0.0331876236508509,
+            0.05118791168352146
+          ]
+        }
+      },
+      "validation_seed_min": 32430000,
+      "validation_seed_max": 32431999,
+      "reason": "Compatibility bookkeeping extended to bind committed baseline public identities; no effect setting/threshold selection was made from validation. Final version uses fresh validation indices 15000 onward."
+    },
+    {
+      "policy_hash": "138d0cd177f81d5adccbe27e5a6e4f58bfc527b148a253a4aed6caa4550fce1b",
+      "validation_hash": "d9a4c5d980494aaf4743dd6b1ae4fc9a02a8473495fe7637b4f6097d4cf36685",
+      "validation_gate": {
+        "status": "PASS",
+        "minimum_B": 2000,
+        "minimum_n": 2000,
+        "bb_pvalue_two_sided": 0.7129556700603447,
+        "rejection_level": 0.01,
+        "maximum_empirical_release_rate": 0.075,
+        "note": "G2-style conditional diagnostic; Beta-Binomial continuity/exchangeability assumptions are explicit. Combined action FAR is reported separately and is not controlled at release alpha."
+      },
+      "rates": {
+        "release_alarm": {
+          "events": 94,
+          "n": 2000,
+          "rate": 0.047,
+          "exact_binomial_95_interval": [
+            0.03814504066418042,
+            0.05721123196146302
+          ]
+        },
+        "platform_pause": {
+          "events": 0,
+          "n": 2000,
+          "rate": 0.0,
+          "exact_binomial_95_interval": [
+            0.0,
+            0.0018427397934059364
+          ]
+        },
+        "resource_pause": {
+          "events": 0,
+          "n": 2000,
+          "rate": 0.0,
+          "exact_binomial_95_interval": [
+            0.0,
+            0.0018427397934059364
+          ]
+        },
+        "combined_action": {
+          "events": 94,
+          "n": 2000,
+          "rate": 0.047,
+          "exact_binomial_95_interval": [
+            0.03814504066418042,
+            0.05721123196146302
+          ]
+        }
+      },
+      "validation_seed_min": 32435000,
+      "validation_seed_max": 32436999,
+      "reason": "Strengthened typed epoch/represented-group/provenance validation. No statistical setting or threshold was chosen from this validation; final validation uses a fresh registry family."
+    },
+    {
+      "policy_hash": "ee11c11094cbdccf3e7ce11c0a7ea3c4cc31effb55b54d3460d9e4890ac83ca2",
+      "validation_hash": "e46fadba37a3ac5048224b25d9a837e28b303c9553ee2e860d5ccec0d3af86ff",
+      "validation_gate": {
+        "status": "PASS",
+        "minimum_B": 2000,
+        "minimum_n": 2000,
+        "bb_pvalue_two_sided": 0.36880465715992383,
+        "rejection_level": 0.01,
+        "maximum_empirical_release_rate": 0.075,
+        "note": "G2-style conditional diagnostic; Beta-Binomial continuity/exchangeability assumptions are explicit. Combined action FAR is reported separately and is not controlled at release alpha."
+      },
+      "validation_seed_min": 32460000,
+      "validation_seed_max": 32461999,
+      "reason": "Expanded hashes to bind the unchanged harm-boundary schema and resource-advisory/simulator support sources. No model setting was selected from validation; next version uses fresh validation seed family 24."
+    },
+    {
+      "policy_hash": "fbc2fd37e19e5db989b14d292de911c4bb1cb893cb2b40bcdb8848e69cc358b1",
+      "validation_hash": "a948708d1e27061c54e1702f20e3d71db7bfd55a6368bba9dbee237f0af829d0",
+      "validation_gate": {
+        "status": "PASS",
+        "minimum_B": 2000,
+        "minimum_n": 2000,
+        "bb_pvalue_two_sided": 0.7194175821467685,
+        "rejection_level": 0.01,
+        "maximum_empirical_release_rate": 0.075,
+        "note": "G2-style conditional diagnostic; Beta-Binomial continuity/exchangeability assumptions are explicit. Combined action FAR is reported separately and is not controlled at release alpha."
+      },
+      "validation_seed_min": 32480000,
+      "validation_seed_max": 32481999,
+      "reason": "HTTP/DOM integration exposed 1.0 versus 1 hash instability through browser JSON. Policy hashes now normalize integral numeric values; research hashes unchanged. No statistical settings retuned; fresh validation family 25."
+    },
+    {
+      "policy_hash": "ca54616db2bd384e0af62ae48010b4d16b9e2e59d8f054f39fac6eec81312e68",
+      "validation_hash": "dae85553e0746cdef79aa365949b20a91fe07c826913be78fa26adf7cc38012c",
+      "validation_gate": {
+        "status": "PASS",
+        "minimum_B": 2000,
+        "minimum_n": 2000,
+        "bb_pvalue_two_sided": 0.9999999999968509,
+        "rejection_level": 0.01,
+        "maximum_empirical_release_rate": 0.075,
+        "note": "G2-style conditional diagnostic; Beta-Binomial continuity/exchangeability assumptions are explicit. Combined action FAR is reported separately and is not controlled at release alpha."
+      },
+      "validation_seed_min": 32500000,
+      "validation_seed_max": 32501999,
+      "reason": "Protocol now enforces its exact fresh-run baseline/exposure origin, rather than permitting a longer uncalibrated preperiod. Statistical settings unchanged; final validation uses fresh registry family 26."
+    },
+    {
+      "policy_hash": "5fb8d4dba89aabe13263359b0c40622b1b2a78d709060da8ca8c109ac7742b10",
+      "validation_hash": "6838a1baa7275dcef1946cef544e6a5eb321e1400d4cacf2228737157551edfa",
+      "validation_gate": {
+        "status": "PASS",
+        "minimum_B": 2000,
+        "minimum_n": 2000,
+        "bb_pvalue_two_sided": 0.6047305426933629,
+        "rejection_level": 0.01,
+        "maximum_empirical_release_rate": 0.075,
+        "note": "G2-style conditional diagnostic; Beta-Binomial continuity/exchangeability assumptions are explicit. Combined action FAR is reported separately and is not controlled at release alpha."
+      },
+      "validation_seed_min": 32520000,
+      "validation_seed_max": 32521999,
+      "reason": "Observed incident/guardrail pauses may start at actual exposure; they need not wait for the first complete latency window. Release-score eligibility is unchanged. Final validation uses fresh family 27; no statistical retuning."
+    },
+    {
+      "policy_hash": "8576593d3af2b7eb6b02377dcf0dcf92878d5e942cc0e776b1fcd113a8af9097",
+      "validation_hash": "d997ce52d01f11be278efd6c500567e87a4e8ab8ff5b6868a98af8df9e8c6a13",
+      "validation_gate": {
+        "status": "PASS",
+        "minimum_B": 2000,
+        "minimum_n": 2000,
+        "bb_pvalue_two_sided": 0.26192506894653755,
+        "rejection_level": 0.01,
+        "maximum_empirical_release_rate": 0.075,
+        "note": "G2-style conditional diagnostic; Beta-Binomial continuity/exchangeability assumptions are explicit. Combined action FAR is reported separately and is not controlled at release alpha."
+      },
+      "validation_seed_min": 32540000,
+      "validation_seed_max": 32541999,
+      "reason": "Completed opt-in resource-guardrail wiring to direct observed resource advisories. Default remains disabled; release model/settings unchanged. Final independent validation uses fresh family 28."
+    }
+  ]
+}

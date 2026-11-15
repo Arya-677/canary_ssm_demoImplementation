@@ -1,0 +1,20 @@
+{
+  "gates": {
+    "PASS": 29,
+    "FAIL": 8
+  },
+  "raw_outcome_rows": 814,
+  "status_counts": {
+    "quiet": 554,
+    "alarm": 51,
+    "success": 38,
+    "miss": 88,
+    "not_supported_by_generator": 44,
+    "late_after_recovery": 26,
+    "unverifiable_target": 13
+  },
+  "final_test_materialized": false,
+  "figures_from_csv_only": true,
+  "comparative_efficacy_claim": false,
+  "original_shared_step_gate_closed": false
+}

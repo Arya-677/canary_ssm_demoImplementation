@@ -1,0 +1,922 @@
+{
+  "date": "2026-11-14",
+  "base_archive": "canary_ssm_public_telemetry.zip",
+  "base_sha256": "f21aee8138ac83e81532167ca900d9eb944a5e3b3023a8d08a1748fb36df00e8",
+  "full_tests": {
+    "command": "python -m pytest -q",
+    "exit_code": 0,
+    "stdout": "........................................................................ [ 18%]\n........................................................................ [ 37%]\n........................................................................ [ 56%]\n........................................................................ [ 74%]\n........................................................................ [ 93%]\n.........................                                                [100%]\n385 passed in 80.43s (0:01:20)\n",
+    "stderr": "",
+    "elapsed_seconds": 81.38757612500194
+  },
+  "scenario_tests": {
+    "count": 25,
+    "included_in_final_full_suite": true
+  },
+  "smoke_suite": {
+    "role_materialized": "smoke",
+    "registered_roles": [
+      "smoke",
+      "development",
+      "threshold-calibration",
+      "null-validation",
+      "final-test"
+    ],
+    "results": [
+      {
+        "pair_id": "1606b86bd4359d90b26607ba",
+        "family": "healthy",
+        "role": "smoke",
+        "generator_id": "resource-world-scenarios-v1",
+        "checks": {
+          "same_exogenous_uniforms": true,
+          "same_exogenous_rng_state": true,
+          "same_pre_intervention_resources": true,
+          "paired_exogenous_enabled": true,
+          "pair_one_role": true,
+          "verified_replay": true,
+          "expected_resource_behavior": true
+        },
+        "passed": true,
+        "endogenous_divergence": false,
+        "additive_equality_required": false
+      },
+      {
+        "pair_id": "fc198049165b0e3e5d44f135",
+        "family": "host_fault",
+        "role": "smoke",
+        "generator_id": "resource-world-scenarios-v1",
+        "checks": {
+          "same_exogenous_uniforms": true,
+          "same_exogenous_rng_state": true,
+          "same_pre_intervention_resources": true,
+          "paired_exogenous_enabled": true,
+          "pair_one_role": true,
+          "verified_replay": true,
+          "expected_resource_behavior": true
+        },
+        "passed": true,
+        "endogenous_divergence": true,
+        "additive_equality_required": false
+      },
+      {
+        "pair_id": "f548a926c61c5e50753eaa0b",
+        "family": "rack_fault",
+        "role": "smoke",
+        "generator_id": "resource-world-scenarios-v1",
+        "checks": {
+          "same_exogenous_uniforms": true,
+          "same_exogenous_rng_state": true,
+          "same_pre_intervention_resources": true,
+          "paired_exogenous_enabled": true,
+          "pair_one_role": true,
+          "verified_replay": true,
+          "expected_resource_behavior": true
+        },
+        "passed": true,
+        "endogenous_divergence": true,
+        "additive_equality_required": false
+      },
+      {
+        "pair_id": "0797a554a20a96dc0b5a0568",
+        "family": "shared_demand_surge",
+        "role": "smoke",
+        "generator_id": "resource-world-scenarios-v1",
+        "checks": {
+          "same_exogenous_uniforms": true,
+          "same_exogenous_rng_state": true,
+          "same_pre_intervention_resources": true,
+          "paired_exogenous_enabled": true,
+          "pair_one_role": true,
+          "verified_replay": true,
+          "expected_resource_behavior": true
+        },
+        "passed": true,
+        "endogenous_divergence": true,
+        "additive_equality_required": false
+      },
+      {
+        "pair_id": "a9f58d7e76412b51834d7e00",
+        "family": "transient_degradation",
+        "role": "smoke",
+        "generator_id": "resource-world-scenarios-v1",
+        "checks": {
+          "same_exogenous_uniforms": true,
+          "same_exogenous_rng_state": true,
+          "same_pre_intervention_resources": true,
+          "paired_exogenous_enabled": true,
+          "pair_one_role": true,
+          "verified_replay": true,
+          "expected_resource_behavior": true
+        },
+        "passed": true,
+        "endogenous_divergence": true,
+        "additive_equality_required": false
+      },
+      {
+        "pair_id": "58c04ef1f15dd86cbba0767a",
+        "family": "persistent_degradation",
+        "role": "smoke",
+        "generator_id": "resource-world-scenarios-v1",
+        "checks": {
+          "same_exogenous_uniforms": true,
+          "same_exogenous_rng_state": true,
+          "same_pre_intervention_resources": true,
+          "paired_exogenous_enabled": true,
+          "pair_one_role": true,
+          "verified_replay": true,
+          "expected_resource_behavior": true
+        },
+        "passed": true,
+        "endogenous_divergence": true,
+        "additive_equality_required": false
+      },
+      {
+        "pair_id": "40b45ea4c2da8d83ec68bf0e",
+        "family": "recovery",
+        "role": "smoke",
+        "generator_id": "resource-world-scenarios-v1",
+        "checks": {
+          "same_exogenous_uniforms": true,
+          "same_exogenous_rng_state": true,
+          "same_pre_intervention_resources": true,
+          "paired_exogenous_enabled": true,
+          "pair_one_role": true,
+          "verified_replay": true,
+          "expected_resource_behavior": true
+        },
+        "passed": true,
+        "endogenous_divergence": true,
+        "additive_equality_required": false
+      },
+      {
+        "pair_id": "00533c79f8f90b6a568d69e3",
+        "family": "additive_baseline",
+        "role": "smoke",
+        "generator_id": "statistical-additive-latency-v1",
+        "checks": {
+          "exact_additive_identity_to_float_precision": true,
+          "same_workload": true,
+          "same_factor": true,
+          "same_noise": true,
+          "same_observed_mask": true,
+          "same_arrival_masks": true,
+          "same_request_counts": true
+        },
+        "passed": true,
+        "max_abs_additive_residual": 0.0,
+        "additive_equality_required": true
+      },
+      {
+        "pair_id": "b999e1b310d9c898f1e5bed4",
+        "family": "additive_transient",
+        "role": "smoke",
+        "generator_id": "statistical-additive-latency-v1",
+        "checks": {
+          "exact_additive_identity_to_float_precision": true,
+          "same_workload": true,
+          "same_factor": true,
+          "same_noise": true,
+          "same_observed_mask": true,
+          "same_arrival_masks": true,
+          "same_request_counts": true
+        },
+        "passed": true,
+        "max_abs_additive_residual": 3.434752482434078e-16,
+        "additive_equality_required": true
+      },
+      {
+        "pair_id": "fc2a603a6c47a282d4863e43",
+        "family": "additive_persistent",
+        "role": "smoke",
+        "generator_id": "statistical-additive-latency-v1",
+        "checks": {
+          "exact_additive_identity_to_float_precision": true,
+          "same_workload": true,
+          "same_factor": true,
+          "same_noise": true,
+          "same_observed_mask": true,
+          "same_arrival_masks": true,
+          "same_request_counts": true
+        },
+        "passed": true,
+        "max_abs_additive_residual": 3.434752482434078e-16,
+        "additive_equality_required": true
+      },
+      {
+        "pair_id": "1039c7437d229b8fd6d5d570",
+        "family": "additive_recovery",
+        "role": "smoke",
+        "generator_id": "statistical-additive-latency-v1",
+        "checks": {
+          "exact_additive_identity_to_float_precision": true,
+          "same_workload": true,
+          "same_factor": true,
+          "same_noise": true,
+          "same_observed_mask": true,
+          "same_arrival_masks": true,
+          "same_request_counts": true
+        },
+        "passed": true,
+        "max_abs_additive_residual": 4.40619762898109e-16,
+        "additive_equality_required": true
+      }
+    ],
+    "passed": true,
+    "note": "Functional pairing checks only; no detector/calibration/final-test performance is evaluated"
+  },
+  "registry": {
+    "registry_id": "scenario-bundles-v1",
+    "registry_sha256": "ed941190d4ddf214496ee9c4aab0bd090de8d33d4ae7ccf76fdd7ed541f47ba3",
+    "roles": {
+      "smoke": {
+        "allowed_uses": [
+          "debug"
+        ],
+        "null_only": false,
+        "materialized_by_default": true
+      },
+      "development": {
+        "allowed_uses": [
+          "fit",
+          "tune"
+        ],
+        "null_only": false,
+        "materialized_by_default": false
+      },
+      "threshold-calibration": {
+        "allowed_uses": [
+          "threshold"
+        ],
+        "null_only": true,
+        "materialized_by_default": false
+      },
+      "null-validation": {
+        "allowed_uses": [
+          "audit"
+        ],
+        "null_only": true,
+        "materialized_by_default": false
+      },
+      "final-test": {
+        "allowed_uses": [
+          "evaluate"
+        ],
+        "null_only": false,
+        "materialized_by_default": false
+      }
+    },
+    "world_seed_spans": {
+      "smoke": [
+        29000000,
+        30000000
+      ],
+      "development": [
+        30000000,
+        31000000
+      ],
+      "threshold-calibration": [
+        31000000,
+        32000000
+      ],
+      "null-validation": [
+        32000000,
+        33000000
+      ],
+      "final-test": [
+        33000000,
+        34000000
+      ]
+    },
+    "additive_seed_spans": {
+      "smoke": [
+        34000000,
+        35000000
+      ],
+      "development": [
+        35000000,
+        36000000
+      ],
+      "threshold-calibration": [
+        36000000,
+        37000000
+      ],
+      "null-validation": [
+        37000000,
+        38000000
+      ],
+      "final-test": [
+        38000000,
+        39000000
+      ]
+    },
+    "registered_pairs": 55
+  },
+  "hand_evaluator": {
+    "fixture_only": true,
+    "cases": 14,
+    "passed": true,
+    "note": "Hand-authored alarm/label cases, not detector predictions or benchmark results"
+  },
+  "previous_fixture_checks": {
+    "resources": {
+      "generator_id": "world-resources-v1",
+      "synthetic": true,
+      "checks": {
+        "bounds": true,
+        "request_conservation": true,
+        "replay": true,
+        "load_raises_cpu": true,
+        "load_raises_memory": true,
+        "load_raises_queue_and_latency": true,
+        "overload_drops_reported": true,
+        "recovery_drains_queue": true
+      },
+      "passed": true,
+      "ticks_per_scenario": 120
+    },
+    "faults": {
+      "fixtures": [
+        {
+          "kind": "cpu_throttle",
+          "checks": {
+            "deterministic_replay": true,
+            "before_available": true,
+            "recovered_available": true,
+            "memory_bounded": true,
+            "no_truth_in_telemetry": true,
+            "effect": true,
+            "scope": true,
+            "recovery": true
+          },
+          "passed": true
+        },
+        {
+          "kind": "memory_pressure",
+          "checks": {
+            "deterministic_replay": true,
+            "before_available": true,
+            "recovered_available": true,
+            "memory_bounded": true,
+            "no_truth_in_telemetry": true,
+            "effect": true,
+            "scope": true,
+            "recovery": true
+          },
+          "passed": true
+        },
+        {
+          "kind": "service_crash",
+          "checks": {
+            "deterministic_replay": true,
+            "before_available": true,
+            "recovered_available": true,
+            "memory_bounded": true,
+            "no_truth_in_telemetry": true,
+            "effect": true,
+            "scope": true,
+            "recovery": true
+          },
+          "passed": true
+        },
+        {
+          "kind": "network_degradation",
+          "checks": {
+            "deterministic_replay": true,
+            "before_available": true,
+            "recovered_available": true,
+            "memory_bounded": true,
+            "no_truth_in_telemetry": true,
+            "effect": true,
+            "scope": true,
+            "recovery": true
+          },
+          "passed": true
+        },
+        {
+          "kind": "demand_surge",
+          "checks": {
+            "deterministic_replay": true,
+            "before_available": true,
+            "recovered_available": true,
+            "memory_bounded": true,
+            "no_truth_in_telemetry": true,
+            "effect": true,
+            "scope": true,
+            "recovery": true
+          },
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    "console": {
+      "synthetic": true,
+      "ticks": 52,
+      "checks": {
+        "upload_never_executed": true,
+        "valid_allocation": true,
+        "candidate_retains_memory": true,
+        "controls_keep_healthy_memory": true,
+        "rack_effect_reaches_descendants": true,
+        "rollback_restores_versions": true,
+        "rollback_reclaims_retained_memory": true,
+        "detector_honest": true,
+        "public_packet_excludes_truth": true,
+        "verified_engine_replay": true,
+        "saved_run_import_matches": true,
+        "outcomes_saved": true
+      },
+      "passed": true
+    },
+    "background": {
+      "synthetic": true,
+      "scenarios": [
+        {
+          "scenario": "all_healthy",
+          "ticks": 100,
+          "events": 0,
+          "checks": {
+            "cooldowns": true,
+            "ranges": true,
+            "concurrency": true,
+            "event_budget": true,
+            "recovered": true,
+            "no_release_required": true,
+            "public_telemetry_excludes_schedule": true,
+            "replay": true,
+            "zero_faults": true
+          },
+          "passed": true
+        },
+        {
+          "scenario": "fixed",
+          "ticks": 100,
+          "events": 3,
+          "checks": {
+            "cooldowns": true,
+            "ranges": true,
+            "concurrency": true,
+            "event_budget": true,
+            "recovered": true,
+            "no_release_required": true,
+            "public_telemetry_excludes_schedule": true,
+            "replay": true,
+            "fixed_host_effect": true,
+            "fixed_rack_descendants": true,
+            "fixed_shared_demand": true
+          },
+          "passed": true
+        },
+        {
+          "scenario": "rates",
+          "ticks": 304,
+          "events": 43,
+          "checks": {
+            "cooldowns": true,
+            "ranges": true,
+            "concurrency": true,
+            "event_budget": true,
+            "recovered": true,
+            "no_release_required": true,
+            "public_telemetry_excludes_schedule": true,
+            "replay": true,
+            "all_rate_scopes_present": true
+          },
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    "telemetry": {
+      "synthetic": true,
+      "ticks": 240,
+      "public_records": 3600,
+      "monitoring_rows": 80,
+      "checks": {
+        "first_minute_late_and_masked": true,
+        "second_minute_missing": true,
+        "recovery_fresh": true,
+        "duplicates_deduplicated": true,
+        "late_records_received_but_excluded": true,
+        "earlier_decision_unchanged": true,
+        "offline_online_inputs_equal": true,
+        "no_truth_in_public": true,
+        "evaluator_labels_separate": true,
+        "replay": true,
+        "latency_statistics_consistent": true
+      },
+      "passed": true
+    }
+  },
+  "replays": {
+    "passed": true,
+    "engine_replays": 28,
+    "verified_scenario_members": 22,
+    "roles_materialized": [
+      "smoke"
+    ]
+  },
+  "ui_checks": {
+    "checks": {
+      "topology_rendered": true,
+      "selected_host_backend_trace": true,
+      "controls_and_speed": true,
+      "refresh_reuses_run": true,
+      "stale_state": true,
+      "disconnect_reconnect_preserves_last_view": true,
+      "recorded_mode_has_no_engine_api_calls": true,
+      "no_frontend_simulator_or_detector": true
+    },
+    "passed": true,
+    "browser_layout_verified": false,
+    "verification": "Node DOM-state harness plus real local HTTP API; browser startup unavailable"
+  },
+  "scheduler_ui_checks": {
+    "passed": true,
+    "checks": {
+      "developer_preview": true,
+      "rate_units_visible": true,
+      "enable_disable": true,
+      "toggle_does_not_resample": true,
+      "persisted_outcomes": true,
+      "public_truth_separation": true,
+      "stale_controls_disabled": true
+    },
+    "verification": "Node DOM-state harness with real HTTP API; not visual verification"
+  },
+  "telemetry_ui_checks": {
+    "checks": {
+      "committed_minutes_rendered": true,
+      "missing_windows_masked": true,
+      "recovery_fresh": true,
+      "three_backend_rows_rendered": true,
+      "no_truth_labels": true,
+      "committed_slice_readable": true
+    },
+    "passed": true,
+    "verification": "Node DOM-state harness plus real HTTP; not visual verification"
+  },
+  "ignore_checks": {
+    "passed": true,
+    "small_smoke_npz_unignored": true,
+    "larger_data_stays_ignored": true
+  },
+  "plan_only_cli_exit_code": 0,
+  "node_syntax_exit_code": 0,
+  "preservation_checks": {
+    "preexisting_tests_unchanged": true,
+    "statistical_generator_unchanged": true,
+    "inference_schema_metrics_unchanged": true,
+    "preexisting_models_unchanged": true
+  },
+  "changed_original_files": [
+    ".gitignore",
+    "README.md",
+    "canary_ssm/cli.py",
+    "canary_ssm/seeds.py",
+    "docs/DESIGN_DECISIONS.md",
+    "docs/implementation_status.md",
+    "canary_ssm/engine.py",
+    "examples/world_clock_100_ticks.json",
+    "canary_ssm/resources.py",
+    "examples/resource_world/increased_load/run.json",
+    "examples/resource_world/low_load/run.json",
+    "examples/resource_world/recovery/run.json",
+    "canary_ssm/web/recorded_snapshot.json",
+    "docs/gap_audit.md",
+    "examples/console_demo/canary_snapshot.json",
+    "examples/console_demo/run.json",
+    "examples/faults/cpu_throttle/run.json",
+    "examples/faults/demand_surge/run.json",
+    "examples/faults/memory_pressure/run.json",
+    "examples/faults/network_degradation/run.json",
+    "examples/faults/service_crash/run.json",
+    "examples/background_faults/all_healthy/run.json",
+    "examples/background_faults/fixed/run.json",
+    "examples/background_faults/rates/run.json",
+    "examples/public_telemetry/run.json"
+  ],
+  "new_files": [
+    "canary_ssm/scenario_registry.py",
+    "canary_ssm/scenario_bundles.py",
+    "canary_ssm/world_evaluator.py",
+    "configs/world_scenario_base.yaml",
+    "configs/world_scenario_catalog.yaml",
+    "configs/world_scenario_topology.yaml",
+    "configs/world_evaluator_handlabels.json",
+    "tests/test_scenario_bundles.py",
+    "docs/scenario_bundles.md",
+    "docs/wp/SCENARIO-BUNDLES.md",
+    "examples/scenario_bundles/checks.json",
+    "examples/scenario_bundles/registry.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/healthy/pair-000/checks.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/healthy/pair-000/harm/commands.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/healthy/pair-000/harm/config.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/healthy/pair-000/harm/evaluator/intervention_label.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/healthy/pair-000/harm/evaluator/metadata.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/healthy/pair-000/harm/evaluator/truth.jsonl",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/healthy/pair-000/harm/exogenous.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/healthy/pair-000/harm/manifest.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/healthy/pair-000/harm/public/decisions.jsonl",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/healthy/pair-000/harm/public/metadata.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/healthy/pair-000/harm/public/records.jsonl",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/healthy/pair-000/harm/public/resource_trace/hosts.csv",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/healthy/pair-000/harm/public/resource_trace/services.csv",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/healthy/pair-000/harm/public/scores.jsonl",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/healthy/pair-000/harm/public/windows.jsonl",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/healthy/pair-000/harm/run.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/healthy/pair-000/null/commands.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/healthy/pair-000/null/config.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/healthy/pair-000/null/evaluator/intervention_label.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/healthy/pair-000/null/evaluator/metadata.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/healthy/pair-000/null/evaluator/truth.jsonl",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/healthy/pair-000/null/exogenous.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/healthy/pair-000/null/manifest.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/healthy/pair-000/null/public/decisions.jsonl",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/healthy/pair-000/null/public/metadata.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/healthy/pair-000/null/public/records.jsonl",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/healthy/pair-000/null/public/resource_trace/hosts.csv",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/healthy/pair-000/null/public/resource_trace/services.csv",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/healthy/pair-000/null/public/scores.jsonl",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/healthy/pair-000/null/public/windows.jsonl",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/healthy/pair-000/null/run.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/healthy/pair-000/pair.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/host_fault/pair-000/checks.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/host_fault/pair-000/harm/commands.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/host_fault/pair-000/harm/config.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/host_fault/pair-000/harm/evaluator/intervention_label.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/host_fault/pair-000/harm/evaluator/metadata.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/host_fault/pair-000/harm/evaluator/truth.jsonl",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/host_fault/pair-000/harm/exogenous.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/host_fault/pair-000/harm/manifest.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/host_fault/pair-000/harm/public/decisions.jsonl",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/host_fault/pair-000/harm/public/metadata.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/host_fault/pair-000/harm/public/records.jsonl",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/host_fault/pair-000/harm/public/resource_trace/hosts.csv",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/host_fault/pair-000/harm/public/resource_trace/services.csv",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/host_fault/pair-000/harm/public/scores.jsonl",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/host_fault/pair-000/harm/public/windows.jsonl",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/host_fault/pair-000/harm/run.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/host_fault/pair-000/null/commands.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/host_fault/pair-000/null/config.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/host_fault/pair-000/null/evaluator/intervention_label.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/host_fault/pair-000/null/evaluator/metadata.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/host_fault/pair-000/null/evaluator/truth.jsonl",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/host_fault/pair-000/null/exogenous.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/host_fault/pair-000/null/manifest.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/host_fault/pair-000/null/public/decisions.jsonl",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/host_fault/pair-000/null/public/metadata.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/host_fault/pair-000/null/public/records.jsonl",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/host_fault/pair-000/null/public/resource_trace/hosts.csv",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/host_fault/pair-000/null/public/resource_trace/services.csv",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/host_fault/pair-000/null/public/scores.jsonl",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/host_fault/pair-000/null/public/windows.jsonl",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/host_fault/pair-000/null/run.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/host_fault/pair-000/pair.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/persistent_degradation/pair-000/checks.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/persistent_degradation/pair-000/harm/commands.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/persistent_degradation/pair-000/harm/config.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/persistent_degradation/pair-000/harm/evaluator/intervention_label.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/persistent_degradation/pair-000/harm/evaluator/metadata.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/persistent_degradation/pair-000/harm/evaluator/truth.jsonl",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/persistent_degradation/pair-000/harm/exogenous.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/persistent_degradation/pair-000/harm/manifest.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/persistent_degradation/pair-000/harm/public/decisions.jsonl",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/persistent_degradation/pair-000/harm/public/metadata.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/persistent_degradation/pair-000/harm/public/records.jsonl",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/persistent_degradation/pair-000/harm/public/resource_trace/hosts.csv",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/persistent_degradation/pair-000/harm/public/resource_trace/services.csv",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/persistent_degradation/pair-000/harm/public/scores.jsonl",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/persistent_degradation/pair-000/harm/public/windows.jsonl",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/persistent_degradation/pair-000/harm/run.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/persistent_degradation/pair-000/null/commands.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/persistent_degradation/pair-000/null/config.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/persistent_degradation/pair-000/null/evaluator/intervention_label.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/persistent_degradation/pair-000/null/evaluator/metadata.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/persistent_degradation/pair-000/null/evaluator/truth.jsonl",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/persistent_degradation/pair-000/null/exogenous.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/persistent_degradation/pair-000/null/manifest.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/persistent_degradation/pair-000/null/public/decisions.jsonl",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/persistent_degradation/pair-000/null/public/metadata.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/persistent_degradation/pair-000/null/public/records.jsonl",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/persistent_degradation/pair-000/null/public/resource_trace/hosts.csv",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/persistent_degradation/pair-000/null/public/resource_trace/services.csv",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/persistent_degradation/pair-000/null/public/scores.jsonl",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/persistent_degradation/pair-000/null/public/windows.jsonl",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/persistent_degradation/pair-000/null/run.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/persistent_degradation/pair-000/pair.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/rack_fault/pair-000/checks.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/rack_fault/pair-000/harm/commands.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/rack_fault/pair-000/harm/config.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/rack_fault/pair-000/harm/evaluator/intervention_label.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/rack_fault/pair-000/harm/evaluator/metadata.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/rack_fault/pair-000/harm/evaluator/truth.jsonl",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/rack_fault/pair-000/harm/exogenous.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/rack_fault/pair-000/harm/manifest.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/rack_fault/pair-000/harm/public/decisions.jsonl",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/rack_fault/pair-000/harm/public/metadata.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/rack_fault/pair-000/harm/public/records.jsonl",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/rack_fault/pair-000/harm/public/resource_trace/hosts.csv",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/rack_fault/pair-000/harm/public/resource_trace/services.csv",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/rack_fault/pair-000/harm/public/scores.jsonl",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/rack_fault/pair-000/harm/public/windows.jsonl",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/rack_fault/pair-000/harm/run.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/rack_fault/pair-000/null/commands.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/rack_fault/pair-000/null/config.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/rack_fault/pair-000/null/evaluator/intervention_label.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/rack_fault/pair-000/null/evaluator/metadata.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/rack_fault/pair-000/null/evaluator/truth.jsonl",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/rack_fault/pair-000/null/exogenous.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/rack_fault/pair-000/null/manifest.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/rack_fault/pair-000/null/public/decisions.jsonl",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/rack_fault/pair-000/null/public/metadata.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/rack_fault/pair-000/null/public/records.jsonl",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/rack_fault/pair-000/null/public/resource_trace/hosts.csv",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/rack_fault/pair-000/null/public/resource_trace/services.csv",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/rack_fault/pair-000/null/public/scores.jsonl",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/rack_fault/pair-000/null/public/windows.jsonl",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/rack_fault/pair-000/null/run.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/rack_fault/pair-000/pair.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/recovery/pair-000/checks.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/recovery/pair-000/harm/commands.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/recovery/pair-000/harm/config.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/recovery/pair-000/harm/evaluator/intervention_label.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/recovery/pair-000/harm/evaluator/metadata.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/recovery/pair-000/harm/evaluator/truth.jsonl",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/recovery/pair-000/harm/exogenous.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/recovery/pair-000/harm/manifest.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/recovery/pair-000/harm/public/decisions.jsonl",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/recovery/pair-000/harm/public/metadata.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/recovery/pair-000/harm/public/records.jsonl",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/recovery/pair-000/harm/public/resource_trace/hosts.csv",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/recovery/pair-000/harm/public/resource_trace/services.csv",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/recovery/pair-000/harm/public/scores.jsonl",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/recovery/pair-000/harm/public/windows.jsonl",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/recovery/pair-000/harm/run.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/recovery/pair-000/null/commands.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/recovery/pair-000/null/config.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/recovery/pair-000/null/evaluator/intervention_label.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/recovery/pair-000/null/evaluator/metadata.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/recovery/pair-000/null/evaluator/truth.jsonl",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/recovery/pair-000/null/exogenous.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/recovery/pair-000/null/manifest.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/recovery/pair-000/null/public/decisions.jsonl",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/recovery/pair-000/null/public/metadata.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/recovery/pair-000/null/public/records.jsonl",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/recovery/pair-000/null/public/resource_trace/hosts.csv",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/recovery/pair-000/null/public/resource_trace/services.csv",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/recovery/pair-000/null/public/scores.jsonl",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/recovery/pair-000/null/public/windows.jsonl",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/recovery/pair-000/null/run.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/recovery/pair-000/pair.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/shared_demand_surge/pair-000/checks.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/shared_demand_surge/pair-000/harm/commands.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/shared_demand_surge/pair-000/harm/config.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/shared_demand_surge/pair-000/harm/evaluator/intervention_label.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/shared_demand_surge/pair-000/harm/evaluator/metadata.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/shared_demand_surge/pair-000/harm/evaluator/truth.jsonl",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/shared_demand_surge/pair-000/harm/exogenous.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/shared_demand_surge/pair-000/harm/manifest.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/shared_demand_surge/pair-000/harm/public/decisions.jsonl",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/shared_demand_surge/pair-000/harm/public/metadata.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/shared_demand_surge/pair-000/harm/public/records.jsonl",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/shared_demand_surge/pair-000/harm/public/resource_trace/hosts.csv",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/shared_demand_surge/pair-000/harm/public/resource_trace/services.csv",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/shared_demand_surge/pair-000/harm/public/scores.jsonl",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/shared_demand_surge/pair-000/harm/public/windows.jsonl",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/shared_demand_surge/pair-000/harm/run.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/shared_demand_surge/pair-000/null/commands.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/shared_demand_surge/pair-000/null/config.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/shared_demand_surge/pair-000/null/evaluator/intervention_label.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/shared_demand_surge/pair-000/null/evaluator/metadata.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/shared_demand_surge/pair-000/null/evaluator/truth.jsonl",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/shared_demand_surge/pair-000/null/exogenous.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/shared_demand_surge/pair-000/null/manifest.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/shared_demand_surge/pair-000/null/public/decisions.jsonl",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/shared_demand_surge/pair-000/null/public/metadata.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/shared_demand_surge/pair-000/null/public/records.jsonl",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/shared_demand_surge/pair-000/null/public/resource_trace/hosts.csv",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/shared_demand_surge/pair-000/null/public/resource_trace/services.csv",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/shared_demand_surge/pair-000/null/public/scores.jsonl",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/shared_demand_surge/pair-000/null/public/windows.jsonl",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/shared_demand_surge/pair-000/null/run.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/shared_demand_surge/pair-000/pair.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/transient_degradation/pair-000/checks.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/transient_degradation/pair-000/harm/commands.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/transient_degradation/pair-000/harm/config.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/transient_degradation/pair-000/harm/evaluator/intervention_label.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/transient_degradation/pair-000/harm/evaluator/metadata.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/transient_degradation/pair-000/harm/evaluator/truth.jsonl",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/transient_degradation/pair-000/harm/exogenous.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/transient_degradation/pair-000/harm/manifest.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/transient_degradation/pair-000/harm/public/decisions.jsonl",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/transient_degradation/pair-000/harm/public/metadata.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/transient_degradation/pair-000/harm/public/records.jsonl",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/transient_degradation/pair-000/harm/public/resource_trace/hosts.csv",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/transient_degradation/pair-000/harm/public/resource_trace/services.csv",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/transient_degradation/pair-000/harm/public/scores.jsonl",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/transient_degradation/pair-000/harm/public/windows.jsonl",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/transient_degradation/pair-000/harm/run.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/transient_degradation/pair-000/null/commands.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/transient_degradation/pair-000/null/config.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/transient_degradation/pair-000/null/evaluator/intervention_label.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/transient_degradation/pair-000/null/evaluator/metadata.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/transient_degradation/pair-000/null/evaluator/truth.jsonl",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/transient_degradation/pair-000/null/exogenous.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/transient_degradation/pair-000/null/manifest.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/transient_degradation/pair-000/null/public/decisions.jsonl",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/transient_degradation/pair-000/null/public/metadata.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/transient_degradation/pair-000/null/public/records.jsonl",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/transient_degradation/pair-000/null/public/resource_trace/hosts.csv",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/transient_degradation/pair-000/null/public/resource_trace/services.csv",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/transient_degradation/pair-000/null/public/scores.jsonl",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/transient_degradation/pair-000/null/public/windows.jsonl",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/transient_degradation/pair-000/null/run.json",
+    "examples/scenario_bundles/smoke/resource-world-scenarios-v1/transient_degradation/pair-000/pair.json",
+    "examples/scenario_bundles/smoke/statistical-additive-latency-v1/additive_baseline/pair-000/checks.json",
+    "examples/scenario_bundles/smoke/statistical-additive-latency-v1/additive_baseline/pair-000/harm/commands.json",
+    "examples/scenario_bundles/smoke/statistical-additive-latency-v1/additive_baseline/pair-000/harm/config.json",
+    "examples/scenario_bundles/smoke/statistical-additive-latency-v1/additive_baseline/pair-000/harm/evaluator/truth.npz",
+    "examples/scenario_bundles/smoke/statistical-additive-latency-v1/additive_baseline/pair-000/harm/manifest.json",
+    "examples/scenario_bundles/smoke/statistical-additive-latency-v1/additive_baseline/pair-000/harm/public/metadata.json",
+    "examples/scenario_bundles/smoke/statistical-additive-latency-v1/additive_baseline/pair-000/harm/public/records.csv",
+    "examples/scenario_bundles/smoke/statistical-additive-latency-v1/additive_baseline/pair-000/harm/public/rollout.npz",
+    "examples/scenario_bundles/smoke/statistical-additive-latency-v1/additive_baseline/pair-000/null/commands.json",
+    "examples/scenario_bundles/smoke/statistical-additive-latency-v1/additive_baseline/pair-000/null/config.json",
+    "examples/scenario_bundles/smoke/statistical-additive-latency-v1/additive_baseline/pair-000/null/evaluator/truth.npz",
+    "examples/scenario_bundles/smoke/statistical-additive-latency-v1/additive_baseline/pair-000/null/manifest.json",
+    "examples/scenario_bundles/smoke/statistical-additive-latency-v1/additive_baseline/pair-000/null/public/metadata.json",
+    "examples/scenario_bundles/smoke/statistical-additive-latency-v1/additive_baseline/pair-000/null/public/records.csv",
+    "examples/scenario_bundles/smoke/statistical-additive-latency-v1/additive_baseline/pair-000/null/public/rollout.npz",
+    "examples/scenario_bundles/smoke/statistical-additive-latency-v1/additive_persistent/pair-000/checks.json",
+    "examples/scenario_bundles/smoke/statistical-additive-latency-v1/additive_persistent/pair-000/harm/commands.json",
+    "examples/scenario_bundles/smoke/statistical-additive-latency-v1/additive_persistent/pair-000/harm/config.json",
+    "examples/scenario_bundles/smoke/statistical-additive-latency-v1/additive_persistent/pair-000/harm/evaluator/truth.npz",
+    "examples/scenario_bundles/smoke/statistical-additive-latency-v1/additive_persistent/pair-000/harm/manifest.json",
+    "examples/scenario_bundles/smoke/statistical-additive-latency-v1/additive_persistent/pair-000/harm/public/metadata.json",
+    "examples/scenario_bundles/smoke/statistical-additive-latency-v1/additive_persistent/pair-000/harm/public/records.csv",
+    "examples/scenario_bundles/smoke/statistical-additive-latency-v1/additive_persistent/pair-000/harm/public/rollout.npz",
+    "examples/scenario_bundles/smoke/statistical-additive-latency-v1/additive_persistent/pair-000/null/commands.json",
+    "examples/scenario_bundles/smoke/statistical-additive-latency-v1/additive_persistent/pair-000/null/config.json",
+    "examples/scenario_bundles/smoke/statistical-additive-latency-v1/additive_persistent/pair-000/null/evaluator/truth.npz",
+    "examples/scenario_bundles/smoke/statistical-additive-latency-v1/additive_persistent/pair-000/null/manifest.json",
+    "examples/scenario_bundles/smoke/statistical-additive-latency-v1/additive_persistent/pair-000/null/public/metadata.json",
+    "examples/scenario_bundles/smoke/statistical-additive-latency-v1/additive_persistent/pair-000/null/public/records.csv",
+    "examples/scenario_bundles/smoke/statistical-additive-latency-v1/additive_persistent/pair-000/null/public/rollout.npz",
+    "examples/scenario_bundles/smoke/statistical-additive-latency-v1/additive_recovery/pair-000/checks.json",
+    "examples/scenario_bundles/smoke/statistical-additive-latency-v1/additive_recovery/pair-000/harm/commands.json",
+    "examples/scenario_bundles/smoke/statistical-additive-latency-v1/additive_recovery/pair-000/harm/config.json",
+    "examples/scenario_bundles/smoke/statistical-additive-latency-v1/additive_recovery/pair-000/harm/evaluator/truth.npz",
+    "examples/scenario_bundles/smoke/statistical-additive-latency-v1/additive_recovery/pair-000/harm/manifest.json",
+    "examples/scenario_bundles/smoke/statistical-additive-latency-v1/additive_recovery/pair-000/harm/public/metadata.json",
+    "examples/scenario_bundles/smoke/statistical-additive-latency-v1/additive_recovery/pair-000/harm/public/records.csv",
+    "examples/scenario_bundles/smoke/statistical-additive-latency-v1/additive_recovery/pair-000/harm/public/rollout.npz",
+    "examples/scenario_bundles/smoke/statistical-additive-latency-v1/additive_recovery/pair-000/null/commands.json",
+    "examples/scenario_bundles/smoke/statistical-additive-latency-v1/additive_recovery/pair-000/null/config.json",
+    "examples/scenario_bundles/smoke/statistical-additive-latency-v1/additive_recovery/pair-000/null/evaluator/truth.npz",
+    "examples/scenario_bundles/smoke/statistical-additive-latency-v1/additive_recovery/pair-000/null/manifest.json",
+    "examples/scenario_bundles/smoke/statistical-additive-latency-v1/additive_recovery/pair-000/null/public/metadata.json",
+    "examples/scenario_bundles/smoke/statistical-additive-latency-v1/additive_recovery/pair-000/null/public/records.csv",
+    "examples/scenario_bundles/smoke/statistical-additive-latency-v1/additive_recovery/pair-000/null/public/rollout.npz",
+    "examples/scenario_bundles/smoke/statistical-additive-latency-v1/additive_transient/pair-000/checks.json",
+    "examples/scenario_bundles/smoke/statistical-additive-latency-v1/additive_transient/pair-000/harm/commands.json",
+    "examples/scenario_bundles/smoke/statistical-additive-latency-v1/additive_transient/pair-000/harm/config.json",
+    "examples/scenario_bundles/smoke/statistical-additive-latency-v1/additive_transient/pair-000/harm/evaluator/truth.npz",
+    "examples/scenario_bundles/smoke/statistical-additive-latency-v1/additive_transient/pair-000/harm/manifest.json",
+    "examples/scenario_bundles/smoke/statistical-additive-latency-v1/additive_transient/pair-000/harm/public/metadata.json",
+    "examples/scenario_bundles/smoke/statistical-additive-latency-v1/additive_transient/pair-000/harm/public/records.csv",
+    "examples/scenario_bundles/smoke/statistical-additive-latency-v1/additive_transient/pair-000/harm/public/rollout.npz",
+    "examples/scenario_bundles/smoke/statistical-additive-latency-v1/additive_transient/pair-000/null/commands.json",
+    "examples/scenario_bundles/smoke/statistical-additive-latency-v1/additive_transient/pair-000/null/config.json",
+    "examples/scenario_bundles/smoke/statistical-additive-latency-v1/additive_transient/pair-000/null/evaluator/truth.npz",
+    "examples/scenario_bundles/smoke/statistical-additive-latency-v1/additive_transient/pair-000/null/manifest.json",
+    "examples/scenario_bundles/smoke/statistical-additive-latency-v1/additive_transient/pair-000/null/public/metadata.json",
+    "examples/scenario_bundles/smoke/statistical-additive-latency-v1/additive_transient/pair-000/null/public/records.csv",
+    "examples/scenario_bundles/smoke/statistical-additive-latency-v1/additive_transient/pair-000/null/public/rollout.npz",
+    "examples/scenario_bundles/summary.csv",
+    "examples/world_evaluator/checks.json",
+    "examples/world_evaluator/outcomes.csv"
+  ],
+  "source_sha256": {
+    "README.md": "3d7b9840bd2184a0dd0c7a4a0d8468e788b0b4960c8e5671960fd9b9ae03ad67",
+    "canary_ssm/cli.py": "409ab01ea2d46fe126babbbca69f3b2cbdfbcfd424445eedf72a6b0d18333b79",
+    "canary_ssm/engine.py": "5bf982f61acf8f672d3b3ca14da117c6ecd6d648d4fd2681b9831cf2894c236c",
+    "canary_ssm/resources.py": "048ee1c2aa3e6251d71d1a7d20fe2fc6cc8f01649e4828c1b3d472a1d978258e",
+    "canary_ssm/scenario_bundles.py": "8d41256c2c1d6948ed7fd3df4a48d1be4dd7f176e445a1146d14505305035abd",
+    "canary_ssm/scenario_registry.py": "8933edf10895a6c6c166aef63e13dd9388ffbb374904eb63a5eaad554b21b9ce",
+    "canary_ssm/seeds.py": "1e9a8ba7e598721f7095032a3811be30661294a2d1a7ffcb6b01c8b935b67b4b",
+    "canary_ssm/web/recorded_snapshot.json": "cf1999c44efdf33227df65e1493d85d73f2f8896e2a61984d0579878ed57101d",
+    "canary_ssm/world_evaluator.py": "550fc41e73364c3d6abb071799bf6992275b4aaadfc8341cfb98ca3571881fda",
+    "configs/world_evaluator_handlabels.json": "c7b489ce8082ebca0336c2245e2a72d2e2c53470b2101b8c6ef94e2fe499a25a",
+    "configs/world_scenario_base.yaml": "7755aa811c295eab6548d1cac29b8fa5f2b07c3f72af33f88c7a009ff8f023f8",
+    "configs/world_scenario_catalog.yaml": "0cc53664bb0620f5021af25ee68591f8a0366b22281992ec68fbb342f8ab645d",
+    "configs/world_scenario_topology.yaml": "43236295c5c5033094e8a6dedf73502dba87823caf62af0b1f6ba75b2ac9999c",
+    "docs/DESIGN_DECISIONS.md": "faead6e53cbca17741df7456abda26e4a75f5f9bc1a5f4c99ca1d54a0b711211",
+    "docs/gap_audit.md": "b820d5a0c61ce69026f843999c509b8eb36cb366960874e791245eff04544728",
+    "docs/implementation_status.md": "8c119681ef0a0e3d8aa7d1be837622ec867f1f29bd7e8edb8df77cc50996898c",
+    "docs/scenario_bundles.md": "a5dc11256df424fe417be810c60881564e299a44e9b214d65c6c14a4da7c9e42",
+    "docs/wp/SCENARIO-BUNDLES.md": "0a97bfde151e65d53081d174c67d12f8e44c25131f4f21338bcdd078b7d88a48",
+    "tests/test_scenario_bundles.py": "2225c8cb57c7d84ca4db4f19eaaa89aef780269c0210fa4839f5eccffafaf812"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "format": "physical-world-policy-v1",
+  "generator_id": "resource-world-scenarios-v1",
+  "config_sha256": "aeacb2dc695a390c71532bc1b06f87db5aa257b282724b31a6fc71eb3b83af65",
+  "sources": {
+    "world_policy_fixture.py": "b2ee293445dfa65bdcd2fca3fd6bf6cbd67929aa15adef781712b7adaf55aff7"
+  },
+  "seed_registry_version": "2.1",
+  "seed_family": 30,
+  "B": 2000,
+  "n_validation": 2000,
+  "H": 4,
+  "freeze_hash": "f7c2a405d142e7f093d6b1906af0442c9217a3cda267d7664aff51b9809572d9",
+  "selection": "Healthy development fit only; effect defaults predeclared",
+  "scope": "All-healthy no-release null, shared demand jitter, complete telemetry, four-minute horizon. No random platform faults, loss/delay, resource advisory or incident producer.",
+  "versions": {
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "scipy": "1.17.0"
+  }
+}

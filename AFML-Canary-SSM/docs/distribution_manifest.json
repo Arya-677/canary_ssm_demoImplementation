@@ -1,0 +1,199 @@
+{
+  "edition": "lightweight-runtime-and-source",
+  "tracked_files_before": 49511,
+  "deleted_generated_files": 49121,
+  "removed_uncompressed_bytes": 1045148857,
+  "tracked_bytes_before": 1060660470,
+  "retained_example_assets": [
+    "examples/control_adjustment/adjusted_rank0.json",
+    "examples/control_adjustment/adjusted_rank1.json",
+    "examples/control_adjustment/model_rank0.json",
+    "examples/control_adjustment/model_rank1.json",
+    "examples/control_adjustment/public/healthy_development_slice.json",
+    "examples/control_adjustment/public/monitoring_slice.json",
+    "examples/detector_dashboard/demo-01.json",
+    "examples/detector_dashboard/demo-02.json",
+    "examples/detector_dashboard/demo-03.json",
+    "examples/detector_dashboard/demo-04.json",
+    "examples/detector_dashboard/evaluator/recipes.json",
+    "examples/detector_dashboard/index.json",
+    "examples/detector_dashboard/nuisance_model.json",
+    "examples/evaluator_v2/development_freeze.json",
+    "examples/evaluator_v2/final_test_lock.json",
+    "examples/evaluator_v2/independent_null_intervals.csv",
+    "examples/evaluator_v2/research/development_decisions.json",
+    "examples/evaluator_v2/research/development_selection.csv",
+    "examples/evaluator_v2/research/latent_effect_policy.json",
+    "examples/evaluator_v2/research/latent_effect_validation.json",
+    "examples/evaluator_v2/research/models.json",
+    "examples/evaluator_v2/world/development_decisions.json",
+    "examples/evaluator_v2/world/development_selection.csv",
+    "examples/evaluator_v2/world/infrastructure_policy.json",
+    "examples/evaluator_v2/world/infrastructure_validation.json",
+    "examples/evaluator_v2/world/models.json",
+    "examples/evaluator_v2/world/release_latency_policy.json",
+    "examples/evaluator_v2/world/release_latency_validation.json",
+    "examples/first_crossing/frozen.json",
+    "examples/first_crossing/policy.json",
+    "examples/first_crossing/validation.json",
+    "examples/grouped_hierarchy/adjusted_class.json",
+    "examples/grouped_hierarchy/adjusted_rack.json",
+    "examples/grouped_hierarchy/model_class.json",
+    "examples/grouped_hierarchy/model_rack.json",
+    "examples/world_policy/development_fit.json",
+    "examples/world_policy/frozen.json",
+    "examples/world_policy/policy.json",
+    "examples/world_policy/preregistration.json",
+    "examples/world_policy/validation.json",
+    "examples/world_policy/world_config.json"
+  ],
+  "removed_groups": {
+    "artifacts/policy_plain": {
+      "files": 2,
+      "bytes": 9399
+    },
+    "examples/background_faults": {
+      "files": 19,
+      "bytes": 18740916
+    },
+    "examples/console_demo": {
+      "files": 6,
+      "bytes": 4473049
+    },
+    "examples/control_adjustment": {
+      "files": 3,
+      "bytes": 801
+    },
+    "examples/detector_dashboard": {
+      "files": 4,
+      "bytes": 1927
+    },
+    "examples/evaluator_runtime": {
+      "files": 2,
+      "bytes": 1699301
+    },
+    "examples/evaluator_v2": {
+      "files": 48392,
+      "bytes": 615937053
+    },
+    "examples/faults": {
+      "files": 26,
+      "bytes": 331539
+    },
+    "examples/first_crossing": {
+      "files": 10,
+      "bytes": 15923514
+    },
+    "examples/grouped_hierarchy": {
+      "files": 6,
+      "bytes": 2549131
+    },
+    "examples/integrated_console": {
+      "files": 16,
+      "bytes": 20224115
+    },
+    "examples/kalman_engine": {
+      "files": 5,
+      "bytes": 275776
+    },
+    "examples/nested_hierarchy": {
+      "files": 9,
+      "bytes": 1044939
+    },
+    "examples/process_memory": {
+      "files": 87,
+      "bytes": 10210604
+    },
+    "examples/public_telemetry": {
+      "files": 9,
+      "bytes": 21989664
+    },
+    "examples/release_registry": {
+      "files": 24,
+      "bytes": 4783284
+    },
+    "examples/resource_world": {
+      "files": 14,
+      "bytes": 13889213
+    },
+    "examples/rollouts": {
+      "files": 34,
+      "bytes": 3590812
+    },
+    "examples/scenario_bundles": {
+      "files": 287,
+      "bytes": 39632453
+    },
+    "examples/world_clock_100_ticks.json": {
+      "files": 1,
+      "bytes": 69829
+    },
+    "examples/world_evaluator": {
+      "files": 2,
+      "bytes": 1548
+    },
+    "examples/world_policy": {
+      "files": 93,
+      "bytes": 259544488
+    },
+    "results/V2_IMPLEMENTATION_DETAILED_SUMMARY.md": {
+      "files": 1,
+      "bytes": 19015
+    },
+    "results/audit": {
+      "files": 1,
+      "bytes": 6170
+    },
+    "results/experiment_7": {
+      "files": 4,
+      "bytes": 107170
+    },
+    "results/experiment_8": {
+      "files": 5,
+      "bytes": 3038
+    },
+    "results/final": {
+      "files": 21,
+      "bytes": 3400203
+    },
+    "results/runtime_scaling.csv": {
+      "files": 1,
+      "bytes": 767
+    },
+    "results/x01": {
+      "files": 14,
+      "bytes": 6173215
+    },
+    "results/x02": {
+      "files": 14,
+      "bytes": 43555
+    },
+    "results/x03": {
+      "files": 3,
+      "bytes": 436408
+    },
+    "results/x04": {
+      "files": 6,
+      "bytes": 35961
+    }
+  },
+  "source_tests_configs_and_fitted_artifacts_preserved": true,
+  "git_history_rewritten": false,
+  "validation": {
+    "runtime_smoke": {
+      "http_api": true,
+      "simulation_step": true,
+      "built_in_detector_demos_loaded": 4,
+      "fitted_fixture_models_loaded": 4,
+      "all_required_fixtures_present": true,
+      "source_tests_configs_and_models_unchanged": true
+    },
+    "pytest_passed": 616,
+    "pytest_failed": 9,
+    "failure_causes": [
+      "8 existing disk-budget guards: host filesystem usage above 90%",
+      "1 recorded-fixture runtime metadata mismatch: packaged Linux environment versus current macOS environment"
+    ],
+    "missing_file_failures": false
+  }
+}

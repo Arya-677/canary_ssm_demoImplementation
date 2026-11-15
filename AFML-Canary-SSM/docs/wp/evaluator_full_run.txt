@@ -1,0 +1,136 @@
+{"generator": "research", "endpoint": "latent_effect", "role": "threshold-calibration", "completed": 100, "total": 2000}
+{"generator": "research", "endpoint": "latent_effect", "role": "threshold-calibration", "completed": 200, "total": 2000}
+{"generator": "research", "endpoint": "latent_effect", "role": "threshold-calibration", "completed": 300, "total": 2000}
+{"generator": "research", "endpoint": "latent_effect", "role": "threshold-calibration", "completed": 400, "total": 2000}
+{"generator": "research", "endpoint": "latent_effect", "role": "threshold-calibration", "completed": 500, "total": 2000}
+{"generator": "research", "endpoint": "latent_effect", "role": "threshold-calibration", "completed": 600, "total": 2000}
+{"generator": "research", "endpoint": "latent_effect", "role": "threshold-calibration", "completed": 700, "total": 2000}
+{"generator": "research", "endpoint": "latent_effect", "role": "threshold-calibration", "completed": 800, "total": 2000}
+{"generator": "research", "endpoint": "latent_effect", "role": "threshold-calibration", "completed": 900, "total": 2000}
+{"generator": "research", "endpoint": "latent_effect", "role": "threshold-calibration", "completed": 1000, "total": 2000}
+{"generator": "research", "endpoint": "latent_effect", "role": "threshold-calibration", "completed": 1100, "total": 2000}
+{"generator": "research", "endpoint": "latent_effect", "role": "threshold-calibration", "completed": 1200, "total": 2000}
+{"generator": "research", "endpoint": "latent_effect", "role": "threshold-calibration", "completed": 1300, "total": 2000}
+{"generator": "research", "endpoint": "latent_effect", "role": "threshold-calibration", "completed": 1400, "total": 2000}
+{"generator": "research", "endpoint": "latent_effect", "role": "threshold-calibration", "completed": 1500, "total": 2000}
+{"generator": "research", "endpoint": "latent_effect", "role": "threshold-calibration", "completed": 1600, "total": 2000}
+{"generator": "research", "endpoint": "latent_effect", "role": "threshold-calibration", "completed": 1700, "total": 2000}
+{"generator": "research", "endpoint": "latent_effect", "role": "threshold-calibration", "completed": 1800, "total": 2000}
+{"generator": "research", "endpoint": "latent_effect", "role": "threshold-calibration", "completed": 1900, "total": 2000}
+{"generator": "research", "endpoint": "latent_effect", "role": "threshold-calibration", "completed": 2000, "total": 2000}
+{"generator": "research", "endpoint": "latent_effect", "role": "null-validation", "completed": 100, "total": 2000}
+{"generator": "research", "endpoint": "latent_effect", "role": "null-validation", "completed": 200, "total": 2000}
+{"generator": "research", "endpoint": "latent_effect", "role": "null-validation", "completed": 300, "total": 2000}
+{"generator": "research", "endpoint": "latent_effect", "role": "null-validation", "completed": 400, "total": 2000}
+{"generator": "research", "endpoint": "latent_effect", "role": "null-validation", "completed": 500, "total": 2000}
+{"generator": "research", "endpoint": "latent_effect", "role": "null-validation", "completed": 600, "total": 2000}
+{"generator": "research", "endpoint": "latent_effect", "role": "null-validation", "completed": 700, "total": 2000}
+{"generator": "research", "endpoint": "latent_effect", "role": "null-validation", "completed": 800, "total": 2000}
+{"generator": "research", "endpoint": "latent_effect", "role": "null-validation", "completed": 900, "total": 2000}
+{"generator": "research", "endpoint": "latent_effect", "role": "null-validation", "completed": 1000, "total": 2000}
+{"generator": "research", "endpoint": "latent_effect", "role": "null-validation", "completed": 1100, "total": 2000}
+{"generator": "research", "endpoint": "latent_effect", "role": "null-validation", "completed": 1200, "total": 2000}
+{"generator": "research", "endpoint": "latent_effect", "role": "null-validation", "completed": 1300, "total": 2000}
+{"generator": "research", "endpoint": "latent_effect", "role": "null-validation", "completed": 1400, "total": 2000}
+{"generator": "research", "endpoint": "latent_effect", "role": "null-validation", "completed": 1500, "total": 2000}
+{"generator": "research", "endpoint": "latent_effect", "role": "null-validation", "completed": 1600, "total": 2000}
+{"generator": "research", "endpoint": "latent_effect", "role": "null-validation", "completed": 1700, "total": 2000}
+{"generator": "research", "endpoint": "latent_effect", "role": "null-validation", "completed": 1800, "total": 2000}
+{"generator": "research", "endpoint": "latent_effect", "role": "null-validation", "completed": 1900, "total": 2000}
+{"generator": "research", "endpoint": "latent_effect", "role": "null-validation", "completed": 2000, "total": 2000}
+{"generator": "world", "endpoint": "release_latency", "role": "threshold-calibration", "completed": 100, "total": 2000}
+{"generator": "world", "endpoint": "release_latency", "role": "threshold-calibration", "completed": 200, "total": 2000}
+{"generator": "world", "endpoint": "release_latency", "role": "threshold-calibration", "completed": 300, "total": 2000}
+{"generator": "world", "endpoint": "release_latency", "role": "threshold-calibration", "completed": 400, "total": 2000}
+{"generator": "world", "endpoint": "release_latency", "role": "threshold-calibration", "completed": 500, "total": 2000}
+{"generator": "world", "endpoint": "release_latency", "role": "threshold-calibration", "completed": 600, "total": 2000}
+{"generator": "world", "endpoint": "release_latency", "role": "threshold-calibration", "completed": 700, "total": 2000}
+{"generator": "world", "endpoint": "release_latency", "role": "threshold-calibration", "completed": 800, "total": 2000}
+{"generator": "world", "endpoint": "release_latency", "role": "threshold-calibration", "completed": 900, "total": 2000}
+{"generator": "world", "endpoint": "release_latency", "role": "threshold-calibration", "completed": 1000, "total": 2000}
+{"generator": "world", "endpoint": "release_latency", "role": "threshold-calibration", "completed": 1100, "total": 2000}
+{"generator": "world", "endpoint": "release_latency", "role": "threshold-calibration", "completed": 1200, "total": 2000}
+{"generator": "world", "endpoint": "release_latency", "role": "threshold-calibration", "completed": 1300, "total": 2000}
+{"generator": "world", "endpoint": "release_latency", "role": "threshold-calibration", "completed": 1400, "total": 2000}
+{"generator": "world", "endpoint": "release_latency", "role": "threshold-calibration", "completed": 1500, "total": 2000}
+{"generator": "world", "endpoint": "release_latency", "role": "threshold-calibration", "completed": 1600, "total": 2000}
+{"generator": "world", "endpoint": "release_latency", "role": "threshold-calibration", "completed": 1700, "total": 2000}
+{"generator": "world", "endpoint": "release_latency", "role": "threshold-calibration", "completed": 1800, "total": 2000}
+{"generator": "world", "endpoint": "release_latency", "role": "threshold-calibration", "completed": 1900, "total": 2000}
+{"generator": "world", "endpoint": "release_latency", "role": "threshold-calibration", "completed": 2000, "total": 2000}
+{"generator": "world", "endpoint": "release_latency", "role": "null-validation", "completed": 100, "total": 2000}
+{"generator": "world", "endpoint": "release_latency", "role": "null-validation", "completed": 200, "total": 2000}
+{"generator": "world", "endpoint": "release_latency", "role": "null-validation", "completed": 300, "total": 2000}
+{"generator": "world", "endpoint": "release_latency", "role": "null-validation", "completed": 400, "total": 2000}
+{"generator": "world", "endpoint": "release_latency", "role": "null-validation", "completed": 500, "total": 2000}
+{"generator": "world", "endpoint": "release_latency", "role": "null-validation", "completed": 600, "total": 2000}
+{"generator": "world", "endpoint": "release_latency", "role": "null-validation", "completed": 700, "total": 2000}
+{"generator": "world", "endpoint": "release_latency", "role": "null-validation", "completed": 800, "total": 2000}
+{"generator": "world", "endpoint": "release_latency", "role": "null-validation", "completed": 900, "total": 2000}
+{"generator": "world", "endpoint": "release_latency", "role": "null-validation", "completed": 1000, "total": 2000}
+{"generator": "world", "endpoint": "release_latency", "role": "null-validation", "completed": 1100, "total": 2000}
+{"generator": "world", "endpoint": "release_latency", "role": "null-validation", "completed": 1200, "total": 2000}
+{"generator": "world", "endpoint": "release_latency", "role": "null-validation", "completed": 1300, "total": 2000}
+{"generator": "world", "endpoint": "release_latency", "role": "null-validation", "completed": 1400, "total": 2000}
+{"generator": "world", "endpoint": "release_latency", "role": "null-validation", "completed": 1500, "total": 2000}
+{"generator": "world", "endpoint": "release_latency", "role": "null-validation", "completed": 1600, "total": 2000}
+{"generator": "world", "endpoint": "release_latency", "role": "null-validation", "completed": 1700, "total": 2000}
+{"generator": "world", "endpoint": "release_latency", "role": "null-validation", "completed": 1800, "total": 2000}
+{"generator": "world", "endpoint": "release_latency", "role": "null-validation", "completed": 1900, "total": 2000}
+{"generator": "world", "endpoint": "release_latency", "role": "null-validation", "completed": 2000, "total": 2000}
+{"generator": "world", "endpoint": "infrastructure", "role": "threshold-calibration", "completed": 100, "total": 2000}
+{"generator": "world", "endpoint": "infrastructure", "role": "threshold-calibration", "completed": 200, "total": 2000}
+{"generator": "world", "endpoint": "infrastructure", "role": "threshold-calibration", "completed": 300, "total": 2000}
+{"generator": "world", "endpoint": "infrastructure", "role": "threshold-calibration", "completed": 400, "total": 2000}
+{"generator": "world", "endpoint": "infrastructure", "role": "threshold-calibration", "completed": 500, "total": 2000}
+{"generator": "world", "endpoint": "infrastructure", "role": "threshold-calibration", "completed": 600, "total": 2000}
+{"generator": "world", "endpoint": "infrastructure", "role": "threshold-calibration", "completed": 700, "total": 2000}
+{"generator": "world", "endpoint": "infrastructure", "role": "threshold-calibration", "completed": 800, "total": 2000}
+{"generator": "world", "endpoint": "infrastructure", "role": "threshold-calibration", "completed": 900, "total": 2000}
+{"generator": "world", "endpoint": "infrastructure", "role": "threshold-calibration", "completed": 1000, "total": 2000}
+{"generator": "world", "endpoint": "infrastructure", "role": "threshold-calibration", "completed": 1100, "total": 2000}
+{"generator": "world", "endpoint": "infrastructure", "role": "threshold-calibration", "completed": 1200, "total": 2000}
+{"generator": "world", "endpoint": "infrastructure", "role": "threshold-calibration", "completed": 1300, "total": 2000}
+{"generator": "world", "endpoint": "infrastructure", "role": "threshold-calibration", "completed": 1400, "total": 2000}
+{"generator": "world", "endpoint": "infrastructure", "role": "threshold-calibration", "completed": 1500, "total": 2000}
+{"generator": "world", "endpoint": "infrastructure", "role": "threshold-calibration", "completed": 1600, "total": 2000}
+{"generator": "world", "endpoint": "infrastructure", "role": "threshold-calibration", "completed": 1700, "total": 2000}
+{"generator": "world", "endpoint": "infrastructure", "role": "threshold-calibration", "completed": 1800, "total": 2000}
+{"generator": "world", "endpoint": "infrastructure", "role": "threshold-calibration", "completed": 1900, "total": 2000}
+{"generator": "world", "endpoint": "infrastructure", "role": "threshold-calibration", "completed": 2000, "total": 2000}
+{"generator": "world", "endpoint": "infrastructure", "role": "null-validation", "completed": 100, "total": 2000}
+{"generator": "world", "endpoint": "infrastructure", "role": "null-validation", "completed": 200, "total": 2000}
+{"generator": "world", "endpoint": "infrastructure", "role": "null-validation", "completed": 300, "total": 2000}
+{"generator": "world", "endpoint": "infrastructure", "role": "null-validation", "completed": 400, "total": 2000}
+{"generator": "world", "endpoint": "infrastructure", "role": "null-validation", "completed": 500, "total": 2000}
+{"generator": "world", "endpoint": "infrastructure", "role": "null-validation", "completed": 600, "total": 2000}
+{"generator": "world", "endpoint": "infrastructure", "role": "null-validation", "completed": 700, "total": 2000}
+{"generator": "world", "endpoint": "infrastructure", "role": "null-validation", "completed": 800, "total": 2000}
+{"generator": "world", "endpoint": "infrastructure", "role": "null-validation", "completed": 900, "total": 2000}
+{"generator": "world", "endpoint": "infrastructure", "role": "null-validation", "completed": 1000, "total": 2000}
+{"generator": "world", "endpoint": "infrastructure", "role": "null-validation", "completed": 1100, "total": 2000}
+{"generator": "world", "endpoint": "infrastructure", "role": "null-validation", "completed": 1200, "total": 2000}
+{"generator": "world", "endpoint": "infrastructure", "role": "null-validation", "completed": 1300, "total": 2000}
+{"generator": "world", "endpoint": "infrastructure", "role": "null-validation", "completed": 1400, "total": 2000}
+{"generator": "world", "endpoint": "infrastructure", "role": "null-validation", "completed": 1500, "total": 2000}
+{"generator": "world", "endpoint": "infrastructure", "role": "null-validation", "completed": 1600, "total": 2000}
+{"generator": "world", "endpoint": "infrastructure", "role": "null-validation", "completed": 1700, "total": 2000}
+{"generator": "world", "endpoint": "infrastructure", "role": "null-validation", "completed": 1800, "total": 2000}
+{"generator": "world", "endpoint": "infrastructure", "role": "null-validation", "completed": 1900, "total": 2000}
+{"generator": "world", "endpoint": "infrastructure", "role": "null-validation", "completed": 2000, "total": 2000}
+{
+  "study_id": "truth-separated-replay-v2-linux-rebuild",
+  "B": 2000,
+  "n_validation": 2000,
+  "freeze_hash": "d3d98788033eb70ca8798f02f8be0a65b5cc7a7daadae32fa8fde9c4b37124d1",
+  "gates": {
+    "PASS": 29,
+    "FAIL": 8
+  },
+  "diagnostic_rows": {
+    "research": 242,
+    "world": 572
+  },
+  "final_test_materialized": false,
+  "comparative_efficacy_claim": false
+}

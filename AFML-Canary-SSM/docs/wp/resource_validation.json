@@ -1,0 +1,82 @@
+{
+  "scope": "chunk 03: healthy bounded resource world; no detector benchmark",
+  "source_archive": "canary_ssm_engine_chunk02.zip",
+  "source_sha256": "6cd8bfe8118e3fa232ba85bcb20b7331fc00fbfea551bba8e6e4ac7d9b3473fa",
+  "fixture_gate": {
+    "generator_id": "world-resources-v1",
+    "synthetic": true,
+    "checks": {
+      "bounds": true,
+      "request_conservation": true,
+      "replay": true,
+      "load_raises_cpu": true,
+      "load_raises_memory": true,
+      "load_raises_queue_and_latency": true,
+      "overload_drops_reported": true,
+      "recovery_drains_queue": true
+    },
+    "passed": true,
+    "ticks_per_scenario": 120
+  },
+  "replay_verified": {
+    "low_load": true,
+    "increased_load": true,
+    "recovery": true,
+    "static_clock": true
+  },
+  "focused_tests": {
+    "command": "python -m pytest -q tests/test_resources.py tests/test_engine.py tests/test_topology.py",
+    "result": "127 passed in 4.18s"
+  },
+  "full_suite": {
+    "command": "python -m pytest -q",
+    "returncode": 1,
+    "stdout": "........................................................................ [ 30%]\n.................................F...................................... [ 61%]\n........................................................................ [ 92%]\n..................                                                       [100%]\n=================================== FAILURES ===================================\n_____________________ test_experiment7_legacy_reproduction _____________________\n\ntmp_path = PosixPath('/private/var/folders/07/q406h8k55vv26lgdz2hsxj280000gn/T/pytest-of-pranavmenon/pytest-8/test_experiment7_legacy_reprod0')\n\n    @pytest.mark.slow\n    def test_experiment7_legacy_reproduction(tmp_path):\n        from canary_ssm.studies import study_regime\n>       man = study_regime.run(\n            model_dir=ROOT / \"data_audit\" / \"model_pooled_dev\",\n            out_dir=tmp_path / \"reg\",\n            n_null=30,\n            n_harm=10,\n            allow_frozen=True,\n            legacy_seeds=True,\n            workers=1,\n        )\n\ntests/test_p1_protocol.py:203: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \ncanary_ssm/studies/study_regime.py:110: in run\n    _, mcfg, mh = load_models(model_dir)\n                  ^^^^^^^^^^^^^^^^^^^^^^\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nmodel_dir = PosixPath('/Users/pranavmenon/Documents/Codex/2026-11-14/new-chat-5/work/canary_ssm_demoImplementation-main/data_audit/model_pooled_dev')\ncache_dir = None\n\n    def load_models(\n        model_dir: Path,\n        cache_dir: Path | None = None,\n    ) -> tuple[Models, dict, str]:\n        model_dir = Path(model_dir)\n        for need in (\"model_config.json\", \"nuisance_main.json\"):\n            if not (model_dir / need).exists():\n>               raise FileNotFoundError(f\"missing model artifact {need} in {model_dir}\")\nE               FileNotFoundError: missing model artifact model_config.json in /Users/pranavmenon/Documents/Codex/2026-11-14/new-chat-5/work/canary_ssm_demoImplementation-main/data_audit/model_pooled_dev\n\ncanary_ssm/experiments.py:1161: FileNotFoundError\n=========================== short test summary info ============================\nFAILED tests/test_p1_protocol.py::test_experiment7_legacy_reproduction - File...\n1 failed, 233 passed in 70.13s (0:01:10)\n",
+    "stderr": ""
+  },
+  "current_resource_manifest": {
+    "config_hash": "c4c7d672ed9a179fe45476d59e6d67546320221248848a035bec76b349eb830c",
+    "engine_sha256": "2f4774e764b3d7f7b64cd917c0e396c72200350e0a2311a591fc0b6c58227027",
+    "python": "3.14.7 (main, Aug  5 2026, 10:29:49) [Clang 21.0.0 (clang-2100.1.1.101)]",
+    "numpy": "2.5.4",
+    "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+    "git": "not recorded by clock kernel",
+    "phase_adapter": "resources-v1",
+    "resource_sha256": "b065191b6d988b917f022d702b39a8509030dcf8e330d6f8bb7c3c71824d503e"
+  },
+  "notes": [
+    "Final docstrings/import cleanup did not change behavior; all artifacts were regenerated afterward.",
+    "Known legacy reproduction test lacks the model file excluded from the supplied ZIP."
+  ],
+  "file_sha256": {
+    "canary_ssm/resources.py": "b065191b6d988b917f022d702b39a8509030dcf8e330d6f8bb7c3c71824d503e",
+    "canary_ssm/resource_report.py": "a456ce2db1ecb658ef014ba626bb9dea90b2361df0ac84536e7f12251daaf96f",
+    "canary_ssm/engine.py": "2f4774e764b3d7f7b64cd917c0e396c72200350e0a2311a591fc0b6c58227027",
+    "canary_ssm/cli.py": "cd4e72b4ed9bad8294d842cdf7b6be1689f28c4b075863178fa7234ae60389a8",
+    "configs/world_low_load.yaml": "30182afb5c15ba5dc9f15a10ae03ee874329ca6185521c2736ba460ee5d86268",
+    "configs/world_increased_load.yaml": "8bde5e614b69d2d2fb5d4505cbc6b1b8f4b373949789e143561db30918d5aebf",
+    "configs/world_recovery.yaml": "8711862cda91585934384ab30dc77ffc199e319f0f8c05b1ccbff4b34cefc954",
+    "tests/test_resources.py": "22499e14db98741d688b8f716b93f72877d5e867c4dfe62b0df2194c830928fe",
+    "README.md": "866473f8fc47292f1037c7514ca0145744f62fa55b9926d782a14525a4ac4ff7",
+    "docs/resources.md": "d74e03ab3c5d9913116c400b7a30dd79c79e86f8e2ed5b59687c5e691e0fe694",
+    "docs/engine.md": "cd2c14233f703dff35a9033f61921a1a00165bd49de0232cc8013e69dc6c9dba",
+    "docs/topology.md": "45270f7bf6c06ec59f1567f8f7bf681339cfb9df63c7e2ef536b1999d43dd893",
+    "docs/implementation_status.md": "ef7e2fc78675501790e3c80c916ca005174b67bc09143aaaf4533000452f3184",
+    "docs/wp/RESOURCES-03.md": "fd62e331bf65dedcb47af7c7d4c210ebaea635cf7a4adf52a9316ca0f57bec73",
+    "examples/world_clock_100_ticks.json": "e7f4456cdf22473750dbd0f817de74f92640bfe86368d599ec9ea74fe79f3e0b",
+    "examples/resource_world/fixture_checks.json": "074f1dd6a36dd58944f91c6e61025691d6f470d394df40b015524c6f85e1cf13",
+    "examples/resource_world/increased_load/hosts.csv": "330ffa311a2f5e4dedf0ded81fa76fa5a7b85658286084e5df95686f43c4b454",
+    "examples/resource_world/increased_load/run.json": "7c3f5d7bae53d75650bd4ed3d4d872764a95756de35de024f89066bad2848429",
+    "examples/resource_world/increased_load/services.csv": "2b93d03270999349719173fa82c1149babe95fd240c72f7a32c3acdb6a7d06f4",
+    "examples/resource_world/increased_load/traces.png": "95544725675d4fb5169c4dd7a079ca76270bd00d35b7610eea2421906d391b63",
+    "examples/resource_world/low_load/hosts.csv": "4c19777db199f6894b3db275617ccb4ab473212c0d52a9fdb4fcd363fa6d0a41",
+    "examples/resource_world/low_load/run.json": "b05a5eb86ac46e30b80e581ee8a4a88c46507020f9d24caba29719b94c0ddb89",
+    "examples/resource_world/low_load/services.csv": "6fd8bb556e4a28dcb34a97c5ee41e218c0335e93a7b5d70a282f8f38548d6267",
+    "examples/resource_world/low_load/traces.png": "4e23ef0106bc9782ac21c2bd58f192b6561fc72c57f3cf041c5923a7657a0f67",
+    "examples/resource_world/recovery/hosts.csv": "c929d3b613ebb03982547eda30c390153c2b170fcf8be53b741d6218fa6f23ca",
+    "examples/resource_world/recovery/run.json": "4841aa4276e584c4a31749899b0ff18686d5dae73ae8fca508eb38cb37d2fcfe",
+    "examples/resource_world/recovery/services.csv": "9057abc136bee9002943c37bc971efc279d72a0d255aa0e0b5f68134965337e2",
+    "examples/resource_world/recovery/traces.png": "f88fdc505fe90b842073260656385a308ad98b02276635891cd38e88950254cb",
+    "examples/resource_world/summary.csv": "6493f6a3ffc9739ab033dc3caf563f51fdcf675d58842a2392b15a9adbf20cd7"
+  }
+}

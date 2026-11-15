@@ -1,0 +1,119 @@
+{
+  "checkpoint": "detector-dashboard-v1",
+  "full_suite": {
+    "command": "python -m pytest -q",
+    "exit_code": 0,
+    "stdout": "........................................................................ [ 15%]\n........................................................................ [ 30%]\n........................................................................ [ 45%]\n........................................................................ [ 60%]\n........................................................................ [ 75%]\n........................................................................ [ 90%]\n................................................                         [100%]\n=============================== warnings summary ===============================\n../../../../../../opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/anyio/pytest_plugin.py:14\n  /opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/anyio/pytest_plugin.py:14: PytestRemovedIn10Warning: _pytest.python.CallSpec2 has been renamed to CallSpec.\n  The CallSpec2 alias will be removed in pytest 10.\n  Update imports to use CallSpec instead.\n  See https://docs.pytest.org/en/stable/deprecations.html#callspec2-renamed\n    from _pytest.python import CallSpec2\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n480 passed, 1 warning in 76.83s (0:01:16)\n",
+    "stderr": "",
+    "elapsed_seconds": 78.11100363300011
+  },
+  "focused_suite": {
+    "command": "python -m pytest -q tests/test_monitor_feed.py tests/test_dashboard.py",
+    "result": "41 passed, 1 warning in 3.68s",
+    "exit_code": 0
+  },
+  "new_tests": 19,
+  "ui_dom_http": {
+    "passed": true,
+    "checks": {
+      "six_charts": true,
+      "three_same_replay_effect_lines": true,
+      "uncertainty_band": true,
+      "setting_switch": true,
+      "insufficient_distinct": true,
+      "stable_host_selection": true,
+      "explicit_run_identity": true,
+      "truth_separate": true,
+      "disconnect_reconnect": true,
+      "streamed_frames": true,
+      "stale_stream_recovery": true
+    },
+    "verification": "Node DOM-state harness plus real HTTP. Browser visual verification unavailable."
+  },
+  "fixture": {
+    "generator_id": "dashboard-algebraic-latency-v1",
+    "checks": {
+      "host-local": true,
+      "group-wide": true,
+      "shared-shock": true,
+      "recovery": true,
+      "positive_and_ordered_pooling": true
+    },
+    "passed": true,
+    "acceptance_only": true,
+    "seeds": {
+      "development": 30020100,
+      "smoke": 29020100
+    },
+    "roles": {
+      "fit": "development",
+      "display": "smoke"
+    },
+    "configuration_sha256": "494b9ff9621781c89d3dcc8ca4ff428e2bd1249bdd7370e88b9fbac98b18e858",
+    "development_selection_performed": false,
+    "calibration_performed": false,
+    "source_hashes": {
+      "detector_dashboard_fixture.py": "f9aa681e8d2d41b8b2bc6120ea22c90bf959ef66e81cdacc98b20bf3fc2c827e",
+      "public_adjustment.py": "ab760029a37ee299f3648246b50d90a95e0db4e54fa4324663ec3dc114659e3b",
+      "public_filter.py": "85e21caabbf345b562c498519b028d4ea0a8ea9b8f09d5602780f74bf118a344",
+      "public_hierarchy.py": "d42b49d01bd327b3028bb25b094e109192df50233df68d49e77ca20874e04eef",
+      "monitor_feed.py": "8cb8ebef4d593d5bcc68a1acd952073bfb468f541d2e1fa0dc0e2a5a6364cc4e"
+    },
+    "git_commit": null,
+    "source_kind": "extracted_archive",
+    "machine": {
+      "system": "Linux",
+      "architecture": "x86_64"
+    },
+    "versions": {
+      "python": "3.12.14",
+      "numpy": "2.3.5",
+      "scipy": "1.17.0"
+    },
+    "elapsed_seconds": 1.653376359000049
+  },
+  "stream_cli": {
+    "exit_code": 0,
+    "stdout": "{\"frames_sent\": 3, \"source\": \"saved detector outputs streamed by external producer\", \"run_id\": \"detector-replay-01\"}\n",
+    "frames": 3,
+    "world_tick": 0
+  },
+  "javascript_syntax_exit_codes": {
+    "app.js": 0,
+    "detectors.js": 0,
+    "check_detector_ui.mjs": 0
+  },
+  "visual_verification": {
+    "status": "unverified",
+    "reason": "Cloud browser could not reach isolated local preview; local Chromium could not start in this runtime."
+  },
+  "initial_environment_failures": [
+    "Runtime-bound recorded snapshot had old Python/NumPy/platform provenance; regenerated with documented recipe, no test changed.",
+    "Reporting dependency tabulate missing; installed declared report extra dependency; full suite then passed."
+  ],
+  "calibrated": false,
+  "automatic_engine_inference": false,
+  "benchmark": null,
+  "preservation": {
+    "passed": true,
+    "original_file_count": 681,
+    "changed_original_files": [
+      "README.md",
+      "canary_ssm/dashboard.py",
+      "canary_ssm/web/app.js",
+      "canary_ssm/web/index.html",
+      "canary_ssm/web/recorded_snapshot.json",
+      "canary_ssm/web/styles.css",
+      "docs/DESIGN_DECISIONS.md",
+      "docs/gap_audit.md",
+      "docs/implementation_status.md"
+    ],
+    "all_existing_tests_models_and_examples_preserved": true,
+    "all_existing_inference_simulator_modules_preserved": true,
+    "recorded_world_snapshot_changes_only_runtime_provenance": [
+      "python",
+      "numpy",
+      "platform"
+    ]
+  }
+}

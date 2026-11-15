@@ -1,0 +1,11 @@
+{
+  "study_id": "truth-separated-replay-v2-linux-rebuild",
+  "freeze_hash": "d3d98788033eb70ca8798f02f8be0a65b5cc7a7daadae32fa8fde9c4b37124d1",
+  "audits_completed": 3,
+  "diagnostic_gates": {
+    "PASS": 29,
+    "FAIL": 8
+  },
+  "final_test_materialized": false,
+  "original_tests_preserved": true
+}

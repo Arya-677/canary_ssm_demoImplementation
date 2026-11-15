@@ -1,0 +1,9 @@
+# Static phase adapters only. 10000 is the registry's first smoke seed.
+topology_file: world_interactive.yaml
+engine:
+  seed: 10000
+  tick_seconds: 1
+  events:
+    - {event_id: baseline-marker, at_tick: 1, action: marker}
+    - {event_id: maintenance, at_tick: 25, action: set_host_lifecycle, host_id: host-01-01, lifecycle: maintenance}
+    - {event_id: ready, at_tick: 30, action: set_host_lifecycle, host_id: host-01-01, lifecycle: ready}

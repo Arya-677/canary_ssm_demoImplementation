@@ -1,0 +1,28 @@
+import vm from 'node:vm';
+import fs from 'node:fs/promises';
+import assert from 'node:assert/strict';
+import {webcrypto} from 'node:crypto';
+const base=process.argv[2]??'http://127.0.0.1:8784',out=process.argv[3],elements=new Map();
+const e=id=>{if(!elements.has(id))elements.set(id,{id,textContent:'',innerHTML:'',className:'',disabled:false,hidden:false,value:'',files:[],listeners:{},addEventListener(n,f){this.listeners[n]=f;}});return elements.get(id);};
+const document={getElementById:e,addEventListener(){}};
+const context=vm.createContext({document,URLSearchParams,location:{search:''},performance:{now:()=>100},Date,console,crypto:webcrypto,AbortSignal,
+  fetch:(url,options)=>fetch(new URL(url,base),options),setInterval:()=>0,setTimeout:()=>0,Uint8Array,btoa:s=>Buffer.from(s,'binary').toString('base64')});
+vm.runInContext(await fs.readFile(new URL('../canary_ssm/web/app.js',import.meta.url),'utf8'),context);
+const run=s=>vm.runInContext(s,context);
+await run('fetchState()');await run('fetchCatalog()');
+e('manifest-release-id').value='ui-release';e('manifest-service').value='demo-service';e('manifest-version').value='3.0.0';e('manifest-author').value='ui-test';
+e('manifest-cpu').value='2';e('manifest-memory').value='.25';e('manifest-error').value='.1';e('manifest-delay').value='1500';
+await e('build-release-manifest').listeners.click();let registration=JSON.parse(e('release-manifest-json').value);
+assert.equal(registration.behavior_manifest.profiles.length,4);
+await e('register-manifest').listeners.click();
+assert.match(e('command-status').textContent,/Immutable version registered/);
+assert.match(e('release-info').innerHTML,/REGISTERED MANIFEST/);assert.match(e('release-info').innerHTML,/0.1 error probability/);assert.match(e('release-info').innerHTML,/1500 ms response wait/);
+const catalog=await(await fetch(base+'/api/releases')).json(),saved=catalog.releases.find(r=>r.release_id==='ui-release');
+assert.equal(saved.executed,false);assert.equal(saved.version,'3.0.0');
+registration.behavior_manifest.profiles[0].work_multiplier=3;e('release-manifest-json').value=JSON.stringify(registration);
+await e('register-manifest').listeners.click();assert.match(e('manifest-registration-status').textContent,/Immutable release_id/);
+assert.deepEqual((await(await fetch(base+'/api/releases')).json()).releases.find(r=>r.release_id==='ui-release'),saved);
+registration.release_id='ui-invalid';registration.version='3.0.1';registration.behavior_manifest.profiles[0].work_multiplier=99;e('release-manifest-json').value=JSON.stringify(registration);
+await e('register-manifest').listeners.click();assert.match(e('manifest-registration-status').textContent,/work_multiplier/);
+const result={passed:true,checks:{form_builds_four_profiles:true,backend_registration:true,immutable_hash_version:true,invalid_manifest_rejected:true,overwrite_rejected:true,manifest_label:true,unexecuted_source_label:true},verification:'Real HTTP plus DOM harness; browser composed registration separately inspected'};
+if(out)await fs.writeFile(out,JSON.stringify(result,null,2)+'\n');console.log(JSON.stringify(result,null,2));

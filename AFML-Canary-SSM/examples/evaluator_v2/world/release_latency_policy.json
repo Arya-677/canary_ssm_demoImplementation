@@ -1,0 +1,104 @@
+{
+  "generator": "world",
+  "endpoint": "release_latency",
+  "freeze_hash": "d3d98788033eb70ca8798f02f8be0a65b5cc7a7daadae32fa8fde9c4b37124d1",
+  "B": 2000,
+  "alpha": 0.05,
+  "policies": {
+    "adj_ewma": {
+      "B": 2000,
+      "k": 1901,
+      "alpha": 0.05,
+      "threshold": 262.87509363665436,
+      "ties_at_threshold": 1
+    },
+    "adj_cusum": {
+      "B": 2000,
+      "k": 1901,
+      "alpha": 0.05,
+      "threshold": 998.2093312735702,
+      "ties_at_threshold": 1
+    },
+    "topk_cusum": {
+      "B": 2000,
+      "k": 1901,
+      "alpha": 0.05,
+      "threshold": 1009.9291713738143,
+      "ties_at_threshold": 1
+    },
+    "independent": {
+      "B": 2000,
+      "k": 1901,
+      "alpha": 0.05,
+      "threshold": -0.0,
+      "ties_at_threshold": 308
+    },
+    "complete_pooling": {
+      "B": 2000,
+      "k": 1901,
+      "alpha": 0.05,
+      "threshold": -2.326661417713127e-171,
+      "ties_at_threshold": 1
+    },
+    "class_host": {
+      "B": 2000,
+      "k": 1901,
+      "alpha": 0.05,
+      "threshold": -0.0,
+      "ties_at_threshold": 312
+    },
+    "factor_off": {
+      "B": 2000,
+      "k": 1901,
+      "alpha": 0.05,
+      "threshold": -0.0,
+      "ties_at_threshold": 366
+    },
+    "persistence_off": {
+      "B": 2000,
+      "k": 1901,
+      "alpha": 0.05,
+      "threshold": -8.61808289647005e-100,
+      "ties_at_threshold": 1
+    },
+    "ar_off": {
+      "B": 2000,
+      "k": 1901,
+      "alpha": 0.05,
+      "threshold": -0.0,
+      "ties_at_threshold": 334
+    },
+    "weaker_pooling": {
+      "B": 2000,
+      "k": 1901,
+      "alpha": 0.05,
+      "threshold": -0.0,
+      "ties_at_threshold": 309
+    },
+    "stronger_pooling": {
+      "B": 2000,
+      "k": 1901,
+      "alpha": 0.05,
+      "threshold": -0.0,
+      "ties_at_threshold": 311
+    },
+    "rack_host": {
+      "B": 2000,
+      "k": 1901,
+      "alpha": 0.05,
+      "threshold": -0.0,
+      "ties_at_threshold": 311
+    },
+    "nested_global_rack_host": {
+      "B": 2000,
+      "k": 1901,
+      "alpha": 0.05,
+      "threshold": -0.0,
+      "ties_at_threshold": 107
+    }
+  },
+  "horizon": 60,
+  "calibration_ledger_sha256": "f7cf5ae7e84669f336459ae283e5c2baba2c6d0be609de16d53851cee2018586",
+  "null_distribution": "iid hash-selected uniform six-family mixture",
+  "policy_hash": "99b2831046af87851e44539fa2cc5c0636df4b61dec6db63471b26d8bdb4c468"
+}

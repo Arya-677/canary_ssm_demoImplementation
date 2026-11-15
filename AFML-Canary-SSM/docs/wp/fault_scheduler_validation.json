@@ -1,0 +1,332 @@
+{
+  "date": "2026-11-14",
+  "base_archive": "canary_ssm_console_faults.zip",
+  "base_sha256": "bf12bdf036e47a5c73a778a52de7140717826dbb4e4a87a6a85e29964513f285",
+  "environment": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+    "numpy": "2.3.5",
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.41"
+  },
+  "full_tests": {
+    "command": "python -m pytest -q",
+    "returncode": 0,
+    "stdout": "........................................................................ [ 22%]\n........................................................................ [ 45%]\n........................................................................ [ 67%]\n........................................................................ [ 90%]\n...............................                                          [100%]\n=============================== warnings summary ===============================\n../../../../../opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/anyio/pytest_plugin.py:14\n  /opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/anyio/pytest_plugin.py:14: PytestRemovedIn10Warning: _pytest.python.CallSpec2 has been renamed to CallSpec.\n  The CallSpec2 alias will be removed in pytest 10.\n  Update imports to use CallSpec instead.\n  See https://docs.pytest.org/en/stable/deprecations.html#callspec2-renamed\n    from _pytest.python import CallSpec2\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n319 passed, 1 warning in 59.99s\n",
+    "stderr": "",
+    "elapsed_seconds": 61.33287695400003
+  },
+  "fixture_checks": {
+    "resources": {
+      "generator_id": "world-resources-v1",
+      "synthetic": true,
+      "checks": {
+        "bounds": true,
+        "request_conservation": true,
+        "replay": true,
+        "load_raises_cpu": true,
+        "load_raises_memory": true,
+        "load_raises_queue_and_latency": true,
+        "overload_drops_reported": true,
+        "recovery_drains_queue": true
+      },
+      "passed": true,
+      "ticks_per_scenario": 120
+    },
+    "typed_faults": {
+      "fixtures": [
+        {
+          "kind": "cpu_throttle",
+          "checks": {
+            "deterministic_replay": true,
+            "before_available": true,
+            "recovered_available": true,
+            "memory_bounded": true,
+            "no_truth_in_telemetry": true,
+            "effect": true,
+            "scope": true,
+            "recovery": true
+          },
+          "passed": true
+        },
+        {
+          "kind": "memory_pressure",
+          "checks": {
+            "deterministic_replay": true,
+            "before_available": true,
+            "recovered_available": true,
+            "memory_bounded": true,
+            "no_truth_in_telemetry": true,
+            "effect": true,
+            "scope": true,
+            "recovery": true
+          },
+          "passed": true
+        },
+        {
+          "kind": "service_crash",
+          "checks": {
+            "deterministic_replay": true,
+            "before_available": true,
+            "recovered_available": true,
+            "memory_bounded": true,
+            "no_truth_in_telemetry": true,
+            "effect": true,
+            "scope": true,
+            "recovery": true
+          },
+          "passed": true
+        },
+        {
+          "kind": "network_degradation",
+          "checks": {
+            "deterministic_replay": true,
+            "before_available": true,
+            "recovered_available": true,
+            "memory_bounded": true,
+            "no_truth_in_telemetry": true,
+            "effect": true,
+            "scope": true,
+            "recovery": true
+          },
+          "passed": true
+        },
+        {
+          "kind": "demand_surge",
+          "checks": {
+            "deterministic_replay": true,
+            "before_available": true,
+            "recovered_available": true,
+            "memory_bounded": true,
+            "no_truth_in_telemetry": true,
+            "effect": true,
+            "scope": true,
+            "recovery": true
+          },
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    "console": {
+      "synthetic": true,
+      "ticks": 52,
+      "checks": {
+        "upload_never_executed": true,
+        "valid_allocation": true,
+        "candidate_retains_memory": true,
+        "controls_keep_healthy_memory": true,
+        "rack_effect_reaches_descendants": true,
+        "rollback_restores_versions": true,
+        "rollback_reclaims_retained_memory": true,
+        "detector_honest": true,
+        "public_packet_excludes_truth": true,
+        "verified_engine_replay": true,
+        "saved_run_import_matches": true,
+        "outcomes_saved": true
+      },
+      "passed": true
+    },
+    "background": {
+      "synthetic": true,
+      "scenarios": [
+        {
+          "scenario": "all_healthy",
+          "ticks": 100,
+          "events": 0,
+          "checks": {
+            "cooldowns": true,
+            "ranges": true,
+            "concurrency": true,
+            "event_budget": true,
+            "recovered": true,
+            "no_release_required": true,
+            "public_telemetry_excludes_schedule": true,
+            "replay": true,
+            "zero_faults": true
+          },
+          "passed": true
+        },
+        {
+          "scenario": "fixed",
+          "ticks": 100,
+          "events": 3,
+          "checks": {
+            "cooldowns": true,
+            "ranges": true,
+            "concurrency": true,
+            "event_budget": true,
+            "recovered": true,
+            "no_release_required": true,
+            "public_telemetry_excludes_schedule": true,
+            "replay": true,
+            "fixed_host_effect": true,
+            "fixed_rack_descendants": true,
+            "fixed_shared_demand": true
+          },
+          "passed": true
+        },
+        {
+          "scenario": "rates",
+          "ticks": 304,
+          "events": 43,
+          "checks": {
+            "cooldowns": true,
+            "ranges": true,
+            "concurrency": true,
+            "event_budget": true,
+            "recovered": true,
+            "no_release_required": true,
+            "public_telemetry_excludes_schedule": true,
+            "replay": true,
+            "all_rate_scopes_present": true
+          },
+          "passed": true
+        }
+      ],
+      "passed": true
+    }
+  },
+  "scheduler_ui_checks": {
+    "passed": true,
+    "checks": {
+      "developer_preview": true,
+      "rate_units_visible": true,
+      "enable_disable": true,
+      "toggle_does_not_resample": true,
+      "persisted_outcomes": true,
+      "public_truth_separation": true,
+      "stale_controls_disabled": true
+    },
+    "verification": "Node DOM-state harness with real HTTP API; not visual verification"
+  },
+  "existing_ui_checks": {
+    "checks": {
+      "topology_rendered": true,
+      "selected_host_backend_trace": true,
+      "controls_and_speed": true,
+      "refresh_reuses_run": true,
+      "stale_state": true,
+      "disconnect_reconnect_preserves_last_view": true,
+      "recorded_mode_has_no_engine_api_calls": true,
+      "no_frontend_simulator_or_detector": true
+    },
+    "passed": true,
+    "browser_layout_verified": false,
+    "verification": "Node DOM-state harness plus real local HTTP API; browser startup unavailable"
+  },
+  "replays": {
+    "passed": true,
+    "count": 13,
+    "artifacts": [
+      "examples/world_clock_100_ticks.json",
+      "examples/background_faults/all_healthy/run.json",
+      "examples/background_faults/fixed/run.json",
+      "examples/background_faults/rates/run.json",
+      "examples/console_demo/run.json",
+      "examples/faults/cpu_throttle/run.json",
+      "examples/faults/demand_surge/run.json",
+      "examples/faults/memory_pressure/run.json",
+      "examples/faults/network_degradation/run.json",
+      "examples/faults/service_crash/run.json",
+      "examples/resource_world/increased_load/run.json",
+      "examples/resource_world/low_load/run.json",
+      "examples/resource_world/recovery/run.json"
+    ]
+  },
+  "preview_command_exit_code": 0,
+  "fixed_world_run_and_replay_exit_code": 0,
+  "node_syntax_exit_code": 0,
+  "preservation_checks": {
+    "preexisting_tests_unchanged": true,
+    "preexisting_models_unchanged": true,
+    "inference_unchanged": true
+  },
+  "changed_original_files": [
+    "README.md",
+    "canary_ssm/cli.py",
+    "docs/DESIGN_DECISIONS.md",
+    "docs/implementation_status.md",
+    "canary_ssm/engine.py",
+    "examples/world_clock_100_ticks.json",
+    "examples/resource_world/increased_load/run.json",
+    "examples/resource_world/increased_load/traces.png",
+    "examples/resource_world/low_load/run.json",
+    "examples/resource_world/low_load/traces.png",
+    "examples/resource_world/recovery/run.json",
+    "examples/resource_world/recovery/traces.png",
+    "canary_ssm/dashboard.py",
+    "canary_ssm/web/index.html",
+    "canary_ssm/web/recorded_snapshot.json",
+    "canary_ssm/web/app.js",
+    "canary_ssm/operations.py",
+    "configs/world_console.yaml",
+    "docs/console.md",
+    "docs/faults.md",
+    "docs/gap_audit.md",
+    "examples/console_demo/canary_snapshot.json",
+    "examples/console_demo/developer_fault_truth.json",
+    "examples/console_demo/run.json",
+    "examples/faults/cpu_throttle/fault_truth.json",
+    "examples/faults/cpu_throttle/run.json",
+    "examples/faults/demand_surge/fault_truth.json",
+    "examples/faults/demand_surge/run.json",
+    "examples/faults/memory_pressure/fault_truth.json",
+    "examples/faults/memory_pressure/run.json",
+    "examples/faults/network_degradation/fault_truth.json",
+    "examples/faults/network_degradation/run.json",
+    "examples/faults/service_crash/fault_truth.json",
+    "examples/faults/service_crash/run.json"
+  ],
+  "new_files": [
+    "canary_ssm/fault_scheduler.py",
+    "canary_ssm/scheduler_fixtures.py",
+    "tests/test_fault_scheduler.py",
+    "scripts/check_scheduler_ui.mjs",
+    "configs/world_scheduler_all_healthy.yaml",
+    "configs/world_scheduler_fixed.yaml",
+    "configs/world_scheduler_rates.yaml",
+    "docs/fault_scheduler.md",
+    "docs/wp/FAULT-SCHEDULER.md",
+    "examples/background_faults/all_healthy/checks.json",
+    "examples/background_faults/all_healthy/developer_fault_truth.json",
+    "examples/background_faults/all_healthy/hosts.csv",
+    "examples/background_faults/all_healthy/run.json",
+    "examples/background_faults/all_healthy/schedule_manifest.json",
+    "examples/background_faults/all_healthy/services.csv",
+    "examples/background_faults/fixed/checks.json",
+    "examples/background_faults/fixed/developer_fault_truth.json",
+    "examples/background_faults/fixed/hosts.csv",
+    "examples/background_faults/fixed/run.json",
+    "examples/background_faults/fixed/schedule_manifest.json",
+    "examples/background_faults/fixed/services.csv",
+    "examples/background_faults/fixture_checks.json",
+    "examples/background_faults/rates/checks.json",
+    "examples/background_faults/rates/developer_fault_truth.json",
+    "examples/background_faults/rates/hosts.csv",
+    "examples/background_faults/rates/run.json",
+    "examples/background_faults/rates/schedule_manifest.json",
+    "examples/background_faults/rates/services.csv"
+  ],
+  "source_sha256": {
+    "README.md": "465ab14e7e56035b08d2a95ae45a7474bce384b0a60d6740371632a3641f0989",
+    "canary_ssm/cli.py": "6e373e0c97a726cfa51d3791df1c63cb2ec3d80e56c34a87815d44f2e5acbdb8",
+    "canary_ssm/dashboard.py": "d313ee2890e00d9ffdd2d1b3a232790785b8eeb3672ec6642b62f25187e733fd",
+    "canary_ssm/engine.py": "0e339768919ae822beaa67375fa2b4e58182622594a62ee7408492bb9ede4ccf",
+    "canary_ssm/fault_scheduler.py": "88c844c46c7196860cfcd753ee9861eb2b8cf816dd5a0968f01fff1cb9846244",
+    "canary_ssm/operations.py": "7e06cc9281d9b0fbfa12543e1e48f65c15262c10ae71d2c9c6b1db9d5879ed57",
+    "canary_ssm/scheduler_fixtures.py": "5767181e38b0e6c0ed5a76c7e5891ac6ac58bc2340a5351c9e83fa2166c002b4",
+    "canary_ssm/web/app.js": "e4ebeffaf4f3daaa6f02743070b05564d1a99d4dac01703d86509b598ebffc47",
+    "canary_ssm/web/index.html": "936bb27a9b5f2e1a492a71877da91422c60edff392401cf2d99d0da9fb46a064",
+    "configs/world_console.yaml": "ca93b0b245ff62f9682dc0421b8b0909bbd491893ec903a02f2f6936a15e4ac3",
+    "configs/world_scheduler_all_healthy.yaml": "7e0a39cca2e2de191db3f0c8924ee58cf6f94efc83c16a82489ae642df1a0832",
+    "configs/world_scheduler_fixed.yaml": "20fa06174f1240fb3f094e2eb51d7b040027314f82eeb90f97cb548ebdb1cf17",
+    "configs/world_scheduler_rates.yaml": "1ab121195136642420c7539cc9d1ed29386fd4e1d9975a857593179a686223c3",
+    "docs/DESIGN_DECISIONS.md": "4cc1ad7cbf84a641854f41be2c1a3f1b96e8c71768c1810f7d39b2e6463e1c2a",
+    "docs/console.md": "9a9c41127f4df895d55b45f1cc17f5919c89e9bac53eed55af82f46c528d4488",
+    "docs/fault_scheduler.md": "7b5ab56842a0ef163fbd241980f68ca0516a537692a500cb5f95bcca4a7aed94",
+    "docs/faults.md": "26cfff9a7380e67c2950cd2a11d6abbe18e8ad9839208cdd46ccc5c227f699d3",
+    "docs/gap_audit.md": "2701d669aaff051e6c8174d3a26c3f8226b666adcc4b288b579619c0c9f128f4",
+    "docs/implementation_status.md": "3b2e03563a67986e3f5398b19746bcfa280025e7818d725713717d9132576b27",
+    "docs/wp/FAULT-SCHEDULER.md": "110e1d34a3b1d45713d34c30ad792c2681692d3e69d4ab26e3aca4d2f1bc456e",
+    "tests/test_fault_scheduler.py": "b38ae3080b07a7371f9d24ee473ff41735f510db80069fa11867c99b20583707"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "fixture_id": "integrated-console-example-v1",
+  "checks": {
+    "preview_matches_frozen_cohort": true,
+    "paused_example": true,
+    "manual_rollback": true,
+    "paused_replay_identical": true,
+    "recovered_replay_identical": true,
+    "honest_detector_state": true
+  },
+  "passed": true,
+  "scope": "Short manual workflow fixture; baseline is not a research-eligible detector preperiod. No inference or calibration results."
+}

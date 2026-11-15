@@ -1,0 +1,10 @@
+{
+  "group_by": "rack_id",
+  "variant_id": "demo-rack-host-v1",
+  "rho_g": 0.95,
+  "rho_h": 0.8,
+  "sd_g": 0.005,
+  "sd_h": 0.002,
+  "prior_group_sd": 0.03,
+  "prior_deviation_sd": 0.01
+}

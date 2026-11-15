@@ -1,0 +1,33 @@
+{
+  "verified": true,
+  "endpoints": [
+    {
+      "generator": "research",
+      "endpoint": "latent_effect",
+      "methods": 11,
+      "B": 2000,
+      "n": 2000,
+      "recomputed_from_raw_minute_scores": true
+    },
+    {
+      "generator": "world",
+      "endpoint": "release_latency",
+      "methods": 13,
+      "B": 2000,
+      "n": 2000,
+      "recomputed_from_raw_minute_scores": true
+    },
+    {
+      "generator": "world",
+      "endpoint": "infrastructure",
+      "methods": 13,
+      "B": 2000,
+      "n": 2000,
+      "recomputed_from_raw_minute_scores": true
+    }
+  ],
+  "independent_null_rollouts": 12000,
+  "frozen_sources_match": true,
+  "thresholds_and_gates_recomputed": true,
+  "final_test_materialized": false
+}

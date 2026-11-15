@@ -1,0 +1,89 @@
+{
+  "checkpoint": "nested-global-rack-host-v1",
+  "full_suite": {
+    "command": "python -m pytest -q",
+    "exit_code": 0,
+    "stdout": "........................................................................ [ 15%]\n........................................................................ [ 31%]\n........................................................................ [ 46%]\n........................................................................ [ 62%]\n........................................................................ [ 78%]\n........................................................................ [ 93%]\n.............................                                            [100%]\n461 passed in 82.20s (0:01:22)\n",
+    "stderr": "",
+    "elapsed_seconds": 83.43799925000349
+  },
+  "focused_suite": {
+    "command": "python -m pytest -q tests/test_nested_hierarchy.py",
+    "exit_code": 0,
+    "result": "16 passed in 0.79s"
+  },
+  "new_tests": 16,
+  "acceptance_manifest": {
+    "fixture_id": "nested-gaussian-acceptance-v1",
+    "acceptance_only": true,
+    "new_random_seeds": [],
+    "checks": {
+      "basis_unequal": true,
+      "reconstruction_unequal": true,
+      "basis_single_rack": true,
+      "reconstruction_single_rack": true,
+      "basis_singletons": true,
+      "reconstruction_singletons": true,
+      "basis_one_host": true,
+      "reconstruction_one_host": true,
+      "diagnostic_only": true,
+      "separate_new_protocol": true,
+      "noise_excluded_from_risk": true
+    },
+    "passed": true,
+    "configuration": {
+      "enabled": true,
+      "variant_id": "nested-global-rack-host-v1",
+      "group_by": "rack_id",
+      "rho_global": 0.95,
+      "rho_rack": 0.9,
+      "rho_host": 0.8,
+      "sd_global": 0.005,
+      "sd_rack": 0.003,
+      "sd_host": 0.002,
+      "prior_global_sd": 0.03,
+      "prior_rack_sd": 0.02,
+      "prior_host_sd": 0.01
+    },
+    "configuration_sha256": "5d4ecce37f8e4cb54e062bc3e933a2873a2b67dee29ccce4d35925c4e2e80bbf",
+    "public_input_sha256": "e3fff6677be89804ee34e0cbb3182eecd7cc084ccf89b11a12fb1542216f637e",
+    "protocol_fingerprint": "0718deaafabef9ac9830f977145b01402a512b3749888230fe0ddedd659214e3",
+    "git_commit": null,
+    "source_kind": "extracted_archive",
+    "source_hashes": {
+      "nested_hierarchy.py": "5bb6f80dbf625d7f61d7fccf7a9bb9c5f858a62c8db29da02771151985c44132",
+      "nested_fixture.py": "4d16546bc772d0eb662ff5ee3a84af4e6e3851aa352456fe2542b50bc200dc22",
+      "public_filter.py": "85e21caabbf345b562c498519b028d4ea0a8ea9b8f09d5602780f74bf118a344"
+    },
+    "versions": {
+      "python": "3.14.7",
+      "numpy": "2.5.4",
+      "scipy": "1.18.1"
+    },
+    "machine": {
+      "system": "Darwin",
+      "architecture": "arm64"
+    },
+    "elapsed_seconds": 0.07072158299706643,
+    "failures": [],
+    "development_selection_performed": false,
+    "calibration_performed": false
+  },
+  "max_basis_error_from_csv": 3.3306690738754696e-16,
+  "cli_matches_saved_public_fixture": true,
+  "development_selection_performed": false,
+  "calibration_performed": false,
+  "dashboard_connected": false,
+  "benchmark": null,
+  "preservation": {
+    "passed": true,
+    "original_files": 665,
+    "changed_original_files": [
+      "README.md",
+      "docs/DESIGN_DECISIONS.md",
+      "docs/gap_audit.md",
+      "docs/implementation_status.md"
+    ],
+    "all_existing_inference_simulator_tests_models_and_fixtures_preserved": true
+  }
+}

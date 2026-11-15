@@ -1,0 +1,70 @@
+{
+  "purpose": "New frozen audit/reproduction fixture; not the original historical model",
+  "command": "python -m scripts.prepare_legacy_audit_fixture",
+  "recipe": "configs/legacy_audit_fixture.yaml",
+  "recipe_sha256": "bc7f42cadd88a243c98d141872444415bf4653a9ea6d9c575a8717811c2370d3",
+  "data_role": "dev",
+  "n_healthy_dev_rollouts": 30,
+  "dev_manifest": {
+    "role": "dev",
+    "regime": null,
+    "n_pairs": 30,
+    "per_family": null,
+    "family_counts": {
+      "plain": 60
+    },
+    "paired": true,
+    "seed_purpose": "dev",
+    "seed_base": 1000000,
+    "seed_ranges": [
+      {
+        "purpose": "dev",
+        "family_idx": 0,
+        "count": 30,
+        "min_seed": 1000000,
+        "max_seed": 1000029
+      }
+    ],
+    "config_hash": "c02c4f75c3776b28",
+    "config": {
+      "sim": {
+        "sd_host": 0.02
+      },
+      "roles": {
+        "dev": {
+          "pairs": 30
+        }
+      },
+      "families": [
+        {
+          "name": "plain",
+          "overrides": {}
+        }
+      ]
+    },
+    "config_path": "/Users/pranavmenon/Documents/Codex/2026-11-14/new-chat-5/work/canary_ssm_demoImplementation-main/configs/legacy_audit_fixture.yaml",
+    "n_rollouts": 60,
+    "manifest_only": false,
+    "compact": false,
+    "disk_free_bytes": 30003150848
+  },
+  "frozen": true,
+  "beta_mode": "pooled_dev",
+  "source_sha256": {
+    "canary_ssm/simulate.py": "550892a070e36f22c283b4d3e90c28183facae2c88b280154febf1b4f60f255b",
+    "canary_ssm/schema.py": "d2fb818401c7dec91283f8ad55199ef92b9657cad0e29d06f5487767bddf67e2",
+    "canary_ssm/factor.py": "b0f002cf82805a183d1cb131eb91d5ed90a551b0216164e25007352092ea9e6b",
+    "canary_ssm/preprocess.py": "d29f319ed27f02bb1765429fada81ac0c7dc10adf050fbaefffbd5d38d6dfacc",
+    "canary_ssm/experiments.py": "f7428193c67bc6f307a825e164af7b839c9ed3ccbabd721025a38c3355669d59",
+    "canary_ssm/seeds.py": "ea207b005978283a5caec4d6aa27c2352a8f7d29c74101cd46bd0b563a9515a9"
+  },
+  "files_sha256": {
+    "dev_selection.csv": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "dev_selection_v2.0.csv": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "edge_selection.csv": "fc706ead125513d99df695d55accf24655e09327bd5f0560bda322f78ee5deee",
+    "fit_failures.csv": "7284472932ed863246cc10b3e0cffabe11f0b70b3e446c0148435a44950791d9",
+    "grids_used_v2.0.yaml": "46d8324c06f9e5ac8455a142576d174f8d0e168bb7857765a84c66ed03d7cb0a",
+    "model_config.json": "34331b0e7adc9943cb20031e126c19b7ab02f5cc247b567345f8abc3f89ef42f",
+    "nuisance_main.json": "02bcf71ec4cc08536f71e011d4008c1db685e613efe998b99a01c60789bcf47a"
+  }
+}

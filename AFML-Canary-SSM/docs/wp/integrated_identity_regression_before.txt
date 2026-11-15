@@ -1,0 +1,22 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+______ test_imported_run_identity_matches_engine_after_refresh_and_reset _______
+
+controller = <canary_ssm.dashboard.WorldController object at 0x10fd3f4d0>
+
+    def test_imported_run_identity_matches_engine_after_refresh_and_reset(controller):
+        source=WorldController(load_engine_config(ROOT/'configs/world_console.yaml'),run_id='imported-backend-run')
+        try:
+            command(source,'step')
+            saved=source.export_run()
+            command(controller,'load_run',{'run':saved})
+>           assert controller.packet()['run_id']==controller.engine.run_id=='imported-backend-run'
+E           AssertionError: assert '1eb3bbb85417...900b5497226da' == 'imported-backend-run'
+E             
+E             - imported-backend-run
+E             + 1eb3bbb8541748f1a2b900b5497226da
+
+tests/test_integrated_console.py:115: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_integrated_console.py::test_imported_run_identity_matches_engine_after_refresh_and_reset
+1 failed in 0.93s

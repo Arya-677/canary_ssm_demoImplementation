@@ -1,0 +1,54 @@
+topology_file: world_interactive.yaml
+engine:
+  seed: 10000
+  tick_seconds: 1
+  resources:
+    host_baseline_memory_mb: 256
+    shared_jitter: 0.1
+    max_arrivals_per_service_tick: 100000
+    trace_max_rows: 20000
+    services:
+    - service_id: demo-service
+      arrival_rate_rps: 400
+      work_core_seconds: 0.05
+      queue_limit: 300
+      baseline_memory_mb: 128
+      temporary_mb_per_request: 2
+      initial_retained_memory_mb: 0
+    traffic: []
+  demo: true
+  background_faults:
+    enabled: true
+    mode: fixed
+    seed: 10000
+    horizon_ticks: 100
+    max_concurrent: 2
+    fixed_cooldown_seconds: 2
+    fixed_events:
+    - fault_id: fixed-host-cpu
+      kind: cpu_throttle
+      scope: host
+      target: host-01-01
+      start_tick: 3
+      duration: 3
+      severity: 0.8
+      seed: 10000
+      recovery: restore
+    - fault_id: fixed-rack-link
+      kind: network_degradation
+      scope: rack
+      target: rack-02
+      start_tick: 5
+      duration: 4
+      severity: 0.9
+      seed: 10000
+      recovery: restore
+    - fault_id: fixed-demand
+      kind: demand_surge
+      scope: world
+      target: world
+      start_tick: 12
+      duration: 5
+      severity: 0.6
+      seed: 10000
+      recovery: restore

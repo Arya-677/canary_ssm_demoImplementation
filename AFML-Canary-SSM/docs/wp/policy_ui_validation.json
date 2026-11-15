@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "checks": {
+    "large_artifact_HTTP_attach": true,
+    "default_auto_rollback_off": true,
+    "before_exposure_commit": true,
+    "calibrated_producer_input_status": true,
+    "automatic_pause_reason": true,
+    "manual_rollback": true,
+    "closed_evaluation_label": true,
+    "incompatible_conditional_demo_rejected": true,
+    "raw_saved_run_browser_replay": true,
+    "policy_decisions_restore_from_checkpoint": true
+  },
+  "scope": "Actual HTTP/DOM commands with hand-authored controller contract null scores; these inputs are not physical-world calibration evidence. No browser layout claim."
+}

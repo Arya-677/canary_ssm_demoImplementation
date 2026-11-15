@@ -1,0 +1,200 @@
+data_centers:
+- data_center_id: scenario-dc
+racks:
+- rack_id: rack-a
+  data_center_id: scenario-dc
+- rack_id: rack-b
+  data_center_id: scenario-dc
+hosts:
+- host_id: host-a-0
+  rack_id: rack-a
+  data_center_id: scenario-dc
+  class_id: 0
+  capacity:
+    cpu_cores: 2
+    memory_mb: 1024
+    disk_mb: 10000
+    network_mbps: 100
+  usage:
+    cpu_cores: 0.0
+    memory_mb: 0.0
+    disk_mb: 0.0
+    network_mbps: 0.0
+  lifecycle: ready
+- host_id: host-a-1
+  rack_id: rack-a
+  data_center_id: scenario-dc
+  class_id: 1
+  capacity:
+    cpu_cores: 2
+    memory_mb: 1024
+    disk_mb: 10000
+    network_mbps: 100
+  usage:
+    cpu_cores: 0.0
+    memory_mb: 0.0
+    disk_mb: 0.0
+    network_mbps: 0.0
+  lifecycle: ready
+- host_id: host-a-2
+  rack_id: rack-a
+  data_center_id: scenario-dc
+  class_id: 0
+  capacity:
+    cpu_cores: 2
+    memory_mb: 1024
+    disk_mb: 10000
+    network_mbps: 100
+  usage:
+    cpu_cores: 0.0
+    memory_mb: 0.0
+    disk_mb: 0.0
+    network_mbps: 0.0
+  lifecycle: ready
+- host_id: host-a-3
+  rack_id: rack-a
+  data_center_id: scenario-dc
+  class_id: 1
+  capacity:
+    cpu_cores: 2
+    memory_mb: 1024
+    disk_mb: 10000
+    network_mbps: 100
+  usage:
+    cpu_cores: 0.0
+    memory_mb: 0.0
+    disk_mb: 0.0
+    network_mbps: 0.0
+  lifecycle: ready
+- host_id: host-a-4
+  rack_id: rack-a
+  data_center_id: scenario-dc
+  class_id: 0
+  capacity:
+    cpu_cores: 2
+    memory_mb: 1024
+    disk_mb: 10000
+    network_mbps: 100
+  usage:
+    cpu_cores: 0.0
+    memory_mb: 0.0
+    disk_mb: 0.0
+    network_mbps: 0.0
+  lifecycle: ready
+- host_id: host-b-0
+  rack_id: rack-b
+  data_center_id: scenario-dc
+  class_id: 0
+  capacity:
+    cpu_cores: 2
+    memory_mb: 1024
+    disk_mb: 10000
+    network_mbps: 100
+  usage:
+    cpu_cores: 0.0
+    memory_mb: 0.0
+    disk_mb: 0.0
+    network_mbps: 0.0
+  lifecycle: ready
+- host_id: host-b-1
+  rack_id: rack-b
+  data_center_id: scenario-dc
+  class_id: 1
+  capacity:
+    cpu_cores: 2
+    memory_mb: 1024
+    disk_mb: 10000
+    network_mbps: 100
+  usage:
+    cpu_cores: 0.0
+    memory_mb: 0.0
+    disk_mb: 0.0
+    network_mbps: 0.0
+  lifecycle: ready
+- host_id: host-b-2
+  rack_id: rack-b
+  data_center_id: scenario-dc
+  class_id: 0
+  capacity:
+    cpu_cores: 2
+    memory_mb: 1024
+    disk_mb: 10000
+    network_mbps: 100
+  usage:
+    cpu_cores: 0.0
+    memory_mb: 0.0
+    disk_mb: 0.0
+    network_mbps: 0.0
+  lifecycle: ready
+- host_id: host-b-3
+  rack_id: rack-b
+  data_center_id: scenario-dc
+  class_id: 1
+  capacity:
+    cpu_cores: 2
+    memory_mb: 1024
+    disk_mb: 10000
+    network_mbps: 100
+  usage:
+    cpu_cores: 0.0
+    memory_mb: 0.0
+    disk_mb: 0.0
+    network_mbps: 0.0
+  lifecycle: ready
+- host_id: host-b-4
+  rack_id: rack-b
+  data_center_id: scenario-dc
+  class_id: 0
+  capacity:
+    cpu_cores: 2
+    memory_mb: 1024
+    disk_mb: 10000
+    network_mbps: 100
+  usage:
+    cpu_cores: 0.0
+    memory_mb: 0.0
+    disk_mb: 0.0
+    network_mbps: 0.0
+  lifecycle: ready
+replicas:
+- service_id: scenario-service
+  replica_id: replica-a-0
+  host_id: host-a-0
+  release_id: healthy-v1
+- service_id: scenario-service
+  replica_id: replica-a-1
+  host_id: host-a-1
+  release_id: healthy-v1
+- service_id: scenario-service
+  replica_id: replica-a-2
+  host_id: host-a-2
+  release_id: healthy-v1
+- service_id: scenario-service
+  replica_id: replica-a-3
+  host_id: host-a-3
+  release_id: healthy-v1
+- service_id: scenario-service
+  replica_id: replica-a-4
+  host_id: host-a-4
+  release_id: healthy-v1
+- service_id: scenario-service
+  replica_id: replica-b-0
+  host_id: host-b-0
+  release_id: healthy-v1
+- service_id: scenario-service
+  replica_id: replica-b-1
+  host_id: host-b-1
+  release_id: healthy-v1
+- service_id: scenario-service
+  replica_id: replica-b-2
+  host_id: host-b-2
+  release_id: healthy-v1
+- service_id: scenario-service
+  replica_id: replica-b-3
+  host_id: host-b-3
+  release_id: healthy-v1
+- service_id: scenario-service
+  replica_id: replica-b-4
+  host_id: host-b-4
+  release_id: healthy-v1
+schema_version: 1

@@ -1,0 +1,195 @@
+........................................................................ [ 12%]
+........................................................................ [ 25%]
+........................................................................ [ 37%]
+.....................................F.................................. [ 50%]
+........................................................................ [ 62%]
+........................................................................ [ 75%]
+........................................................................ [ 87%]
+.......................................................................  [100%]
+=================================== FAILURES ===================================
+_____________________ test_experiment7_legacy_reproduction _____________________
+
+name = 'tabulate', extra = '', errors = 'raise', min_version = None
+
+    def import_optional_dependency(
+        name: str,
+        extra: str = "",
+        errors: str = "raise",
+        min_version: str | None = None,
+    ):
+        """
+        Import an optional dependency.
+    
+        By default, if a dependency is missing an ImportError with a nice
+        message will be raised. If a dependency is present, but too old,
+        we raise.
+    
+        Parameters
+        ----------
+        name : str
+            The module name.
+        extra : str
+            Additional text to include in the ImportError message.
+        errors : str {'raise', 'warn', 'ignore'}
+            What to do when a dependency is not found or its version is too old.
+    
+            * raise : Raise an ImportError
+            * warn : Only applicable when a module's version is to old.
+              Warns that the version is too old and returns None
+            * ignore: If the module is not installed, return None, otherwise,
+              return the module, even if the version is too old.
+              It's expected that users validate the version locally when
+              using ``errors="ignore"`` (see. ``io/html.py``)
+        min_version : str, default None
+            Specify a minimum version that is different from the global pandas
+            minimum version required.
+        Returns
+        -------
+        maybe_module : Optional[ModuleType]
+            The imported module, when found and the version is correct.
+            None is returned when the package is not found and `errors`
+            is False, or when the package's version is too old and `errors`
+            is ``'warn'`` or ``'ignore'``.
+        """
+        assert errors in {"warn", "raise", "ignore"}
+    
+        package_name = INSTALL_MAPPING.get(name)
+        install_name = package_name if package_name is not None else name
+    
+        msg = (
+            f"Missing optional dependency '{install_name}'. {extra} "
+            f"Use pip or conda to install {install_name}."
+        )
+        try:
+>           module = importlib.import_module(name)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/pandas/compat/_optional.py:135: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'tabulate', package = None
+
+    def import_module(name, package=None):
+        """Import a module.
+    
+        The 'package' argument is required when performing a relative import. It
+        specifies the package to use as the anchor point from which to resolve the
+        relative import to an absolute import.
+    
+        """
+        level = 0
+        if name.startswith('.'):
+            if not package:
+                raise TypeError("the 'package' argument is required to perform a "
+                                f"relative import for {name!r}")
+            for character in name:
+                if character != '.':
+                    break
+                level += 1
+>       return _bootstrap._gcd_import(name[level:], package, level)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       ModuleNotFoundError: No module named 'tabulate'
+
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/importlib/__init__.py:90: ModuleNotFoundError
+
+During handling of the above exception, another exception occurred:
+
+tmp_path = PosixPath('/tmp/pytest-of-agent/pytest-1/test_experiment7_legacy_reprod0')
+
+    @pytest.mark.slow
+    def test_experiment7_legacy_reproduction(tmp_path):
+        from canary_ssm.studies import study_regime
+>       man = study_regime.run(
+            model_dir=ROOT / "data_audit" / "model_pooled_dev",
+            out_dir=tmp_path / "reg",
+            n_null=30,
+            n_harm=10,
+            allow_frozen=True,
+            legacy_seeds=True,
+            workers=1,
+        )
+
+tests/test_p1_protocol.py:203: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+canary_ssm/studies/study_regime.py:228: in run
+    ("Regime Selector Confusion Matrix", df_conf.round(4).to_markdown(index=False)),
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/pandas/util/_decorators.py:333: in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/pandas/core/frame.py:2983: in to_markdown
+    tabulate = import_optional_dependency("tabulate")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'tabulate', extra = '', errors = 'raise', min_version = None
+
+    def import_optional_dependency(
+        name: str,
+        extra: str = "",
+        errors: str = "raise",
+        min_version: str | None = None,
+    ):
+        """
+        Import an optional dependency.
+    
+        By default, if a dependency is missing an ImportError with a nice
+        message will be raised. If a dependency is present, but too old,
+        we raise.
+    
+        Parameters
+        ----------
+        name : str
+            The module name.
+        extra : str
+            Additional text to include in the ImportError message.
+        errors : str {'raise', 'warn', 'ignore'}
+            What to do when a dependency is not found or its version is too old.
+    
+            * raise : Raise an ImportError
+            * warn : Only applicable when a module's version is to old.
+              Warns that the version is too old and returns None
+            * ignore: If the module is not installed, return None, otherwise,
+              return the module, even if the version is too old.
+              It's expected that users validate the version locally when
+              using ``errors="ignore"`` (see. ``io/html.py``)
+        min_version : str, default None
+            Specify a minimum version that is different from the global pandas
+            minimum version required.
+        Returns
+        -------
+        maybe_module : Optional[ModuleType]
+            The imported module, when found and the version is correct.
+            None is returned when the package is not found and `errors`
+            is False, or when the package's version is too old and `errors`
+            is ``'warn'`` or ``'ignore'``.
+        """
+        assert errors in {"warn", "raise", "ignore"}
+    
+        package_name = INSTALL_MAPPING.get(name)
+        install_name = package_name if package_name is not None else name
+    
+        msg = (
+            f"Missing optional dependency '{install_name}'. {extra} "
+            f"Use pip or conda to install {install_name}."
+        )
+        try:
+            module = importlib.import_module(name)
+        except ImportError:
+            if errors == "raise":
+>               raise ImportError(msg)
+E               ImportError: Missing optional dependency 'tabulate'.  Use pip or conda to install tabulate.
+
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/pandas/compat/_optional.py:138: ImportError
+=============================== warnings summary ===============================
+../../../../../../opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/anyio/pytest_plugin.py:14
+  /opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/anyio/pytest_plugin.py:14: PytestRemovedIn10Warning: _pytest.python.CallSpec2 has been renamed to CallSpec.
+  The CallSpec2 alias will be removed in pytest 10.
+  Update imports to use CallSpec instead.
+  See https://docs.pytest.org/en/stable/deprecations.html#callspec2-renamed
+    from _pytest.python import CallSpec2
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/test_p1_protocol.py::test_experiment7_legacy_reproduction - Impo...
+1 failed, 574 passed, 1 warning in 114.29s (0:01:54)

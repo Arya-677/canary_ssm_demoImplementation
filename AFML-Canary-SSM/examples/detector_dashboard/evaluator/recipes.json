@@ -1,0 +1,67 @@
+{
+  "evaluator_only": true,
+  "not_a_benchmark": true,
+  "generator_id": "dashboard-algebraic-latency-v1",
+  "recipes": [
+    {
+      "artifact_id": "demo-01",
+      "scenario": "host-local",
+      "targets": [
+        "host-01-01"
+      ],
+      "start_time": 5760.0,
+      "end_time_exclusive": null,
+      "log_latency_offset": 0.065
+    },
+    {
+      "artifact_id": "demo-02",
+      "scenario": "group-wide",
+      "targets": [
+        "host-01-01",
+        "host-01-02"
+      ],
+      "start_time": 5760.0,
+      "end_time_exclusive": null,
+      "log_latency_offset": 0.065
+    },
+    {
+      "artifact_id": "demo-03",
+      "scenario": "shared-shock",
+      "targets": [
+        "host-01-01",
+        "host-01-02",
+        "host-01-03",
+        "host-01-04",
+        "host-01-05",
+        "host-02-01",
+        "host-02-02",
+        "host-02-03",
+        "host-02-04",
+        "host-02-05",
+        "host-03-01",
+        "host-03-02",
+        "host-03-03",
+        "host-03-04",
+        "host-03-05",
+        "host-04-01",
+        "host-04-02",
+        "host-04-03",
+        "host-04-04",
+        "host-04-05"
+      ],
+      "start_time": 5760.0,
+      "end_time_exclusive": 7560.0,
+      "log_latency_offset": 0.065
+    },
+    {
+      "artifact_id": "demo-04",
+      "scenario": "recovery",
+      "targets": [
+        "host-01-01"
+      ],
+      "start_time": 5760.0,
+      "end_time_exclusive": 6960.0,
+      "log_latency_offset": 0.065
+    }
+  ]
+}

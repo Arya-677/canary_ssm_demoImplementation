@@ -1,0 +1,90 @@
+{
+  "generator": "research",
+  "endpoint": "latent_effect",
+  "freeze_hash": "d3d98788033eb70ca8798f02f8be0a65b5cc7a7daadae32fa8fde9c4b37124d1",
+  "B": 2000,
+  "alpha": 0.05,
+  "policies": {
+    "adj_ewma": {
+      "B": 2000,
+      "k": 1901,
+      "alpha": 0.05,
+      "threshold": 5.49728851044102,
+      "ties_at_threshold": 1
+    },
+    "adj_cusum": {
+      "B": 2000,
+      "k": 1901,
+      "alpha": 0.05,
+      "threshold": 148.23500522269225,
+      "ties_at_threshold": 1
+    },
+    "topk_cusum": {
+      "B": 2000,
+      "k": 1901,
+      "alpha": 0.05,
+      "threshold": 280.64982753743544,
+      "ties_at_threshold": 1
+    },
+    "independent": {
+      "B": 2000,
+      "k": 1901,
+      "alpha": 0.05,
+      "threshold": -0.01736231674063574,
+      "ties_at_threshold": 1
+    },
+    "complete_pooling": {
+      "B": 2000,
+      "k": 1901,
+      "alpha": 0.05,
+      "threshold": -1.435353219112784,
+      "ties_at_threshold": 1
+    },
+    "class_host": {
+      "B": 2000,
+      "k": 1901,
+      "alpha": 0.05,
+      "threshold": -0.01126284061721745,
+      "ties_at_threshold": 1
+    },
+    "factor_off": {
+      "B": 2000,
+      "k": 1901,
+      "alpha": 0.05,
+      "threshold": -1.476283995383877e-29,
+      "ties_at_threshold": 1
+    },
+    "persistence_off": {
+      "B": 2000,
+      "k": 1901,
+      "alpha": 0.05,
+      "threshold": -0.02000719695908048,
+      "ties_at_threshold": 1
+    },
+    "ar_off": {
+      "B": 2000,
+      "k": 1901,
+      "alpha": 0.05,
+      "threshold": -0.0016744274239067773,
+      "ties_at_threshold": 1
+    },
+    "weaker_pooling": {
+      "B": 2000,
+      "k": 1901,
+      "alpha": 0.05,
+      "threshold": -0.004317699170539697,
+      "ties_at_threshold": 1
+    },
+    "stronger_pooling": {
+      "B": 2000,
+      "k": 1901,
+      "alpha": 0.05,
+      "threshold": -0.0127482686257893,
+      "ties_at_threshold": 1
+    }
+  },
+  "horizon": 120,
+  "calibration_ledger_sha256": "0929c59d0a30b7701dfb2580f1bf6852b28a29afb75764a322c41c675ff6e78e",
+  "null_distribution": "iid hash-selected uniform six-family mixture",
+  "policy_hash": "e84916724a8329bf1fa8fec80ee37084bf36c6892033e5672405f1cf92646f3a"
+}

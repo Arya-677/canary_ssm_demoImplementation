@@ -1,0 +1,293 @@
+{
+  "model_id": "development-frozen-control-adjustment-v1",
+  "feature_id": "public-logmean-log1pworkload-v1",
+  "policy": {
+    "policy_id": "research-eligibility-v1",
+    "group_by": "class_id",
+    "factor_rank": 1,
+    "min_canary_fraction": 0.8,
+    "min_controls": 3,
+    "min_pre_observations": 60,
+    "deviation_reason": ""
+  },
+  "host_ids": [
+    "h0",
+    "h1",
+    "h2",
+    "h3",
+    "h4",
+    "h5",
+    "h6",
+    "h7",
+    "h8",
+    "h9"
+  ],
+  "rack_ids": [
+    "a",
+    "a",
+    "a",
+    "a",
+    "a",
+    "b",
+    "b",
+    "b",
+    "b",
+    "b"
+  ],
+  "class_ids": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "groups": [
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0"
+  ],
+  "canary_ids": [
+    "h0",
+    "h1",
+    "h5",
+    "h6"
+  ],
+  "x_center": 2.0155549298601225,
+  "mu": [
+    5.0034675634359145,
+    5.003028077935246,
+    5.00319471757683,
+    5.002951294241669,
+    5.0027070895461865,
+    5.003371212535871,
+    5.003621047731214,
+    5.003883071814296,
+    5.0029107072511145,
+    5.003536441553741
+  ],
+  "beta": [
+    0.20067544565208298,
+    0.19689509028601135,
+    0.20215232683384415,
+    0.19971842825340405,
+    0.20195831662563207,
+    0.20123251184450652,
+    0.1909610514074653,
+    0.2102114062118003,
+    0.20658887618528263,
+    0.21627005973699207
+  ],
+  "loadings": [
+    0.0038684435043858517,
+    0.00751411546034048,
+    0.01179728684356175,
+    0.016015194543449983,
+    0.01861007738523172,
+    0.022784206653177153,
+    0.02673460706836472,
+    0.030811295200927662,
+    0.035811512526742494,
+    0.03932304090889683
+  ],
+  "control_variance": [
+    1e-08,
+    1e-08,
+    2.4484905233527892e-05,
+    2.9866055417581377e-05,
+    2.6162689272509008e-05,
+    1e-08,
+    1e-08,
+    2.0841165708028607e-05,
+    2.2633348740350988e-05,
+    2.3751356481969154e-05
+  ],
+  "scales": [
+    0.005440123978466224,
+    0.004490191715126631,
+    0.005088498204640376,
+    0.005796876548016764,
+    0.005544583723771948,
+    0.005110042370949653,
+    0.006175006068635771,
+    0.005782259364995359,
+    0.006659091139719146,
+    0.007387233863653863
+  ],
+  "noise": {
+    "0": {
+      "phi": 0.0076722655725085095,
+      "q": 0.005377072574344208,
+      "v": 0.00010000000000000009
+    }
+  },
+  "noise_diagnostics": {
+    "0": {
+      "fits": [
+        {
+          "init_phi": 0.2,
+          "nll": -5592.02535383935,
+          "success": true,
+          "boundary_hit": false,
+          "x": [
+            0.007672893446122726,
+            -5.225611464018323
+          ],
+          "status": 0,
+          "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+          "iterations": 8,
+          "function_evaluations": 33,
+          "bounds": [
+            [
+              -0.95,
+              0.99
+            ],
+            [
+              -9.210340371976182,
+              -1.6094379124341003
+            ]
+          ],
+          "white_sd_fixed": 0.0001
+        },
+        {
+          "init_phi": 0.6,
+          "nll": -5592.025353839361,
+          "success": true,
+          "boundary_hit": false,
+          "x": [
+            0.0076727747908606906,
+            -5.225611596073546
+          ],
+          "status": 0,
+          "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+          "iterations": 7,
+          "function_evaluations": 30,
+          "bounds": [
+            [
+              -0.95,
+              0.99
+            ],
+            [
+              -9.210340371976182,
+              -1.6094379124341003
+            ]
+          ],
+          "white_sd_fixed": 0.0001
+        },
+        {
+          "init_phi": 0.9,
+          "nll": -5592.025353839568,
+          "success": true,
+          "boundary_hit": false,
+          "x": [
+            0.0076722655725085095,
+            -5.225611184064316
+          ],
+          "status": 0,
+          "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+          "iterations": 8,
+          "function_evaluations": 36,
+          "bounds": [
+            [
+              -0.95,
+              0.99
+            ],
+            [
+              -9.210340371976182,
+              -1.6094379124341003
+            ]
+          ],
+          "white_sd_fixed": 0.0001
+        }
+      ],
+      "success": true,
+      "boundary_hit": false
+    }
+  },
+  "noise_fit_ok": true,
+  "factor_identified": true,
+  "development_control_counts": {
+    "0": 6
+  },
+  "workload_support": [
+    [
+      1.4098274901649113,
+      2.724029568216729
+    ],
+    [
+      1.4365957490758776,
+      2.7889171369805683
+    ],
+    [
+      1.3054909078406518,
+      2.7797231447089032
+    ],
+    [
+      1.0513112098515212,
+      2.8565084350655003
+    ],
+    [
+      1.1063520050564992,
+      2.963567187017555
+    ],
+    [
+      1.3324052158493371,
+      2.6721348591338243
+    ],
+    [
+      1.1066677529691782,
+      2.7883912842742253
+    ],
+    [
+      1.319995778422439,
+      2.7536104290949805
+    ],
+    [
+      1.0951451185973589,
+      2.780583255428962
+    ],
+    [
+      1.3662740968152005,
+      2.7009824475241615
+    ]
+  ],
+  "regression_flags": [
+    "ok",
+    "ok",
+    "ok",
+    "ok",
+    "ok",
+    "ok",
+    "ok",
+    "ok",
+    "ok",
+    "ok"
+  ],
+  "development_missing_control_entries": 0,
+  "development_lineage": [
+    {
+      "provenance_id": "algebraic-public-fixture-v1",
+      "role": "development",
+      "healthy_attestation": true,
+      "public_sha256": "178f6d01ad3d1517f43e93ef4319308ccd2b1d8e14154213d5787855b51710d2"
+    }
+  ],
+  "challenges": [
+    "background_control_contamination_possible",
+    "plain_weighted_projection_not_robust",
+    "frozen_regression_parameter_uncertainty_not_propagated",
+    "canary_loading_estimation_uncertainty_not_propagated"
+  ],
+  "artifact_sha256": "c2909d656e6d8f0e76ddf51503fcf265dadcc9b5b7ee6045d0128dc3eb7d126a"
+}

@@ -1,0 +1,54 @@
+topology_file: world_interactive.yaml
+engine:
+  seed: 10000
+  tick_seconds: 1
+  resources:
+    host_baseline_memory_mb: 256
+    shared_jitter: 0.1
+    max_arrivals_per_service_tick: 100000
+    trace_max_rows: 20000
+    services:
+    - service_id: demo-service
+      arrival_rate_rps: 400
+      work_core_seconds: 0.05
+      queue_limit: 300
+      baseline_memory_mb: 128
+      temporary_mb_per_request: 2
+      initial_retained_memory_mb: 0
+    traffic: []
+  demo: true
+  background_faults:
+    enabled: true
+    seed: 10000
+    mode: rates
+    horizon_ticks: 300
+    max_concurrent: 3
+    max_events: 100
+    rules:
+    - rule_id: host-cpu
+      kind: cpu_throttle
+      scope: host
+      rate_per_second: 0.005
+      severity_min: 0.4
+      severity_max: 0.8
+      duration_min_seconds: 3
+      duration_max_seconds: 8
+      cooldown_seconds: 20
+    - rule_id: rack-link
+      kind: network_degradation
+      scope: rack
+      rate_per_second: 0.01
+      severity_min: 0.5
+      severity_max: 0.9
+      duration_min_seconds: 4
+      duration_max_seconds: 10
+      cooldown_seconds: 25
+    - rule_id: shared-demand
+      kind: demand_surge
+      scope: world
+      rate_per_second: 0.005
+      severity_min: 0.2
+      severity_max: 0.5
+      duration_min_seconds: 5
+      duration_max_seconds: 12
+      cooldown_seconds: 30

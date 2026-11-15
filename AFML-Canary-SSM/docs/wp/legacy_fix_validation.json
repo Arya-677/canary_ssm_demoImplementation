@@ -1,0 +1,117 @@
+{
+  "scope": "repair missing legacy frozen audit fixture; no existing test/inference edits",
+  "source_archive": "canary_ssm_dashboard_chunk04.zip",
+  "source_sha256": "3dae1ccf5ff25d6b6992288548cc32ae55cf8eb1bb7f6166629bb81d04aa9444",
+  "focused_tests": {
+    "command": "python -m pytest -q tests/test_p1_protocol.py::test_experiment7_legacy_reproduction tests/test_legacy_audit_fixture.py",
+    "returncode": 0,
+    "stdout": "....                                                                     [100%]\n4 passed in 4.97s\n",
+    "stderr": ""
+  },
+  "full_suite": {
+    "command": "python -m pytest -q",
+    "returncode": 0,
+    "stdout": "........................................................................ [ 27%]\n........................................................................ [ 55%]\n........................................................................ [ 83%]\n...........................................                              [100%]\n259 passed in 71.71s (0:01:11)\n",
+    "stderr": ""
+  },
+  "fresh_archive_tests": {
+    "check": "focused tests from a newly extracted fixed ZIP",
+    "returncode": 0,
+    "stdout": "....                                                                     [100%]\n4 passed in 5.55s\n",
+    "stderr": ""
+  },
+  "ignore_checks": {
+    "data_audit/model_pooled_dev/model_config.json": false,
+    "data_audit/model_pooled_dev/nuisance_main.json": false,
+    "data_audit/model_pooled_dev/raw.npz": true,
+    "data_audit/dev/r1.npz": true,
+    "data_audit/audit_pooled_dev/report.csv": true
+  },
+  "generated_model_provenance": {
+    "purpose": "New frozen audit/reproduction fixture; not the original historical model",
+    "command": "python -m scripts.prepare_legacy_audit_fixture",
+    "recipe": "configs/legacy_audit_fixture.yaml",
+    "recipe_sha256": "bc7f42cadd88a243c98d141872444415bf4653a9ea6d9c575a8717811c2370d3",
+    "data_role": "dev",
+    "n_healthy_dev_rollouts": 30,
+    "dev_manifest": {
+      "role": "dev",
+      "regime": null,
+      "n_pairs": 30,
+      "per_family": null,
+      "family_counts": {
+        "plain": 60
+      },
+      "paired": true,
+      "seed_purpose": "dev",
+      "seed_base": 1000000,
+      "seed_ranges": [
+        {
+          "purpose": "dev",
+          "family_idx": 0,
+          "count": 30,
+          "min_seed": 1000000,
+          "max_seed": 1000029
+        }
+      ],
+      "config_hash": "c02c4f75c3776b28",
+      "config": {
+        "sim": {
+          "sd_host": 0.02
+        },
+        "roles": {
+          "dev": {
+            "pairs": 30
+          }
+        },
+        "families": [
+          {
+            "name": "plain",
+            "overrides": {}
+          }
+        ]
+      },
+      "config_path": "/Users/pranavmenon/Documents/Codex/2026-11-14/new-chat-5/work/canary_ssm_demoImplementation-main/configs/legacy_audit_fixture.yaml",
+      "n_rollouts": 60,
+      "manifest_only": false,
+      "compact": false,
+      "disk_free_bytes": 30003150848
+    },
+    "frozen": true,
+    "beta_mode": "pooled_dev",
+    "source_sha256": {
+      "canary_ssm/simulate.py": "550892a070e36f22c283b4d3e90c28183facae2c88b280154febf1b4f60f255b",
+      "canary_ssm/schema.py": "d2fb818401c7dec91283f8ad55199ef92b9657cad0e29d06f5487767bddf67e2",
+      "canary_ssm/factor.py": "b0f002cf82805a183d1cb131eb91d5ed90a551b0216164e25007352092ea9e6b",
+      "canary_ssm/preprocess.py": "d29f319ed27f02bb1765429fada81ac0c7dc10adf050fbaefffbd5d38d6dfacc",
+      "canary_ssm/experiments.py": "f7428193c67bc6f307a825e164af7b839c9ed3ccbabd721025a38c3355669d59",
+      "canary_ssm/seeds.py": "ea207b005978283a5caec4d6aa27c2352a8f7d29c74101cd46bd0b563a9515a9"
+    },
+    "files_sha256": {
+      "dev_selection.csv": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "dev_selection_v2.0.csv": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "edge_selection.csv": "fc706ead125513d99df695d55accf24655e09327bd5f0560bda322f78ee5deee",
+      "fit_failures.csv": "7284472932ed863246cc10b3e0cffabe11f0b70b3e446c0148435a44950791d9",
+      "grids_used_v2.0.yaml": "46d8324c06f9e5ac8455a142576d174f8d0e168bb7857765a84c66ed03d7cb0a",
+      "model_config.json": "34331b0e7adc9943cb20031e126c19b7ab02f5cc247b567345f8abc3f89ef42f",
+      "nuisance_main.json": "02bcf71ec4cc08536f71e011d4008c1db685e613efe998b99a01c60789bcf47a"
+    }
+  },
+  "file_sha256": {
+    ".gitignore": "4e629098c0f094b77a927b45c390f5d6b475f3f2a4e7eba931b3d02dfc2744f7",
+    "README.md": "9706d453f3e90b9f4181e40414ffc6caf7ed2ef4e34a6ea2e6ddd4ea05273bd7",
+    "docs/implementation_status.md": "e24d2d443b4e388257a1419c803d5dfa3d8065f13e610caddca3d15dd847239e",
+    "configs/legacy_audit_fixture.yaml": "bc7f42cadd88a243c98d141872444415bf4653a9ea6d9c575a8717811c2370d3",
+    "scripts/prepare_legacy_audit_fixture.py": "f894dd356c0c0a65cfa57a2b4286b671cdea504cc5c03610bdea9ad2d35dd87a",
+    "tests/test_legacy_audit_fixture.py": "f339d9bc104fb588449049c9a9feb0e4aec59b5e60ec60097cf96510aa5af4ee",
+    "docs/wp/LEGACY-FIX.md": "9f99d6e95934f83f1ba2d3afd3d14bdf2e62eddcc6ec368bd7f4773a6519d9cc",
+    "data_audit/model_pooled_dev/dev_selection.csv": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "data_audit/model_pooled_dev/dev_selection_v2.0.csv": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "data_audit/model_pooled_dev/edge_selection.csv": "fc706ead125513d99df695d55accf24655e09327bd5f0560bda322f78ee5deee",
+    "data_audit/model_pooled_dev/fit_failures.csv": "7284472932ed863246cc10b3e0cffabe11f0b70b3e446c0148435a44950791d9",
+    "data_audit/model_pooled_dev/generation_manifest.json": "93a87d06c7ac45f668d9ab8c6563407686c351fa124b37b1a861153f30301602",
+    "data_audit/model_pooled_dev/grids_used_v2.0.yaml": "46d8324c06f9e5ac8455a142576d174f8d0e168bb7857765a84c66ed03d7cb0a",
+    "data_audit/model_pooled_dev/model_config.json": "34331b0e7adc9943cb20031e126c19b7ab02f5cc247b567345f8abc3f89ef42f",
+    "data_audit/model_pooled_dev/nuisance_main.json": "02bcf71ec4cc08536f71e011d4008c1db685e613efe998b99a01c60789bcf47a"
+  }
+}

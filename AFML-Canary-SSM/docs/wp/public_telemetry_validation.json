@@ -1,0 +1,354 @@
+{
+  "date": "2026-11-14",
+  "base_archive": "canary_ssm_background_scheduler.zip",
+  "base_archive_sha256": "7e1f66cd83e64723aa3eaa09ff9e8f063bbe05355b754f3ea8f825f95ac81b3d",
+  "full_tests": {
+    "command": "python -m pytest -q",
+    "exit_code": 0,
+    "stdout": "........................................................................ [ 20%]\n........................................................................ [ 40%]\n........................................................................ [ 60%]\n........................................................................ [ 80%]\n........................................................................ [100%]\n360 passed in 83.92s (0:01:23)\n",
+    "stderr": "",
+    "elapsed_seconds": 85.14297566599998
+  },
+  "telemetry_tests": {
+    "passed": 41,
+    "elapsed_seconds": 4.6
+  },
+  "focused_previous": {
+    "passed": 122,
+    "elapsed_seconds": 8.19,
+    "note": "Before two additive offline-slice cases; final full suite covers all"
+  },
+  "fixture": {
+    "synthetic": true,
+    "ticks": 240,
+    "public_records": 3600,
+    "monitoring_rows": 80,
+    "checks": {
+      "first_minute_late_and_masked": true,
+      "second_minute_missing": true,
+      "recovery_fresh": true,
+      "duplicates_deduplicated": true,
+      "late_records_received_but_excluded": true,
+      "earlier_decision_unchanged": true,
+      "offline_online_inputs_equal": true,
+      "no_truth_in_public": true,
+      "evaluator_labels_separate": true,
+      "replay": true,
+      "latency_statistics_consistent": true
+    },
+    "passed": true
+  },
+  "prior_fixtures": {
+    "resources": {
+      "generator_id": "world-resources-v1",
+      "synthetic": true,
+      "checks": {
+        "bounds": true,
+        "request_conservation": true,
+        "replay": true,
+        "load_raises_cpu": true,
+        "load_raises_memory": true,
+        "load_raises_queue_and_latency": true,
+        "overload_drops_reported": true,
+        "recovery_drains_queue": true
+      },
+      "passed": true,
+      "ticks_per_scenario": 120
+    },
+    "typed_faults": {
+      "fixtures": [
+        {
+          "kind": "cpu_throttle",
+          "checks": {
+            "deterministic_replay": true,
+            "before_available": true,
+            "recovered_available": true,
+            "memory_bounded": true,
+            "no_truth_in_telemetry": true,
+            "effect": true,
+            "scope": true,
+            "recovery": true
+          },
+          "passed": true
+        },
+        {
+          "kind": "memory_pressure",
+          "checks": {
+            "deterministic_replay": true,
+            "before_available": true,
+            "recovered_available": true,
+            "memory_bounded": true,
+            "no_truth_in_telemetry": true,
+            "effect": true,
+            "scope": true,
+            "recovery": true
+          },
+          "passed": true
+        },
+        {
+          "kind": "service_crash",
+          "checks": {
+            "deterministic_replay": true,
+            "before_available": true,
+            "recovered_available": true,
+            "memory_bounded": true,
+            "no_truth_in_telemetry": true,
+            "effect": true,
+            "scope": true,
+            "recovery": true
+          },
+          "passed": true
+        },
+        {
+          "kind": "network_degradation",
+          "checks": {
+            "deterministic_replay": true,
+            "before_available": true,
+            "recovered_available": true,
+            "memory_bounded": true,
+            "no_truth_in_telemetry": true,
+            "effect": true,
+            "scope": true,
+            "recovery": true
+          },
+          "passed": true
+        },
+        {
+          "kind": "demand_surge",
+          "checks": {
+            "deterministic_replay": true,
+            "before_available": true,
+            "recovered_available": true,
+            "memory_bounded": true,
+            "no_truth_in_telemetry": true,
+            "effect": true,
+            "scope": true,
+            "recovery": true
+          },
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    "console": {
+      "synthetic": true,
+      "ticks": 52,
+      "checks": {
+        "upload_never_executed": true,
+        "valid_allocation": true,
+        "candidate_retains_memory": true,
+        "controls_keep_healthy_memory": true,
+        "rack_effect_reaches_descendants": true,
+        "rollback_restores_versions": true,
+        "rollback_reclaims_retained_memory": true,
+        "detector_honest": true,
+        "public_packet_excludes_truth": true,
+        "verified_engine_replay": true,
+        "saved_run_import_matches": true,
+        "outcomes_saved": true
+      },
+      "passed": true
+    },
+    "background": {
+      "synthetic": true,
+      "scenarios": [
+        {
+          "scenario": "all_healthy",
+          "ticks": 100,
+          "events": 0,
+          "checks": {
+            "cooldowns": true,
+            "ranges": true,
+            "concurrency": true,
+            "event_budget": true,
+            "recovered": true,
+            "no_release_required": true,
+            "public_telemetry_excludes_schedule": true,
+            "replay": true,
+            "zero_faults": true
+          },
+          "passed": true
+        },
+        {
+          "scenario": "fixed",
+          "ticks": 100,
+          "events": 3,
+          "checks": {
+            "cooldowns": true,
+            "ranges": true,
+            "concurrency": true,
+            "event_budget": true,
+            "recovered": true,
+            "no_release_required": true,
+            "public_telemetry_excludes_schedule": true,
+            "replay": true,
+            "fixed_host_effect": true,
+            "fixed_rack_descendants": true,
+            "fixed_shared_demand": true
+          },
+          "passed": true
+        },
+        {
+          "scenario": "rates",
+          "ticks": 304,
+          "events": 43,
+          "checks": {
+            "cooldowns": true,
+            "ranges": true,
+            "concurrency": true,
+            "event_budget": true,
+            "recovered": true,
+            "no_release_required": true,
+            "public_telemetry_excludes_schedule": true,
+            "replay": true,
+            "all_rate_scopes_present": true
+          },
+          "passed": true
+        }
+      ],
+      "passed": true
+    }
+  },
+  "replays": {
+    "passed": true,
+    "count": 14,
+    "files": [
+      "examples/world_clock_100_ticks.json",
+      "examples/background_faults/all_healthy/run.json",
+      "examples/background_faults/fixed/run.json",
+      "examples/background_faults/rates/run.json",
+      "examples/console_demo/run.json",
+      "examples/faults/cpu_throttle/run.json",
+      "examples/faults/demand_surge/run.json",
+      "examples/faults/memory_pressure/run.json",
+      "examples/faults/network_degradation/run.json",
+      "examples/faults/service_crash/run.json",
+      "examples/public_telemetry/run.json",
+      "examples/resource_world/increased_load/run.json",
+      "examples/resource_world/low_load/run.json",
+      "examples/resource_world/recovery/run.json"
+    ]
+  },
+  "telemetry_ui": {
+    "checks": {
+      "committed_minutes_rendered": true,
+      "missing_windows_masked": true,
+      "recovery_fresh": true,
+      "three_backend_rows_rendered": true,
+      "no_truth_labels": true,
+      "committed_slice_readable": true
+    },
+    "passed": true,
+    "verification": "Node DOM-state harness plus real HTTP; not visual verification"
+  },
+  "existing_ui": {
+    "checks": {
+      "topology_rendered": true,
+      "selected_host_backend_trace": true,
+      "controls_and_speed": true,
+      "refresh_reuses_run": true,
+      "stale_state": true,
+      "disconnect_reconnect_preserves_last_view": true,
+      "recorded_mode_has_no_engine_api_calls": true,
+      "no_frontend_simulator_or_detector": true
+    },
+    "passed": true,
+    "browser_layout_verified": false,
+    "verification": "Node DOM-state harness plus real local HTTP API; browser startup unavailable"
+  },
+  "scheduler_ui": {
+    "passed": true,
+    "checks": {
+      "developer_preview": true,
+      "rate_units_visible": true,
+      "enable_disable": true,
+      "toggle_does_not_resample": true,
+      "persisted_outcomes": true,
+      "public_truth_separation": true,
+      "stale_controls_disabled": true
+    },
+    "verification": "Node DOM-state harness with real HTTP API; not visual verification"
+  },
+  "node_syntax_exit_code": 0,
+  "cli_run_and_replay_exit_code": 0,
+  "preservation_checks": {
+    "preexisting_tests_unchanged": true,
+    "inference_and_research_schema_unchanged": true,
+    "preexisting_models_unchanged": true
+  },
+  "changed_original_files": [
+    "README.md",
+    "canary_ssm/cli.py",
+    "docs/DESIGN_DECISIONS.md",
+    "docs/implementation_status.md",
+    "canary_ssm/engine.py",
+    "examples/world_clock_100_ticks.json",
+    "canary_ssm/resources.py",
+    "examples/resource_world/increased_load/run.json",
+    "examples/resource_world/increased_load/traces.png",
+    "examples/resource_world/low_load/run.json",
+    "examples/resource_world/low_load/traces.png",
+    "examples/resource_world/recovery/run.json",
+    "examples/resource_world/recovery/traces.png",
+    "canary_ssm/dashboard.py",
+    "canary_ssm/web/index.html",
+    "canary_ssm/web/recorded_snapshot.json",
+    "canary_ssm/web/app.js",
+    "configs/world_console.yaml",
+    "docs/console.md",
+    "docs/gap_audit.md",
+    "examples/console_demo/canary_snapshot.json",
+    "examples/console_demo/run.json",
+    "examples/faults/cpu_throttle/run.json",
+    "examples/faults/demand_surge/run.json",
+    "examples/faults/memory_pressure/run.json",
+    "examples/faults/network_degradation/run.json",
+    "examples/faults/service_crash/run.json",
+    "examples/background_faults/all_healthy/run.json",
+    "examples/background_faults/fixed/run.json",
+    "examples/background_faults/rates/run.json",
+    "examples/background_faults/rates/schedule_manifest.json"
+  ],
+  "new_files": [
+    "canary_ssm/telemetry.py",
+    "canary_ssm/telemetry_transport.py",
+    "canary_ssm/telemetry_evaluator.py",
+    "canary_ssm/telemetry_fixture.py",
+    "tests/test_public_telemetry.py",
+    "scripts/check_telemetry_ui.mjs",
+    "configs/world_telemetry.yaml",
+    "docs/public_telemetry.md",
+    "docs/wp/PUBLIC-TELEMETRY.md",
+    "examples/public_telemetry/checks.json",
+    "examples/public_telemetry/evaluator/metadata.json",
+    "examples/public_telemetry/evaluator/truth.jsonl",
+    "examples/public_telemetry/public/decisions.jsonl",
+    "examples/public_telemetry/public/metadata.json",
+    "examples/public_telemetry/public/records.jsonl",
+    "examples/public_telemetry/public/scores.jsonl",
+    "examples/public_telemetry/public/windows.jsonl",
+    "examples/public_telemetry/run.json"
+  ],
+  "source_sha256": {
+    "README.md": "8fb0b915f2f5c6e49ce0c344506748ba55524f5aebea41bfe4e666db32144311",
+    "canary_ssm/cli.py": "19816b37cb6e44b4cfbf180864c1e3f77c2eb9ca69890a300bb9d6d46c5f73a1",
+    "canary_ssm/dashboard.py": "de7ef26af89b3d2d6953225c1c3e55816ac546a19b614dae9243470872b58c01",
+    "canary_ssm/engine.py": "58461e8b54b6106ec985997b81d7e58209573b235c8e62e603454aa33ed2ebb6",
+    "canary_ssm/resources.py": "0dbce491fcc2dc0e111312e4e733572a8416a6879d5991bedb08bb4842cf494b",
+    "canary_ssm/telemetry.py": "7ef1820f0ae464cb3c54e85444747769e900141e0ef37d05efa71e9cc1c0e6b2",
+    "canary_ssm/telemetry_evaluator.py": "3f2f85a3113aea5164f4010b715077384c48c8eca8313ca6b3d048258212000e",
+    "canary_ssm/telemetry_fixture.py": "7ec54c306bf2aca56985b575a279236578c2c1ff4be97c60db3e1d8d60c71a55",
+    "canary_ssm/telemetry_transport.py": "ed7e0dd99479499542ca8f5341c2f5b73209296ea87f1c718c82614e3ec59817",
+    "canary_ssm/web/app.js": "db6011d8ebc3cf502af9a6232ce997c59a354b60847d93da87f246132293edd4",
+    "canary_ssm/web/index.html": "4c1d4d3f5c3ce6951366025a4523221b85dafd76e05e9a58cc467f55bd7dd2b8",
+    "configs/world_console.yaml": "5c93fdfdb7d2dc693941a3ad47744e7671321b1b5135b7badfe02d45b8211f76",
+    "configs/world_telemetry.yaml": "09238a043bdcabd34b9babc04287fe220c3cef05de29d295e513f2b39d76e6bf",
+    "docs/DESIGN_DECISIONS.md": "87a0a816bc5b9430b7cb4027a3c889cc672bfb5002b508b86a641893c251a264",
+    "docs/console.md": "97fa108b80ac2af645baf325a8c43a5a10accfb72737ad6ffe4eaf0b55c1ce47",
+    "docs/gap_audit.md": "be27ec82e88f99785f0359d196c91db643b185a5430f7560b362ac51441672e0",
+    "docs/implementation_status.md": "225b9050135eaec9d0e94a991533940b756b0d71528a230532963d87922f5bb2",
+    "docs/public_telemetry.md": "29e7609f775b5c09e4c59f52229d4ed0177300770099363167a13dd32e4a09ad",
+    "docs/wp/PUBLIC-TELEMETRY.md": "d69b4a798aef170d52680871445e2965966f395119d64a24cc1295fc6ed19292",
+    "tests/test_public_telemetry.py": "4b6b38e3666f5d22cebc4ad5862391626bb476baaf203a06a108be392c649f60"
+  }
+}

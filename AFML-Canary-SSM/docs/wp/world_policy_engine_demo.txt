@@ -1,0 +1,16 @@
+{
+  "healthy": {
+    "automatic_pause": false,
+    "state_before_manual_action": "CANARY",
+    "final_state": "CANARY",
+    "auto_rollback": false,
+    "replay_identical": true
+  },
+  "candidate": {
+    "automatic_pause": false,
+    "state_before_manual_action": "CANARY",
+    "final_state": "CANARY",
+    "auto_rollback": false,
+    "replay_identical": true
+  }
+}

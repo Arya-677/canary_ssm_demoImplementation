@@ -1,0 +1,15 @@
+{
+  "base_archive_sha256": "da8b4e5baa297cce55878e7763bfc028458e4b50ca6ec6b8ea3764157923ea0a",
+  "original_files": 1074,
+  "original_test_files": 33,
+  "modified_original_files": [
+    "README.md",
+    "canary_ssm/web/recorded_snapshot.json",
+    "docs/DESIGN_DECISIONS.md",
+    "docs/gap_audit.md",
+    "docs/implementation_status.md"
+  ],
+  "missing_original_files": [],
+  "preserved_all_original_tests": true,
+  "recorded_fixture_change": "Only Python/NumPy/platform metadata, original Mac recording retained"
+}

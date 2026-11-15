@@ -1,0 +1,10 @@
+# Noise sweep for the scaled benchmark: every family at SD 0.01 / 0.02 / 0.04 (handoff Section 9). Use as extra `test` roles.
+sim: {}
+cross: {sd_host: [0.01, 0.02, 0.04]}
+roles: {test: {pairs: 600, seed_base: 7000000}}
+families:
+  - {name: S1_sparse,      weight: 1, overrides: {n_affected: 3,  effect_pct: 3.0}}
+  - {name: S2_class_wide,  weight: 1, overrides: {affected_mode: class0, effect_pct: 3.0}}
+  - {name: S3_broad,       weight: 1, overrides: {n_affected: 10, effect_pct: 3.0}}
+  - {name: S4_weak_sparse, weight: 1, overrides: {n_affected: 3,  effect_pct: 2.5}}
+  - {name: effect_5pct,    weight: 1, overrides: {n_affected: 3,  effect_pct: 5.0}}

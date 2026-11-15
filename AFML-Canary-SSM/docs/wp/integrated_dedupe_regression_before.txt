@@ -1,0 +1,22 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_ test_applied_command_is_not_reexecuted_after_receipt_cache_eviction_or_restart _
+
+controller = <canary_ssm.dashboard.WorldController object at 0x10dfd34d0>
+
+    def test_applied_command_is_not_reexecuted_after_receipt_cache_eviction_or_restart(controller):
+        original=dict(command_id='durable-lost-step',run_id=controller.run_id,epoch=controller.epoch,command='step')
+        controller.command(original)
+        for i in range(260):
+            controller.command(dict(command_id='speed-'+str(i),run_id=controller.run_id,epoch=controller.epoch,command='speed',speed=1))
+        assert 'durable-lost-step' not in controller._receipts
+        retry=controller.command(original)
+>       assert controller.engine.tick==1 and retry['status']=='applied'
+E       assert (2 == 1)
+E        +  where 2 = <canary_ssm.engine.SimulationEngine object at 0x10dfd3e00>.tick
+E        +    where <canary_ssm.engine.SimulationEngine object at 0x10dfd3e00> = <canary_ssm.dashboard.WorldController object at 0x10dfd34d0>.engine
+
+tests/test_integrated_console.py:132: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_integrated_console.py::test_applied_command_is_not_reexecuted_after_receipt_cache_eviction_or_restart
+1 failed in 1.88s

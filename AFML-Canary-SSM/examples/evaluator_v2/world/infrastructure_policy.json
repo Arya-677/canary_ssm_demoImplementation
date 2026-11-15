@@ -1,0 +1,104 @@
+{
+  "generator": "world",
+  "endpoint": "infrastructure",
+  "freeze_hash": "d3d98788033eb70ca8798f02f8be0a65b5cc7a7daadae32fa8fde9c4b37124d1",
+  "B": 2000,
+  "alpha": 0.05,
+  "policies": {
+    "adj_ewma": {
+      "B": 2000,
+      "k": 1901,
+      "alpha": 0.05,
+      "threshold": 13.693275936604266,
+      "ties_at_threshold": 1
+    },
+    "adj_cusum": {
+      "B": 2000,
+      "k": 1901,
+      "alpha": 0.05,
+      "threshold": 20.52806837552505,
+      "ties_at_threshold": 1
+    },
+    "topk_cusum": {
+      "B": 2000,
+      "k": 1901,
+      "alpha": 0.05,
+      "threshold": 37.362665830617225,
+      "ties_at_threshold": 1
+    },
+    "independent": {
+      "B": 2000,
+      "k": 1901,
+      "alpha": 0.05,
+      "threshold": -7.314118438910457e-05,
+      "ties_at_threshold": 1
+    },
+    "complete_pooling": {
+      "B": 2000,
+      "k": 1901,
+      "alpha": 0.05,
+      "threshold": -0.006244930443639697,
+      "ties_at_threshold": 1
+    },
+    "class_host": {
+      "B": 2000,
+      "k": 1901,
+      "alpha": 0.05,
+      "threshold": -5.223208360406579e-06,
+      "ties_at_threshold": 1
+    },
+    "factor_off": {
+      "B": 2000,
+      "k": 1901,
+      "alpha": 0.05,
+      "threshold": -0.00019316228832493137,
+      "ties_at_threshold": 1
+    },
+    "persistence_off": {
+      "B": 2000,
+      "k": 1901,
+      "alpha": 0.05,
+      "threshold": -0.6077592495434103,
+      "ties_at_threshold": 1
+    },
+    "ar_off": {
+      "B": 2000,
+      "k": 1901,
+      "alpha": 0.05,
+      "threshold": -2.0279498979707667e-08,
+      "ties_at_threshold": 1
+    },
+    "weaker_pooling": {
+      "B": 2000,
+      "k": 1901,
+      "alpha": 0.05,
+      "threshold": -6.693846170181574e-08,
+      "ties_at_threshold": 1
+    },
+    "stronger_pooling": {
+      "B": 2000,
+      "k": 1901,
+      "alpha": 0.05,
+      "threshold": -9.640559263151825e-05,
+      "ties_at_threshold": 1
+    },
+    "rack_host": {
+      "B": 2000,
+      "k": 1901,
+      "alpha": 0.05,
+      "threshold": -7.438092306392299e-06,
+      "ties_at_threshold": 1
+    },
+    "nested_global_rack_host": {
+      "B": 2000,
+      "k": 1901,
+      "alpha": 0.05,
+      "threshold": -0.0037022355160396714,
+      "ties_at_threshold": 1
+    }
+  },
+  "horizon": 60,
+  "calibration_ledger_sha256": "d2872c19ca6d64acd30a3cf6d44a71ee7f64e7ccf2639bf3cbbf1ce7c64daa41",
+  "null_distribution": "all-healthy platform-null",
+  "policy_hash": "d39cd3fe4b10ad87b79062592cbaf46acf81ee62b8441e5ff47183f0a5f201e4"
+}

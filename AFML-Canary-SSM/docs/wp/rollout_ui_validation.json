@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "checks": {
+    "manual_lifecycle_buttons": true,
+    "versions_side_by_side": true,
+    "transition_log_visible": true,
+    "command_outcomes_persisted": true,
+    "detector_unconnected": true
+  },
+  "verification": "Real local HTTP server and DOM harness; no visual browser layout claim"
+}

@@ -1,0 +1,42 @@
+{
+  "fixture_id": "conditional-gaussian-first-crossing-v1",
+  "resource_world_compatible": false,
+  "B": 2000,
+  "n_validation": 2000,
+  "H": 4,
+  "role_separation": true,
+  "checks": {
+    "null_maxima_recomputed": true,
+    "k_476_example": true,
+    "no_retuning": true,
+    "eligibility_defaults": true,
+    "combined_report_present": true
+  },
+  "validation_gate": {
+    "status": "PASS",
+    "minimum_B": 2000,
+    "minimum_n": 2000,
+    "bb_pvalue_two_sided": 0.6047305426933629,
+    "rejection_level": 0.01,
+    "maximum_empirical_release_rate": 0.075,
+    "note": "G2-style conditional diagnostic; Beta-Binomial continuity/exchangeability assumptions are explicit. Combined action FAR is reported separately and is not controlled at release alpha."
+  },
+  "rank_500_example": {
+    "B": 500,
+    "k": 476,
+    "alpha": 0.05,
+    "threshold": -3.3465082586498562,
+    "ties_at_threshold": 1
+  },
+  "advisory_scope": "No independent platform/resource producer in this conditional latency generator. Extra channels have no events; their uncertainty intervals remain nonzero. Combined policy is not asserted controlled at alpha.",
+  "seed_registry_version": "2.1",
+  "development_calibration_seed_family": 21,
+  "validation_seed_family": 28,
+  "elapsed_seconds": 62.03138872099953,
+  "versions": {
+    "python": "3.12.14",
+    "numpy": "2.3.5"
+  },
+  "not_a_resource_world_benchmark": true,
+  "passed": true
+}

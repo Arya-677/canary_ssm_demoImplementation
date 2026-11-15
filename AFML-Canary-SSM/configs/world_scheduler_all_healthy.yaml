@@ -1,0 +1,26 @@
+topology_file: world_interactive.yaml
+engine:
+  seed: 10000
+  tick_seconds: 1
+  resources:
+    host_baseline_memory_mb: 256
+    shared_jitter: 0.1
+    max_arrivals_per_service_tick: 100000
+    trace_max_rows: 20000
+    services:
+    - service_id: demo-service
+      arrival_rate_rps: 400
+      work_core_seconds: 0.05
+      queue_limit: 300
+      baseline_memory_mb: 128
+      temporary_mb_per_request: 2
+      initial_retained_memory_mb: 0
+    traffic: []
+  demo: true
+  background_faults:
+    enabled: true
+    mode: fixed
+    seed: 10000
+    horizon_ticks: 100
+    max_concurrent: 1
+    fixed_events: []

@@ -1,0 +1,203 @@
+{
+  "definition": "Hand-authored operator-intervention intervals, independent of research J(i,t)",
+  "cases": [
+    {
+      "case_id": "healthy_quiet",
+      "label": {
+        "onset": null,
+        "recovery": null,
+        "horizon": 180
+      },
+      "alarm_time": null,
+      "expected": {
+        "status": "quiet",
+        "delay_seconds": null,
+        "capped_delay_seconds": null
+      }
+    },
+    {
+      "case_id": "healthy_false_alarm",
+      "label": {
+        "onset": null,
+        "recovery": null,
+        "horizon": 180
+      },
+      "alarm_time": 90,
+      "expected": {
+        "status": "false_alarm",
+        "delay_seconds": null,
+        "capped_delay_seconds": null
+      }
+    },
+    {
+      "case_id": "miss",
+      "label": {
+        "onset": 60,
+        "recovery": 120,
+        "horizon": 180
+      },
+      "alarm_time": null,
+      "expected": {
+        "status": "miss",
+        "delay_seconds": null,
+        "capped_delay_seconds": 120
+      }
+    },
+    {
+      "case_id": "premature",
+      "label": {
+        "onset": 60,
+        "recovery": 120,
+        "horizon": 180
+      },
+      "alarm_time": 30,
+      "expected": {
+        "status": "premature",
+        "delay_seconds": null,
+        "capped_delay_seconds": 120
+      }
+    },
+    {
+      "case_id": "onset_boundary",
+      "label": {
+        "onset": 60,
+        "recovery": 120,
+        "horizon": 180
+      },
+      "alarm_time": 60,
+      "expected": {
+        "status": "success",
+        "delay_seconds": 0,
+        "capped_delay_seconds": 0
+      }
+    },
+    {
+      "case_id": "during_event",
+      "label": {
+        "onset": 60,
+        "recovery": 120,
+        "horizon": 180
+      },
+      "alarm_time": 90,
+      "expected": {
+        "status": "success",
+        "delay_seconds": 30,
+        "capped_delay_seconds": 30
+      }
+    },
+    {
+      "case_id": "recovery_boundary",
+      "label": {
+        "onset": 60,
+        "recovery": 120,
+        "horizon": 180
+      },
+      "alarm_time": 120,
+      "expected": {
+        "status": "after_recovery",
+        "delay_seconds": null,
+        "capped_delay_seconds": 120
+      }
+    },
+    {
+      "case_id": "after_recovery",
+      "label": {
+        "onset": 60,
+        "recovery": 120,
+        "horizon": 180
+      },
+      "alarm_time": 150,
+      "expected": {
+        "status": "after_recovery",
+        "delay_seconds": null,
+        "capped_delay_seconds": 120
+      }
+    },
+    {
+      "case_id": "ongoing_at_horizon",
+      "label": {
+        "onset": 60,
+        "recovery": null,
+        "horizon": 180
+      },
+      "alarm_time": 180,
+      "expected": {
+        "status": "success",
+        "delay_seconds": 120,
+        "capped_delay_seconds": 120
+      }
+    },
+    {
+      "case_id": "ongoing_missed",
+      "label": {
+        "onset": 60,
+        "recovery": null,
+        "horizon": 180
+      },
+      "alarm_time": null,
+      "expected": {
+        "status": "miss",
+        "delay_seconds": null,
+        "capped_delay_seconds": 120
+      }
+    },
+    {
+      "case_id": "short_followup",
+      "label": {
+        "onset": 170,
+        "recovery": null,
+        "horizon": 180
+      },
+      "alarm_time": 175,
+      "expected": {
+        "status": "insufficient_followup",
+        "delay_seconds": null,
+        "capped_delay_seconds": null
+      }
+    },
+    {
+      "case_id": "event_no_eligible_decisions",
+      "label": {
+        "onset": 60,
+        "recovery": 120,
+        "horizon": 180
+      },
+      "alarm_time": null,
+      "expected": {
+        "status": "abstain",
+        "delay_seconds": null,
+        "capped_delay_seconds": null
+      },
+      "eligible_decisions": 0
+    },
+    {
+      "case_id": "healthy_no_eligible_decisions",
+      "label": {
+        "onset": null,
+        "recovery": null,
+        "horizon": 180
+      },
+      "alarm_time": null,
+      "expected": {
+        "status": "abstain",
+        "delay_seconds": null,
+        "capped_delay_seconds": null
+      },
+      "eligible_decisions": 0
+    },
+    {
+      "case_id": "transient_ended",
+      "label": {
+        "onset": 60,
+        "recovery": 70,
+        "horizon": 180
+      },
+      "alarm_time": 75,
+      "expected": {
+        "status": "after_recovery",
+        "delay_seconds": null,
+        "capped_delay_seconds": 120
+      }
+    }
+  ]
+}

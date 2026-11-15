@@ -1,0 +1,7 @@
+{
+  "recalibration_reproduces_policy_hash": true,
+  "independent_validation_reproduces_receipt_hash": true,
+  "public_slice_scoring_records": 4,
+  "policy_hash": "f23f37bec8d6341b313bb640fbfdaa5019c61ee54e812d9044e8f7a08c1163ac",
+  "validation_hash": "1f003a18347bf82db974ae6c96196cd90bc22efe56a8f8eff993d9ce82f0b77e"
+}

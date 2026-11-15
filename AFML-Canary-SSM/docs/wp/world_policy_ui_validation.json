@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "checks": {
+    "actual_saved_run_upload": true,
+    "read_only_replay": true,
+    "latched_reason_and_manual_rollback": true,
+    "all_six_public_charts": true,
+    "posterior_uncertainty_band": true,
+    "non_joint_score_label": true,
+    "posterior_uncalibrated_label_preserved": true
+  },
+  "scope": "Actual saved physical-world API demo through unchanged HTTP/DOM renderers; not browser viewport visual QA."
+}

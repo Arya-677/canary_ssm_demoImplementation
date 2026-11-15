@@ -1,0 +1,20 @@
+{
+  "base_checkpoint": "canary_ssm_latched_policy.zip",
+  "changed_original_files": [
+    "README.md",
+    "docs/DESIGN_DECISIONS.md",
+    "docs/implementation_status.md",
+    "docs/gap_audit.md",
+    "docs/latched_policy.md",
+    "docs/wp/FIRST_CROSSING.md"
+  ],
+  "missing_original_files": [],
+  "original_tests_preserved": 30,
+  "all_original_code_preserved": true,
+  "all_original_research_artifacts_preserved": true,
+  "new_source_files": [
+    "canary_ssm/world_policy_http_demo.py",
+    "canary_ssm/world_policy_live.py",
+    "canary_ssm/world_policy_fixture.py"
+  ]
+}

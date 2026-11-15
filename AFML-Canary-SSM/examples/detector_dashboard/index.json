@@ -1,0 +1,22 @@
+[
+  {
+    "sample_id": "demo-01",
+    "label": "Host Local \u00b7 algebraic demo",
+    "artifact_id": "demo-01"
+  },
+  {
+    "sample_id": "demo-02",
+    "label": "Group Wide \u00b7 algebraic demo",
+    "artifact_id": "demo-02"
+  },
+  {
+    "sample_id": "demo-03",
+    "label": "Shared Shock \u00b7 algebraic demo",
+    "artifact_id": "demo-03"
+  },
+  {
+    "sample_id": "demo-04",
+    "label": "Recovery \u00b7 algebraic demo",
+    "artifact_id": "demo-04"
+  }
+]

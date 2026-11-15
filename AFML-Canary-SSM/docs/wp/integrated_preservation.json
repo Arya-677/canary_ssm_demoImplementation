@@ -1,0 +1,22 @@
+{
+  "base_checkpoint": "canary_ssm_world_policy.zip",
+  "changed_original_files": [
+    "README.md",
+    "canary_ssm/dashboard.py",
+    "canary_ssm/web/app.js",
+    "canary_ssm/web/index.html",
+    "canary_ssm/web/recorded_snapshot.json",
+    "canary_ssm/web/styles.css",
+    "docs/DESIGN_DECISIONS.md",
+    "docs/gap_audit.md",
+    "docs/implementation_status.md"
+  ],
+  "missing_original_files": [],
+  "original_tests_preserved": 32,
+  "inference_and_engine_preserved": true,
+  "calibration_and_research_artifacts_preserved": true,
+  "new_source_files": [
+    "canary_ssm/dashboard_evidence.py",
+    "canary_ssm/integrated_console_fixture.py"
+  ]
+}

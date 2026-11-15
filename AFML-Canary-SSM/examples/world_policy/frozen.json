@@ -1,0 +1,1393 @@
+{
+  "versions": {
+    "numpy": "2.3.5",
+    "scipy": "1.17.0"
+  },
+  "format": "frozen-policy-inputs-v1",
+  "preprocessing_model": {
+    "model_id": "development-frozen-control-adjustment-v1",
+    "feature_id": "public-logmean-log1pworkload-v1",
+    "policy": {
+      "policy_id": "demo-world-rack-policy-v1",
+      "group_by": "rack_id",
+      "factor_rank": 1,
+      "min_canary_fraction": 0.8,
+      "min_controls": 3,
+      "min_pre_observations": 60,
+      "deviation_reason": "Explicit rack-grouped physical demo; unchanged 60/80%/3 eligibility"
+    },
+    "host_ids": [
+      "host-01-01",
+      "host-01-02",
+      "host-01-03",
+      "host-01-04",
+      "host-01-05",
+      "host-02-01",
+      "host-02-02",
+      "host-02-03",
+      "host-02-04",
+      "host-02-05",
+      "host-03-01",
+      "host-03-02",
+      "host-03-03",
+      "host-03-04",
+      "host-03-05",
+      "host-04-01",
+      "host-04-02",
+      "host-04-03",
+      "host-04-04",
+      "host-04-05"
+    ],
+    "rack_ids": [
+      "rack-01",
+      "rack-01",
+      "rack-01",
+      "rack-01",
+      "rack-01",
+      "rack-02",
+      "rack-02",
+      "rack-02",
+      "rack-02",
+      "rack-02",
+      "rack-03",
+      "rack-03",
+      "rack-03",
+      "rack-03",
+      "rack-03",
+      "rack-04",
+      "rack-04",
+      "rack-04",
+      "rack-04",
+      "rack-04"
+    ],
+    "class_ids": [
+      0,
+      1,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0
+    ],
+    "groups": [
+      "rack-01",
+      "rack-01",
+      "rack-01",
+      "rack-01",
+      "rack-01",
+      "rack-02",
+      "rack-02",
+      "rack-02",
+      "rack-02",
+      "rack-02",
+      "rack-03",
+      "rack-03",
+      "rack-03",
+      "rack-03",
+      "rack-03",
+      "rack-04",
+      "rack-04",
+      "rack-04",
+      "rack-04",
+      "rack-04"
+    ],
+    "canary_ids": [
+      "host-01-01",
+      "host-02-02",
+      "host-03-01",
+      "host-04-01"
+    ],
+    "x_center": 1.4347978252961215,
+    "mu": [
+      11.015682744102325,
+      11.023322952481484,
+      11.021800212851732,
+      11.01347164810956,
+      11.018704999832062,
+      11.014964754727256,
+      11.016976039974404,
+      11.01743600811233,
+      11.015186576908063,
+      11.014820411710408,
+      11.017261519449546,
+      11.018400048698222,
+      11.016742689204936,
+      11.011335069951063,
+      11.017830221612998,
+      11.019224074778952,
+      11.018067777112007,
+      11.013381710727648,
+      11.016926184284301,
+      11.017547506847444
+    ],
+    "beta": [
+      -0.01807362201566525,
+      -0.007481382707299525,
+      -0.0139654895278814,
+      -0.02873744767204942,
+      -0.004427864667158586,
+      -0.0025787390913428513,
+      -0.02105467202292948,
+      -0.0157426897031555,
+      -0.017725943075129584,
+      -0.01893083546800471,
+      -0.0001010095967816975,
+      -0.006168780451742375,
+      -0.017199000970239357,
+      -0.004706100957771751,
+      -0.02284959799368925,
+      -0.044282676633739755,
+      -0.020980317531545695,
+      -0.002076826491022499,
+      0.002613178535372457,
+      -0.025456174205255797
+    ],
+    "loadings": [
+      0.02789631797986096,
+      0.039686597835670426,
+      0.0381298918134121,
+      0.023524313034346142,
+      0.038757941701030585,
+      0.024837803853990734,
+      0.021343256840494172,
+      0.02875755089197449,
+      0.023785211409621924,
+      0.024146900562164196,
+      0.03259607871032266,
+      0.03373168363123707,
+      0.02252213849968991,
+      0.018150463174108872,
+      0.03367509115869556,
+      0.035584958670518724,
+      0.024295010780544087,
+      0.021207268537442186,
+      0.030667799282042968,
+      0.03212941219741942
+    ],
+    "control_variance": [
+      1e-08,
+      0.0004555154929044023,
+      0.0005076276822139447,
+      0.0005128259738774883,
+      0.0003944968895099096,
+      0.0002743277635239441,
+      1e-08,
+      0.0004983390217683119,
+      0.00043928741346978154,
+      0.0006036195449335297,
+      1e-08,
+      0.00039654558560168123,
+      0.0005306990820704403,
+      0.00024573686263237176,
+      0.0003915535437383934,
+      1e-08,
+      0.0006068923218554234,
+      0.00033790476530766846,
+      0.0002882036050287365,
+      0.00045275020078691344
+    ],
+    "scales": [
+      0.020755144886038406,
+      0.024517058284975447,
+      0.024925808432310084,
+      0.02342039560200951,
+      0.021997482436353567,
+      0.017229578638613744,
+      0.028222270737378735,
+      0.02405819619349206,
+      0.021680010720975366,
+      0.02565542259749415,
+      0.017232057087842687,
+      0.021000293449101887,
+      0.02399920994049225,
+      0.01606759073351369,
+      0.021244358301389304,
+      0.02412815922610553,
+      0.02565467189731034,
+      0.01932934446737528,
+      0.018291897456139298,
+      0.02317204301900276
+    ],
+    "noise": {
+      "rack-01": {
+        "phi": 0.32859773944089343,
+        "q": 0.021068711713390746,
+        "v": 0.00010000000000000009
+      },
+      "rack-02": {
+        "phi": 0.2161350865178671,
+        "q": 0.022721124054684974,
+        "v": 0.00010000000000000009
+      },
+      "rack-03": {
+        "phi": 0.19925453747323035,
+        "q": 0.019049136335460393,
+        "v": 0.00010000000000000009
+      },
+      "rack-04": {
+        "phi": 0.24521379666515766,
+        "q": 0.021012767141106222,
+        "v": 0.00010000000000000009
+      }
+    },
+    "noise_diagnostics": {
+      "rack-01": {
+        "fits": [
+          {
+            "init_phi": 0.2,
+            "nll": -1988.9242928394265,
+            "success": true,
+            "boundary_hit": false,
+            "x": [
+              0.328597859515868,
+              -3.859966297494679
+            ],
+            "status": 0,
+            "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+            "iterations": 7,
+            "function_evaluations": 27,
+            "bounds": [
+              [
+                -0.95,
+                0.99
+              ],
+              [
+                -9.210340371976182,
+                -1.6094379124341003
+              ]
+            ],
+            "white_sd_fixed": 0.0001
+          },
+          {
+            "init_phi": 0.6,
+            "nll": -1988.9242928394335,
+            "success": true,
+            "boundary_hit": false,
+            "x": [
+              0.32859773944089343,
+              -3.859966196206183
+            ],
+            "status": 0,
+            "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+            "iterations": 6,
+            "function_evaluations": 24,
+            "bounds": [
+              [
+                -0.95,
+                0.99
+              ],
+              [
+                -9.210340371976182,
+                -1.6094379124341003
+              ]
+            ],
+            "white_sd_fixed": 0.0001
+          },
+          {
+            "init_phi": 0.9,
+            "nll": -1988.9242928394208,
+            "success": true,
+            "boundary_hit": false,
+            "x": [
+              0.3285977555801023,
+              -3.859966369113679
+            ],
+            "status": 0,
+            "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+            "iterations": 7,
+            "function_evaluations": 27,
+            "bounds": [
+              [
+                -0.95,
+                0.99
+              ],
+              [
+                -9.210340371976182,
+                -1.6094379124341003
+              ]
+            ],
+            "white_sd_fixed": 0.0001
+          }
+        ],
+        "success": true,
+        "boundary_hit": false
+      },
+      "rack-02": {
+        "fits": [
+          {
+            "init_phi": 0.2,
+            "nll": -1959.4978668423385,
+            "success": true,
+            "boundary_hit": false,
+            "x": [
+              0.21613449504405233,
+              -3.7844605808923304
+            ],
+            "status": 0,
+            "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+            "iterations": 8,
+            "function_evaluations": 30,
+            "bounds": [
+              [
+                -0.95,
+                0.99
+              ],
+              [
+                -9.210340371976182,
+                -1.6094379124341003
+              ]
+            ],
+            "white_sd_fixed": 0.0001
+          },
+          {
+            "init_phi": 0.6,
+            "nll": -1959.4978668425051,
+            "success": true,
+            "boundary_hit": false,
+            "x": [
+              0.2161350865178671,
+              -3.784460212115101
+            ],
+            "status": 0,
+            "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+            "iterations": 8,
+            "function_evaluations": 30,
+            "bounds": [
+              [
+                -0.95,
+                0.99
+              ],
+              [
+                -9.210340371976182,
+                -1.6094379124341003
+              ]
+            ],
+            "white_sd_fixed": 0.0001
+          },
+          {
+            "init_phi": 0.9,
+            "nll": -1959.4978668416877,
+            "success": true,
+            "boundary_hit": false,
+            "x": [
+              0.2161354327087967,
+              -3.784461472031458
+            ],
+            "status": 0,
+            "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+            "iterations": 8,
+            "function_evaluations": 30,
+            "bounds": [
+              [
+                -0.95,
+                0.99
+              ],
+              [
+                -9.210340371976182,
+                -1.6094379124341003
+              ]
+            ],
+            "white_sd_fixed": 0.0001
+          }
+        ],
+        "success": true,
+        "boundary_hit": false
+      },
+      "rack-03": {
+        "fits": [
+          {
+            "init_phi": 0.2,
+            "nll": -2054.707585298954,
+            "success": true,
+            "boundary_hit": false,
+            "x": [
+              0.19925453747323035,
+              -3.9607335151584064
+            ],
+            "status": 0,
+            "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+            "iterations": 8,
+            "function_evaluations": 30,
+            "bounds": [
+              [
+                -0.95,
+                0.99
+              ],
+              [
+                -9.210340371976182,
+                -1.6094379124341003
+              ]
+            ],
+            "white_sd_fixed": 0.0001
+          },
+          {
+            "init_phi": 0.6,
+            "nll": -2054.707585298845,
+            "success": true,
+            "boundary_hit": false,
+            "x": [
+              0.19925495009754457,
+              -3.960732933218162
+            ],
+            "status": 0,
+            "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+            "iterations": 7,
+            "function_evaluations": 27,
+            "bounds": [
+              [
+                -0.95,
+                0.99
+              ],
+              [
+                -9.210340371976182,
+                -1.6094379124341003
+              ]
+            ],
+            "white_sd_fixed": 0.0001
+          },
+          {
+            "init_phi": 0.9,
+            "nll": -2054.707585298924,
+            "success": true,
+            "boundary_hit": false,
+            "x": [
+              0.19925431870227878,
+              -3.9607334466357695
+            ],
+            "status": 0,
+            "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+            "iterations": 8,
+            "function_evaluations": 30,
+            "bounds": [
+              [
+                -0.95,
+                0.99
+              ],
+              [
+                -9.210340371976182,
+                -1.6094379124341003
+              ]
+            ],
+            "white_sd_fixed": 0.0001
+          }
+        ],
+        "success": true,
+        "boundary_hit": false
+      },
+      "rack-04": {
+        "fits": [
+          {
+            "init_phi": 0.2,
+            "nll": -1999.0102852495304,
+            "success": true,
+            "boundary_hit": false,
+            "x": [
+              0.24521358422766176,
+              -3.862625146384685
+            ],
+            "status": 0,
+            "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+            "iterations": 8,
+            "function_evaluations": 30,
+            "bounds": [
+              [
+                -0.95,
+                0.99
+              ],
+              [
+                -9.210340371976182,
+                -1.6094379124341003
+              ]
+            ],
+            "white_sd_fixed": 0.0001
+          },
+          {
+            "init_phi": 0.6,
+            "nll": -1999.0102852495609,
+            "success": true,
+            "boundary_hit": false,
+            "x": [
+              0.24521379666515766,
+              -3.8626250668906823
+            ],
+            "status": 0,
+            "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+            "iterations": 7,
+            "function_evaluations": 27,
+            "bounds": [
+              [
+                -0.95,
+                0.99
+              ],
+              [
+                -9.210340371976182,
+                -1.6094379124341003
+              ]
+            ],
+            "white_sd_fixed": 0.0001
+          },
+          {
+            "init_phi": 0.9,
+            "nll": -1999.0102852493972,
+            "success": true,
+            "boundary_hit": false,
+            "x": [
+              0.24521362467361768,
+              -3.8626255627880837
+            ],
+            "status": 0,
+            "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+            "iterations": 8,
+            "function_evaluations": 30,
+            "bounds": [
+              [
+                -0.95,
+                0.99
+              ],
+              [
+                -9.210340371976182,
+                -1.6094379124341003
+              ]
+            ],
+            "white_sd_fixed": 0.0001
+          }
+        ],
+        "success": true,
+        "boundary_hit": false
+      }
+    },
+    "noise_fit_ok": true,
+    "factor_identified": true,
+    "development_control_counts": {
+      "rack-01": 4,
+      "rack-02": 4,
+      "rack-03": 4,
+      "rack-04": 4
+    },
+    "workload_support": [
+      [
+        1.120591195386885,
+        1.725738368130261
+      ],
+      [
+        1.1096621248546947,
+        1.7749523509116738
+      ],
+      [
+        1.1096621248546947,
+        1.7721234947111961
+      ],
+      [
+        1.104152469043725,
+        1.777773227253315
+      ],
+      [
+        1.0531499145913523,
+        1.80005827204275
+      ],
+      [
+        1.0647107369924282,
+        1.7635885922613586
+      ],
+      [
+        1.0589470322756782,
+        1.7692866133759964
+      ],
+      [
+        1.0473189942805592,
+        1.766441661243765
+      ],
+      [
+        1.0647107369924282,
+        1.7462970951512977
+      ],
+      [
+        1.0531499145913523,
+        1.777773227253315
+      ],
+      [
+        1.0986122886681098,
+        1.737537915061416
+      ],
+      [
+        1.0761394328160512,
+        1.7945333961107803
+      ],
+      [
+        1.0296194171811583,
+        1.7721234947111961
+      ],
+      [
+        1.0818051703517284,
+        1.7107904066943878
+      ],
+      [
+        1.0704414117014134,
+        1.7549802177247584
+      ],
+      [
+        1.1096621248546947,
+        1.8082887711792655
+      ],
+      [
+        1.1096621248546947,
+        1.737537915061416
+      ],
+      [
+        1.0296194171811583,
+        1.7404661748405046
+      ],
+      [
+        1.0986122886681098,
+        1.7197859696029656
+      ],
+      [
+        1.0818051703517284,
+        1.7578579175523736
+      ]
+    ],
+    "regression_flags": [
+      "ok",
+      "ok",
+      "ok",
+      "ok",
+      "ok",
+      "ok",
+      "ok",
+      "ok",
+      "ok",
+      "ok",
+      "ok",
+      "ok",
+      "ok",
+      "ok",
+      "ok",
+      "ok",
+      "ok",
+      "ok",
+      "ok",
+      "ok"
+    ],
+    "development_missing_control_entries": 0,
+    "development_lineage": [
+      {
+        "provenance_id": "physical-policy-development-v1",
+        "role": "development",
+        "healthy_attestation": true,
+        "public_sha256": "f521256b2989b2ff243d15c746460f5c238a8811a1a3db9bbd5d690107969228"
+      }
+    ],
+    "challenges": [
+      "background_control_contamination_possible",
+      "plain_weighted_projection_not_robust",
+      "frozen_regression_parameter_uncertainty_not_propagated",
+      "canary_loading_estimation_uncertainty_not_propagated"
+    ]
+  },
+  "effect_settings": {
+    "kind": "indep",
+    "rho_g": 0.95,
+    "rho_h": 0.95,
+    "sd_g": 0.005,
+    "sd_h_ratio": 1.0,
+    "prior_sd": 0.03,
+    "huber_c": 0.0
+  },
+  "simulator": {
+    "generator_id": "resource-world-scenarios-v1",
+    "config": {
+      "topology": {
+        "data_centers": [
+          {
+            "data_center_id": "dc-01"
+          }
+        ],
+        "racks": [
+          {
+            "rack_id": "rack-01",
+            "data_center_id": "dc-01"
+          },
+          {
+            "rack_id": "rack-02",
+            "data_center_id": "dc-01"
+          },
+          {
+            "rack_id": "rack-03",
+            "data_center_id": "dc-01"
+          },
+          {
+            "rack_id": "rack-04",
+            "data_center_id": "dc-01"
+          }
+        ],
+        "hosts": [
+          {
+            "host_id": "host-01-01",
+            "rack_id": "rack-01",
+            "data_center_id": "dc-01",
+            "class_id": 0,
+            "capacity": {
+              "cpu_cores": 1,
+              "memory_mb": 8192,
+              "disk_mb": 500000,
+              "network_mbps": 1000
+            },
+            "usage": {
+              "cpu_cores": 0.0,
+              "memory_mb": 0.0,
+              "disk_mb": 0.0,
+              "network_mbps": 0.0
+            },
+            "lifecycle": "ready"
+          },
+          {
+            "host_id": "host-01-02",
+            "rack_id": "rack-01",
+            "data_center_id": "dc-01",
+            "class_id": 1,
+            "capacity": {
+              "cpu_cores": 1,
+              "memory_mb": 8192,
+              "disk_mb": 500000,
+              "network_mbps": 1000
+            },
+            "usage": {
+              "cpu_cores": 0.0,
+              "memory_mb": 0.0,
+              "disk_mb": 0.0,
+              "network_mbps": 0.0
+            },
+            "lifecycle": "ready"
+          },
+          {
+            "host_id": "host-01-03",
+            "rack_id": "rack-01",
+            "data_center_id": "dc-01",
+            "class_id": 0,
+            "capacity": {
+              "cpu_cores": 1,
+              "memory_mb": 8192,
+              "disk_mb": 500000,
+              "network_mbps": 1000
+            },
+            "usage": {
+              "cpu_cores": 0.0,
+              "memory_mb": 0.0,
+              "disk_mb": 0.0,
+              "network_mbps": 0.0
+            },
+            "lifecycle": "ready"
+          },
+          {
+            "host_id": "host-01-04",
+            "rack_id": "rack-01",
+            "data_center_id": "dc-01",
+            "class_id": 1,
+            "capacity": {
+              "cpu_cores": 1,
+              "memory_mb": 8192,
+              "disk_mb": 500000,
+              "network_mbps": 1000
+            },
+            "usage": {
+              "cpu_cores": 0.0,
+              "memory_mb": 0.0,
+              "disk_mb": 0.0,
+              "network_mbps": 0.0
+            },
+            "lifecycle": "ready"
+          },
+          {
+            "host_id": "host-01-05",
+            "rack_id": "rack-01",
+            "data_center_id": "dc-01",
+            "class_id": 0,
+            "capacity": {
+              "cpu_cores": 1,
+              "memory_mb": 8192,
+              "disk_mb": 500000,
+              "network_mbps": 1000
+            },
+            "usage": {
+              "cpu_cores": 0.0,
+              "memory_mb": 0.0,
+              "disk_mb": 0.0,
+              "network_mbps": 0.0
+            },
+            "lifecycle": "ready"
+          },
+          {
+            "host_id": "host-02-01",
+            "rack_id": "rack-02",
+            "data_center_id": "dc-01",
+            "class_id": 0,
+            "capacity": {
+              "cpu_cores": 1,
+              "memory_mb": 8192,
+              "disk_mb": 500000,
+              "network_mbps": 1000
+            },
+            "usage": {
+              "cpu_cores": 0.0,
+              "memory_mb": 0.0,
+              "disk_mb": 0.0,
+              "network_mbps": 0.0
+            },
+            "lifecycle": "ready"
+          },
+          {
+            "host_id": "host-02-02",
+            "rack_id": "rack-02",
+            "data_center_id": "dc-01",
+            "class_id": 1,
+            "capacity": {
+              "cpu_cores": 1,
+              "memory_mb": 8192,
+              "disk_mb": 500000,
+              "network_mbps": 1000
+            },
+            "usage": {
+              "cpu_cores": 0.0,
+              "memory_mb": 0.0,
+              "disk_mb": 0.0,
+              "network_mbps": 0.0
+            },
+            "lifecycle": "ready"
+          },
+          {
+            "host_id": "host-02-03",
+            "rack_id": "rack-02",
+            "data_center_id": "dc-01",
+            "class_id": 0,
+            "capacity": {
+              "cpu_cores": 1,
+              "memory_mb": 8192,
+              "disk_mb": 500000,
+              "network_mbps": 1000
+            },
+            "usage": {
+              "cpu_cores": 0.0,
+              "memory_mb": 0.0,
+              "disk_mb": 0.0,
+              "network_mbps": 0.0
+            },
+            "lifecycle": "ready"
+          },
+          {
+            "host_id": "host-02-04",
+            "rack_id": "rack-02",
+            "data_center_id": "dc-01",
+            "class_id": 1,
+            "capacity": {
+              "cpu_cores": 1,
+              "memory_mb": 8192,
+              "disk_mb": 500000,
+              "network_mbps": 1000
+            },
+            "usage": {
+              "cpu_cores": 0.0,
+              "memory_mb": 0.0,
+              "disk_mb": 0.0,
+              "network_mbps": 0.0
+            },
+            "lifecycle": "ready"
+          },
+          {
+            "host_id": "host-02-05",
+            "rack_id": "rack-02",
+            "data_center_id": "dc-01",
+            "class_id": 0,
+            "capacity": {
+              "cpu_cores": 1,
+              "memory_mb": 8192,
+              "disk_mb": 500000,
+              "network_mbps": 1000
+            },
+            "usage": {
+              "cpu_cores": 0.0,
+              "memory_mb": 0.0,
+              "disk_mb": 0.0,
+              "network_mbps": 0.0
+            },
+            "lifecycle": "ready"
+          },
+          {
+            "host_id": "host-03-01",
+            "rack_id": "rack-03",
+            "data_center_id": "dc-01",
+            "class_id": 0,
+            "capacity": {
+              "cpu_cores": 1,
+              "memory_mb": 8192,
+              "disk_mb": 500000,
+              "network_mbps": 1000
+            },
+            "usage": {
+              "cpu_cores": 0.0,
+              "memory_mb": 0.0,
+              "disk_mb": 0.0,
+              "network_mbps": 0.0
+            },
+            "lifecycle": "ready"
+          },
+          {
+            "host_id": "host-03-02",
+            "rack_id": "rack-03",
+            "data_center_id": "dc-01",
+            "class_id": 1,
+            "capacity": {
+              "cpu_cores": 1,
+              "memory_mb": 8192,
+              "disk_mb": 500000,
+              "network_mbps": 1000
+            },
+            "usage": {
+              "cpu_cores": 0.0,
+              "memory_mb": 0.0,
+              "disk_mb": 0.0,
+              "network_mbps": 0.0
+            },
+            "lifecycle": "ready"
+          },
+          {
+            "host_id": "host-03-03",
+            "rack_id": "rack-03",
+            "data_center_id": "dc-01",
+            "class_id": 0,
+            "capacity": {
+              "cpu_cores": 1,
+              "memory_mb": 8192,
+              "disk_mb": 500000,
+              "network_mbps": 1000
+            },
+            "usage": {
+              "cpu_cores": 0.0,
+              "memory_mb": 0.0,
+              "disk_mb": 0.0,
+              "network_mbps": 0.0
+            },
+            "lifecycle": "ready"
+          },
+          {
+            "host_id": "host-03-04",
+            "rack_id": "rack-03",
+            "data_center_id": "dc-01",
+            "class_id": 1,
+            "capacity": {
+              "cpu_cores": 1,
+              "memory_mb": 8192,
+              "disk_mb": 500000,
+              "network_mbps": 1000
+            },
+            "usage": {
+              "cpu_cores": 0.0,
+              "memory_mb": 0.0,
+              "disk_mb": 0.0,
+              "network_mbps": 0.0
+            },
+            "lifecycle": "ready"
+          },
+          {
+            "host_id": "host-03-05",
+            "rack_id": "rack-03",
+            "data_center_id": "dc-01",
+            "class_id": 0,
+            "capacity": {
+              "cpu_cores": 1,
+              "memory_mb": 8192,
+              "disk_mb": 500000,
+              "network_mbps": 1000
+            },
+            "usage": {
+              "cpu_cores": 0.0,
+              "memory_mb": 0.0,
+              "disk_mb": 0.0,
+              "network_mbps": 0.0
+            },
+            "lifecycle": "ready"
+          },
+          {
+            "host_id": "host-04-01",
+            "rack_id": "rack-04",
+            "data_center_id": "dc-01",
+            "class_id": 0,
+            "capacity": {
+              "cpu_cores": 1,
+              "memory_mb": 8192,
+              "disk_mb": 500000,
+              "network_mbps": 1000
+            },
+            "usage": {
+              "cpu_cores": 0.0,
+              "memory_mb": 0.0,
+              "disk_mb": 0.0,
+              "network_mbps": 0.0
+            },
+            "lifecycle": "ready"
+          },
+          {
+            "host_id": "host-04-02",
+            "rack_id": "rack-04",
+            "data_center_id": "dc-01",
+            "class_id": 1,
+            "capacity": {
+              "cpu_cores": 1,
+              "memory_mb": 8192,
+              "disk_mb": 500000,
+              "network_mbps": 1000
+            },
+            "usage": {
+              "cpu_cores": 0.0,
+              "memory_mb": 0.0,
+              "disk_mb": 0.0,
+              "network_mbps": 0.0
+            },
+            "lifecycle": "ready"
+          },
+          {
+            "host_id": "host-04-03",
+            "rack_id": "rack-04",
+            "data_center_id": "dc-01",
+            "class_id": 0,
+            "capacity": {
+              "cpu_cores": 1,
+              "memory_mb": 8192,
+              "disk_mb": 500000,
+              "network_mbps": 1000
+            },
+            "usage": {
+              "cpu_cores": 0.0,
+              "memory_mb": 0.0,
+              "disk_mb": 0.0,
+              "network_mbps": 0.0
+            },
+            "lifecycle": "ready"
+          },
+          {
+            "host_id": "host-04-04",
+            "rack_id": "rack-04",
+            "data_center_id": "dc-01",
+            "class_id": 1,
+            "capacity": {
+              "cpu_cores": 1,
+              "memory_mb": 8192,
+              "disk_mb": 500000,
+              "network_mbps": 1000
+            },
+            "usage": {
+              "cpu_cores": 0.0,
+              "memory_mb": 0.0,
+              "disk_mb": 0.0,
+              "network_mbps": 0.0
+            },
+            "lifecycle": "ready"
+          },
+          {
+            "host_id": "host-04-05",
+            "rack_id": "rack-04",
+            "data_center_id": "dc-01",
+            "class_id": 0,
+            "capacity": {
+              "cpu_cores": 1,
+              "memory_mb": 8192,
+              "disk_mb": 500000,
+              "network_mbps": 1000
+            },
+            "usage": {
+              "cpu_cores": 0.0,
+              "memory_mb": 0.0,
+              "disk_mb": 0.0,
+              "network_mbps": 0.0
+            },
+            "lifecycle": "ready"
+          }
+        ],
+        "replicas": [
+          {
+            "service_id": "demo-service",
+            "replica_id": "replica-01-01",
+            "host_id": "host-01-01"
+          },
+          {
+            "service_id": "demo-service",
+            "replica_id": "replica-01-02",
+            "host_id": "host-01-02"
+          },
+          {
+            "service_id": "demo-service",
+            "replica_id": "replica-01-03",
+            "host_id": "host-01-03"
+          },
+          {
+            "service_id": "demo-service",
+            "replica_id": "replica-01-04",
+            "host_id": "host-01-04"
+          },
+          {
+            "service_id": "demo-service",
+            "replica_id": "replica-01-05",
+            "host_id": "host-01-05"
+          },
+          {
+            "service_id": "demo-service",
+            "replica_id": "replica-02-01",
+            "host_id": "host-02-01"
+          },
+          {
+            "service_id": "demo-service",
+            "replica_id": "replica-02-02",
+            "host_id": "host-02-02"
+          },
+          {
+            "service_id": "demo-service",
+            "replica_id": "replica-02-03",
+            "host_id": "host-02-03"
+          },
+          {
+            "service_id": "demo-service",
+            "replica_id": "replica-02-04",
+            "host_id": "host-02-04"
+          },
+          {
+            "service_id": "demo-service",
+            "replica_id": "replica-02-05",
+            "host_id": "host-02-05"
+          },
+          {
+            "service_id": "demo-service",
+            "replica_id": "replica-03-01",
+            "host_id": "host-03-01"
+          },
+          {
+            "service_id": "demo-service",
+            "replica_id": "replica-03-02",
+            "host_id": "host-03-02"
+          },
+          {
+            "service_id": "demo-service",
+            "replica_id": "replica-03-03",
+            "host_id": "host-03-03"
+          },
+          {
+            "service_id": "demo-service",
+            "replica_id": "replica-03-04",
+            "host_id": "host-03-04"
+          },
+          {
+            "service_id": "demo-service",
+            "replica_id": "replica-03-05",
+            "host_id": "host-03-05"
+          },
+          {
+            "service_id": "demo-service",
+            "replica_id": "replica-04-01",
+            "host_id": "host-04-01"
+          },
+          {
+            "service_id": "demo-service",
+            "replica_id": "replica-04-02",
+            "host_id": "host-04-02"
+          },
+          {
+            "service_id": "demo-service",
+            "replica_id": "replica-04-03",
+            "host_id": "host-04-03"
+          },
+          {
+            "service_id": "demo-service",
+            "replica_id": "replica-04-04",
+            "host_id": "host-04-04"
+          },
+          {
+            "service_id": "demo-service",
+            "replica_id": "replica-04-05",
+            "host_id": "host-04-05"
+          }
+        ],
+        "schema_version": 1
+      },
+      "tick_seconds": 60,
+      "resources": {
+        "services": [
+          {
+            "service_id": "demo-service",
+            "arrival_rate_rps": 66.66666666666667,
+            "work_core_seconds": 0.25,
+            "queue_limit": 1000,
+            "baseline_memory_mb": 128,
+            "temporary_mb_per_request": 2,
+            "initial_retained_memory_mb": 0.0
+          }
+        ],
+        "traffic": [],
+        "shared_jitter": 0.35,
+        "host_baseline_memory_mb": 256.0,
+        "max_arrivals_per_service_tick": 100000,
+        "trace_max_rows": 20000,
+        "paired_exogenous": false,
+        "health_policy": {
+          "policy_id": "resource-health-dev-v1",
+          "window_seconds": 10,
+          "minimum_span_seconds": 5,
+          "minimum_samples": 3,
+          "minimum_processed": 20,
+          "growth_mb_per_request": 0.05,
+          "growth_mb_per_second": 0.5,
+          "pressure_fraction": 0.8
+        }
+      },
+      "demo": true,
+      "telemetry": {
+        "enabled": true,
+        "delay_min_ticks": 0,
+        "delay_max_ticks": 0,
+        "duplicate_probability": 0,
+        "missing_probability": 0,
+        "missing_window_probability": 0,
+        "drop_windows": [],
+        "late_windows": [],
+        "late_delay_ticks": 120,
+        "decision_delay_seconds": 0,
+        "minimum_coverage": 0.8,
+        "max_records": 50000,
+        "max_windows": 1000
+      }
+    },
+    "baseline_content_hashes": [
+      "594bc0d6e7fd97f649a99068b506dee47649f16f0bfacd466babec30d294ad32"
+    ],
+    "source_hashes": {
+      "engine.py": "4c3f15b1731e8c24097f6c9f32f832f41bba1126ac083596e5e49789507c9c39",
+      "resources.py": "af57b06d30959f8b7b120ac42ac0909368fb37f4ae2c0e6bda0c19e7c8f3b299",
+      "releases.py": "a8d68e4b57384e89cd2ec6494316e1d5edf6faa9b8d28b3d1d3b5054fc0ad4bf",
+      "telemetry.py": "7ef1820f0ae464cb3c54e85444747769e900141e0ef37d05efa71e9cc1c0e6b2",
+      "telemetry_transport.py": "ed7e0dd99479499542ca8f5341c2f5b73209296ea87f1c718c82614e3ec59817",
+      "faults.py": "1033eac9757611fcd859628fd1d42a64f9aa6d641186c23780e27ec2140751e1",
+      "fault_scheduler.py": "88c844c46c7196860cfcd753ee9861eb2b8cf816dd5a0968f01fff1cb9846244",
+      "resource_health.py": "65c25e9d162171700c4f113ab17ded46436f436418ba4fb6f993d10079191603",
+      "topology.py": "a79f151fc564aba06082794b63646675d1220b0ef683f0bc6087127784d07824",
+      "seeds.py": "1e9a8ba7e598721f7095032a3811be30661294a2d1a7ffcb6b01c8b935b67b4b"
+    }
+  },
+  "protocol": {
+    "protocol_id": "fixed-cohort-policy-v1",
+    "canaries": [
+      "host-01-01",
+      "host-02-02",
+      "host-03-01",
+      "host-04-01"
+    ],
+    "controls": [
+      "host-01-02",
+      "host-01-03",
+      "host-01-04",
+      "host-01-05",
+      "host-02-01",
+      "host-02-03",
+      "host-02-04",
+      "host-02-05",
+      "host-03-02",
+      "host-03-03",
+      "host-03-04",
+      "host-03-05",
+      "host-04-02",
+      "host-04-03",
+      "host-04-04",
+      "host-04-05"
+    ],
+    "groups": {
+      "rack:rack-01": [
+        "host-01-02",
+        "host-01-03",
+        "host-01-04",
+        "host-01-05"
+      ],
+      "rack:rack-02": [
+        "host-02-01",
+        "host-02-03",
+        "host-02-04",
+        "host-02-05"
+      ],
+      "rack:rack-03": [
+        "host-03-02",
+        "host-03-03",
+        "host-03-04",
+        "host-03-05"
+      ],
+      "rack:rack-04": [
+        "host-04-02",
+        "host-04-03",
+        "host-04-04",
+        "host-04-05"
+      ]
+    },
+    "baseline_seconds": 3600,
+    "horizon_windows": 4,
+    "canary_fraction": 0.2,
+    "group_by": "rack_id",
+    "window_seconds": 60,
+    "exposure_alignment": "minute_start",
+    "minimum_observed_canaries": 0.8,
+    "minimum_fresh_controls": 3,
+    "score_kind": "log_max_host_effect_risk"
+  },
+  "rule": {
+    "rule_id": "latched-first-crossing-v1",
+    "alpha": 0.05,
+    "required_eligible_windows": 4,
+    "healthy_max_score": -2.995732273553991,
+    "resource_guardrails": "disabled",
+    "platform_incidents": "disabled"
+  },
+  "development": [
+    {
+      "run_id": "physical-policy-development-v1",
+      "seed": 30600000,
+      "role": "development",
+      "declared_healthy": true,
+      "public_sha256": "f521256b2989b2ff243d15c746460f5c238a8811a1a3db9bbd5d690107969228"
+    }
+  ],
+  "selection": "Predeclared effect settings; healthy-development preprocessing/AR fit only; no calibration or validation selection",
+  "sources": {
+    "model": {
+      "public_filter.py": "85e21caabbf345b562c498519b028d4ea0a8ea9b8f09d5602780f74bf118a344",
+      "public_hierarchy.py": "d42b49d01bd327b3028bb25b094e109192df50233df68d49e77ca20874e04eef",
+      "kalman.py": "70498cbbd59c7c5e2f225f9fe2984b175b5ba718a90fd2b67a250ce5f2d6aeca",
+      "hierarchy.py": "022fa15d2f9ea91773c4a7ced73d6bc4f495dba6bc30e08b7e2ef70a04b812b6",
+      "schema.py": "d2fb818401c7dec91283f8ad55199ef92b9657cad0e29d06f5487767bddf67e2"
+    },
+    "preprocessing": {
+      "public_adjustment.py": "ab760029a37ee299f3648246b50d90a95e0db4e54fa4324663ec3dc114659e3b",
+      "preprocess.py": "ae6456713d9fa2b47e4c73ea9408482c9e1b9d5cab7b6a28947b39d1e9e916f7",
+      "factor.py": "556196915d00c37e4916e86bd8047786fd60bfb7c6731c7ec16476bcf0d181f5",
+      "policy_public.py": "140a11bfc95444c24bc73881eeb59298e08670e3a07fc5510101c2961276f43c"
+    },
+    "policy": {
+      "first_crossing.py": "5ec177764f1849795751c2419be3c681c3c5108efc0d4ab1acfc70ff7664a449",
+      "policy_artifacts.py": "922a96c86167385f5ff25a4bf01d072e8a602aa6ea4d5911f2798064430a280d",
+      "policy_control.py": "b35dc0aa2c2173eb979728e0fd16b900b14b87e51e289c67965ecff0bc5e8dfc",
+      "policy_hash.py": "d61d96c8ca60bdb43206162cc4306245c45ef8d4ea6b595ed9a87450baaaae23"
+    }
+  },
+  "hashes": {
+    "model_hash": "b9dc506a8bc20e9f16aa1ecf79fb2b5e0052bd5d58fbc27738abab86098fbb12",
+    "preprocessing_hash": "cef887fee750cfca61ff9e11719d2fe5640ad0daaf739d70fa69bd3dfbe8e4fd",
+    "simulator_hash": "96c9048e8e6db26feb030fbe166ffbd17b2e7dc1b53f27f31a83340c0b126eb7",
+    "protocol_hash": "0a87cfc80b4f633827472db39c367b6d9d9f4c899d00809d6e01c8b1c34ab4fa"
+  },
+  "freeze_hash": "f7c2a405d142e7f093d6b1906af0442c9217a3cda267d7664aff51b9809572d9"
+}

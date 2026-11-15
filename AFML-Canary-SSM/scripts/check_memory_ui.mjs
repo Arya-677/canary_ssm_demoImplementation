@@ -1,0 +1,17 @@
+import vm from 'node:vm';import fs from 'node:fs/promises';import assert from 'node:assert/strict';import {webcrypto} from 'node:crypto';
+const base=process.argv[2]??'http://127.0.0.1:8786',out=process.argv[3],elements=new Map();
+const e=id=>{if(!elements.has(id))elements.set(id,{id,textContent:'',innerHTML:'',className:'',disabled:false,hidden:false,value:'',files:[],listeners:{},addEventListener(n,f){this.listeners[n]=f;}});return elements.get(id);};
+const context=vm.createContext({document:{getElementById:e,addEventListener(){}},URLSearchParams,location:{search:''},performance:{now:()=>100},Date,console,crypto:webcrypto,AbortSignal,fetch:(url,options)=>fetch(new URL(url,base),options),setInterval:()=>0,setTimeout:()=>0,Uint8Array,btoa:s=>Buffer.from(s,'binary').toString('base64')});
+vm.runInContext(await fs.readFile(new URL('../canary_ssm/web/app.js',import.meta.url),'utf8'),context);const run=s=>vm.runInContext(s,context);
+await run('fetchState()');await run('fetchCatalog()');
+e('manifest-release-id').value='memory-ui';e('manifest-service').value='demo-service';e('manifest-version').value='4.0.0';e('manifest-author').value='ui-test';
+for(const [id,v] of Object.entries({'manifest-cpu':'1','manifest-memory':'0','manifest-error':'0','manifest-delay':'0','manifest-memory-model':'process','manifest-process-rate':'2','manifest-background':'.1','manifest-retained-limit':''}))e(id).value=v;
+await e('build-release-manifest').listeners.click();const p=JSON.parse(e('release-manifest-json').value).behavior_manifest.profiles[0];assert.equal(p.kind,'process_memory');assert.equal(p.retained_mb_per_request,2);assert.equal(p.background_mb_per_second,.1);assert.equal(p.retained_limit_mb,null);
+await e('register-manifest').listeners.click();assert.match(e('manifest-registration-status').textContent,/Registered memory-ui/);assert.match(e('release-info').innerHTML,/process-memory-v1/);
+const plan=await run("send('preview',null,{release_id:'memory-ui'})");await run(`send('deploy',null,{plan_id:${JSON.stringify(plan.plan_id)}})`);
+for(let i=0;i<8;i++)await run("send('step')");
+assert.match(e('resource-health').textContent,/headroom/);assert.match(e('resource-health').textContent,/not SSM proof/);assert.match(e('memory-growth-chart').innerHTML,/<svg/);assert.match(e('memory-latency-chart').innerHTML,/<svg/);
+const state=await(await fetch(base+'/api/state')).json();const rid=state.snapshot.world.replicas.find(r=>r.host_id===state.history.host_id).replica_id;const before=state.snapshot.resources.replicas.find(r=>r.replica_id===rid).restart_count;
+e('memory-process').value=rid;await e('restart-process').onclick();await run("send('step')");
+const after=await(await fetch(base+'/api/state')).json();assert.equal(after.snapshot.resources.replicas.find(r=>r.replica_id===rid).restart_count,before+1);assert.match(e('process-events').innerHTML,/manual_restart/);assert.equal(after.detector_status,'DETECTOR NOT CONNECTED');
+const result={passed:true,checks:{canonical_memory_form:true,unexecuted_registration:true,observed_advisory_label:true,request_growth_chart:true,sampled_latency_chart:true,actual_restart_button:true,visible_restart_event:true,no_detector_claim:true},verification:'Actual local HTTP backend and DOM button handlers; no browser visual layout claim'};if(out)await fs.writeFile(out,JSON.stringify(result,null,2)+'\n');console.log(JSON.stringify(result,null,2));

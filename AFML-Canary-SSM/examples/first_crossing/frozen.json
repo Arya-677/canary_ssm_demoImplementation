@@ -1,0 +1,497 @@
+{
+  "versions": {
+    "numpy": "2.3.5",
+    "scipy": "1.17.0"
+  },
+  "format": "frozen-policy-inputs-v1",
+  "preprocessing_model": {
+    "model_id": "development-frozen-control-adjustment-v1",
+    "feature_id": "public-logmean-log1pworkload-v1",
+    "policy": {
+      "policy_id": "demo-rack-policy-v1",
+      "group_by": "rack_id",
+      "factor_rank": 1,
+      "min_canary_fraction": 0.8,
+      "min_controls": 3,
+      "min_pre_observations": 60,
+      "deviation_reason": "Physical rack illustration; unchanged 80% / 3 / 60 eligibility"
+    },
+    "host_ids": [
+      "h0",
+      "h1",
+      "h2",
+      "h3",
+      "h4",
+      "h5",
+      "h6",
+      "h7",
+      "h8",
+      "h9"
+    ],
+    "rack_ids": [
+      "a",
+      "a",
+      "a",
+      "a",
+      "a",
+      "b",
+      "b",
+      "b",
+      "b",
+      "b"
+    ],
+    "class_ids": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "groups": [
+      "a",
+      "a",
+      "a",
+      "a",
+      "a",
+      "b",
+      "b",
+      "b",
+      "b",
+      "b"
+    ],
+    "canary_ids": [
+      "h0",
+      "h5"
+    ],
+    "x_center": 1.9884300641927366,
+    "mu": [
+      4.997791984678593,
+      4.997093208640246,
+      4.996881111180671,
+      4.997498114700757,
+      4.99731981360137,
+      4.996013820667568,
+      4.997009450067021,
+      4.996886019904525,
+      4.997598467250047,
+      4.99631292381935
+    ],
+    "beta": [
+      0.19675985229950674,
+      0.19941145945564684,
+      0.19982744209101444,
+      0.21023957857474693,
+      0.20247608647261178,
+      0.1858652784042002,
+      0.1995671960459094,
+      0.2075632151846064,
+      0.19547620176611905,
+      0.18451279531620743
+    ],
+    "loadings": [
+      0.0035969997488204835,
+      0.007637501799729454,
+      0.012238641671639926,
+      0.01572137754969548,
+      0.019547861637070004,
+      0.022689378867878845,
+      0.028799233874069918,
+      0.032247265152218395,
+      0.0363902561168374,
+      0.040944482954902287
+    ],
+    "control_variance": [
+      1e-08,
+      2.306994898403493e-05,
+      2.0061549417775533e-05,
+      3.03538291674693e-05,
+      2.3150276360063245e-05,
+      1e-08,
+      1.9975917042117723e-05,
+      2.1409608866237086e-05,
+      1.984409564794576e-05,
+      2.514923833725454e-05
+    ],
+    "scales": [
+      0.004698796217922951,
+      0.004860839532478348,
+      0.004583115088324846,
+      0.005749121387880108,
+      0.005148608331029877,
+      0.006179023935916279,
+      0.0052242984251818165,
+      0.005638576516799495,
+      0.005811998221276485,
+      0.00706099892084982
+    ],
+    "noise": {
+      "a": {
+        "phi": -0.0009446448407411126,
+        "q": 0.004947091738150781,
+        "v": 0.00010000000000000009
+      },
+      "b": {
+        "phi": -0.012883614340403889,
+        "q": 0.00553973339325271,
+        "v": 0.00010000000000000009
+      }
+    },
+    "noise_diagnostics": {
+      "a": {
+        "fits": [
+          {
+            "init_phi": 0.2,
+            "nll": -2876.5078463473765,
+            "success": true,
+            "boundary_hit": false,
+            "x": [
+              -0.0009986042995814373,
+              -5.308936434769738
+            ],
+            "status": 0,
+            "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+            "iterations": 5,
+            "function_evaluations": 30,
+            "bounds": [
+              [
+                -0.95,
+                0.99
+              ],
+              [
+                -9.210340371976182,
+                -1.6094379124341003
+              ]
+            ],
+            "white_sd_fixed": 0.0001
+          },
+          {
+            "init_phi": 0.6,
+            "nll": -2876.5078473716844,
+            "success": true,
+            "boundary_hit": false,
+            "x": [
+              -0.0009442245565948462,
+              -5.3089551293676065
+            ],
+            "status": 0,
+            "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+            "iterations": 7,
+            "function_evaluations": 36,
+            "bounds": [
+              [
+                -0.95,
+                0.99
+              ],
+              [
+                -9.210340371976182,
+                -1.6094379124341003
+              ]
+            ],
+            "white_sd_fixed": 0.0001
+          },
+          {
+            "init_phi": 0.9,
+            "nll": -2876.5078473717003,
+            "success": true,
+            "boundary_hit": false,
+            "x": [
+              -0.0009446448407411126,
+              -5.308955402709845
+            ],
+            "status": 0,
+            "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+            "iterations": 8,
+            "function_evaluations": 36,
+            "bounds": [
+              [
+                -0.95,
+                0.99
+              ],
+              [
+                -9.210340371976182,
+                -1.6094379124341003
+              ]
+            ],
+            "white_sd_fixed": 0.0001
+          }
+        ],
+        "success": true,
+        "boundary_hit": false
+      },
+      "b": {
+        "fits": [
+          {
+            "init_phi": 0.2,
+            "nll": -2769.6615516478946,
+            "success": true,
+            "boundary_hit": false,
+            "x": [
+              -0.012883614340403889,
+              -5.195808903342544
+            ],
+            "status": 0,
+            "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+            "iterations": 6,
+            "function_evaluations": 24,
+            "bounds": [
+              [
+                -0.95,
+                0.99
+              ],
+              [
+                -9.210340371976182,
+                -1.6094379124341003
+              ]
+            ],
+            "white_sd_fixed": 0.0001
+          },
+          {
+            "init_phi": 0.6,
+            "nll": -2769.661551647886,
+            "success": true,
+            "boundary_hit": false,
+            "x": [
+              -0.012883095507175773,
+              -5.195808356635468
+            ],
+            "status": 0,
+            "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+            "iterations": 6,
+            "function_evaluations": 24,
+            "bounds": [
+              [
+                -0.95,
+                0.99
+              ],
+              [
+                -9.210340371976182,
+                -1.6094379124341003
+              ]
+            ],
+            "white_sd_fixed": 0.0001
+          },
+          {
+            "init_phi": 0.9,
+            "nll": -2769.6615516478923,
+            "success": true,
+            "boundary_hit": false,
+            "x": [
+              -0.012883607236145754,
+              -5.195808918947382
+            ],
+            "status": 0,
+            "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+            "iterations": 7,
+            "function_evaluations": 27,
+            "bounds": [
+              [
+                -0.95,
+                0.99
+              ],
+              [
+                -9.210340371976182,
+                -1.6094379124341003
+              ]
+            ],
+            "white_sd_fixed": 0.0001
+          }
+        ],
+        "success": true,
+        "boundary_hit": false
+      }
+    },
+    "noise_fit_ok": true,
+    "factor_identified": true,
+    "development_control_counts": {
+      "a": 4,
+      "b": 4
+    },
+    "workload_support": [
+      [
+        1.3001749239694242,
+        2.514972243248981
+      ],
+      [
+        1.1659392092481378,
+        2.6765698139816347
+      ],
+      [
+        1.389312884218099,
+        2.7760859484308735
+      ],
+      [
+        1.3243331267646417,
+        2.7402063129830303
+      ],
+      [
+        1.2112974913651557,
+        2.787669913465673
+      ],
+      [
+        1.2653258495210458,
+        2.7433784328267476
+      ],
+      [
+        1.152865656745369,
+        2.54599940188543
+      ],
+      [
+        1.340634586927905,
+        2.7764489657381546
+      ],
+      [
+        1.4109113219563585,
+        2.9938736733752043
+      ],
+      [
+        1.1968017294986764,
+        2.8309371094237337
+      ]
+    ],
+    "regression_flags": [
+      "ok",
+      "ok",
+      "ok",
+      "ok",
+      "ok",
+      "ok",
+      "ok",
+      "ok",
+      "ok",
+      "ok"
+    ],
+    "development_missing_control_entries": 0,
+    "development_lineage": [
+      {
+        "provenance_id": "policy-gaussian-development-v1",
+        "role": "development",
+        "healthy_attestation": true,
+        "public_sha256": "8261ee51b5d85a1cec7064ec8c414ab302d916f4d5038b04f8c30797e7de2782"
+      }
+    ],
+    "challenges": [
+      "background_control_contamination_possible",
+      "plain_weighted_projection_not_robust",
+      "frozen_regression_parameter_uncertainty_not_propagated",
+      "canary_loading_estimation_uncertainty_not_propagated"
+    ]
+  },
+  "effect_settings": {
+    "kind": "indep",
+    "rho_g": 0.95,
+    "rho_h": 0.95,
+    "sd_g": 0.005,
+    "sd_h_ratio": 1.0,
+    "prior_sd": 0.03,
+    "huber_c": 0.0
+  },
+  "simulator": {
+    "generator_id": "policy-conditional-gaussian-null-v1",
+    "configuration": {
+      "H": 4,
+      "preperiod_minutes": 60,
+      "hosts": 10,
+      "canaries": [
+        "h0",
+        "h5"
+      ],
+      "equations": "log latency=5+.2*(x-2)+loading*shared_factor+white_noise; no release effect",
+      "observed_masks": "all fresh in this numerical fixture"
+    },
+    "source_hashes": {
+      "policy_fixture.py": "6ec62d6d10240cdd6748c9995af97c5b08a2551b7e6d93b04e8cc8bf3a953c15"
+    },
+    "numpy": "2.3.5"
+  },
+  "protocol": {
+    "protocol_id": "fixed-cohort-policy-v1",
+    "canaries": [
+      "h0",
+      "h5"
+    ],
+    "controls": [
+      "h1",
+      "h2",
+      "h3",
+      "h4",
+      "h6",
+      "h7",
+      "h8",
+      "h9"
+    ],
+    "groups": {
+      "rack:a": [
+        "h1",
+        "h2",
+        "h3",
+        "h4"
+      ],
+      "rack:b": [
+        "h6",
+        "h7",
+        "h8",
+        "h9"
+      ]
+    },
+    "baseline_seconds": 3600,
+    "horizon_windows": 4,
+    "canary_fraction": 0.2,
+    "group_by": "rack_id",
+    "window_seconds": 60,
+    "exposure_alignment": "minute_start",
+    "minimum_observed_canaries": 0.8,
+    "minimum_fresh_controls": 3,
+    "score_kind": "log_max_host_effect_risk"
+  },
+  "rule": {
+    "rule_id": "latched-first-crossing-v1",
+    "alpha": 0.05,
+    "required_eligible_windows": 4,
+    "healthy_max_score": -2.995732273553991,
+    "resource_guardrails": "disabled",
+    "platform_incidents": "pause_only"
+  },
+  "development": [
+    {
+      "run_id": "policy-development",
+      "seed": 30420000,
+      "role": "development",
+      "declared_healthy": true,
+      "public_sha256": "8261ee51b5d85a1cec7064ec8c414ab302d916f4d5038b04f8c30797e7de2782"
+    }
+  ],
+  "selection": "Predeclared effect settings; healthy-development preprocessing/AR fit only; no calibration or validation selection",
+  "sources": {
+    "model": {
+      "public_filter.py": "85e21caabbf345b562c498519b028d4ea0a8ea9b8f09d5602780f74bf118a344",
+      "public_hierarchy.py": "d42b49d01bd327b3028bb25b094e109192df50233df68d49e77ca20874e04eef",
+      "kalman.py": "70498cbbd59c7c5e2f225f9fe2984b175b5ba718a90fd2b67a250ce5f2d6aeca",
+      "hierarchy.py": "022fa15d2f9ea91773c4a7ced73d6bc4f495dba6bc30e08b7e2ef70a04b812b6",
+      "schema.py": "d2fb818401c7dec91283f8ad55199ef92b9657cad0e29d06f5487767bddf67e2"
+    },
+    "preprocessing": {
+      "public_adjustment.py": "ab760029a37ee299f3648246b50d90a95e0db4e54fa4324663ec3dc114659e3b",
+      "preprocess.py": "ae6456713d9fa2b47e4c73ea9408482c9e1b9d5cab7b6a28947b39d1e9e916f7",
+      "factor.py": "556196915d00c37e4916e86bd8047786fd60bfb7c6731c7ec16476bcf0d181f5",
+      "policy_public.py": "140a11bfc95444c24bc73881eeb59298e08670e3a07fc5510101c2961276f43c"
+    },
+    "policy": {
+      "first_crossing.py": "5ec177764f1849795751c2419be3c681c3c5108efc0d4ab1acfc70ff7664a449",
+      "policy_artifacts.py": "922a96c86167385f5ff25a4bf01d072e8a602aa6ea4d5911f2798064430a280d",
+      "policy_control.py": "b35dc0aa2c2173eb979728e0fd16b900b14b87e51e289c67965ecff0bc5e8dfc",
+      "policy_hash.py": "d61d96c8ca60bdb43206162cc4306245c45ef8d4ea6b595ed9a87450baaaae23"
+    }
+  },
+  "hashes": {
+    "model_hash": "b9dc506a8bc20e9f16aa1ecf79fb2b5e0052bd5d58fbc27738abab86098fbb12",
+    "preprocessing_hash": "b46e080ddbac49c1be60f7f53d34e2104b19b208ce7fd31926047bd4cfe722ae",
+    "simulator_hash": "0626acf7c90b84873647660ae831b5f2f150cc4fca6dee8c36870e7cdb825087",
+    "protocol_hash": "fe411fe2bed61ddfb7d836157d61f8aff1acd1e68451137a5a37891decebbd82"
+  },
+  "freeze_hash": "e594f83be347fb7f978ad64c13f0093eba040320d5a49faf1f8de4a3101e66d4"
+}

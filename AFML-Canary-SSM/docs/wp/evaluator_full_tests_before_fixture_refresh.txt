@@ -1,0 +1,36 @@
+..........................F............................................. [ 11%]
+........................................................................ [ 23%]
+........................................................................ [ 34%]
+........................................................................ [ 46%]
+........................................................................ [ 57%]
+........................................................................ [ 69%]
+........................................................................ [ 81%]
+........................................................................ [ 92%]
+.............................................                            [100%]
+=================================== FAILURES ===================================
+__________ test_recorded_fixture_is_engine_independent_read_only_data __________
+
+    def test_recorded_fixture_is_engine_independent_read_only_data():
+        saved = json.loads((WEB / "recorded_snapshot.json").read_text())
+        expected = recorded_fixture(load_engine_config(ROOT / "configs/world_recovery.yaml"), 50)
+>       assert saved == expected
+E       AssertionError: assert {'schema_vers...poch': 0, ...} == {'schema_vers...poch': 0, ...}
+E         
+E         Omitting 23 identical items, use -vv to show
+E         Differing items:
+E         {'recording': {'synthetic': True, 'source': 'world_recovery.yaml', 'tick': 50, 'engine_manifest': {'config_hash': '71f...7c9c39', 'python': '3.14.7 (main, Aug  5 2026, 10:29:49) [Clang 21.0.0 (clang-2100.1.1.101)]', 'numpy': '2.5.4', ...}}} != {'recording': {'synthetic': True, 'source': 'world_recovery.yaml', 'tick': 50, 'engine_manifest': {'config_hash': '71f...6ac083596e5e49789507c9c39', 'python': '3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]', 'numpy': '2.3.5', ...}}}
+E         Use -v to get more diff
+
+tests/test_dashboard.py:199: AssertionError
+=============================== warnings summary ===============================
+../../../../../../opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/anyio/pytest_plugin.py:14
+  /opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/anyio/pytest_plugin.py:14: PytestRemovedIn10Warning: _pytest.python.CallSpec2 has been renamed to CallSpec.
+  The CallSpec2 alias will be removed in pytest 10.
+  Update imports to use CallSpec instead.
+  See https://docs.pytest.org/en/stable/deprecations.html#callspec2-renamed
+    from _pytest.python import CallSpec2
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/test_dashboard.py::test_recorded_fixture_is_engine_independent_read_only_data
+1 failed, 620 passed, 1 warning in 205.37s (0:03:25)

@@ -1,0 +1,9 @@
+{
+  "policy_id": "demo-rack-rank1-v1",
+  "group_by": "rack_id",
+  "factor_rank": 1,
+  "min_canary_fraction": 0.8,
+  "min_controls": 3,
+  "min_pre_observations": 60,
+  "deviation_reason": "Rack grouping with unchanged 80% observed canaries / 3 fresh controls"
+}

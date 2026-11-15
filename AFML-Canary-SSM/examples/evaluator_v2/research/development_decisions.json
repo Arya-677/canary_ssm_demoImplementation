@@ -1,0 +1,42 @@
+[
+  {
+    "method": "independent",
+    "sd": 0.003,
+    "status": "selected_on_development"
+  },
+  {
+    "method": "complete_pooling",
+    "sd": 0.003,
+    "status": "selected_on_development"
+  },
+  {
+    "method": "class_host",
+    "sd": 0.003,
+    "status": "selected_on_development"
+  },
+  {
+    "method": "factor_off",
+    "sd": 0.003,
+    "status": "selected_on_development"
+  },
+  {
+    "method": "persistence_off",
+    "sd": 0.008,
+    "status": "selected_on_development"
+  },
+  {
+    "method": "ar_off",
+    "sd": 0.003,
+    "status": "selected_on_development"
+  },
+  {
+    "method": "weaker_pooling",
+    "sd": 0.003,
+    "status": "selected_on_development"
+  },
+  {
+    "method": "stronger_pooling",
+    "sd": 0.003,
+    "status": "selected_on_development"
+  }
+]

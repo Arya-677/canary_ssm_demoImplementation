@@ -1,0 +1,288 @@
+{
+  "model_id": "development-frozen-control-adjustment-v1",
+  "feature_id": "public-logmean-log1pworkload-v1",
+  "policy": {
+    "policy_id": "demo-rack-rank0-v1",
+    "group_by": "rack_id",
+    "factor_rank": 0,
+    "min_canary_fraction": 0.8,
+    "min_controls": 3,
+    "min_pre_observations": 60,
+    "deviation_reason": "Rack grouping with unchanged 80% observed canaries / 3 fresh controls; rank-zero is an ablation"
+  },
+  "host_ids": [
+    "h0",
+    "h1",
+    "h2",
+    "h3",
+    "h4",
+    "h5",
+    "h6",
+    "h7",
+    "h8",
+    "h9"
+  ],
+  "rack_ids": [
+    "a",
+    "a",
+    "a",
+    "a",
+    "a",
+    "b",
+    "b",
+    "b",
+    "b",
+    "b"
+  ],
+  "class_ids": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "groups": [
+    "a",
+    "a",
+    "a",
+    "a",
+    "a",
+    "b",
+    "b",
+    "b",
+    "b",
+    "b"
+  ],
+  "canary_ids": [
+    "h0",
+    "h5"
+  ],
+  "x_center": 2.0155549298601225,
+  "mu": [
+    5.0034675634359145,
+    5.003028077935246,
+    5.00319471757683,
+    5.002951294241669,
+    5.0027070895461865,
+    5.003371212535871,
+    5.003621047731214,
+    5.003883071814296,
+    5.0029107072511145,
+    5.003536441553741
+  ],
+  "beta": [
+    0.20067544565208298,
+    0.19689509028601135,
+    0.20215232683384415,
+    0.19971842825340405,
+    0.20195831662563207,
+    0.20123251184450652,
+    0.1909610514074653,
+    0.2102114062118003,
+    0.20658887618528263,
+    0.21627005973699207
+  ],
+  "loadings": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "control_variance": [
+    1e-08,
+    1e-08,
+    1e-08,
+    1e-08,
+    1e-08,
+    1e-08,
+    1e-08,
+    1e-08,
+    1e-08,
+    1e-08
+  ],
+  "scales": [
+    0.006666015338274264,
+    0.008726725635693985,
+    0.01274759123503569,
+    0.01685868098478032,
+    0.019225283995850877,
+    0.023257893798869566,
+    0.027330302737902396,
+    0.031020411748832098,
+    0.0359779178749217,
+    0.03946095610328502
+  ],
+  "noise": {
+    "a": {
+      "phi": -0.014962790300703643,
+      "q": 0.013686910860937958,
+      "v": 0.00010000000000000009
+    },
+    "b": {
+      "phi": -0.007510422172084861,
+      "q": 0.031941753509486887,
+      "v": 0.00010000000000000009
+    }
+  },
+  "noise_diagnostics": {
+    "a": {
+      "fits": [
+        {
+          "init_phi": 0.2,
+          "nll": -2274.772596615546,
+          "success": true,
+          "boundary_hit": false,
+          "x": [
+            -0.014962790300703643,
+            -4.2913153144550105
+          ]
+        },
+        {
+          "init_phi": 0.6,
+          "nll": -2274.772596615312,
+          "success": true,
+          "boundary_hit": false,
+          "x": [
+            -0.014962552461122042,
+            -4.291314667404754
+          ]
+        },
+        {
+          "init_phi": 0.9,
+          "nll": -2274.772596615466,
+          "success": true,
+          "boundary_hit": false,
+          "x": [
+            -0.014963102250268515,
+            -4.291315525003227
+          ]
+        }
+      ],
+      "success": true,
+      "boundary_hit": false
+    },
+    "b": {
+      "fits": [
+        {
+          "init_phi": 0.2,
+          "nll": -1766.3016186830384,
+          "success": true,
+          "boundary_hit": false,
+          "x": [
+            -0.0075105581105779275,
+            -3.443840981350115
+          ]
+        },
+        {
+          "init_phi": 0.6,
+          "nll": -1766.3016186830469,
+          "success": true,
+          "boundary_hit": false,
+          "x": [
+            -0.007510422172084861,
+            -3.4438412375930567
+          ]
+        },
+        {
+          "init_phi": 0.9,
+          "nll": -1766.301618682589,
+          "success": true,
+          "boundary_hit": false,
+          "x": [
+            -0.007510386075293723,
+            -3.443840294368867
+          ]
+        }
+      ],
+      "success": true,
+      "boundary_hit": false
+    }
+  },
+  "noise_fit_ok": true,
+  "factor_identified": true,
+  "development_control_counts": {
+    "a": 4,
+    "b": 4
+  },
+  "workload_support": [
+    [
+      1.4098274901649113,
+      2.724029568216729
+    ],
+    [
+      1.4365957490758776,
+      2.7889171369805683
+    ],
+    [
+      1.3054909078406518,
+      2.7797231447089032
+    ],
+    [
+      1.0513112098515212,
+      2.8565084350655003
+    ],
+    [
+      1.1063520050564992,
+      2.963567187017555
+    ],
+    [
+      1.3324052158493371,
+      2.6721348591338243
+    ],
+    [
+      1.1066677529691782,
+      2.7883912842742253
+    ],
+    [
+      1.319995778422439,
+      2.7536104290949805
+    ],
+    [
+      1.0951451185973589,
+      2.780583255428962
+    ],
+    [
+      1.3662740968152005,
+      2.7009824475241615
+    ]
+  ],
+  "regression_flags": [
+    "ok",
+    "ok",
+    "ok",
+    "ok",
+    "ok",
+    "ok",
+    "ok",
+    "ok",
+    "ok",
+    "ok"
+  ],
+  "development_missing_control_entries": 0,
+  "development_lineage": [
+    {
+      "provenance_id": "algebraic-public-fixture-v1",
+      "role": "development",
+      "healthy_attestation": true,
+      "public_sha256": "178f6d01ad3d1517f43e93ef4319308ccd2b1d8e14154213d5787855b51710d2"
+    }
+  ],
+  "challenges": [
+    "background_control_contamination_possible",
+    "plain_weighted_projection_not_robust",
+    "frozen_regression_parameter_uncertainty_not_propagated",
+    "canary_loading_estimation_uncertainty_not_propagated"
+  ],
+  "artifact_sha256": "2b87705857c99beaf0f6b1572c464f30ce4193aa56c92fd2af7114ac4213918c"
+}

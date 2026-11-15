@@ -1,0 +1,438 @@
+topology:
+  data_centers:
+  - data_center_id: dc-01
+  racks:
+  - rack_id: rack-01
+    data_center_id: dc-01
+  - rack_id: rack-02
+    data_center_id: dc-01
+  - rack_id: rack-03
+    data_center_id: dc-01
+  - rack_id: rack-04
+    data_center_id: dc-01
+  hosts:
+  - host_id: host-01-01
+    rack_id: rack-01
+    data_center_id: dc-01
+    class_id: 0
+    capacity:
+      cpu_cores: 1
+      memory_mb: 256
+      disk_mb: 500000
+      network_mbps: 1000
+    usage:
+      cpu_cores: 0.0
+      memory_mb: 0.0
+      disk_mb: 0.0
+      network_mbps: 0.0
+    lifecycle: ready
+  - host_id: host-01-02
+    rack_id: rack-01
+    data_center_id: dc-01
+    class_id: 1
+    capacity:
+      cpu_cores: 1
+      memory_mb: 256
+      disk_mb: 500000
+      network_mbps: 1000
+    usage:
+      cpu_cores: 0.0
+      memory_mb: 0.0
+      disk_mb: 0.0
+      network_mbps: 0.0
+    lifecycle: ready
+  - host_id: host-01-03
+    rack_id: rack-01
+    data_center_id: dc-01
+    class_id: 0
+    capacity:
+      cpu_cores: 1
+      memory_mb: 256
+      disk_mb: 500000
+      network_mbps: 1000
+    usage:
+      cpu_cores: 0.0
+      memory_mb: 0.0
+      disk_mb: 0.0
+      network_mbps: 0.0
+    lifecycle: ready
+  - host_id: host-01-04
+    rack_id: rack-01
+    data_center_id: dc-01
+    class_id: 1
+    capacity:
+      cpu_cores: 1
+      memory_mb: 256
+      disk_mb: 500000
+      network_mbps: 1000
+    usage:
+      cpu_cores: 0.0
+      memory_mb: 0.0
+      disk_mb: 0.0
+      network_mbps: 0.0
+    lifecycle: ready
+  - host_id: host-01-05
+    rack_id: rack-01
+    data_center_id: dc-01
+    class_id: 0
+    capacity:
+      cpu_cores: 1
+      memory_mb: 256
+      disk_mb: 500000
+      network_mbps: 1000
+    usage:
+      cpu_cores: 0.0
+      memory_mb: 0.0
+      disk_mb: 0.0
+      network_mbps: 0.0
+    lifecycle: ready
+  - host_id: host-02-01
+    rack_id: rack-02
+    data_center_id: dc-01
+    class_id: 0
+    capacity:
+      cpu_cores: 1
+      memory_mb: 256
+      disk_mb: 500000
+      network_mbps: 1000
+    usage:
+      cpu_cores: 0.0
+      memory_mb: 0.0
+      disk_mb: 0.0
+      network_mbps: 0.0
+    lifecycle: ready
+  - host_id: host-02-02
+    rack_id: rack-02
+    data_center_id: dc-01
+    class_id: 1
+    capacity:
+      cpu_cores: 1
+      memory_mb: 256
+      disk_mb: 500000
+      network_mbps: 1000
+    usage:
+      cpu_cores: 0.0
+      memory_mb: 0.0
+      disk_mb: 0.0
+      network_mbps: 0.0
+    lifecycle: ready
+  - host_id: host-02-03
+    rack_id: rack-02
+    data_center_id: dc-01
+    class_id: 0
+    capacity:
+      cpu_cores: 1
+      memory_mb: 256
+      disk_mb: 500000
+      network_mbps: 1000
+    usage:
+      cpu_cores: 0.0
+      memory_mb: 0.0
+      disk_mb: 0.0
+      network_mbps: 0.0
+    lifecycle: ready
+  - host_id: host-02-04
+    rack_id: rack-02
+    data_center_id: dc-01
+    class_id: 1
+    capacity:
+      cpu_cores: 1
+      memory_mb: 256
+      disk_mb: 500000
+      network_mbps: 1000
+    usage:
+      cpu_cores: 0.0
+      memory_mb: 0.0
+      disk_mb: 0.0
+      network_mbps: 0.0
+    lifecycle: ready
+  - host_id: host-02-05
+    rack_id: rack-02
+    data_center_id: dc-01
+    class_id: 0
+    capacity:
+      cpu_cores: 1
+      memory_mb: 256
+      disk_mb: 500000
+      network_mbps: 1000
+    usage:
+      cpu_cores: 0.0
+      memory_mb: 0.0
+      disk_mb: 0.0
+      network_mbps: 0.0
+    lifecycle: ready
+  - host_id: host-03-01
+    rack_id: rack-03
+    data_center_id: dc-01
+    class_id: 0
+    capacity:
+      cpu_cores: 1
+      memory_mb: 256
+      disk_mb: 500000
+      network_mbps: 1000
+    usage:
+      cpu_cores: 0.0
+      memory_mb: 0.0
+      disk_mb: 0.0
+      network_mbps: 0.0
+    lifecycle: ready
+  - host_id: host-03-02
+    rack_id: rack-03
+    data_center_id: dc-01
+    class_id: 1
+    capacity:
+      cpu_cores: 1
+      memory_mb: 256
+      disk_mb: 500000
+      network_mbps: 1000
+    usage:
+      cpu_cores: 0.0
+      memory_mb: 0.0
+      disk_mb: 0.0
+      network_mbps: 0.0
+    lifecycle: ready
+  - host_id: host-03-03
+    rack_id: rack-03
+    data_center_id: dc-01
+    class_id: 0
+    capacity:
+      cpu_cores: 1
+      memory_mb: 256
+      disk_mb: 500000
+      network_mbps: 1000
+    usage:
+      cpu_cores: 0.0
+      memory_mb: 0.0
+      disk_mb: 0.0
+      network_mbps: 0.0
+    lifecycle: ready
+  - host_id: host-03-04
+    rack_id: rack-03
+    data_center_id: dc-01
+    class_id: 1
+    capacity:
+      cpu_cores: 1
+      memory_mb: 256
+      disk_mb: 500000
+      network_mbps: 1000
+    usage:
+      cpu_cores: 0.0
+      memory_mb: 0.0
+      disk_mb: 0.0
+      network_mbps: 0.0
+    lifecycle: ready
+  - host_id: host-03-05
+    rack_id: rack-03
+    data_center_id: dc-01
+    class_id: 0
+    capacity:
+      cpu_cores: 1
+      memory_mb: 256
+      disk_mb: 500000
+      network_mbps: 1000
+    usage:
+      cpu_cores: 0.0
+      memory_mb: 0.0
+      disk_mb: 0.0
+      network_mbps: 0.0
+    lifecycle: ready
+  - host_id: host-04-01
+    rack_id: rack-04
+    data_center_id: dc-01
+    class_id: 0
+    capacity:
+      cpu_cores: 1
+      memory_mb: 256
+      disk_mb: 500000
+      network_mbps: 1000
+    usage:
+      cpu_cores: 0.0
+      memory_mb: 0.0
+      disk_mb: 0.0
+      network_mbps: 0.0
+    lifecycle: ready
+  - host_id: host-04-02
+    rack_id: rack-04
+    data_center_id: dc-01
+    class_id: 1
+    capacity:
+      cpu_cores: 1
+      memory_mb: 256
+      disk_mb: 500000
+      network_mbps: 1000
+    usage:
+      cpu_cores: 0.0
+      memory_mb: 0.0
+      disk_mb: 0.0
+      network_mbps: 0.0
+    lifecycle: ready
+  - host_id: host-04-03
+    rack_id: rack-04
+    data_center_id: dc-01
+    class_id: 0
+    capacity:
+      cpu_cores: 1
+      memory_mb: 256
+      disk_mb: 500000
+      network_mbps: 1000
+    usage:
+      cpu_cores: 0.0
+      memory_mb: 0.0
+      disk_mb: 0.0
+      network_mbps: 0.0
+    lifecycle: ready
+  - host_id: host-04-04
+    rack_id: rack-04
+    data_center_id: dc-01
+    class_id: 1
+    capacity:
+      cpu_cores: 1
+      memory_mb: 256
+      disk_mb: 500000
+      network_mbps: 1000
+    usage:
+      cpu_cores: 0.0
+      memory_mb: 0.0
+      disk_mb: 0.0
+      network_mbps: 0.0
+    lifecycle: ready
+  - host_id: host-04-05
+    rack_id: rack-04
+    data_center_id: dc-01
+    class_id: 0
+    capacity:
+      cpu_cores: 1
+      memory_mb: 256
+      disk_mb: 500000
+      network_mbps: 1000
+    usage:
+      cpu_cores: 0.0
+      memory_mb: 0.0
+      disk_mb: 0.0
+      network_mbps: 0.0
+    lifecycle: ready
+  replicas:
+  - service_id: demo-service
+    replica_id: replica-01-01
+    host_id: host-01-01
+    release_id: release-healthy-v1
+  - service_id: demo-service
+    replica_id: replica-01-02
+    host_id: host-01-02
+    release_id: release-healthy-v1
+  - service_id: demo-service
+    replica_id: replica-01-03
+    host_id: host-01-03
+    release_id: release-healthy-v1
+  - service_id: demo-service
+    replica_id: replica-01-04
+    host_id: host-01-04
+    release_id: release-healthy-v1
+  - service_id: demo-service
+    replica_id: replica-01-05
+    host_id: host-01-05
+    release_id: release-healthy-v1
+  - service_id: demo-service
+    replica_id: replica-02-01
+    host_id: host-02-01
+    release_id: release-healthy-v1
+  - service_id: demo-service
+    replica_id: replica-02-02
+    host_id: host-02-02
+    release_id: release-healthy-v1
+  - service_id: demo-service
+    replica_id: replica-02-03
+    host_id: host-02-03
+    release_id: release-healthy-v1
+  - service_id: demo-service
+    replica_id: replica-02-04
+    host_id: host-02-04
+    release_id: release-healthy-v1
+  - service_id: demo-service
+    replica_id: replica-02-05
+    host_id: host-02-05
+    release_id: release-healthy-v1
+  - service_id: demo-service
+    replica_id: replica-03-01
+    host_id: host-03-01
+    release_id: release-healthy-v1
+  - service_id: demo-service
+    replica_id: replica-03-02
+    host_id: host-03-02
+    release_id: release-healthy-v1
+  - service_id: demo-service
+    replica_id: replica-03-03
+    host_id: host-03-03
+    release_id: release-healthy-v1
+  - service_id: demo-service
+    replica_id: replica-03-04
+    host_id: host-03-04
+    release_id: release-healthy-v1
+  - service_id: demo-service
+    replica_id: replica-03-05
+    host_id: host-03-05
+    release_id: release-healthy-v1
+  - service_id: demo-service
+    replica_id: replica-04-01
+    host_id: host-04-01
+    release_id: release-healthy-v1
+  - service_id: demo-service
+    replica_id: replica-04-02
+    host_id: host-04-02
+    release_id: release-healthy-v1
+  - service_id: demo-service
+    replica_id: replica-04-03
+    host_id: host-04-03
+    release_id: release-healthy-v1
+  - service_id: demo-service
+    replica_id: replica-04-04
+    host_id: host-04-04
+    release_id: release-healthy-v1
+  - service_id: demo-service
+    replica_id: replica-04-05
+    host_id: host-04-05
+    release_id: release-healthy-v1
+  schema_version: 1
+engine:
+  seed: 10000
+  tick_seconds: 1
+  events: []
+  resources:
+    services:
+    - service_id: demo-service
+      arrival_rate_rps: 80
+      work_core_seconds: 0.05
+      queue_limit: 300
+      baseline_memory_mb: 32
+      temporary_mb_per_request: 0.25
+      initial_retained_memory_mb: 0
+    traffic: []
+    shared_jitter: 0.05
+    host_baseline_memory_mb: 32
+    max_arrivals_per_service_tick: 100000
+    trace_max_rows: 20000
+    paired_exogenous: false
+    health_policy:
+      policy_id: resource-health-dev-v1
+      window_seconds: 10
+      minimum_span_seconds: 5
+      minimum_samples: 3
+      minimum_processed: 20
+      growth_mb_per_request: 0.05
+      growth_mb_per_second: 0.5
+      pressure_fraction: 0.8
+  demo: true
+  telemetry:
+    enabled: true
+    delay_min_ticks: 0
+    delay_max_ticks: 0
+    duplicate_probability: 0
+    missing_probability: 0
+    missing_window_probability: 0
+    drop_windows: []
+    late_windows: []
+    late_delay_ticks: 120
+    decision_delay_seconds: 0
+    minimum_coverage: 0.8
+    max_records: 50000
+    max_windows: 1000

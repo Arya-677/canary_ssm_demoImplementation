@@ -1,0 +1,35 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_________________ test_api_clock_command_omits_operation_args __________________
+
+payload = ({'format': 'latched-release-policy-v1', 'frozen': {'versions': {'numpy': '2.3.5', 'scipy': '1.17.0'}, 'format': 'froz...False, False, False, False,
+       False, False, False, False, False, False,  True,  True,  True,
+        True]), ...})
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f72935deba0>
+
+    def test_api_clock_command_omits_operation_args(payload,monkeypatch):
+        import io
+        import json
+        import canary_ssm.world_policy_live as live
+        sent = []
+        def fake_open(request,**kwargs):
+            sent.append(json.loads(request.data))
+            return io.BytesIO(b'{"status":"applied"}')
+        monkeypatch.setattr(live,'urlopen',fake_open)
+        pump = PublicPolicyPump(payload[0])
+>       pump.command({'run_id':'unit','epoch':0,'command_token':'unit-token'},'step')
+E       TypeError: PublicPolicyPump.command() missing 1 required positional argument: 'args'
+
+tests/test_world_policy_live.py:90: TypeError
+=============================== warnings summary ===============================
+../../../../../../opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/anyio/pytest_plugin.py:14
+  /opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/anyio/pytest_plugin.py:14: PytestRemovedIn10Warning: _pytest.python.CallSpec2 has been renamed to CallSpec.
+  The CallSpec2 alias will be removed in pytest 10.
+  Update imports to use CallSpec instead.
+  See https://docs.pytest.org/en/stable/deprecations.html#callspec2-renamed
+    from _pytest.python import CallSpec2
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/test_world_policy_live.py::test_api_clock_command_omits_operation_args
+1 failed, 1 warning in 3.91s

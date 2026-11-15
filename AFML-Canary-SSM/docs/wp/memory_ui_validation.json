@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "checks": {
+    "canonical_memory_form": true,
+    "unexecuted_registration": true,
+    "observed_advisory_label": true,
+    "request_growth_chart": true,
+    "sampled_latency_chart": true,
+    "actual_restart_button": true,
+    "visible_restart_event": true,
+    "no_detector_claim": true,
+    "checkpoint_restores_memory_and_process_state": true
+  },
+  "verification": "Actual local HTTP backend and DOM button handlers; no browser visual layout claim"
+}

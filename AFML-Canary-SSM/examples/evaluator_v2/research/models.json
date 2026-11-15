@@ -1,0 +1,417 @@
+{
+  "base": {
+    "x_center": -0.031290472258496564,
+    "class_lambda": [
+      0.014887957360431301,
+      0.014717574744757458
+    ],
+    "phi_e": [
+      0.6337238009722417,
+      0.6648157451443577
+    ],
+    "q_e": [
+      0.009850728777739404,
+      0.009812191563268277
+    ],
+    "v": [
+      0.00010000000000000009,
+      0.00010000000000000009
+    ],
+    "factor_rank": 1,
+    "noise": "ar_only",
+    "beta_mode": "pooled_dev",
+    "beta_pooled": 0.13797808140316375,
+    "diagnostics": {
+      "classes": [
+        {
+          "class": 0,
+          "n_series": 12,
+          "fits": [
+            {
+              "init_phi": 0.2,
+              "nll": -14558.149630902593,
+              "success": true,
+              "boundary_hit": false,
+              "x": [
+                0.6337234922554941,
+                -4.620209908588493
+              ],
+              "status": 0,
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "iterations": 9,
+              "function_evaluations": 33,
+              "bounds": [
+                [
+                  -0.95,
+                  0.99
+                ],
+                [
+                  -9.210340371976182,
+                  -1.6094379124341003
+                ]
+              ],
+              "white_sd_fixed": 0.0001
+            },
+            {
+              "init_phi": 0.6,
+              "nll": -14558.149630902113,
+              "success": true,
+              "boundary_hit": false,
+              "x": [
+                0.6337234830194537,
+                -4.620209211248001
+              ],
+              "status": 0,
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "iterations": 4,
+              "function_evaluations": 18,
+              "bounds": [
+                [
+                  -0.95,
+                  0.99
+                ],
+                [
+                  -9.210340371976182,
+                  -1.6094379124341003
+                ]
+              ],
+              "white_sd_fixed": 0.0001
+            },
+            {
+              "init_phi": 0.9,
+              "nll": -14558.149630902835,
+              "success": true,
+              "boundary_hit": false,
+              "x": [
+                0.6337238009722417,
+                -4.620209838947329
+              ],
+              "status": 0,
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "iterations": 7,
+              "function_evaluations": 27,
+              "bounds": [
+                [
+                  -0.95,
+                  0.99
+                ],
+                [
+                  -9.210340371976182,
+                  -1.6094379124341003
+                ]
+              ],
+              "white_sd_fixed": 0.0001
+            }
+          ]
+        },
+        {
+          "class": 1,
+          "n_series": 12,
+          "fits": [
+            {
+              "init_phi": 0.2,
+              "nll": -14567.963435381665,
+              "success": true,
+              "boundary_hit": false,
+              "x": [
+                0.6648156791921299,
+                -4.624129746822163
+              ],
+              "status": 0,
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "iterations": 9,
+              "function_evaluations": 33,
+              "bounds": [
+                [
+                  -0.95,
+                  0.99
+                ],
+                [
+                  -9.210340371976182,
+                  -1.6094379124341003
+                ]
+              ],
+              "white_sd_fixed": 0.0001
+            },
+            {
+              "init_phi": 0.6,
+              "nll": -14567.96343538173,
+              "success": true,
+              "boundary_hit": false,
+              "x": [
+                0.6648156539306241,
+                -4.624129399581208
+              ],
+              "status": 0,
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "iterations": 5,
+              "function_evaluations": 21,
+              "bounds": [
+                [
+                  -0.95,
+                  0.99
+                ],
+                [
+                  -9.210340371976182,
+                  -1.6094379124341003
+                ]
+              ],
+              "white_sd_fixed": 0.0001
+            },
+            {
+              "init_phi": 0.9,
+              "nll": -14567.963435381786,
+              "success": true,
+              "boundary_hit": false,
+              "x": [
+                0.6648157451443577,
+                -4.624129629410362
+              ],
+              "status": 0,
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "iterations": 6,
+              "function_evaluations": 24,
+              "bounds": [
+                [
+                  -0.95,
+                  0.99
+                ],
+                [
+                  -9.210340371976182,
+                  -1.6094379124341003
+                ]
+              ],
+              "white_sd_fixed": 0.0001
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "factor_off": {
+    "x_center": -0.031290472258496564,
+    "class_lambda": [
+      0.0,
+      0.0
+    ],
+    "phi_e": [
+      0.7215956457935938,
+      0.741604039684576
+    ],
+    "q_e": [
+      0.013931241849831327,
+      0.013732587813860208
+    ],
+    "v": [
+      0.00010000000000000009,
+      0.00010000000000000009
+    ],
+    "factor_rank": 0,
+    "noise": "ar_only",
+    "beta_mode": "pooled_dev",
+    "beta_pooled": 0.13797808140316375,
+    "diagnostics": {
+      "classes": [
+        {
+          "class": 0,
+          "n_series": 12,
+          "fits": [
+            {
+              "init_phi": 0.2,
+              "nll": -13580.483973055481,
+              "success": true,
+              "boundary_hit": false,
+              "x": [
+                0.7215980753387226,
+                -4.2736257854661766
+              ],
+              "status": 0,
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "iterations": 8,
+              "function_evaluations": 33,
+              "bounds": [
+                [
+                  -0.95,
+                  0.99
+                ],
+                [
+                  -9.210340371976182,
+                  -1.6094379124341003
+                ]
+              ],
+              "white_sd_fixed": 0.0001
+            },
+            {
+              "init_phi": 0.6,
+              "nll": -13580.483973134671,
+              "success": true,
+              "boundary_hit": false,
+              "x": [
+                0.7215963330470293,
+                -4.273621816266056
+              ],
+              "status": 0,
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "iterations": 6,
+              "function_evaluations": 24,
+              "bounds": [
+                [
+                  -0.95,
+                  0.99
+                ],
+                [
+                  -9.210340371976182,
+                  -1.6094379124341003
+                ]
+              ],
+              "white_sd_fixed": 0.0001
+            },
+            {
+              "init_phi": 0.9,
+              "nll": -13580.48397313565,
+              "success": true,
+              "boundary_hit": false,
+              "x": [
+                0.7215956457935938,
+                -4.273621345858076
+              ],
+              "status": 0,
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "iterations": 8,
+              "function_evaluations": 33,
+              "bounds": [
+                [
+                  -0.95,
+                  0.99
+                ],
+                [
+                  -9.210340371976182,
+                  -1.6094379124341003
+                ]
+              ],
+              "white_sd_fixed": 0.0001
+            }
+          ]
+        },
+        {
+          "class": 1,
+          "n_series": 12,
+          "fits": [
+            {
+              "init_phi": 0.2,
+              "nll": -13631.802257402682,
+              "success": true,
+              "boundary_hit": false,
+              "x": [
+                0.7416063841394132,
+                -4.287984682710258
+              ],
+              "status": 0,
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "iterations": 9,
+              "function_evaluations": 36,
+              "bounds": [
+                [
+                  -0.95,
+                  0.99
+                ],
+                [
+                  -9.210340371976182,
+                  -1.6094379124341003
+                ]
+              ],
+              "white_sd_fixed": 0.0001
+            },
+            {
+              "init_phi": 0.6,
+              "nll": -13631.802257419951,
+              "success": true,
+              "boundary_hit": false,
+              "x": [
+                0.7416051293654172,
+                -4.287984012371386
+              ],
+              "status": 0,
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "iterations": 6,
+              "function_evaluations": 24,
+              "bounds": [
+                [
+                  -0.95,
+                  0.99
+                ],
+                [
+                  -9.210340371976182,
+                  -1.6094379124341003
+                ]
+              ],
+              "white_sd_fixed": 0.0001
+            },
+            {
+              "init_phi": 0.9,
+              "nll": -13631.802257422365,
+              "success": true,
+              "boundary_hit": false,
+              "x": [
+                0.741604039684576,
+                -4.2879835981668
+              ],
+              "status": 0,
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "iterations": 8,
+              "function_evaluations": 33,
+              "bounds": [
+                [
+                  -0.95,
+                  0.99
+                ],
+                [
+                  -9.210340371976182,
+                  -1.6094379124341003
+                ]
+              ],
+              "white_sd_fixed": 0.0001
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "ar_off": {
+    "x_center": -0.031290472258496564,
+    "class_lambda": [
+      0.014887957360431301,
+      0.014717574744757458
+    ],
+    "phi_e": [
+      0.0,
+      0.0
+    ],
+    "q_e": [
+      0.0001,
+      0.0001
+    ],
+    "v": [
+      0.012738470941924193,
+      0.013135890836157649
+    ],
+    "factor_rank": 1,
+    "noise": "white",
+    "beta_mode": "pooled_dev",
+    "beta_pooled": 0.13797808140316375,
+    "diagnostics": {
+      "classes": [
+        {
+          "class": 0,
+          "n_series": 12,
+          "fits": []
+        },
+        {
+          "class": 1,
+          "n_series": 12,
+          "fits": []
+        }
+      ]
+    }
+  }
+}

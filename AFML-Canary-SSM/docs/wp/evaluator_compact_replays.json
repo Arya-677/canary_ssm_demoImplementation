@@ -1,0 +1,29 @@
+[
+  {
+    "generator": "research",
+    "endpoint": "latent_effect",
+    "role": "null-validation",
+    "index": 0,
+    "identical": true,
+    "raw_buffers_materialized": false,
+    "verified": "all scores/masks, public fingerprint, evaluator truth and ordered command/config provenance"
+  },
+  {
+    "generator": "world",
+    "endpoint": "release_latency",
+    "role": "null-validation",
+    "index": 0,
+    "identical": true,
+    "raw_buffers_materialized": false,
+    "verified": "all scores/masks, public fingerprint, evaluator truth and ordered command/config provenance"
+  },
+  {
+    "generator": "world",
+    "endpoint": "infrastructure",
+    "role": "threshold-calibration",
+    "index": 0,
+    "identical": true,
+    "raw_buffers_materialized": false,
+    "verified": "all scores/masks, public fingerprint, evaluator truth and ordered command/config provenance"
+  }
+]

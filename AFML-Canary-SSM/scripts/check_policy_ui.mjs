@@ -1,0 +1,21 @@
+import vm from 'node:vm';import fs from 'node:fs/promises';import assert from 'node:assert/strict';import {webcrypto} from 'node:crypto';
+const [base,policyPath,validationPath,out]=process.argv.slice(2),elements=new Map();
+const e=id=>{if(!elements.has(id))elements.set(id,{id,textContent:'',innerHTML:'',className:'',disabled:false,hidden:false,value:'',checked:false,files:[],listeners:{},addEventListener(n,f){this.listeners[n]=f;}});return elements.get(id);};
+const context=vm.createContext({document:{getElementById:e,addEventListener(){}},URLSearchParams,location:{search:''},performance:{now:()=>100},Date,console,crypto:webcrypto,AbortSignal,fetch:(url,options)=>fetch(new URL(url,base),options),setInterval:()=>0,setTimeout:()=>0,Uint8Array,btoa:s=>Buffer.from(s,'binary').toString('base64')});
+vm.runInContext(await fs.readFile(new URL('../canary_ssm/web/app.js',import.meta.url),'utf8'),context);const run=s=>vm.runInContext(s,context);
+await run('fetchState()');await run('fetchCatalog()');
+await run("send('rollout_create',null,{release_id:'release-001',baseline_seconds:3600,monitoring_seconds:120})");
+for(const [id,path] of [['policy-artifact',policyPath],['policy-validation',validationPath]]){const text=await fs.readFile(path,'utf8');e(id).files=[{size:Buffer.byteLength(text),text:async()=>text}];}
+assert.equal(e('policy-auto-rollback').checked,false);await e('policy-attach').onclick();assert.match(e('policy-status').textContent,/HOLD/);
+await e('rollout-baseline').onclick();for(let i=0;i<60;i++)await run("send('step')");await e('rollout-expose').onclick();await run("send('step')");
+const p=JSON.parse(await fs.readFile(policyPath,'utf8'));
+const r=await run('currentRollout()');const record={window_index:0,event_time:3660,decision_time:3660,score:-.1,available:true,fresh_canaries:p.frozen.protocol.canaries,fresh_controls:p.frozen.protocol.groups,exposed_hosts:p.frozen.protocol.canaries,quality_flags:[],input_sha256:'a'.repeat(64)};
+const payload={rollout_id:r.rollout_id,run_id:await run('packet.run_id'),monitoring_epoch:r.monitoring_epoch,hashes:{...p.frozen.hashes,policy_hash:p.policy_hash},record};
+await run(`send('policy_observe',null,${JSON.stringify(payload)})`);assert.match(e('policy-status').textContent,/ALARM_LATCHED/);assert.match(e('policy-status').textContent,/OFF \(manual rollback\)/);assert.match(e('world-detector-status').textContent,/CALIBRATED POLICY INPUT/);
+await run("send('step')");assert.match(e('rollout-current').textContent,/PAUSED/);assert.match(e('policy-decisions').innerHTML,/release_regression_alarm/);
+await e('rollout-rollback').onclick();await run("send('step')");assert.match(e('rollout-current').textContent,/ROLLED_BACK/);assert.match(e('policy-status').textContent,/EVALUATION CLOSED/);
+await run("send('reset')");await run("send('rollout_create',null,{release_id:'release-001',baseline_seconds:3600,monitoring_seconds:120})");
+for(const [id,path] of [['policy-artifact','examples/first_crossing/policy.json'],['policy-validation','examples/first_crossing/validation.json']]){const text=await fs.readFile(path,'utf8');e(id).files=[{size:Buffer.byteLength(text),text:async()=>text}];}
+await e('policy-attach').onclick();assert.match(e('command-status').textContent,/incompatible with this world|Independent validation gate/);assert.match(e('policy-status').textContent,/No compatible calibrated policy/);
+const rawRun=await(await fetch(base+'/api/run')).text();e('load-run').files=[{size:Buffer.byteLength(rawRun),text:async()=>rawRun}];await e('load-run').listeners.change({target:e('load-run')});assert.equal(await run('packet.read_only'),true);
+const result={passed:true,checks:{large_artifact_HTTP_attach:true,default_auto_rollback_off:true,before_exposure_commit:true,calibrated_producer_input_status:true,automatic_pause_reason:true,manual_rollback:true,closed_evaluation_label:true,incompatible_conditional_demo_rejected:true,raw_saved_run_browser_replay:true},scope:'Actual HTTP/DOM commands with hand-authored controller contract null scores; these inputs are not physical-world calibration evidence. No browser layout claim.'};if(out)await fs.writeFile(out,JSON.stringify(result,null,2)+'\n');console.log(JSON.stringify(result,null,2));

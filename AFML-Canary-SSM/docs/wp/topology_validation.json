@@ -1,0 +1,49 @@
+{
+  "date": "2026-11-14",
+  "scope": "virtual-world chunk 01; static topology",
+  "source_archive": "canary_ssm_demoImplementation-main(3).zip",
+  "source_sha256": "37fa1d0e54882fa52b42f7646ecc50033b460ade56e7296cfbbfbc4483de78ed",
+  "python": "3.14.7 (main, Aug  5 2026, 10:29:49) [Clang 21.0.0 (clang-2100.1.1.101)]",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "packages": {
+    "numpy": "2.5.4",
+    "scipy": "1.18.1",
+    "pandas": "3.1.1",
+    "pyyaml": "6.0.3",
+    "pytest": "9.2.0",
+    "statsmodels": "0.15.0",
+    "hypothesis": "6.124.9"
+  },
+  "git": "unavailable: supplied ZIP has no .git",
+  "fixture_checks": {
+    "one_center": true,
+    "four_racks": true,
+    "twenty_unique_hosts": true,
+    "five_hosts_each_rack": true,
+    "twenty_placed_replicas": true,
+    "snapshot_roundtrip": true
+  },
+  "fixture_gate": true,
+  "file_sha256": {
+    "canary_ssm/configuration.py": "a91f24bc4659da3ca123b9222407622acd5ad32391d8480f55bfecb1b4532188",
+    "canary_ssm/topology.py": "a79f151fc564aba06082794b63646675d1220b0ef683f0bc6087127784d07824",
+    "canary_ssm/experiments.py": "f7428193c67bc6f307a825e164af7b839c9ed3ccbabd721025a38c3355669d59",
+    "canary_ssm/cli.py": "8597107a938a4461fc0e019cc4f0020c92260aabc72b5598fa5cb8386b86d36b",
+    "configs/world_interactive.yaml": "b0d2990202783c969a196fab07f2ee01327296f7f3c094d876054af0868c4780",
+    "tests/test_topology.py": "4873424577510e3af97d0d8db9573a9be979329d34f9e399b7e7d70c03963136",
+    "README.md": "965d08d06168320a2c8615099b58540c7c7c6feb7ccd8ca05545bd9c5c5bd1e9",
+    "docs/topology.md": "7d9c7fcb7d4959f6493bfb122bd29d806d1024d322a667714c1d411a0c5c8deb",
+    "docs/implementation_status.md": "8b37404efb9624ee79882729212399ba8d19b8cc430f94d2239413809b62ce79",
+    "docs/wp/TOPOLOGY-01.md": "a820f069a813fb22984bda7fdb1b9d39ef1069b186ef910eb73b7298d05ad936"
+  },
+  "full_suite": {
+    "code": 1,
+    "out": "........................................................................ [ 39%]\n.....F.................................................................. [ 78%]\n.......................................                                  [100%]\n=================================== FAILURES ===================================\n_____________________ test_experiment7_legacy_reproduction _____________________\n\ntmp_path = PosixPath('/private/var/folders/07/q406h8k55vv26lgdz2hsxj280000gn/T/pytest-of-pranavmenon/pytest-1/test_experiment7_legacy_reprod0')\n\n    @pytest.mark.slow\n    def test_experiment7_legacy_reproduction(tmp_path):\n        from canary_ssm.studies import study_regime\n>       man = study_regime.run(\n            model_dir=ROOT / \"data_audit\" / \"model_pooled_dev\",\n            out_dir=tmp_path / \"reg\",\n            n_null=30,\n            n_harm=10,\n            allow_frozen=True,\n            legacy_seeds=True,\n            workers=1,\n        )\n\ntests/test_p1_protocol.py:203: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \ncanary_ssm/studies/study_regime.py:110: in run\n    _, mcfg, mh = load_models(model_dir)\n                  ^^^^^^^^^^^^^^^^^^^^^^\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nmodel_dir = PosixPath('/Users/pranavmenon/Documents/Codex/2026-11-14/new-chat-5/work/canary_ssm_demoImplementation-main/data_audit/model_pooled_dev')\ncache_dir = None\n\n    def load_models(\n        model_dir: Path,\n        cache_dir: Path | None = None,\n    ) -> tuple[Models, dict, str]:\n        model_dir = Path(model_dir)\n        for need in (\"model_config.json\", \"nuisance_main.json\"):\n            if not (model_dir / need).exists():\n>               raise FileNotFoundError(f\"missing model artifact {need} in {model_dir}\")\nE               FileNotFoundError: missing model artifact model_config.json in /Users/pranavmenon/Documents/Codex/2026-11-14/new-chat-5/work/canary_ssm_demoImplementation-main/data_audit/model_pooled_dev\n\ncanary_ssm/experiments.py:1161: FileNotFoundError\n=========================== short test summary info ============================\nFAILED tests/test_p1_protocol.py::test_experiment7_legacy_reproduction - File...\n1 failed, 182 passed in 75.52s (0:01:15)\n",
+    "err": ""
+  },
+  "untouched_archive_failure_check": {
+    "code": 1,
+    "out": "F                                                                        [100%]\n=================================== FAILURES ===================================\n_____________________ test_experiment7_legacy_reproduction _____________________\n\ntmp_path = PosixPath('/private/var/folders/07/q406h8k55vv26lgdz2hsxj280000gn/T/pytest-of-pranavmenon/pytest-2/test_experiment7_legacy_reprod0')\n\n    @pytest.mark.slow\n    def test_experiment7_legacy_reproduction(tmp_path):\n        from canary_ssm.studies import study_regime\n>       man = study_regime.run(\n            model_dir=ROOT / \"data_audit\" / \"model_pooled_dev\",\n            out_dir=tmp_path / \"reg\",\n            n_null=30,\n            n_harm=10,\n            allow_frozen=True,\n            legacy_seeds=True,\n            workers=1,\n        )\n\ntests/test_p1_protocol.py:203: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \ncanary_ssm/studies/study_regime.py:110: in run\n    _, mcfg, mh = load_models(model_dir)\n                  ^^^^^^^^^^^^^^^^^^^^^^\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nmodel_dir = PosixPath('/Users/pranavmenon/Documents/Codex/2026-11-14/new-chat-5/work/baseline_check/canary_ssm_demoImplementation-main/data_audit/model_pooled_dev')\ncache_dir = None\n\n    def load_models(\n        model_dir: Path,\n        cache_dir: Path | None = None,\n    ) -> tuple[Models, dict, str]:\n        model_dir = Path(model_dir)\n        for need in (\"model_config.json\", \"nuisance_main.json\"):\n            if not (model_dir / need).exists():\n>               raise FileNotFoundError(f\"missing model artifact {need} in {model_dir}\")\nE               FileNotFoundError: missing model artifact model_config.json in /Users/pranavmenon/Documents/Codex/2026-11-14/new-chat-5/work/baseline_check/canary_ssm_demoImplementation-main/data_audit/model_pooled_dev\n\ncanary_ssm/experiments.py:1160: FileNotFoundError\n=========================== short test summary info ============================\nFAILED tests/test_p1_protocol.py::test_experiment7_legacy_reproduction - File...\n1 failed in 0.58s\n",
+    "err": ""
+  }
+}

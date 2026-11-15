@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "checks": {
+    "seven_views": true,
+    "shared_topology_world_and_rollout": true,
+    "backend_host_cohort_preview": true,
+    "baseline_exposure_pause_rollback": true,
+    "active_versions_and_traffic": true,
+    "manifest_registration_and_validation_errors": true,
+    "full_command_ids": true,
+    "lost_response_same_id_recovery": true,
+    "duplicate_click_suppressed": true,
+    "undelivered_retry_same_id": true,
+    "backend_checkpoint_replay_export": true,
+    "refresh_same_run_and_tick": true
+  },
+  "scope": "Actual HTTP commands and unchanged backend simulation through the real DOM render functions; no numerical browser simulation."
+}

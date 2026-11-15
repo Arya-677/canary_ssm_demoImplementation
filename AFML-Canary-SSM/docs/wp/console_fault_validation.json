@@ -1,0 +1,218 @@
+{
+  "date": "2026-11-14",
+  "base_archive": "canary_ssm_dashboard_fixed.zip",
+  "base_archive_sha256": "2ed83d7625fba883c0e85542468fef4e0e724df8908555fbfa35656e6f6bd9d5",
+  "full_tests": {
+    "command": "python -m pytest -q",
+    "exit_code": 0,
+    "stdout": "........................................................................ [ 24%]\n........................................................................ [ 49%]\n........................................................................ [ 73%]\n........................................................................ [ 98%]\n....                                                                     [100%]\n292 passed in 75.30s (0:01:15)\n",
+    "stderr": "",
+    "elapsed_seconds": 76.54732262499965
+  },
+  "focused_tests": {
+    "passed": 106,
+    "duration_seconds": 5.72,
+    "note": "Before final observed-ready count fix; final full suite covers fix"
+  },
+  "node_syntax_exit_code": 0,
+  "dom_api_harness": {
+    "checks": {
+      "topology_rendered": true,
+      "selected_host_backend_trace": true,
+      "controls_and_speed": true,
+      "refresh_reuses_run": true,
+      "stale_state": true,
+      "disconnect_reconnect_preserves_last_view": true,
+      "recorded_mode_has_no_engine_api_calls": true,
+      "no_frontend_simulator_or_detector": true
+    },
+    "passed": true,
+    "browser_layout_verified": false,
+    "verification": "Node DOM-state harness plus real local HTTP API; browser startup unavailable"
+  },
+  "browser": {
+    "verified": true,
+    "viewport": [
+      1280,
+      720
+    ],
+    "checks": [
+      "World rack/host rendering",
+      "Step",
+      "4-canary/16-control preview",
+      "Deploy applies at next tick",
+      "Manual CPU fault scheduling",
+      "Monitoring resource charts and DETECTOR NOT CONNECTED",
+      "Manual rollback visibly ROLLED_BACK"
+    ],
+    "limits": [
+      "File chooser paths validated by backend/headless checks, not browser",
+      "Other viewports and browsers not visually checked"
+    ]
+  },
+  "fault_fixtures": {
+    "fixtures": [
+      {
+        "kind": "cpu_throttle",
+        "checks": {
+          "deterministic_replay": true,
+          "before_available": true,
+          "recovered_available": true,
+          "memory_bounded": true,
+          "no_truth_in_telemetry": true,
+          "effect": true,
+          "scope": true,
+          "recovery": true
+        },
+        "passed": true
+      },
+      {
+        "kind": "memory_pressure",
+        "checks": {
+          "deterministic_replay": true,
+          "before_available": true,
+          "recovered_available": true,
+          "memory_bounded": true,
+          "no_truth_in_telemetry": true,
+          "effect": true,
+          "scope": true,
+          "recovery": true
+        },
+        "passed": true
+      },
+      {
+        "kind": "service_crash",
+        "checks": {
+          "deterministic_replay": true,
+          "before_available": true,
+          "recovered_available": true,
+          "memory_bounded": true,
+          "no_truth_in_telemetry": true,
+          "effect": true,
+          "scope": true,
+          "recovery": true
+        },
+        "passed": true
+      },
+      {
+        "kind": "network_degradation",
+        "checks": {
+          "deterministic_replay": true,
+          "before_available": true,
+          "recovered_available": true,
+          "memory_bounded": true,
+          "no_truth_in_telemetry": true,
+          "effect": true,
+          "scope": true,
+          "recovery": true
+        },
+        "passed": true
+      },
+      {
+        "kind": "demand_surge",
+        "checks": {
+          "deterministic_replay": true,
+          "before_available": true,
+          "recovered_available": true,
+          "memory_bounded": true,
+          "no_truth_in_telemetry": true,
+          "effect": true,
+          "scope": true,
+          "recovery": true
+        },
+        "passed": true
+      }
+    ],
+    "passed": true
+  },
+  "console_demo": {
+    "synthetic": true,
+    "ticks": 52,
+    "checks": {
+      "upload_never_executed": true,
+      "valid_allocation": true,
+      "candidate_retains_memory": true,
+      "controls_keep_healthy_memory": true,
+      "rack_effect_reaches_descendants": true,
+      "rollback_restores_versions": true,
+      "rollback_reclaims_retained_memory": true,
+      "detector_honest": true,
+      "public_packet_excludes_truth": true,
+      "verified_engine_replay": true,
+      "saved_run_import_matches": true,
+      "outcomes_saved": true
+    },
+    "passed": true
+  },
+  "resource_fixtures": {
+    "generator_id": "world-resources-v1",
+    "synthetic": true,
+    "checks": {
+      "bounds": true,
+      "request_conservation": true,
+      "replay": true,
+      "load_raises_cpu": true,
+      "load_raises_memory": true,
+      "load_raises_queue_and_latency": true,
+      "overload_drops_reported": true,
+      "recovery_drains_queue": true
+    },
+    "passed": true,
+    "ticks_per_scenario": 120
+  },
+  "bundled_replays_verified": 10,
+  "preservation_checks": {
+    "existing_tests_unchanged": true,
+    "preexisting_models_unchanged": true,
+    "statistical_inference_unchanged": true
+  },
+  "changed_original_files": [
+    ".gitignore",
+    "README.md",
+    "canary_ssm/cli.py",
+    "docs/DESIGN_DECISIONS.md",
+    "docs/implementation_status.md",
+    "canary_ssm/engine.py",
+    "examples/world_clock_100_ticks.json",
+    "canary_ssm/resources.py",
+    "examples/resource_world/increased_load/hosts.csv",
+    "examples/resource_world/increased_load/run.json",
+    "examples/resource_world/increased_load/services.csv",
+    "examples/resource_world/low_load/hosts.csv",
+    "examples/resource_world/low_load/run.json",
+    "examples/resource_world/low_load/services.csv",
+    "examples/resource_world/recovery/hosts.csv",
+    "examples/resource_world/recovery/run.json",
+    "examples/resource_world/recovery/services.csv",
+    "canary_ssm/dashboard.py",
+    "docs/dashboard.md",
+    "canary_ssm/web/index.html",
+    "canary_ssm/web/styles.css",
+    "canary_ssm/web/recorded_snapshot.json",
+    "canary_ssm/web/app.js"
+  ],
+  "source_hashes": {
+    "README.md": "fff63507e950e73969ee15e1a5131c0dd03dac291e378729f2df3fc8d95309a6",
+    "canary_ssm/cli.py": "ee871efef58de1358dc62a0d2e18d8761d1bbaebfefb9ea233b6c6c4a0132697",
+    "canary_ssm/console_fixture.py": "5588b3608ef7cdad7572a300bed0bd38366f8d99ec3d9d75fea06e613fd99719",
+    "canary_ssm/dashboard.py": "8814cb380c1d195c59e09c7ab0d90522c9387eb89859d4d4c50c9ea94a579278",
+    "canary_ssm/engine.py": "582568c8a80923c790ef82dbf6e302b6ea7dd00789628668cf8a9da52a035129",
+    "canary_ssm/fault_fixtures.py": "3f45815a0e24360d482d0189bd288b945c6eebeceee5885b3b30e2b8ba914d21",
+    "canary_ssm/faults.py": "1033eac9757611fcd859628fd1d42a64f9aa6d641186c23780e27ec2140751e1",
+    "canary_ssm/operations.py": "30611b967d442548cd0bbec05a6a876b22be4d9860b8370c9cbeb94bb44ec4b2",
+    "canary_ssm/resources.py": "13d438844763ea404812c9edb7275b28feddb26b95a5ab21e0fcf0a1398e96a3",
+    "canary_ssm/web/app.js": "77642d12325c28787f3c3ab154d5149395c910659c5823edb2b434f8335f3577",
+    "canary_ssm/web/index.html": "d57d90738e94eb6d5d316a7315acdbe6c9ebf6aa13c8aa9ceebe13e62fe9dc6a",
+    "canary_ssm/web/styles.css": "5c0ad42e6853a53bda584087cd92f6c940fbfd3ad6c509d3cc856c646c3b0d88",
+    "configs/world_console.yaml": "11918d874eaad56525e28bc42e004b76c0ff4f692497db69f23cc22cea39ec53",
+    "docs/DESIGN_DECISIONS.md": "ce645141f56afa5ab93e69b348a2e0bbcf280917d9847867822f223241282bb2",
+    "docs/console.md": "a78a5f7b12e685b9d6c3ce64e5c472cb0f2ca8c3731e8c44bde2a9cbbb85bae4",
+    "docs/dashboard.md": "17f9045ddd1fc21160d623407c35ef73a8bb7e2afefec5b66109ca9f32811660",
+    "docs/faults.md": "b6b7992076a3da7e61fc0b8e4b6aecc52ac1326f9df9c9bf810f24324bbc5518",
+    "docs/gap_audit.md": "355234ad7af21999d66a16e70893f01652364425e01fd022390f7d00ff7e15c2",
+    "docs/implementation_status.md": "88eb18bf39b24d282e55b01c068ac4db37430fc9a2ec49dcbcbc2ca6d3ca3723",
+    "docs/wp/CONSOLE-FAULTS.md": "828c355d8803dec4d0cc9239145e4029f3f5ca4d899e91344184aef5229de5f3",
+    "tests/test_console.py": "0ab33da60d0ee5220a2570c2704b22ce4848be7a1b09a9bda3fd09ba5d171e31",
+    "tests/test_faults.py": "a4e7397c0fb533a936d5a3391bd5cf980fb82d163f15516ec7a3189568458697"
+  }
+}
