@@ -1,0 +1,23 @@
+{
+  "scenario_name": "cpu_regression",
+  "true_event_label": "HARM_CPU_SATURATION",
+  "true_affected_hosts": [
+    "srv-r0-s0",
+    "srv-r1-s0",
+    "srv-r2-s0",
+    "srv-r3-s0"
+  ],
+  "alarm_tick": null,
+  "detection_status": "miss",
+  "detection_delay": NaN,
+  "capped_time_to_success": 45.0,
+  "localization": {
+    "topk_recall": 1.0,
+    "precision": 1.0,
+    "recall": 0.75,
+    "f1": 0.8571
+  },
+  "final_infrastructure_advisory": "NORMAL",
+  "final_canary_release_advisory": "RUNNING",
+  "final_attribution": "NORMAL"
+}

@@ -1,0 +1,8 @@
+method,threshold,k_order,B_calibration,n_validation,null_alerts,achieved_far,ci_lower_95,ci_upper_95,bb_pvalue,validity_gate,controlled_fwer
+hier_ssm,-1.14122,96,100,100,1,0.01,0.0003,0.0545,0.2116,PASS,True
+pooled_ssm,-3.61976,96,100,100,1,0.01,0.0003,0.0545,0.2116,PASS,True
+indep_ssm,-1.97138,96,100,100,3,0.03,0.0062,0.0852,0.7209,PASS,True
+topk_cusum,70.13674,96,100,100,0,0.0,0.0,0.0362,0.0594,PASS,True
+adj_cusum,43.94735,96,100,100,2,0.02,0.0024,0.0704,0.4448,PASS,True
+adj_ewma,2300108.4711,96,100,100,2,0.02,0.0024,0.0704,0.4448,PASS,True
+multi_channel,-0.67302,96,100,100,0,0.0,0.0,0.0362,0.0594,PASS,True

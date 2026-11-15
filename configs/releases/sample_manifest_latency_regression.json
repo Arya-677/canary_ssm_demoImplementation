@@ -1,0 +1,17 @@
+{
+  "release_id": "rel-v1.3.0-latency",
+  "version_tag": "v1.3.0-latency",
+  "behavior_profile": {
+    "profile_type": "LATENCY_REGRESSION",
+    "severity": 0.15,
+    "duration": 120
+  },
+  "artifact": {
+    "artifact_filename": "db_query_v130.py",
+    "content_preview": "# Sub-optimal query execution path\nVERSION = 'v1.3.0-latency'\n"
+  },
+  "metadata": {
+    "author": "backend-team",
+    "description": "Release with algorithmic latency regression"
+  }
+}

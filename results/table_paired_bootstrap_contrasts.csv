@@ -1,0 +1,6 @@
+comparator,reference,mean_capped_time_difference,ci_lower_95,ci_upper_95,bootstrap_p_value,n_paired_rollouts,hierarchy_statistically_superior
+pooled_ssm,hier_ssm,2.34,-2.13,6.67,0.313,90,False
+indep_ssm,hier_ssm,-1.11,-3.46,1.06,0.306,90,False
+topk_cusum,hier_ssm,10.42,7.0,13.8,0.0,90,True
+adj_cusum,hier_ssm,10.66,6.78,14.26,0.0,90,True
+adj_ewma,hier_ssm,8.98,5.11,12.78,0.0,90,True

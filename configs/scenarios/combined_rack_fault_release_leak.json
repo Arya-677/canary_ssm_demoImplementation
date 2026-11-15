@@ -1,0 +1,53 @@
+{
+  "name": "combined_rack_fault_release_leak",
+  "description": "Simultaneous infrastructure rack latency on rack-0 AND release memory leak on canaries.",
+  "seed": 10,
+  "warmup_ticks": 30,
+  "horizon_ticks": 75,
+  "topology": {
+    "n_racks": 4,
+    "servers_per_rack": 6,
+    "n_classes": 2,
+    "canary_ids": [
+      "srv-r0-s0",
+      "srv-r1-s0",
+      "srv-r2-s0",
+      "srv-r3-s0"
+    ]
+  },
+  "deployment": {
+    "version": "v1.2.0-compound",
+    "release_id": "rel-compound-v1",
+    "profile_type": "MEMORY_LEAK",
+    "deploy_tick": 30,
+    "canary_ids": [
+      "srv-r0-s0",
+      "srv-r1-s0",
+      "srv-r2-s0",
+      "srv-r3-s0"
+    ],
+    "affected_canary_ids": [
+      "srv-r0-s0",
+      "srv-r1-s0"
+    ],
+    "description": "Canary leak running concurrently with network degradation"
+  },
+  "workload": {
+    "base_request_rate": 100.0,
+    "elasticity_mean": 0.5,
+    "has_gc_cycles": false,
+    "gc_period_ticks": 15,
+    "gc_amplitude_mb": 300.0,
+    "warmup_ticks": 15,
+    "warmup_amplitude_mb": 400.0
+  },
+  "injection": {
+    "fault_type": "RACK_NETWORK_LATENCY",
+    "target_scope": "rack-0",
+    "start_tick": 30,
+    "stop_tick": 75,
+    "severity": 0.3,
+    "missingness_rate": 0.0,
+    "drop_same_rack_controls": false
+  }
+}

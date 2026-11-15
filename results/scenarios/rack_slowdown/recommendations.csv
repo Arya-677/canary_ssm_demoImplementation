@@ -1,0 +1,76 @@
+tick,eligible,latency_release_score,score_lat,latency_alarm,score_mem,memory_alarm,infrastructure_advisory,canary_release_advisory,inferred_attribution,first_alarm_tick,advisory_reason,canary_effect_mean,canary_effect_ci_lower,canary_effect_ci_upper
+0,True,0.0,,False,,False,NORMAL,RUNNING,NORMAL,,No active canary release deployed. | Infrastructure telemetry within nominal bounds.,0.0,0.0,0.0
+1,True,0.0,,False,,False,NORMAL,RUNNING,NORMAL,,No active canary release deployed. | Infrastructure telemetry within nominal bounds.,0.0,0.0,0.0
+2,True,0.0,,False,,False,NORMAL,RUNNING,NORMAL,,No active canary release deployed. | Infrastructure telemetry within nominal bounds.,0.0,0.0,0.0
+3,True,0.0,,False,,False,NORMAL,RUNNING,NORMAL,,No active canary release deployed. | Infrastructure telemetry within nominal bounds.,0.0,0.0,0.0
+4,True,0.0,,False,,False,NORMAL,RUNNING,NORMAL,,No active canary release deployed. | Infrastructure telemetry within nominal bounds.,0.0,0.0,0.0
+5,True,0.0,,False,,False,NORMAL,RUNNING,NORMAL,,No active canary release deployed. | Infrastructure telemetry within nominal bounds.,0.0,0.0,0.0
+6,True,0.0,,False,,False,NORMAL,RUNNING,NORMAL,,No active canary release deployed. | Infrastructure telemetry within nominal bounds.,0.0,0.0,0.0
+7,True,0.0,,False,,False,NORMAL,RUNNING,NORMAL,,No active canary release deployed. | Infrastructure telemetry within nominal bounds.,0.0,0.0,0.0
+8,True,0.0,,False,,False,NORMAL,RUNNING,NORMAL,,No active canary release deployed. | Infrastructure telemetry within nominal bounds.,0.0,0.0,0.0
+9,True,0.0,,False,,False,NORMAL,RUNNING,NORMAL,,No active canary release deployed. | Infrastructure telemetry within nominal bounds.,0.0,0.0,0.0
+10,True,0.0,,False,,False,NORMAL,RUNNING,NORMAL,,No active canary release deployed. | Infrastructure telemetry within nominal bounds.,0.0,0.0,0.0
+11,True,0.0,,False,,False,NORMAL,RUNNING,NORMAL,,No active canary release deployed. | Infrastructure telemetry within nominal bounds.,0.0,0.0,0.0
+12,True,0.0,,False,,False,NORMAL,RUNNING,NORMAL,,No active canary release deployed. | Infrastructure telemetry within nominal bounds.,0.0,0.0,0.0
+13,True,0.0,,False,,False,NORMAL,RUNNING,NORMAL,,No active canary release deployed. | Infrastructure telemetry within nominal bounds.,0.0,0.0,0.0
+14,True,0.0,,False,,False,NORMAL,RUNNING,NORMAL,,No active canary release deployed. | Infrastructure telemetry within nominal bounds.,0.0,0.0,0.0
+15,True,0.0,,False,,False,NORMAL,RUNNING,NORMAL,,No active canary release deployed. | Infrastructure telemetry within nominal bounds.,0.0,0.0,0.0
+16,True,0.0,,False,,False,NORMAL,RUNNING,NORMAL,,No active canary release deployed. | Infrastructure telemetry within nominal bounds.,0.0,0.0,0.0
+17,True,0.0,,False,,False,NORMAL,RUNNING,NORMAL,,No active canary release deployed. | Infrastructure telemetry within nominal bounds.,0.0,0.0,0.0
+18,True,0.0,,False,,False,NORMAL,RUNNING,NORMAL,,No active canary release deployed. | Infrastructure telemetry within nominal bounds.,0.0,0.0,0.0
+19,True,0.0,,False,,False,NORMAL,RUNNING,NORMAL,,No active canary release deployed. | Infrastructure telemetry within nominal bounds.,0.0,0.0,0.0
+20,True,0.0,,False,,False,NORMAL,RUNNING,NORMAL,,No active canary release deployed. | Infrastructure telemetry within nominal bounds.,0.0,0.0,0.0
+21,True,0.0,,False,,False,NORMAL,RUNNING,NORMAL,,No active canary release deployed. | Infrastructure telemetry within nominal bounds.,0.0,0.0,0.0
+22,True,0.0,,False,,False,NORMAL,RUNNING,NORMAL,,No active canary release deployed. | Infrastructure telemetry within nominal bounds.,0.0,0.0,0.0
+23,True,0.0,,False,,False,NORMAL,RUNNING,NORMAL,,No active canary release deployed. | Infrastructure telemetry within nominal bounds.,0.0,0.0,0.0
+24,True,0.0,,False,,False,NORMAL,RUNNING,NORMAL,,No active canary release deployed. | Infrastructure telemetry within nominal bounds.,0.0,0.0,0.0
+25,True,0.0,,False,,False,NORMAL,RUNNING,NORMAL,,No active canary release deployed. | Infrastructure telemetry within nominal bounds.,0.0,0.0,0.0
+26,True,0.0,,False,,False,NORMAL,RUNNING,NORMAL,,No active canary release deployed. | Infrastructure telemetry within nominal bounds.,0.0,0.0,0.0
+27,True,0.0,,False,,False,NORMAL,RUNNING,NORMAL,,No active canary release deployed. | Infrastructure telemetry within nominal bounds.,0.0,0.0,0.0
+28,True,0.0,,False,,False,NORMAL,RUNNING,NORMAL,,No active canary release deployed. | Infrastructure telemetry within nominal bounds.,0.0,0.0,0.0
+29,True,0.0,,False,,False,NORMAL,RUNNING,NORMAL,,No active canary release deployed. | Infrastructure telemetry within nominal bounds.,0.0,0.0,0.0
+30,True,-1.1759,-1.4534,False,-1.1759,False,RACK_DEGRADED: rack-0,RUNNING,NORMAL,,Canary telemetry healthy and matched to concurrent controls. | Infrastructure slowdown detected on rack-0.,-0.004,-0.0485,0.0406
+31,True,-1.1392,-1.3197,False,-1.1392,False,RACK_DEGRADED: rack-0,RUNNING,NORMAL,,Canary telemetry healthy and matched to concurrent controls. | Infrastructure slowdown detected on rack-0.,0.0001,-0.0419,0.0422
+32,True,-0.8149,-0.8149,False,-1.1328,False,RACK_DEGRADED: rack-0,RUNNING,NORMAL,,Canary telemetry healthy and matched to concurrent controls. | Infrastructure slowdown detected on rack-0.,0.0044,-0.036,0.0449
+33,True,-0.9724,-0.9724,False,-1.0587,False,RACK_DEGRADED: rack-0,RUNNING,NORMAL,,Canary telemetry healthy and matched to concurrent controls. | Infrastructure slowdown detected on rack-0.,0.0026,-0.0366,0.0418
+34,True,-1.0061,-1.2825,False,-1.0061,False,RACK_DEGRADED: rack-0,RUNNING,NORMAL,,Canary telemetry healthy and matched to concurrent controls. | Infrastructure slowdown detected on rack-0.,-0.0003,-0.0384,0.0378
+35,True,-1.1181,-1.2881,False,-1.1181,False,RACK_DEGRADED: rack-0,RUNNING,NORMAL,,Canary telemetry healthy and matched to concurrent controls. | Infrastructure slowdown detected on rack-0.,-0.0017,-0.0389,0.0355
+36,True,-1.0716,-1.3123,False,-1.0716,False,RACK_DEGRADED: rack-0,RUNNING,NORMAL,,Canary telemetry healthy and matched to concurrent controls. | Infrastructure slowdown detected on rack-0.,-0.0016,-0.038,0.0347
+37,True,-1.0588,-1.5574,False,-1.0588,False,RACK_DEGRADED: rack-0,RUNNING,NORMAL,,Canary telemetry healthy and matched to concurrent controls. | Infrastructure slowdown detected on rack-0.,-0.0039,-0.0396,0.0317
+38,True,-1.1222,-1.987,False,-1.1222,False,RACK_DEGRADED: rack-0,RUNNING,NORMAL,,Canary telemetry healthy and matched to concurrent controls. | Infrastructure slowdown detected on rack-0.,-0.0085,-0.0435,0.0265
+39,True,-0.9732,-1.648,False,-0.9732,False,RACK_DEGRADED: rack-0,RUNNING,NORMAL,,Canary telemetry healthy and matched to concurrent controls. | Infrastructure slowdown detected on rack-0.,-0.0054,-0.0399,0.0291
+40,True,-0.739,-1.5261,False,-0.739,False,RACK_DEGRADED: rack-0,RUNNING,NORMAL,,Canary telemetry healthy and matched to concurrent controls. | Infrastructure slowdown detected on rack-0.,-0.0024,-0.0364,0.0315
+41,True,-0.5951,-1.568,False,-0.5951,True,RACK_DEGRADED: rack-0,RUNNING,NORMAL,,Canary telemetry healthy and matched to concurrent controls. | Infrastructure slowdown detected on rack-0.,-0.0026,-0.0362,0.031
+42,True,-0.5472,-1.6229,False,-0.5472,True,RACK_DEGRADED: rack-0,RUNNING,NORMAL,,Canary telemetry healthy and matched to concurrent controls. | Infrastructure slowdown detected on rack-0.,-0.0038,-0.0371,0.0294
+43,True,-0.8182,-1.7188,False,-0.8182,False,RACK_DEGRADED: rack-0,RUNNING,NORMAL,,Canary telemetry healthy and matched to concurrent controls. | Infrastructure slowdown detected on rack-0.,-0.0049,-0.0378,0.0281
+44,True,-0.8243,-1.4962,False,-0.8243,False,RACK_DEGRADED: rack-0,RUNNING,NORMAL,,Canary telemetry healthy and matched to concurrent controls. | Infrastructure slowdown detected on rack-0.,-0.0028,-0.0354,0.0299
+45,True,-1.0145,-1.4665,False,-1.0145,False,RACK_DEGRADED: rack-0,RUNNING,NORMAL,,Canary telemetry healthy and matched to concurrent controls. | Infrastructure slowdown detected on rack-0.,-0.002,-0.0345,0.0304
+46,True,-0.8829,-1.5801,False,-0.8829,False,RACK_DEGRADED: rack-0,RUNNING,NORMAL,,Canary telemetry healthy and matched to concurrent controls. | Infrastructure slowdown detected on rack-0.,-0.0022,-0.0345,0.03
+47,True,-0.8964,-1.6922,False,-0.8964,False,RACK_DEGRADED: rack-0,RUNNING,NORMAL,,Canary telemetry healthy and matched to concurrent controls. | Infrastructure slowdown detected on rack-0.,-0.0034,-0.0354,0.0287
+48,True,-0.8852,-2.1254,False,-0.8852,False,RACK_DEGRADED: rack-0,RUNNING,NORMAL,,Canary telemetry healthy and matched to concurrent controls. | Infrastructure slowdown detected on rack-0.,-0.0062,-0.0381,0.0257
+49,True,-1.1247,-1.532,False,-1.1247,False,RACK_DEGRADED: rack-0,RUNNING,NORMAL,,Canary telemetry healthy and matched to concurrent controls. | Infrastructure slowdown detected on rack-0.,-0.0019,-0.0337,0.0299
+50,True,-1.0576,-1.7323,False,-1.0576,False,RACK_DEGRADED: rack-0,RUNNING,NORMAL,,Canary telemetry healthy and matched to concurrent controls. | Infrastructure slowdown detected on rack-0.,-0.0043,-0.036,0.0274
+51,True,-0.9708,-1.4596,False,-0.9708,False,RACK_DEGRADED: rack-0,RUNNING,NORMAL,,Canary telemetry healthy and matched to concurrent controls. | Infrastructure slowdown detected on rack-0.,-0.0013,-0.0329,0.0303
+52,True,-1.1326,-1.416,False,-1.1326,False,RACK_DEGRADED: rack-0,RUNNING,NORMAL,,Canary telemetry healthy and matched to concurrent controls. | Infrastructure slowdown detected on rack-0.,0.0003,-0.0312,0.0318
+53,True,-1.2081,-1.5213,False,-1.2081,False,RACK_DEGRADED: rack-0,RUNNING,NORMAL,,Canary telemetry healthy and matched to concurrent controls. | Infrastructure slowdown detected on rack-0.,0.0006,-0.0308,0.032
+54,True,-1.0813,-1.3458,False,-1.0813,False,RACK_DEGRADED: rack-0,RUNNING,NORMAL,,Canary telemetry healthy and matched to concurrent controls. | Infrastructure slowdown detected on rack-0.,0.0028,-0.0285,0.0342
+55,True,-1.0322,-1.2926,False,-1.0322,False,RACK_DEGRADED: rack-0,RUNNING,NORMAL,,Canary telemetry healthy and matched to concurrent controls. | Infrastructure slowdown detected on rack-0.,0.0032,-0.0281,0.0345
+56,True,-1.1296,-1.2079,False,-1.1296,False,RACK_DEGRADED: rack-0,RUNNING,NORMAL,,Canary telemetry healthy and matched to concurrent controls. | Infrastructure slowdown detected on rack-0.,0.0037,-0.0275,0.035
+57,True,-0.9575,-1.1222,False,-0.9575,False,RACK_DEGRADED: rack-0,RUNNING,NORMAL,,Canary telemetry healthy and matched to concurrent controls. | Infrastructure slowdown detected on rack-0.,0.0039,-0.0273,0.0351
+58,True,-0.9332,-1.1942,False,-0.9332,False,RACK_DEGRADED: rack-0,RUNNING,NORMAL,,Canary telemetry healthy and matched to concurrent controls. | Infrastructure slowdown detected on rack-0.,0.0032,-0.028,0.0344
+59,True,-0.9633,-0.9633,False,-1.1343,False,RACK_DEGRADED: rack-0,RUNNING,NORMAL,,Canary telemetry healthy and matched to concurrent controls. | Infrastructure slowdown detected on rack-0.,0.0052,-0.0259,0.0363
+60,True,-1.184,-1.184,False,-1.4026,False,RACK_DEGRADED: rack-0,RUNNING,NORMAL,,Canary telemetry healthy and matched to concurrent controls. | Infrastructure slowdown detected on rack-0.,0.002,-0.0291,0.0332
+61,True,-1.1943,-1.1943,False,-1.4712,False,RACK_DEGRADED: rack-0,RUNNING,NORMAL,,Canary telemetry healthy and matched to concurrent controls. | Infrastructure slowdown detected on rack-0.,0.0022,-0.0288,0.0333
+62,True,-1.418,-1.418,False,-1.5468,False,RACK_DEGRADED: rack-0,RUNNING,NORMAL,,Canary telemetry healthy and matched to concurrent controls. | Infrastructure slowdown detected on rack-0.,0.0006,-0.0305,0.0316
+63,True,-1.4132,-1.5289,False,-1.4132,False,RACK_DEGRADED: rack-0,RUNNING,NORMAL,,Canary telemetry healthy and matched to concurrent controls. | Infrastructure slowdown detected on rack-0.,-0.0003,-0.0314,0.0307
+64,True,-1.2519,-1.2519,False,-1.3751,False,RACK_DEGRADED: rack-0,RUNNING,NORMAL,,Canary telemetry healthy and matched to concurrent controls. | Infrastructure slowdown detected on rack-0.,0.0016,-0.0295,0.0326
+65,True,-1.2828,-1.3332,False,-1.2828,False,RACK_DEGRADED: rack-0,RUNNING,NORMAL,,Canary telemetry healthy and matched to concurrent controls. | Infrastructure slowdown detected on rack-0.,0.002,-0.029,0.033
+66,True,-1.2654,-1.2654,False,-1.3373,False,RACK_DEGRADED: rack-0,RUNNING,NORMAL,,Canary telemetry healthy and matched to concurrent controls. | Infrastructure slowdown detected on rack-0.,0.0024,-0.0286,0.0334
+67,True,-1.4178,-1.4901,False,-1.4178,False,RACK_DEGRADED: rack-0,RUNNING,NORMAL,,Canary telemetry healthy and matched to concurrent controls. | Infrastructure slowdown detected on rack-0.,0.0016,-0.0294,0.0326
+68,True,-1.3404,-1.3404,False,-1.6995,False,RACK_DEGRADED: rack-0,RUNNING,NORMAL,,Canary telemetry healthy and matched to concurrent controls. | Infrastructure slowdown detected on rack-0.,0.0036,-0.0274,0.0346
+69,True,-1.8248,-1.8248,False,-1.9932,False,RACK_DEGRADED: rack-0,RUNNING,NORMAL,,Canary telemetry healthy and matched to concurrent controls. | Infrastructure slowdown detected on rack-0.,0.0002,-0.0308,0.0312
+70,True,-1.6859,-1.6859,False,-1.7731,False,RACK_DEGRADED: rack-0,RUNNING,NORMAL,,Canary telemetry healthy and matched to concurrent controls. | Infrastructure slowdown detected on rack-0.,0.0014,-0.0296,0.0323
+71,True,-1.2438,-1.2438,False,-1.4978,False,RACK_DEGRADED: rack-0,RUNNING,NORMAL,,Canary telemetry healthy and matched to concurrent controls. | Infrastructure slowdown detected on rack-0.,0.0034,-0.0275,0.0344
+72,True,-1.287,-1.287,False,-1.5041,False,RACK_DEGRADED: rack-0,RUNNING,NORMAL,,Canary telemetry healthy and matched to concurrent controls. | Infrastructure slowdown detected on rack-0.,0.004,-0.027,0.035
+73,True,-1.1918,-1.1918,False,-1.4192,False,RACK_DEGRADED: rack-0,RUNNING,NORMAL,,Canary telemetry healthy and matched to concurrent controls. | Infrastructure slowdown detected on rack-0.,0.0063,-0.0246,0.0373
+74,True,-0.9128,-0.9128,False,-1.4169,False,RACK_DEGRADED: rack-0,RUNNING,NORMAL,,Canary telemetry healthy and matched to concurrent controls. | Infrastructure slowdown detected on rack-0.,0.0088,-0.0221,0.0398

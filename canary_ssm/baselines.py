@@ -23,6 +23,9 @@ class DetectorOutput:
     runtime_ms: float = 0.0
     params: dict | None = None
     update_times_ms: np.ndarray | None = None
+    class_effects: np.ndarray | None = None      # (T, G) class effect posterior means theta
+    host_deviations: np.ndarray | None = None    # (T, nc) within-class local deviations B b
+    effect_cov: np.ndarray | None = None         # (T, nc, nc) full posterior covariance L P L^T
 
 
 def _z(adj: Adjusted) -> np.ndarray:

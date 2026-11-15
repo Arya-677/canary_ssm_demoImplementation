@@ -23,6 +23,7 @@ STUDY_MODULES: dict[str, str] = {
     "exp7": "canary_ssm.studies.study_regime:run",
     "robust": "canary_ssm.studies.study_robust:run",
     "exp8": "canary_ssm.studies.study_robust:run",
+    "hier_pooling": "canary_ssm.studies.study_hierarchical_pooling:run",
 }
 
 

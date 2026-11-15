@@ -440,6 +440,8 @@ def ssm_grid(
         sds = (0.001, 0.005, 0.01)
         priors = (0.01, 0.03)
         ratios = (1.0,)
+        prior_modes = ("legacy",)
+        variance_modes = ("legacy",)
         use_constrain = True if constrain is None else bool(constrain)
     else:
         gd = load_grids() if grids is None else grids
@@ -448,13 +450,15 @@ def ssm_grid(
         sds = tuple(float(x) for x in spec["sd_g"])
         priors = tuple(float(x) for x in spec["prior_sd"])
         ratios = tuple(float(x) for x in spec.get("sd_h_ratio", [1.0]))
+        prior_modes = tuple(str(x) for x in spec.get("prior_mode", ["legacy"]))
+        variance_modes = tuple(str(x) for x in spec.get("variance_mode", ["legacy"]))
         use_constrain = (
             bool(spec.get("constrain_long_run_sd_le_kappa", spec.get("constrain", True)))
             if constrain is None else bool(constrain)
         )
     g = [
-        EffectParams(kind=kind, rho_g=r, rho_h=r, sd_g=sd, sd_h_ratio=hr, prior_sd=ps)
-        for r in rhos for sd in sds for hr in ratios for ps in priors
+        EffectParams(kind=kind, rho_g=r, rho_h=r, sd_g=sd, sd_h_ratio=hr, prior_sd=ps, prior_mode=pm, variance_mode=vm)
+        for r in rhos for sd in sds for hr in ratios for ps in priors for pm in prior_modes for vm in variance_modes
     ]
     return [p for p in g if long_run_sd(p) <= KAPPA] if use_constrain else g
 
@@ -1114,11 +1118,16 @@ def fit(
 
     pd.DataFrame(failures, columns=["rollout_id", "method", "params", "error"]).to_csv(out_dir / "fit_failures.csv", index=False)
 
+    family_candidate_counts = {m: len(candidate_grid(m, grids)) for m in methods}
+    log(f"Candidate counts per family: {family_candidate_counts}")
+
     wall_s = round(time.time() - t0_wall, 3)
     src_grid_file = str(grid_path) if grid_path is not None else (str(DEFAULT_GRID_PATH) if DEFAULT_GRID_PATH.exists() else None)
     cfg = man_mod.build_manifest(
         out_dir=out_dir,
         selected=selected,
+        candidate_counts=family_candidate_counts,
+        family_candidate_counts=family_candidate_counts,
         kappa=KAPPA,
         alpha=ALPHA,
         methods=methods,
@@ -1509,6 +1518,8 @@ def calibrate(
             "boot_hi": unc["boot_hi"],
             "far_beta_lo": unc["far_beta_lo"],
             "far_beta_hi": unc["far_beta_hi"],
+            "n_no_eligible": int(c.get("n_no_eligible", 0)),
+            "n_finite_maxima": int(c.get("n_finite_maxima", len(mx))),
         })
         for h in horizons:
             mx_h = np.array([dec.release_max(o.score, o.elig, rt0, horizon=int(h)) for o, rt0 in zip(olist, t0s)])
@@ -1583,9 +1594,12 @@ def _alert_table_from_recs(recs: list[dict], methods_all: list[str], pview: dict
     fam = [rec["family"] for rec in recs]
     for m in methods_all:
         thr = pview["thresholds"][m]["threshold"]
+        cinfo = pview["thresholds"][m]
+        mx_vals = np.array([_rec_release_max(rec, m) for rec in recs], float)
+        n_no_elig_val = int((np.isneginf(mx_vals) | np.isnan(mx_vals)).sum())
+        n_finite_val = int(np.isfinite(mx_vals).sum())
         al = np.array([_rec_alerted(rec, m, thr) for rec in recs])
         k, n = int(al.sum()), len(al); lo, hi = M.clopper_pearson(k, n)
-        cinfo = pview["thresholds"][m]
         bb = M.betabinom_for_threshold(k, n, int(cinfo["B"]), int(cinfo["k"]))
         rep[m] = {
             "alerts": k, "n": n, "rate": k / n, "ci95": [lo, hi], "target": pview["alpha"],
@@ -1593,6 +1607,12 @@ def _alert_table_from_recs(recs: list[dict], methods_all: list[str], pview: dict
             "bb_pvalue_two_sided": bb["bb_pvalue_two_sided"],
             "pass_contains_5pct": bool(lo <= pview["alpha"] <= hi), "pass_upper_le_8pct": bool(hi <= 0.08),
             "by_family": {f: float(al[[x == f for x in fam]].mean()) for f in sorted(set(fam))},
+            "cal_n_no_eligible": int(cinfo.get("n_no_eligible", 0)),
+            "cal_n_finite_maxima": int(cinfo.get("n_finite_maxima", int(cinfo.get("B", n)))),
+            "val_n_no_eligible": n_no_elig_val,
+            "val_n_finite_maxima": n_finite_val,
+            "n_no_eligible": int(cinfo.get("n_no_eligible", 0)),
+            "n_finite_maxima": int(cinfo.get("n_finite_maxima", int(cinfo.get("B", n)))),
         }
     return rep
 

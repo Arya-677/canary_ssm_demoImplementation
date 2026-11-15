@@ -1,0 +1,17 @@
+{
+  "release_id": "rel-v1.2.0-leak",
+  "version_tag": "v1.2.0-leak",
+  "behavior_profile": {
+    "profile_type": "MEMORY_LEAK",
+    "severity": 30.0,
+    "duration": 120
+  },
+  "artifact": {
+    "artifact_filename": "cache_service_v120.py",
+    "content_preview": "# Unbounded cache accumulation bug\nVERSION = 'v1.2.0-leak'\n"
+  },
+  "metadata": {
+    "author": "caching-team",
+    "description": "Release with simulated memory leak"
+  }
+}

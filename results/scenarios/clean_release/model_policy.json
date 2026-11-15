@@ -1,0 +1,11 @@
+{
+  "model_id": "MODEL-HSSM-V1",
+  "policy_id": "POLICY-SIDAK-0.05",
+  "alpha": 0.05,
+  "threshold_latency": -0.693147,
+  "threshold_memory": -0.693147,
+  "persistence_window_ticks": 15,
+  "kappa_latency_boundary": 0.01980262729617973,
+  "kappa_memory_mb_per_min": 0.5,
+  "epistemic_disclaimer": "Statistical evidence of abnormal metric shift relative to matched baseline controls. Observational evidence is consistent with a release regression, not proof of a code bug."
+}

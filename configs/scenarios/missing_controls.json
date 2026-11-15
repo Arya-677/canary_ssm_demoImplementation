@@ -1,0 +1,50 @@
+{
+  "name": "missing_controls",
+  "description": "Missing observation records on same-rack baseline controls (evaluates identifiability abstention).",
+  "seed": 10,
+  "warmup_ticks": 30,
+  "horizon_ticks": 75,
+  "topology": {
+    "n_racks": 4,
+    "servers_per_rack": 6,
+    "n_classes": 2,
+    "canary_ids": [
+      "srv-r0-s0",
+      "srv-r1-s0",
+      "srv-r2-s0",
+      "srv-r3-s0"
+    ]
+  },
+  "deployment": {
+    "version": "v1.2.0-clean",
+    "release_id": "rel-clean-v5",
+    "profile_type": "CLEAN",
+    "deploy_tick": 30,
+    "canary_ids": [
+      "srv-r0-s0",
+      "srv-r1-s0",
+      "srv-r2-s0",
+      "srv-r3-s0"
+    ],
+    "affected_canary_ids": [],
+    "description": "Clean release with impaired control coverage"
+  },
+  "workload": {
+    "base_request_rate": 100.0,
+    "elasticity_mean": 0.5,
+    "has_gc_cycles": false,
+    "gc_period_ticks": 15,
+    "gc_amplitude_mb": 300.0,
+    "warmup_ticks": 15,
+    "warmup_amplitude_mb": 400.0
+  },
+  "injection": {
+    "fault_type": null,
+    "target_scope": null,
+    "start_tick": 30,
+    "stop_tick": null,
+    "severity": 0.0,
+    "missingness_rate": 0.25,
+    "drop_same_rack_controls": true
+  }
+}

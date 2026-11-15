@@ -1,0 +1,76 @@
+tick,eligible,latency_release_score,score_lat,latency_alarm,score_mem,memory_alarm,infrastructure_advisory,canary_release_advisory,inferred_attribution,first_alarm_tick,advisory_reason,canary_effect_mean,canary_effect_ci_lower,canary_effect_ci_upper
+0,True,0.0,,False,,False,NORMAL,RUNNING,NORMAL,,No active canary release deployed. | Infrastructure telemetry within nominal bounds.,0.0,0.0,0.0
+1,True,0.0,,False,,False,NORMAL,RUNNING,NORMAL,,No active canary release deployed. | Infrastructure telemetry within nominal bounds.,0.0,0.0,0.0
+2,True,0.0,,False,,False,NORMAL,RUNNING,NORMAL,,No active canary release deployed. | Infrastructure telemetry within nominal bounds.,0.0,0.0,0.0
+3,True,0.0,,False,,False,NORMAL,RUNNING,NORMAL,,No active canary release deployed. | Infrastructure telemetry within nominal bounds.,0.0,0.0,0.0
+4,True,0.0,,False,,False,NORMAL,RUNNING,NORMAL,,No active canary release deployed. | Infrastructure telemetry within nominal bounds.,0.0,0.0,0.0
+5,True,0.0,,False,,False,NORMAL,RUNNING,NORMAL,,No active canary release deployed. | Infrastructure telemetry within nominal bounds.,0.0,0.0,0.0
+6,True,0.0,,False,,False,NORMAL,RUNNING,NORMAL,,No active canary release deployed. | Infrastructure telemetry within nominal bounds.,0.0,0.0,0.0
+7,True,0.0,,False,,False,NORMAL,RUNNING,NORMAL,,No active canary release deployed. | Infrastructure telemetry within nominal bounds.,0.0,0.0,0.0
+8,True,0.0,,False,,False,NORMAL,RUNNING,NORMAL,,No active canary release deployed. | Infrastructure telemetry within nominal bounds.,0.0,0.0,0.0
+9,True,0.0,,False,,False,NORMAL,RUNNING,NORMAL,,No active canary release deployed. | Infrastructure telemetry within nominal bounds.,0.0,0.0,0.0
+10,True,0.0,,False,,False,NORMAL,RUNNING,NORMAL,,No active canary release deployed. | Infrastructure telemetry within nominal bounds.,0.0,0.0,0.0
+11,True,0.0,,False,,False,NORMAL,RUNNING,NORMAL,,No active canary release deployed. | Infrastructure telemetry within nominal bounds.,0.0,0.0,0.0
+12,True,0.0,,False,,False,NORMAL,RUNNING,NORMAL,,No active canary release deployed. | Infrastructure telemetry within nominal bounds.,0.0,0.0,0.0
+13,True,0.0,,False,,False,NORMAL,RUNNING,NORMAL,,No active canary release deployed. | Infrastructure telemetry within nominal bounds.,0.0,0.0,0.0
+14,True,0.0,,False,,False,NORMAL,RUNNING,NORMAL,,No active canary release deployed. | Infrastructure telemetry within nominal bounds.,0.0,0.0,0.0
+15,True,0.0,,False,,False,NORMAL,RUNNING,NORMAL,,No active canary release deployed. | Infrastructure telemetry within nominal bounds.,0.0,0.0,0.0
+16,True,0.0,,False,,False,NORMAL,RUNNING,NORMAL,,No active canary release deployed. | Infrastructure telemetry within nominal bounds.,0.0,0.0,0.0
+17,True,0.0,,False,,False,NORMAL,RUNNING,NORMAL,,No active canary release deployed. | Infrastructure telemetry within nominal bounds.,0.0,0.0,0.0
+18,True,0.0,,False,,False,NORMAL,RUNNING,NORMAL,,No active canary release deployed. | Infrastructure telemetry within nominal bounds.,0.0,0.0,0.0
+19,True,0.0,,False,,False,NORMAL,RUNNING,NORMAL,,No active canary release deployed. | Infrastructure telemetry within nominal bounds.,0.0,0.0,0.0
+20,True,0.0,,False,,False,NORMAL,RUNNING,NORMAL,,No active canary release deployed. | Infrastructure telemetry within nominal bounds.,0.0,0.0,0.0
+21,True,0.0,,False,,False,NORMAL,RUNNING,NORMAL,,No active canary release deployed. | Infrastructure telemetry within nominal bounds.,0.0,0.0,0.0
+22,True,0.0,,False,,False,NORMAL,RUNNING,NORMAL,,No active canary release deployed. | Infrastructure telemetry within nominal bounds.,0.0,0.0,0.0
+23,True,0.0,,False,,False,NORMAL,RUNNING,NORMAL,,No active canary release deployed. | Infrastructure telemetry within nominal bounds.,0.0,0.0,0.0
+24,True,0.0,,False,,False,NORMAL,RUNNING,NORMAL,,No active canary release deployed. | Infrastructure telemetry within nominal bounds.,0.0,0.0,0.0
+25,True,0.0,,False,,False,NORMAL,RUNNING,NORMAL,,No active canary release deployed. | Infrastructure telemetry within nominal bounds.,0.0,0.0,0.0
+26,True,0.0,,False,,False,NORMAL,RUNNING,NORMAL,,No active canary release deployed. | Infrastructure telemetry within nominal bounds.,0.0,0.0,0.0
+27,True,0.0,,False,,False,NORMAL,RUNNING,NORMAL,,No active canary release deployed. | Infrastructure telemetry within nominal bounds.,0.0,0.0,0.0
+28,True,0.0,,False,,False,NORMAL,RUNNING,NORMAL,,No active canary release deployed. | Infrastructure telemetry within nominal bounds.,0.0,0.0,0.0
+29,True,0.0,,False,,False,NORMAL,RUNNING,NORMAL,,No active canary release deployed. | Infrastructure telemetry within nominal bounds.,0.0,0.0,0.0
+30,True,-1.1759,-1.2739,False,-1.1759,False,NORMAL,RUNNING,NORMAL,,Canary telemetry healthy and matched to concurrent controls. | Infrastructure telemetry within nominal bounds.,0.0011,-0.0435,0.0456
+31,True,-1.0854,-1.0854,False,-1.142,False,NORMAL,RUNNING,NORMAL,,Canary telemetry healthy and matched to concurrent controls. | Infrastructure telemetry within nominal bounds.,0.0048,-0.0372,0.0469
+32,True,-0.7967,-0.7967,False,-1.1279,False,NORMAL,RUNNING,NORMAL,,Canary telemetry healthy and matched to concurrent controls. | Infrastructure telemetry within nominal bounds.,0.009,-0.0315,0.0494
+33,True,-0.9354,-0.9354,False,-1.0622,False,NORMAL,RUNNING,NORMAL,,Canary telemetry healthy and matched to concurrent controls. | Infrastructure telemetry within nominal bounds.,0.0058,-0.0334,0.045
+34,True,-1.0089,-1.2672,False,-1.0089,False,NORMAL,RUNNING,NORMAL,,Canary telemetry healthy and matched to concurrent controls. | Infrastructure telemetry within nominal bounds.,0.0035,-0.0346,0.0416
+35,True,-1.132,-1.3582,False,-1.132,False,NORMAL,RUNNING,NORMAL,,Canary telemetry healthy and matched to concurrent controls. | Infrastructure telemetry within nominal bounds.,0.0022,-0.0349,0.0394
+36,True,-1.0509,-1.3251,False,-1.0509,False,NORMAL,RUNNING,NORMAL,,Canary telemetry healthy and matched to concurrent controls. | Infrastructure telemetry within nominal bounds.,0.0026,-0.0337,0.0389
+37,True,-1.034,-1.4704,False,-1.034,False,NORMAL,RUNNING,NORMAL,,Canary telemetry healthy and matched to concurrent controls. | Infrastructure telemetry within nominal bounds.,-0.0002,-0.0358,0.0355
+38,True,-1.1015,-1.9694,False,-1.1015,False,NORMAL,RUNNING,NORMAL,,Canary telemetry healthy and matched to concurrent controls. | Infrastructure telemetry within nominal bounds.,-0.0053,-0.0403,0.0297
+39,True,-0.9382,-1.7149,False,-0.9382,False,NORMAL,RUNNING,NORMAL,,Canary telemetry healthy and matched to concurrent controls. | Infrastructure telemetry within nominal bounds.,-0.0013,-0.0358,0.0331
+40,True,-0.7285,-1.7405,False,-0.7285,False,NORMAL,RUNNING,NORMAL,,Canary telemetry healthy and matched to concurrent controls. | Infrastructure telemetry within nominal bounds.,0.0001,-0.0339,0.0341
+41,True,-0.581,-1.5298,False,-0.581,True,NORMAL,RUNNING,NORMAL,,Canary telemetry healthy and matched to concurrent controls. | Infrastructure telemetry within nominal bounds.,0.0017,-0.0319,0.0352
+42,True,-0.5382,-1.7795,False,-0.5382,True,NORMAL,RUNNING,NORMAL,,Canary telemetry healthy and matched to concurrent controls. | Infrastructure telemetry within nominal bounds.,-0.0012,-0.0344,0.032
+43,True,-0.8056,-1.834,False,-0.8056,False,NORMAL,RUNNING,NORMAL,,Canary telemetry healthy and matched to concurrent controls. | Infrastructure telemetry within nominal bounds.,-0.0012,-0.0342,0.0317
+44,True,-0.8098,-1.6693,False,-0.8098,False,NORMAL,RUNNING,NORMAL,,Canary telemetry healthy and matched to concurrent controls. | Infrastructure telemetry within nominal bounds.,-0.0004,-0.0331,0.0322
+45,True,-1.0252,-1.4868,False,-1.0252,False,NORMAL,RUNNING,NORMAL,,Canary telemetry healthy and matched to concurrent controls. | Infrastructure telemetry within nominal bounds.,0.001,-0.0315,0.0334
+46,True,-0.8962,-1.4598,False,-0.8962,False,NORMAL,RUNNING,NORMAL,,Canary telemetry healthy and matched to concurrent controls. | Infrastructure telemetry within nominal bounds.,-0.0002,-0.0324,0.0321
+47,True,-0.9103,-1.5015,False,-0.9103,False,NORMAL,RUNNING,NORMAL,,Canary telemetry healthy and matched to concurrent controls. | Infrastructure telemetry within nominal bounds.,-0.0006,-0.0327,0.0314
+48,True,-0.9012,-2.0039,False,-0.9012,False,NORMAL,RUNNING,NORMAL,,Canary telemetry healthy and matched to concurrent controls. | Infrastructure telemetry within nominal bounds.,-0.0029,-0.0348,0.029
+49,True,-1.1495,-1.5369,False,-1.1495,False,NORMAL,RUNNING,NORMAL,,Canary telemetry healthy and matched to concurrent controls. | Infrastructure telemetry within nominal bounds.,0.0024,-0.0293,0.0342
+50,True,-1.0749,-1.6084,False,-1.0749,False,NORMAL,RUNNING,NORMAL,,Canary telemetry healthy and matched to concurrent controls. | Infrastructure telemetry within nominal bounds.,0.0007,-0.031,0.0324
+51,True,-0.9566,-1.4081,False,-0.9566,False,NORMAL,RUNNING,NORMAL,,Canary telemetry healthy and matched to concurrent controls. | Infrastructure telemetry within nominal bounds.,0.0028,-0.0288,0.0343
+52,True,-1.0936,-1.4092,False,-1.0936,False,NORMAL,RUNNING,NORMAL,,Canary telemetry healthy and matched to concurrent controls. | Infrastructure telemetry within nominal bounds.,0.0049,-0.0266,0.0364
+53,True,-1.1868,-1.4729,False,-1.1868,False,NORMAL,RUNNING,NORMAL,,Canary telemetry healthy and matched to concurrent controls. | Infrastructure telemetry within nominal bounds.,0.0047,-0.0267,0.0362
+54,True,-1.0537,-1.2184,False,-1.0537,False,NORMAL,RUNNING,NORMAL,,Canary telemetry healthy and matched to concurrent controls. | Infrastructure telemetry within nominal bounds.,0.0067,-0.0246,0.0381
+55,True,-0.9973,-1.304,False,-0.9973,False,NORMAL,RUNNING,NORMAL,,Canary telemetry healthy and matched to concurrent controls. | Infrastructure telemetry within nominal bounds.,0.0069,-0.0244,0.0382
+56,True,-1.086,-1.127,False,-1.086,False,NORMAL,RUNNING,NORMAL,,Canary telemetry healthy and matched to concurrent controls. | Infrastructure telemetry within nominal bounds.,0.0081,-0.0231,0.0394
+57,True,-0.9528,-1.2353,False,-0.9528,False,NORMAL,RUNNING,NORMAL,,Canary telemetry healthy and matched to concurrent controls. | Infrastructure telemetry within nominal bounds.,0.0063,-0.0249,0.0375
+58,True,-0.9441,-1.3267,False,-0.9441,False,NORMAL,RUNNING,NORMAL,,Canary telemetry healthy and matched to concurrent controls. | Infrastructure telemetry within nominal bounds.,0.0059,-0.0253,0.0371
+59,True,-1.0578,-1.0578,False,-1.1382,False,NORMAL,RUNNING,NORMAL,,Canary telemetry healthy and matched to concurrent controls. | Infrastructure telemetry within nominal bounds.,0.0081,-0.0231,0.0392
+60,True,-1.0974,-1.0974,False,-1.3618,False,NORMAL,RUNNING,NORMAL,,Canary telemetry healthy and matched to concurrent controls. | Infrastructure telemetry within nominal bounds.,0.0067,-0.0244,0.0378
+61,True,-1.2658,-1.2658,False,-1.4508,False,NORMAL,RUNNING,NORMAL,,Canary telemetry healthy and matched to concurrent controls. | Infrastructure telemetry within nominal bounds.,0.0044,-0.0267,0.0355
+62,True,-1.4926,-1.4926,False,-1.5729,False,NORMAL,RUNNING,NORMAL,,Canary telemetry healthy and matched to concurrent controls. | Infrastructure telemetry within nominal bounds.,0.0037,-0.0274,0.0348
+63,True,-1.365,-1.4388,False,-1.365,False,NORMAL,RUNNING,NORMAL,,Canary telemetry healthy and matched to concurrent controls. | Infrastructure telemetry within nominal bounds.,0.0045,-0.0266,0.0355
+64,True,-1.307,-1.343,False,-1.307,False,NORMAL,RUNNING,NORMAL,,Canary telemetry healthy and matched to concurrent controls. | Infrastructure telemetry within nominal bounds.,0.0052,-0.0259,0.0362
+65,True,-1.2279,-1.257,False,-1.2279,False,NORMAL,RUNNING,NORMAL,,Canary telemetry healthy and matched to concurrent controls. | Infrastructure telemetry within nominal bounds.,0.0067,-0.0243,0.0377
+66,True,-1.1804,-1.1804,False,-1.2936,False,NORMAL,RUNNING,NORMAL,,Canary telemetry healthy and matched to concurrent controls. | Infrastructure telemetry within nominal bounds.,0.0069,-0.0241,0.0379
+67,True,-1.3747,-1.4935,False,-1.3747,False,NORMAL,RUNNING,NORMAL,,Canary telemetry healthy and matched to concurrent controls. | Infrastructure telemetry within nominal bounds.,0.0051,-0.0259,0.0361
+68,True,-1.2524,-1.2524,False,-1.6441,False,NORMAL,RUNNING,NORMAL,,Canary telemetry healthy and matched to concurrent controls. | Infrastructure telemetry within nominal bounds.,0.008,-0.023,0.039
+69,True,-1.4947,-1.4947,False,-1.8547,False,NORMAL,RUNNING,NORMAL,,Canary telemetry healthy and matched to concurrent controls. | Infrastructure telemetry within nominal bounds.,0.005,-0.026,0.036
+70,True,-1.2874,-1.2874,False,-1.7966,False,NORMAL,RUNNING,NORMAL,,Canary telemetry healthy and matched to concurrent controls. | Infrastructure telemetry within nominal bounds.,0.0065,-0.0244,0.0375
+71,True,-1.1582,-1.1582,False,-1.474,False,NORMAL,RUNNING,NORMAL,,Canary telemetry healthy and matched to concurrent controls. | Infrastructure telemetry within nominal bounds.,0.0074,-0.0236,0.0384
+72,True,-1.2411,-1.2411,False,-1.5199,False,NORMAL,RUNNING,NORMAL,,Canary telemetry healthy and matched to concurrent controls. | Infrastructure telemetry within nominal bounds.,0.0083,-0.0227,0.0393
+73,True,-1.056,-1.056,False,-1.4284,False,NORMAL,RUNNING,NORMAL,,Canary telemetry healthy and matched to concurrent controls. | Infrastructure telemetry within nominal bounds.,0.0117,-0.0193,0.0426
+74,True,-0.8915,-0.8915,False,-1.5019,False,NORMAL,RUNNING,NORMAL,,Canary telemetry healthy and matched to concurrent controls. | Infrastructure telemetry within nominal bounds.,0.0132,-0.0178,0.0442

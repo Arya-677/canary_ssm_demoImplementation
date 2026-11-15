@@ -1,0 +1,23 @@
+{
+  "model_id": "MODEL-HSSM-V1",
+  "version": "1.0.0",
+  "nuisance_phi_e": 0.6,
+  "nuisance_sd_xi": 0.01,
+  "hier_rho_g": 0.95,
+  "hier_rho_h": 0.95,
+  "hier_sd_g": 0.001,
+  "hier_sd_h": 0.001,
+  "hier_prior_sd": 0.01,
+  "cusum_k": 0.25,
+  "topk_K": 3,
+  "ewma_alpha": 0.2,
+  "boundary_latency_log": 0.0198026,
+  "boundary_memory_drift_mb_per_min": 0.5,
+  "boundary_memory_persistence_ticks": 15,
+  "boundary_cpu_saturation": 0.85,
+  "boundary_error_rate": 0.05,
+  "policy_id": "POLICY-SIDAK-0.05",
+  "target_fwer": 0.05,
+  "epistemic_disclaimer": "Observational statistical evidence consistent with release regression; not proof of a source code bug or causal certainty.",
+  "sha256": "9c3c83ba2a4ff173e1dd2fb80f3056f4c20c5edb0f8654108640ae0a90cdbe2a"
+}

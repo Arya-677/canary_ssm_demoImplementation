@@ -1,137 +1,126 @@
-# canary_ssm: Hierarchical Canary State-Space Model (V1 + Version 2)
+# canary_ssm: Hierarchical Canary State-Space Model & Virtual Data Center
 
-Statistical-track research codebase for detecting weak, persistent canary-release latency regressions under shared workload and environmental shifts. Includes a reproducible synthetic simulator, workload regression & rank-1 control factor adjustment, Joseph-form Kalman / hierarchical Gaussian state-space filters, classical & prewhitened sequential comparators, clairvoyant upper-bound oracles, leakage-safe order-statistic calibration, Beta-Binomial null gating, and diagnostic study runners.
+[![Tests](https://img.shields.io/badge/tests-258%2B%20passed-brightgreen.svg)]()
+[![Python](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12-blue.svg)]()
+[![License](https://img.shields.io/badge/license-MIT-green.svg)]()
 
-> **For LLMs / Reviewers Reading This Repository:**
-> Start with [`results/V2_IMPLEMENTATION_DETAILED_SUMMARY.md`](results/V2_IMPLEMENTATION_DETAILED_SUMMARY.md) for the complete technical and empirical narrative of Version 2 (`P0 -> P1 -> P1b`), followed by [`docs/DESIGN_DECISIONS.md`](docs/DESIGN_DECISIONS.md), [`docs/baselines.md`](docs/baselines.md), and [`results/final/report.md`](results/final/report.md) (V1 baseline).
->
-> **Tracked vs. Ignored Files:** Both code (`canary_ssm/`, `tests/`, `configs/`, `docs/`, `scripts/`) **and** lightweight reports, tables, plots, manifests, and fitted model/policy configs (`results/`, `artifacts/`) are committed so results are immediately inspectable on GitHub. Heavy generated `.npz` rollouts (`data/`, `data_*/`), caches (`cache/`), `.resume_*/` checkpoints (`*.pkl`), `.venv/`, and incomplete `results/smoke_ora_check/` are gitignored and regenerable deterministically via the commands below.
+A statistical research codebase and interactive Virtual Data Center for detecting weak, persistent canary-release regressions under shared workload and environmental shifts.
+
+It combines **Hierarchical State-Space Modeling (HSSM)** with nested SVD factor subtraction and within-class shrinkage, comparing partial pooling against independent estimation and complete pooling in real-time streaming telemetry and reproducible benchmark simulations.
 
 ---
 
-## 1. Tested Environment & Setup
+## 1. Quick Start
 
-- **Hardware / OS used for saved runs:** CPU-only (no GPU required; neural/Mamba track deliberately omitted), Windows 11 (`Windows-11-10.0.26300-SP0`), `Intel64 Family 6 Model 167 Stepping 1` (12 logical threads; parallel stages default to `cpu_count - 2`, benchmarked with `workers=1` and `workers=8`), Python `3.12.10`.
-- **Key libraries (`requirements.lock`):** `numpy==2.5.4`, `scipy==1.18.1`, `pandas==3.1.1`, `statsmodels==0.15.0`, `matplotlib==3.11.2`, `pyyaml==6.0.3`, `hypothesis==6.124.9`, `tabulate==0.10.0`, `pytest==9.2.0` (`pyproject.toml` supports `Python >= 3.10`).
-
-### Windows Setup
-```powershell
-py -3.12 -m venv .venv
-.venv\Scripts\activate
-python -m pip install -e ".[dev,report]"
-# Or for exact pinned package versions from the reference environment:
-# python -m pip install -r requirements.lock
-python -m pytest -q
-```
-
-### Linux / macOS Setup
+### Launch the Interactive Web Dashboard
+Run the one-command local demo dashboard:
 ```bash
-python3 -m venv .venv
+python -m canary_ssm.cli dashboard --host 127.0.0.1 --port 8000
+```
+or via the installed entrypoint:
+```bash
+canary-ssm dashboard --port 8000
+```
+Open **[http://127.0.0.1:8000](http://127.0.0.1:8000)** in your browser.
+
+- **1-Click Demo:** Click **"▶ Start Demo"** in the top bar to run canonical scenarios (Clean Release, Memory Leak, Rack Slowdown, Fleet Demand Spike, CPU Contention, Healthy GC Oscillations, Combined Faults, Missing Controls).
+- **Interactive Workflow:** Follow the guided 7-step workflow from scenario selection to ground-truth audit.
+- **Side-by-Side Method Comparison:** Compare **Hierarchical SSM (partial pooling)**, **Independent SSM (no pooling)**, and **Complete Pooling** side-by-side on the live telemetry stream.
+
+For detailed instructions, see the [Dashboard User Guide](docs/dashboard_user_guide.md).
+
+---
+
+## 2. Tested Environment & Setup
+
+- **Hardware / OS:** CPU-only (no GPU required; neural/Mamba track deliberately omitted), Windows 11 / Linux / macOS, Python `>= 3.10` (tested on Python 3.12).
+- **Core Dependencies:** `numpy`, `scipy`, `pandas`, `statsmodels`, `fastapi`, `uvicorn`, `matplotlib`, `pyyaml`, `hypothesis`, `pytest`.
+
+### Installation
+```bash
+# Clone the repository
+git clone https://github.com/29kumaranish-hash/AFML_Demo.git
+cd AFML_Demo
+
+# Create and activate virtual environment
+python -m venv .venv
+# On Windows:
+.venv\Scripts\activate
+# On Linux / macOS:
 source .venv/bin/activate
-python -m pip install -e ".[dev,report]"
-python -m pytest -q
+
+# Install package with development dependencies
+pip install -e ".[dev,report]"
 ```
 
-**Verified test suite status (`HEAD`):** `107 passed in 111.35s` (`test_simulator.py`, `test_kalman.py`, `test_kalman_properties.py`, `test_hierarchy_factor.py`, `test_nuisance_and_chain.py`, `test_decision_metrics.py`, `test_handoff_changes.py`, `test_p0_housekeeping.py`, `test_p1_protocol.py`, `test_p1b_baselines.py`).
+### Running the Test Suite
+```bash
+# Run all fast tests (258+ tests):
+python -m pytest -m "not slow" -q
+
+# Run inference parity and policy validation regression suites:
+python -m pytest tests/test_inference_parity.py tests/test_policy_validation.py tests/test_api_scenarios.py -v
+```
 
 ---
 
-## 2. Project Timeline, Saved Results & Exact Scope
+## 3. Key Statistical Architecture
 
-| Stage | Git Reference | What Was Implemented & Executed | Key Saved Outputs |
-|---|---|---|---|
-| **V1 Baseline** | `v0.1-first-full-run` (`8472b2a`) | Initial end-to-end statistical pipeline, null calibration audit, Exp 7 causal regime rule, Exp 8 robustness diagnostics | [`results/final/`](results/final/report.md), [`results/audit/summary.md`](results/audit/summary.md), [`results/experiment_7/`](results/experiment_7/report.md), [`results/experiment_8/`](results/experiment_8/report.md), [`results/runtime_scaling.csv`](results/runtime_scaling.csv), `artifacts/{model,policy}/` |
-| **V2 Phase P0** | `v0.2-p0` (`ca0b37e`) | Disjoint 1M-block seed registry (`seeds.py`), cryptographic provenance manifests (`manifest.py`), deterministic Windows multiprocessing & JSONL resume (`parallel.py`), **X-0.1** determinism check (`1` vs `8` workers: `538.401s -> 142.456s`, 3.78x speedup, bitwise-identical `per_rollout_metrics.csv` SHA-256) | [`results/x01/`](results/x01/w1/experiment_manifest.json) |
-| **V2 Phase P1** | `v0.3-p1` (`7eb2e8d`) | Regime separation (`plain_main.yaml`, `step_regime.yaml`), Policy Schema v2, `canary_ssm/studies/` guards, **X-0.2(a/b/c)** anomaly diagnoses, **X-0.3** 5-fold CV + 1-SE + edge expansion tuning (`v2.0-exp2`, `fit_s = 4665.79s`, 0 failures), **X-0.4** `B=2000` plain calibration & 14,000-null/method Beta-Binomial Gate G2 (`118/119` pass; `hier_rank0` fails `S5_label_errors` at `9.65%`) | [`results/x02/`](results/x02/x02a/x02a_summary.md), [`results/x03/`](results/x03/x03_profiles.csv), [`results/x04/`](results/x04/x04_summary.md), [`artifacts/model_v2/`](artifacts/model_v2/model_config.json), [`artifacts/policy_plain/`](artifacts/policy_plain/gate_status.json) |
-| **V2 Phase P1b** | `v0.4-p1b` (`aae8259`) | **`WP-E1`:** 7 causal sequential comparators (`wmean`, `ar_cusum`, `glr_window`, `sparse_mix_glr`, `bocpd`, `msprt`, `mw_judge`) with AR(1) prewhitening across missing gaps (`baselines_extra.py`). **`WP-E2`:** 3 clairvoyant reference upper-bound oracles (`oracle_cusum`, `oracle_bayes`, `oracle_subset`, `--oracles` CLI flag, `oracles.py`). Verified by `10` new unit tests (`107` total pass). | [`canary_ssm/baselines_extra.py`](canary_ssm/baselines_extra.py), [`canary_ssm/oracles.py`](canary_ssm/oracles.py), [`docs/baselines.md`](docs/baselines.md), [`tests/test_p1b_baselines.py`](tests/test_p1b_baselines.py) |
-| **Phases P2–P4** | *(Not yet executed)* | Scaled `evaluate` benchmarks comparing P1b baselines & oracles, plus `E1..E8`, `R1..R8`, `G1..G8`, `RT-1..RT-3` from `docs/Canary_SSM_Change_Plan.pdf` | — |
+### Hierarchical State-Space Model (Partial Pooling)
+The system monitors canaries across heterogeneous hardware classes $g \in \{1, \dots, G\}$ and physical racks:
+- **Helmert Contrast Basis:** An orthonormal basis $L = [C \quad B]$ decomposes effects into class means $\theta_g$ and host deviations $b_i$ that sum to zero within each class ($B^T B = I_{n-G}, C^T B = 0$).
+- **Within-Class Shrinkage:** Damps individual host telemetry noise by shrinking estimates toward the hardware class mean, boosting statistical power while preserving single-host sensitivity.
+- **Nested SVD Factor Adjustment:** Removes fleet-wide diurnal cycles and rack-switch network latency before state-space filtering.
+- **Joseph Covariance Stabilization:** Ensures numerical positive semi-definiteness ($P = (I - K H) P (I - K H)^T + K R K^T$) during long telemetry gaps.
 
----
-
-## 3. Replicating Everything From Scratch
-
-All random streams use deterministic 1M-block seeds (`canary_ssm/seeds.py`), so re-running these commands on another CPU machine reproduces the exact data, fits, calibration thresholds, and validation tables.
-
-### A. Quick Smoke Check (~minutes)
-```powershell
-.\tasks.ps1 smoke
-# Linux/macOS: bash scripts/smoke.sh
-```
-
-### B. Reproducing V2 Phase P0 (`X-0.1`: Determinism `w=1` vs `w=8`)
-Evaluates the frozen V1 artifacts (`artifacts/model`, `artifacts/policy`) on the `test` split (`seed_base = 4000000`, `1,000` rollouts):
-```powershell
-python -m canary_ssm.cli simulate --config configs/legacy_mixture_with_step.yaml --role test --out data/legacy_test
-python -m canary_ssm.cli evaluate --data data/legacy_test --model artifacts/model --policy artifacts/policy --out results/x01/w1 --workers 1 --allow-frozen --allow-regime-mismatch
-python -m canary_ssm.cli evaluate --data data/legacy_test --model artifacts/model --policy artifacts/policy --out results/x01/w8 --workers 8 --allow-frozen --allow-regime-mismatch
-```
-
-### C. Reproducing V2 Phase P1 Diagnostics (`X-0.2a`, `X-0.2b`, `X-0.2c`)
-```powershell
-# Run all X-0.2 diagnostics together:
-python -m canary_ssm.cli study x02 --model artifacts/model --policy artifacts/policy --out results/x02 --allow-frozen --allow-regime-mismatch
-
-# Or individually: x02a, x02b, x02c
-python -m canary_ssm.cli study x02a --model artifacts/model --out results/x02/x02a --allow-frozen
-python -m canary_ssm.cli study x02b --model artifacts/model --policy artifacts/policy --out results/x02/x02b --allow-frozen --allow-regime-mismatch
-python -m canary_ssm.cli study x02c --model artifacts/model --out results/x02/x02c --allow-frozen
-```
-*(In-package `study regime` and `study robust` runners are also available via `python -m canary_ssm.cli study regime ...` and `study robust ...`.)*
-
-### D. Reproducing V2 Plain-Regime Fit, Calibration & 14,000-Null Validation (`X-0.3` & `X-0.4`)
-```powershell
-# 1. Generate dev data & calibration manifest (use --generate-on-the-fly for large null sets to save disk)
-python -m canary_ssm.cli simulate --config configs/plain_main.yaml --role dev --out data/plain/dev
-python -m canary_ssm.cli simulate --config configs/plain_main.yaml --role calibration --out data/plain/calibration --manifest-only
-python -m canary_ssm.cli simulate --config configs/plain_main.yaml --role null_validation --out data/plain/null_validation --manifest-only
-
-# 2. X-0.3: Nuisance MLE + 5-fold CV + 1-SE + auto edge expansion (v2.0 -> v2.0-exp2; ~78 min on 12-thread CPU)
-python -m canary_ssm.cli fit --data data/plain/dev --out artifacts/model_v2 --grid configs/grids_v2.yaml --auto-expand --max-expansions 2 --k-folds 5 --cache-dir cache
-
-# 3. X-0.4: Plain calibration (B=2000) & Gate G2 validation (2000 nulls x 7 families = 14,000 nulls/method)
-python -m canary_ssm.cli calibrate --data data/plain/calibration --model artifacts/model_v2 --out artifacts/policy_plain --regime plain --generate-on-the-fly --resume
-python -m canary_ssm.cli validate-null --data data/plain/null_validation --model artifacts/model_v2 --policy artifacts/policy_plain --generate-on-the-fly --resume
-```
-
-### E. Full Pipeline Shortcuts & Oracles
-- `.\tasks.ps1 plain-pipeline` / `.\tasks.ps1 step-pipeline` (or `bash tasks.sh ...`) run end-to-end `simulate -> fit -> calibrate -> validate-null -> evaluate`.
-- Pass `--oracles` to `calibrate`, `validate-null`, and `evaluate` to include `oracle_cusum`, `oracle_bayes`, and `oracle_subset` (`ORACLE`-tagged upper bounds excluded from real-method rankings).
+### Release Decision Metric
+- **Release Score: Maximum Host Risk:**
+  $$\text{Score}_t = \max_{i \in \text{Canaries}} \log P(a_{it} > \kappa_{\text{lat}} \mid \text{data}_{\le t})$$
+- **Declared Harm Boundary:** $\kappa_{\text{lat}} = \log(1.02) \approx +0.0198$ represents an operational $+2.0\%$ latency increase.
+- **Log Probability Scale:** Scores fall strictly in $(-\infty, 0.0]$. Initial null scores are set to `None` to prevent confusion with $\log(1.0) = 0.0$.
+- **Dual Advisory Firewall:** Evaluates `InfrastructureAdvisory` (fleet/rack health from concurrent baseline controls) separately from `CanaryReleaseAdvisory` (canary-specific harm).
 
 ---
 
 ## 4. Repository Structure
 
 ```text
-canary_ssm_project/
+AFML_Demo/
 ├── canary_ssm/
-│   ├── schema.py            # Data contracts; Rollout = detector-visible input only
-│   ├── simulate.py          # Synthetic simulator + Truth (evaluator-only, never leaked)
-│   ├── seeds.py             # Disjoint 1M-block deterministic seed registry (v2.0)
-│   ├── manifest.py          # SHA-256 config/grid/model/policy/git provenance builder
-│   ├── parallel.py          # Windows-safe multiprocessing, BLAS=1 pinning, JSONL resume
-│   ├── factor.py            # Workload regression, rank-1 control factor, eligibility
-│   ├── preprocess.py        # Per-class AR(1) / white nuisance MLE fitting
-│   ├── kalman.py            # Joseph-form Kalman filter, Cholesky solves, missing gaps
-│   ├── hierarchy.py         # Hierarchical / independent / pooled SSM effect detectors
-│   ├── baselines.py         # matched_contrast, adj_ewma, adj_cusum, topk_cusum
-│   ├── baselines_extra.py   # wmean, ar_cusum, glr_window, sparse_mix_glr, bocpd, msprt, mw_judge
-│   ├── oracles.py           # Clairvoyant upper bounds (ORACLE labeled, --oracles flag)
-│   ├── decision.py          # Order-statistic calibration (Schema v2), latched alarm, policy
-│   ├── metrics.py           # Capped delay, host localization, Brier, Beta-Binomial & CIs
-│   ├── experiments.py       # Pipeline stages, 5-fold/1-SE/edge-check tuning, caching
-│   ├── report.py            # Markdown tables & plots generated strictly from saved CSVs
-│   ├── cli.py               # CLI entry point (python -m canary_ssm / canary-ssm)
-│   └── studies/             # Parameterised V2 studies (study_anomalies, study_regime, study_robust)
-├── configs/                 # plain_main.yaml, step_regime.yaml, grids_v2.yaml, audit.yaml, ...
-├── docs/                    # Canary_SSM_Change_Plan.pdf, DESIGN_DECISIONS.md, baselines.md, SANDBOX_AUDIT.md
-├── scripts/                 # smoke.sh, audit_quick.sh, run_all.ps1, legacy Exp 7/8 scripts
-├── tests/                   # 107 unit, causality, property, protocol, and P1b tests
-├── artifacts/               # Saved V1 & V2 fitted model configs and calibrated policies
-├── results/                 # Saved V1 & V2 reports, manifests, CSV tables, and figures
-├── pyproject.toml           # Package & dependency definition (canary_ssm + canary_ssm.studies)
-├── requirements.lock        # Pinned environment lockfile (-e .)
-├── tasks.ps1 / tasks.sh     # Task runners (test, smoke, plain-pipeline, step-pipeline, audit)
-└── AGENTS.md                # Non-negotiable causality, anti-leakage & gate rules
+│   ├── world/               # Virtual datacenter: Fleet, Racks, Servers, Clock, Telemetry
+│   ├── faults/              # Fault engine: typed infrastructure vs release faults, truth store
+│   ├── deployments/         # Release registry, SHA-256 artifacts, identifiability validator
+│   ├── telemetry/           # Time slicing, streaming residuals, pre-period baselines
+│   ├── kalman.py            # Joseph-form Kalman filter, missingness prediction
+│   ├── hierarchy.py         # Hierarchical, independent, and pooled batch SSM detectors
+│   ├── memory.py            # Process memory growth residual, GC sawtooth dynamics, TTE
+│   ├── detector_service.py  # Streaming detector service, policy validation, 8-state machine
+│   ├── baselines.py         # Matched contrast, adjusted EWMA, CUSUM, Top-K CUSUM
+│   ├── baselines_extra.py   # Prewhitened sequential comparators (GLR, BOCPD, MSPRT, MW-Judge)
+│   ├── oracles.py           # Clairvoyant reference upper bounds (Oracle-CUSUM, Oracle-Bayes)
+│   ├── decision.py          # Order-statistic calibration, latched alarm, policy schemas
+│   ├── scenarios/           # 8 versioned canonical scenario presets
+│   ├── api/                 # FastAPI REST backend (routes, schemas, simulator service)
+│   └── dashboard/           # Modern 8-tab SPA dashboard (HTML5 Canvas charts, zero build tools)
+├── configs/                 # plain_main.yaml, step_regime.yaml, grids_v2.yaml, audit.yaml
+├── docs/
+│   ├── bug_audit.md         # Comprehensive correctness audit & verified bug fixes
+│   ├── dashboard_user_guide.md # First-time user manual and 7-step walkthrough
+│   ├── implementation_status.md # Versioned milestone inventory and test audit
+│   ├── LIMITATIONS.md       # Statistical boundaries, step failures, and missingness
+│   └── DESIGN_DECISIONS.md  # Architectural contracts and deferred research boundaries
+├── results/                 # Saved CSV tables, Gate G2 validation matrices, and plots
+├── tests/                   # 248+ unit, property, parity, policy, and API tests
+├── pyproject.toml           # Package build and dependency specification
+├── requirements.lock        # Pinned reference environment lockfile
+└── AGENTS.md                # Non-negotiable anti-leakage, causality & calibration rules
 ```
 
-See [`AGENTS.md`](AGENTS.md), [`docs/DESIGN_DECISIONS.md`](docs/DESIGN_DECISIONS.md), and [`docs/baselines.md`](docs/baselines.md) for strict anti-leakage, causality, and calibration contracts.
+---
+
+## 5. Epistemic Transparency & Research Scope
+
+In accordance with the project's statistical design guidelines:
+1. **Gate G2 Validity:** Hierarchical SSM with factor subtraction passes the exact Beta-Binomial validity test ($B \ge 2000, n \ge 2000$) across stationary nulls, step-contaminated nulls, and heavy-tailed noise.
+2. **Known Failure Under S5 (Label Errors):** In `results/x04/x04_summary.md`, `hier_rank0` (which omits nested factor subtraction) failed Gate G2 under label noise ($p = 1.218 \times 10^{-8}$). The evaluation tab prominently marks `hier_rank0` on S5 as **INVALIDATED**.
+3. **Deferred Research Scope:** As documented in `docs/DESIGN_DECISIONS.md`, Borg cluster traces and neural/Mamba/LSTM baselines were designated as deferred research scope. Telemetry analysis isolates statistical evidence of abnormal growth and latency shifts, not mathematical proof of source code defects.

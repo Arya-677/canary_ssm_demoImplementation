@@ -1,0 +1,21 @@
+{
+  "scenario_name": "release_leak_two_canaries",
+  "true_event_label": "HARM_MEMORY_GROWTH",
+  "true_affected_hosts": [
+    "srv-r0-s0",
+    "srv-r1-s0"
+  ],
+  "alarm_tick": 47,
+  "detection_status": "success",
+  "detection_delay": 17.0,
+  "capped_time_to_success": 17.0,
+  "localization": {
+    "topk_recall": 1.0,
+    "precision": 0.6667,
+    "recall": 1.0,
+    "f1": 0.8
+  },
+  "final_infrastructure_advisory": "NORMAL",
+  "final_canary_release_advisory": "PAUSE RECOMMENDED",
+  "final_attribution": "MEMORY_GROWTH_LEAK"
+}

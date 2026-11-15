@@ -1,0 +1,18 @@
+{
+  "scenario_name": "missing_controls",
+  "true_event_label": "NO_EVENT",
+  "true_affected_hosts": [],
+  "alarm_tick": null,
+  "detection_status": "quiet",
+  "detection_delay": NaN,
+  "capped_time_to_success": NaN,
+  "localization": {
+    "topk_recall": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0
+  },
+  "final_infrastructure_advisory": "NORMAL",
+  "final_canary_release_advisory": "INSUFFICIENT DATA / CONFLICT",
+  "final_attribution": "INSUFFICIENT_DATA"
+}

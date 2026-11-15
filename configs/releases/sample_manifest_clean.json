@@ -1,0 +1,17 @@
+{
+  "release_id": "rel-v1.1.0-clean",
+  "version_tag": "v1.1.0-clean",
+  "behavior_profile": {
+    "profile_type": "CLEAN",
+    "severity": 0.0,
+    "duration": 120
+  },
+  "artifact": {
+    "artifact_filename": "service_worker_v110.py",
+    "content_preview": "# Optimized production build\nVERSION = 'v1.1.0-clean'\n"
+  },
+  "metadata": {
+    "author": "release-team",
+    "description": "Clean production release"
+  }
+}

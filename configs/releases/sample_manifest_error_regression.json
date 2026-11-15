@@ -1,0 +1,17 @@
+{
+  "release_id": "rel-v1.5.0-errors",
+  "version_tag": "v1.5.0-errors",
+  "behavior_profile": {
+    "profile_type": "ERROR_REGRESSION",
+    "severity": 0.04,
+    "duration": 120
+  },
+  "artifact": {
+    "artifact_filename": "handler_v150.py",
+    "content_preview": "# Null pointer dereference in edge cases\nVERSION = 'v1.5.0-errors'\n"
+  },
+  "metadata": {
+    "author": "api-team",
+    "description": "Release with 4% request error regression"
+  }
+}

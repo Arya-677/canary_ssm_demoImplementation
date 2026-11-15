@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Virtual Data Center — Canary SSM</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+  <!-- Top App Header -->
+  <header>
+    <div class="brand">
+      <span class="brand-title">Virtual Data Center</span>
+      <span class="brand-badge">Canary SSM</span>
+      <span id="connection-status" class="badge dot-online" style="margin-left: 0.5rem; font-size: 0.7rem; padding: 0.2rem 0.5rem; color: #0f172a; font-weight: 700;">● CONNECTED</span>
+    </div>
+    <nav class="nav-tabs">
+      <button class="tab-btn active" data-tab="overview">1. Presets</button>
+      <button class="tab-btn" data-tab="world">2. Topology</button>
+      <button class="tab-btn" data-tab="releases">3. Releases</button>
+      <button class="tab-btn" data-tab="monitoring">4. Telemetry</button>
+      <button class="tab-btn" data-tab="evidence">5. SSM Evidence</button>
+      <button class="tab-btn" data-tab="comparison">6. Compare Methods</button>
+      <button class="tab-btn" data-tab="faults">7. Fault Lab</button>
+      <button class="tab-btn" data-tab="evaluation">8. Audit & Truth</button>
+    </nav>
+  </header>
+
+  <!-- World & Simulation Control Bar -->
+  <div class="control-bar">
+    <!-- Quick Demo Preset Bar -->
+    <div style="display: flex; align-items: center; gap: 0.5rem; border-right: 1px solid var(--border-color); padding-right: 0.75rem;">
+      <select id="select-demo-preset" class="btn" style="width: auto; padding: 0.35rem 0.5rem; font-size: 0.8rem; background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--accent-blue);" title="Choose Canary Scenario Preset">
+        <option value="release_leak_two_canaries">Preset: Memory Leak (2 Canaries)</option>
+        <option value="clean_release">Preset: Clean Baseline Release</option>
+        <option value="rack_slowdown">Preset: Rack Slowdown (Confounder)</option>
+        <option value="fleet_demand_spike">Preset: Fleet Demand Shock</option>
+        <option value="combined_rack_fault_release_leak">Preset: Compound Rack + Leak</option>
+        <option value="missing_controls">Preset: Missing Controls (Abstention)</option>
+      </select>
+      <button id="btn-start-demo" class="btn btn-primary" style="font-weight: 700; background: linear-gradient(135deg, #0284c7, #38bdf8); color: #0f172a; border: none; padding: 0.4rem 0.85rem;" title="1-Click: Reset, Load Scenario, and Start Simulation">
+        ▶ Start Demo
+      </button>
+      <button id="btn-demo-preset-info" class="btn" style="padding: 0.4rem 0.65rem;" title="Show Scenario Details">ℹ Info</button>
+      <button id="btn-filter-calibrated" class="btn" style="padding: 0.4rem 0.65rem;" title="Policy Calibration Status">🛡 Policy</button>
+    </div>
+
+    <!-- Clock & Freshness -->
+    <div class="clock-info">
+      <div>Clock: <span id="clock-tick" class="clock-tick">T = 0 min</span></div>
+      <div><span id="clock-status" class="badge badge-warning">PAUSED</span></div>
+      <div id="data-freshness" style="font-size: 0.72rem; color: var(--text-muted);">Freshness: Live</div>
+    </div>
+
+    <!-- Dual Advisory & State Bar -->
+    <div class="advisory-bar">
+      <div>
+        <span style="font-size: 0.72rem; color: var(--text-secondary); margin-right: 0.2rem;">INFRASTRUCTURE:</span>
+        <span id="advisory-infra" class="advisory-pill pill-neutral">WAITING_FOR_DATA</span>
+      </div>
+      <div>
+        <span style="font-size: 0.72rem; color: var(--text-secondary); margin-right: 0.2rem;">RELEASE:</span>
+        <span id="advisory-release" class="advisory-pill pill-neutral">WAITING_FOR_DATA</span>
+      </div>
+      <div>
+        <span style="font-size: 0.72rem; color: var(--text-secondary); margin-right: 0.2rem;">STATE:</span>
+        <span id="monitoring-state-pill" class="advisory-pill pill-neutral">WAITING_FOR_DATA</span>
+      </div>
+      <div>
+        <span id="policy-calibration-badge" class="badge badge-warning" title="Policy Calibration Status">Uncalibrated Exploratory</span>
+      </div>
+      <div>
+        <span id="policy-regime-badge" class="badge badge-info" title="Active Monitoring Regime">Regime: plain</span>
+      </div>
+      <label style="display: inline-flex; align-items: center; font-size: 0.75rem; color: var(--text-secondary); cursor: pointer;" title="Toggle connection to Hierarchical SSM detector">
+        <input type="checkbox" id="cb-connect-detector" style="margin-right: 0.25rem;" checked>
+        SSM Active
+      </label>
+      <label style="display: inline-flex; align-items: center; font-size: 0.75rem; color: var(--accent-orange); cursor: pointer;" title="Opt-in Automated Rollback (Operational Demo Mode)">
+        <input type="checkbox" id="cb-auto-rollback" style="margin-right: 0.25rem;">
+        Auto-Rollback
+      </label>
+    </div>
+
+    <!-- Control Buttons -->
+    <div class="controls-group">
+      <button id="btn-play" class="btn btn-primary" title="Start / Resume Simulation">▶ Play</button>
+      <button id="btn-pause" class="btn" title="Pause Simulation">⏸ Pause</button>
+      <button id="btn-step-1" class="btn" title="Advance by 1 simulated minute">+1</button>
+      <button id="btn-step-5" class="btn" title="Advance by 5 simulated minutes">+5</button>
+      <button id="btn-reset" class="btn btn-danger" title="Reset World to Initial Seed">↺ Reset</button>
+      <select id="select-speed" class="btn" style="width: auto; padding: 0.35rem 0.5rem;" title="Simulation Speed">
+        <option value="1.0">1.0s / tick</option>
+        <option value="0.5">0.5s / tick (Fast)</option>
+        <option value="0.2">0.2s / tick (Turbo)</option>
+        <option value="2.0">2.0s / tick (Slow)</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" style="position: fixed; top: 1rem; right: 1rem; z-index: 1000; display: flex; flex-direction: column; gap: 0.5rem;"></div>
+
+  <!-- Main Views Container -->
+  <main>
+
+    <!-- ============================================================= -->
+    <!-- Page 1: Presets & Guided Workflow Overview                    -->
+    <!-- ============================================================= -->
+    <div id="page-overview" class="page-view active">
+      <div class="quick-start-panel">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem;">
+          <div>
+            <h2 style="font-size: 1.35rem; color: var(--accent-blue); margin-bottom: 0.35rem;">
+              Welcome to the Canary SSM Experiment Runner
+            </h2>
+            <p style="color: var(--text-secondary); font-size: 0.88rem; max-width: 820px; line-height: 1.5;">
+              This interactive virtual datacenter demonstrates <strong>Hierarchical State-Space Modeling (HSSM)</strong> for canary deployment monitoring.
+              It isolates release regressions from physical infrastructure confounders (such as rack network bottlenecks and fleet demand spikes)
+              and compares <strong>partial pooling</strong> against <strong>independent</strong> and <strong>complete pooling</strong> in real time.
+            </p>
+          </div>
+          <div style="text-align: right;">
+            <button id="btn-hero-start" class="btn btn-primary" style="font-size: 0.95rem; font-weight: 700; padding: 0.6rem 1.25rem; background: linear-gradient(135deg, #0284c7, #38bdf8); color: #0f172a;">
+              ▶ 1-Click Launch: Memory Leak Demo
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="model-status-panel" aria-live="polite">
+        <div>
+          <span class="model-status-label">Active Inference & Policy Binding</span>
+          <strong id="model-status-title">Waiting for detector status</strong>
+          <p id="model-status-detail">The dashboard will identify the active model and whether its policy is calibrated before making recommendations.</p>
+          <div id="model-status-incompatibility" class="text-danger" style="margin-top: 0.35rem; font-size: 0.8rem; display: none;"></div>
+        </div>
+        <button class="btn" id="btn-open-evidence" type="button">Inspect SSM evidence</button>
+      </div>
+
+      <!-- 7-Step Interactive Guided Workflow -->
+      <div class="card" style="margin-bottom: 1.25rem;">
+        <div class="card-title">
+          <span>Guided 7-Step Experiment Workflow</span>
+          <span class="badge badge-class">Walkthrough Guide</span>
+        </div>
+        <div class="step-flow">
+          <div class="step-card" style="cursor: pointer;" onclick="document.querySelector('[data-tab=world]').click()">
+            <div style="font-weight: 700; margin-bottom: 0.35rem; color: var(--accent-blue);">
+              <span class="step-number">1</span> Inspect Topology
+            </div>
+            <p style="font-size: 0.8rem; color: var(--text-secondary);">
+              Explore 4 physical racks (24 physical servers, 2 hardware classes) and pre-period baseline telemetry.
+            </p>
+          </div>
+          <div class="step-card" style="cursor: pointer;" onclick="document.querySelector('[data-tab=overview]').click()">
+            <div style="font-weight: 700; margin-bottom: 0.35rem; color: var(--accent-purple);">
+              <span class="step-number">2</span> Choose Scenario
+            </div>
+            <p style="font-size: 0.8rem; color: var(--text-secondary);">
+              Select from 8 canonical benchmark presets: clean rollouts, memory leaks, subtle latency regressions, or rack slowdowns.
+            </p>
+          </div>
+          <div class="step-card" style="cursor: pointer;" onclick="document.querySelector('[data-tab=releases]').click()">
+            <div style="font-weight: 700; margin-bottom: 0.35rem; color: var(--accent-yellow);">
+              <span class="step-number">3</span> Deploy Canary
+            </div>
+            <p style="font-size: 0.8rem; color: var(--text-secondary);">
+              Allocate canaries across balanced racks/classes. The identifiability validator ensures concurrent controls are present.
+            </p>
+          </div>
+          <div class="step-card" style="cursor: pointer;" onclick="document.querySelector('[data-tab=monitoring]').click()">
+            <div style="font-weight: 700; margin-bottom: 0.35rem; color: var(--accent-green);">
+              <span class="step-number">4</span> Stream Telemetry
+            </div>
+            <p style="font-size: 0.8rem; color: var(--text-secondary);">
+              Monitor real-time latency, memory, CPU, and error counters with canary vs matched control series.
+            </p>
+          </div>
+          <div class="step-card" style="cursor: pointer;" onclick="document.querySelector('[data-tab=evidence]').click()">
+            <div style="font-weight: 700; margin-bottom: 0.35rem; color: var(--accent-orange);">
+              <span class="step-number">5</span> SSM Evidence
+            </div>
+            <p style="font-size: 0.8rem; color: var(--text-secondary);">
+              Examine host effect estimates \(\hat{a}_i\), 95% CIs, within-class shrinkage, and memory drift rates.
+            </p>
+          </div>
+          <div class="step-card" style="cursor: pointer;" onclick="document.querySelector('[data-tab=comparison]').click()">
+            <div style="font-weight: 700; margin-bottom: 0.35rem; color: var(--accent-blue);">
+              <span class="step-number">6</span> Compare Pooling
+            </div>
+            <p style="font-size: 0.8rem; color: var(--text-secondary);">
+              Compare Hierarchical (partial pooling) vs Independent (no pooling) vs Complete Pooling side-by-side.
+            </p>
+          </div>
+          <div class="step-card" style="cursor: pointer;" onclick="document.querySelector('[data-tab=evaluation]').click()">
+            <div style="font-weight: 700; margin-bottom: 0.35rem; color: var(--accent-red);">
+              <span class="step-number">7</span> Ground Truth Audit
+            </div>
+            <p style="font-size: 0.8rem; color: var(--text-secondary);">
+              Verify detector recommendations against hidden evaluator truth and inspect the Gate G2 calibration matrix.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Canonical Presets Catalog Grid -->
+      <div class="card">
+        <div class="card-title">
+          <span>Canonical Scenario Presets (1-Click Run)</span>
+          <span class="badge badge-dev">Reproducible Benchmark Catalog</span>
+        </div>
+        <p style="font-size: 0.82rem; color: var(--text-secondary); margin-bottom: 1rem;">
+          Each scenario configures topology, seed, warmup, deployment, and fault injections deterministically.
+        </p>
+        <div id="presets-catalog-grid" class="preset-grid"></div>
+      </div>
+    </div>
+
+    <!-- ============================================================= -->
+    <!-- Page 2: World Topology & Fleet View                           -->
+    <!-- ============================================================= -->
+    <div id="page-world" class="page-view">
+      <div class="card" style="margin-bottom: 1rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; color: var(--text-secondary); flex-wrap: wrap; gap: 0.5rem;">
+          <div>
+            <strong>Datacenter Fleet Topology:</strong> 4 Datacenter Racks &bull; 24 Physical Servers &bull; 2 Hardware Classes
+          </div>
+          <div>
+            <span class="badge badge-warning" style="margin-right: 0.5rem;">NUMERICAL SIMULATOR</span>
+            <em>Click any server tile to inspect telemetry and estimated effect intervals.</em>
+          </div>
+        </div>
+      </div>
+
+      <!-- Rack Cards Grid -->
+      <div id="racks-container" class="grid-4"></div>
+    </div>
+
+    <!-- ============================================================= -->
+    <!-- Page 3: Releases & Deployments View                           -->
+    <!-- ============================================================= -->
+    <div id="page-releases" class="page-view">
+      <div class="grid-2">
+        <!-- Release Creator & Artifact Uploader -->
+        <div class="card">
+          <div class="card-title">
+            <span>Create Release Artifact & Behavior Profile</span>
+            <span class="badge badge-warning">Simulated Workload</span>
+          </div>
+
+          <div class="alert-box alert-warning" style="margin-bottom: 1rem;">
+            <strong>UNEXECUTED SOURCE ARTIFACT:</strong> Uploaded source code files are stored for provenance tracking and SHA-256 hashing. Telemetry is generated numerically according to the declared simulation behavior profile.
+          </div>
+
+          <div style="margin-bottom: 1rem;">
+            <label>Load Sample Manifest:</label>
+            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+              <button class="btn btn-sample-manifest" data-profile="CLEAN">Clean (v1.1)</button>
+              <button class="btn btn-sample-manifest" data-profile="MEMORY_LEAK">Memory Leak (+35MB/m)</button>
+              <button class="btn btn-sample-manifest" data-profile="LATENCY_REGRESSION">Latency Bug (+20%)</button>
+              <button class="btn btn-sample-manifest" data-profile="CPU_REGRESSION">CPU Saturation (+35%)</button>
+              <button class="btn btn-sample-manifest" data-profile="ERROR_REGRESSION">Error Bug (4%)</button>
+            </div>
+          </div>
+
+          <form id="form-create-release">
+            <div class="grid-2">
+              <div class="form-group">
+                <label>Release ID</label>
+                <input type="text" id="rel-id" value="rel-v1.2-leak" required>
+              </div>
+              <div class="form-group">
+                <label>Version Tag</label>
+                <input type="text" id="rel-version" value="v1.2.0-leak" required>
+              </div>
+            </div>
+
+            <div class="grid-2">
+              <div class="form-group">
+                <label>Behavior Profile Type</label>
+                <select id="rel-profile-type">
+                  <option value="CLEAN">CLEAN (Nominal)</option>
+                  <option value="MEMORY_LEAK" selected>MEMORY_LEAK (Process Leak)</option>
+                  <option value="LATENCY_REGRESSION">LATENCY_REGRESSION (Log Shift)</option>
+                  <option value="CPU_REGRESSION">CPU_REGRESSION (Spinlock)</option>
+                  <option value="ERROR_REGRESSION">ERROR_REGRESSION (Faulty Handler)</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Severity Magnitude</label>
+                <input type="number" id="rel-severity" value="35.0" step="0.01">
+              </div>
+            </div>
+
+            <div class="grid-2">
+              <div class="form-group">
+                <label>Duration (Minutes)</label>
+                <input type="number" id="rel-duration" value="120" min="1">
+              </div>
+              <div class="form-group">
+                <label>Susceptible Class</label>
+                <select id="rel-class-filter">
+                  <option value="all">All Classes</option>
+                  <option value="0">Class 0 Only</option>
+                  <option value="1">Class 1 Only</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Attach Artifact Code File (Optional — Unexecuted Provenance Only)</label>
+              <input type="file" id="rel-artifact-upload">
+              <input type="hidden" id="rel-artifact-file" value="">
+              <input type="hidden" id="rel-file-input" value="">
+              <div id="artifact-hash-display" style="font-size: 0.75rem; color: var(--accent-blue); margin-top: 0.35rem;"></div>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%;">Create Release in Registry</button>
+          </form>
+
+          <!-- Registered Releases Catalog Table -->
+          <div style="margin-top: 1.5rem;">
+            <div class="card-title">
+              <span>Registered Releases Catalog</span>
+            </div>
+            <div class="table-container">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Release ID</th>
+                    <th>Version</th>
+                    <th>Profile</th>
+                    <th>Artifact</th>
+                    <th>Registered</th>
+                  </tr>
+                </thead>
+                <tbody id="releases-table-body">
+                  <tr><td colspan="5" style="text-align: center; color: var(--text-muted);">No releases registered.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Canary Allocation & Deployment -->
+        <div>
+          <div class="card">
+            <div class="card-title">
+              <span>Canary Allocation & Identifiability Guard</span>
+              <button id="btn-default-alloc" class="btn" style="font-size: 0.75rem;">Suggest Balanced Allocation</button>
+            </div>
+
+            <div class="form-group">
+              <label>Active Release to Deploy</label>
+              <select id="select-deploy-release"></select>
+              <select id="select-active-release" style="display: none;"></select>
+            </div>
+
+            <div class="form-group">
+              <label>Target Canary Servers (Select via Matrix or enter IDs)</label>
+              <div id="alloc-matrix-container" style="background: var(--bg-primary); padding: 0.75rem; border-radius: 6px; border: 1px solid var(--border-color); margin-bottom: 0.5rem;"></div>
+              <input type="hidden" id="canary-servers-input" value="srv-r0-s0, srv-r1-s0, srv-r2-s0, srv-r3-s0">
+            </div>
+
+            <!-- Allocation Validation Report -->
+            <div id="alloc-validation-alert" class="alert-box alert-warning" style="margin-bottom: 1rem;">No canaries selected. Select at least 1 canary to validate identifiability.</div>
+            <div id="allocation-report" style="display: none;"></div>
+
+            <div style="display: flex; gap: 0.5rem;">
+              <button id="btn-validate-alloc" class="btn">Validate Allocation</button>
+              <button id="btn-deploy-canary" class="btn btn-primary" style="flex: 1;">Deploy Canary Release</button>
+            </div>
+          </div>
+
+          <!-- Active Canary Deployment Actions -->
+          <div class="card">
+            <div class="card-title">
+              <span>Active Canary Deployment Status</span>
+              <span id="active-release-badge" class="badge badge-canary">NO ACTIVE RELEASE</span>
+            </div>
+            <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1rem;">
+              Manual rollback reverts canary servers to baseline version v1.0.0 and freezes alerts.
+            </p>
+            <button id="btn-rollback-canary" class="btn btn-danger" style="width: 100%;">Manual Rollback (Prompt Confirmation)</button>
+            <button id="btn-trigger-rollback" style="display: none;"></button>
+          </div>
+
+          <!-- Command History Table -->
+          <div class="card">
+            <div class="card-title">
+              <span>Lifecycle Command Audit Log</span>
+            </div>
+            <div class="table-container">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Command ID</th>
+                    <th>Action</th>
+                    <th>Tick</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody id="command-history-table-body"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================================= -->
+    <!-- Page 4: Monitoring View (Live Multi-Metric Telemetry)         -->
+    <!-- ============================================================= -->
+    <div id="page-monitoring" class="page-view">
+      <!-- Evidence & Advisory Breakdown Card -->
+      <div class="card" style="margin-bottom: 1.25rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; flex-wrap: wrap; gap: 0.5rem;">
+          <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+            <strong>Hierarchical SSM Evidence & Dual Advisory Status</strong>
+            <span id="mon-model-badge" class="badge badge-class">MODEL-HSSM-V1</span>
+            <span id="mon-policy-badge" class="badge badge-version">POLICY-SIDAK-0.05</span>
+            <span id="mon-eligibility-badge" class="badge badge-canary">Data Eligible</span>
+            <span id="mon-intervention-badge" class="badge badge-warning" style="display: none;">AUTONOMOUS INTERVENTION</span>
+          </div>
+          <div style="font-size: 0.85rem;">
+            Release Score: <span id="mon-score-val" style="font-family: var(--font-mono); font-weight: 700; color: var(--accent-purple);">WAITING_FOR_DATA</span>
+            &bull; <span id="mon-threshold-val" style="color: var(--text-secondary);">Threshold: -0.693</span>
+            &bull; <span id="mon-alert-tick-val" style="color: var(--accent-orange); font-weight: 600;">First Alert: None</span>
+          </div>
+        </div>
+
+        <div class="grid-2" style="gap: 1rem; margin-bottom: 0.75rem;">
+          <div style="background: var(--bg-primary); padding: 0.75rem; border-radius: 6px; border: 1px solid var(--border-color);">
+            <div style="font-size: 0.72rem; color: var(--text-muted); font-weight: 700;">INFRASTRUCTURE ADVISORY (SAME-RACK CONTROLS)</div>
+            <div id="mon-infra-status" style="font-size: 1rem; font-weight: 700; margin-top: 0.25rem; color: var(--text-secondary);">WAITING_FOR_DATA</div>
+            <div id="mon-infra-reason" style="font-size: 0.78rem; color: var(--text-secondary); margin-top: 0.2rem;">Awaiting telemetry observations.</div>
+          </div>
+          <div style="background: var(--bg-primary); padding: 0.75rem; border-radius: 6px; border: 1px solid var(--border-color);">
+            <div style="font-size: 0.72rem; color: var(--text-muted); font-weight: 700;">CANARY RELEASE ADVISORY (FROZEN POLICY)</div>
+            <div id="mon-release-status" style="font-size: 1rem; font-weight: 700; margin-top: 0.25rem; color: var(--text-secondary);">WAITING_FOR_DATA</div>
+            <div id="mon-release-reason" style="font-size: 0.78rem; color: var(--text-secondary); margin-top: 0.2rem;">Awaiting telemetry observations.</div>
+          </div>
+        </div>
+
+        <div id="mon-epistemic-disclaimer" style="font-size: 0.75rem; color: var(--text-muted); font-style: italic; border-left: 3px solid var(--accent-purple); padding-left: 0.5rem;">
+          Statistical evidence of abnormal metric shift relative to matched baseline controls. Observational evidence is consistent with a release regression, not mathematical proof of a source code defect.
+        </div>
+      </div>
+
+      <!-- 6 Multi-Metric Real-Time Charts with Units -->
+      <div class="grid-2">
+        <div class="chart-box">
+          <div class="card-title">Latency Response (ms) — Matched Baseline Control Contrast</div>
+          <canvas id="chart-latency"></canvas>
+        </div>
+        <div class="chart-box">
+          <div class="card-title">Process Memory (MB) — Pressure (70%), Thrashing (90%), OOM (100%)</div>
+          <canvas id="chart-memory"></canvas>
+        </div>
+        <div class="chart-box">
+          <div class="card-title">CPU Utilization (%) — Canary vs Control</div>
+          <canvas id="chart-cpu"></canvas>
+        </div>
+        <div class="chart-box">
+          <div class="card-title">Request Errors (Count) & Throughput (req/min)</div>
+          <canvas id="chart-errors"></canvas>
+        </div>
+        <div class="chart-box">
+          <div class="card-title">Latency Effect Estimate (\(\hat{a}_i\)) with 95% Credible Interval & Boundary</div>
+          <canvas id="chart-effect"></canvas>
+        </div>
+        <div class="chart-box">
+          <div class="card-title">Memory Growth Rate (MB/min) & Headroom Guardrail</div>
+          <canvas id="chart-memdrift"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================================= -->
+    <!-- Page 5: SSM Evidence & Shrinkage Breakdown                    -->
+    <!-- ============================================================= -->
+    <div id="page-evidence" class="page-view">
+      <div class="card" style="margin-bottom: 1.25rem;">
+        <div class="card-title">
+          <span>Statistical Explanation: Release Score & Posterior Risks</span>
+          <span class="badge badge-class">Mathematical Reference</span>
+        </div>
+        <div style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6;">
+          <p style="margin-bottom: 0.5rem;">
+            <strong>Release score: maximum host risk</strong> is defined as:
+            <code style="background: var(--bg-primary); padding: 0.15rem 0.4rem; border-radius: 4px; color: var(--accent-blue);">\text{score} = \max_i \log P(a_i > \log(1.02) \mid \text{data} \le t)</code>.
+          </p>
+          <p style="margin-bottom: 0.5rem;">
+            &bull; <strong>Boundary \(\kappa_{\text{lat}} = \log(1.02) \approx +0.0198\):</strong> Declared operationally meaningful effect threshold (+2.0% latency shift).
+            <br>&bull; <strong>Log Scale:</strong> Scores are in \((-\infty, 0.0]\). For example, \(-0.693 = \log(0.50)\) represents a 50% posterior probability of regression.
+            <br>&bull; <strong>Within-Class Shrinkage:</strong> Canaries shrink toward their hardware class mean via the Helmert contrast basis, damping random host noise while preserving sensitivity to genuine regression.
+          </p>
+        </div>
+      </div>
+
+      <!-- Host Evidence Table -->
+      <div class="card" style="margin-bottom: 1.25rem;">
+        <div class="card-title">
+          <span>Active Canary Hosts — Estimated Effects & Guardrail Telemetry</span>
+        </div>
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Server ID</th>
+                <th>Class</th>
+                <th>Rack</th>
+                <th>Latency Effect (\(\hat{a}\))</th>
+                <th>95% Credible Interval</th>
+                <th>Latency Shift (%)</th>
+                <th>Host Risk \(P(a > \kappa)\)</th>
+                <th>Log Score</th>
+                <th>Memory Drift</th>
+                <th>Headroom / TTE</th>
+                <th>Guardrail</th>
+              </tr>
+            </thead>
+            <tbody id="evidence-table-body">
+              <tr><td colspan="11" style="text-align: center; color: var(--text-muted);">Awaiting active deployment evidence.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Class Effects Breakdown -->
+      <div class="card">
+        <div class="card-title">
+          <span>Hardware Class Effects (\(\theta_g\))</span>
+          <span class="badge badge-class">Class Contrast Basis</span>
+        </div>
+        <div id="class-effects-container" class="grid-2"></div>
+      </div>
+    </div>
+
+    <!-- ============================================================= -->
+    <!-- Page 6: Method Comparison View (Independent vs Hier vs Pooled)-->
+    <!-- ============================================================= -->
+    <div id="page-comparison" class="page-view">
+      <div class="card" style="margin-bottom: 1.25rem;">
+        <div class="card-title">
+          <span>Side-by-Side Pooling Method Comparison on Current Replay</span>
+          <span class="badge badge-dev">Real-Time Shrinkage Analysis</span>
+        </div>
+        <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6;">
+          Why does pooling matter?
+          <strong>Independent SSM</strong> has high estimation variance because each host has little data.
+          <strong>Complete Pooling</strong> assumes all canaries are identical, which washes out regressions isolated to a single host.
+          <strong>Hierarchical SSM (Partial Pooling)</strong> uses Helmert contrast matrices to balance both extremes.
+        </p>
+      </div>
+
+      <div class="comparison-grid" id="comparison-cards-grid">
+        <!-- Hierarchical SSM Card -->
+        <div class="comparison-card highlight" id="comp-card-hier">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+            <strong style="color: var(--accent-purple);">Hierarchical SSM (Partial Pooling)</strong>
+            <span class="badge badge-class">Active decision model</span>
+          </div>
+          <p style="font-size: 0.78rem; color: var(--text-muted); margin-bottom: 0.75rem;">
+            Shrinks host estimates toward a class mean via a Helmert contrast basis. Its score is a diagnostic until the displayed policy is calibrated for the matching regime.
+          </p>
+          <div style="font-size: 0.85rem; margin-bottom: 0.5rem;">
+            Mean Effect: <span id="comp-hier-effect" style="font-family: var(--font-mono); font-weight: 700;">0.00%</span>
+          </div>
+          <div style="font-size: 0.85rem; margin-bottom: 0.5rem;">
+            Release Score: <span id="comp-hier-score" style="font-family: var(--font-mono); font-weight: 700;">-</span>
+          </div>
+          <div style="font-size: 0.85rem; margin-bottom: 0.75rem;">
+            Max Host Risk: <span id="comp-hier-risk" style="font-family: var(--font-mono); font-weight: 700;">-</span>
+          </div>
+          <div id="comp-hier-advisory" class="advisory-pill pill-neutral" style="text-align: center;">WAITING</div>
+        </div>
+
+        <!-- Independent SSM Card -->
+        <div class="comparison-card" id="comp-card-indep">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+            <strong style="color: var(--accent-blue);">Independent SSM (No Pooling)</strong>
+            <span class="badge badge-version">Baseline</span>
+          </div>
+          <p style="font-size: 0.78rem; color: var(--text-muted); margin-bottom: 0.75rem;">
+            Estimates each canary host in total isolation. It is shown for diagnostic comparison only; it has no live alert policy in this dashboard.
+          </p>
+          <div style="font-size: 0.85rem; margin-bottom: 0.5rem;">
+            Mean Effect: <span id="comp-indep-effect" style="font-family: var(--font-mono); font-weight: 700;">0.00%</span>
+          </div>
+          <div style="font-size: 0.85rem; margin-bottom: 0.5rem;">
+            Release Score: <span id="comp-indep-score" style="font-family: var(--font-mono); font-weight: 700;">-</span>
+          </div>
+          <div style="font-size: 0.85rem; margin-bottom: 0.75rem;">
+            Max Host Risk: <span id="comp-indep-risk" style="font-family: var(--font-mono); font-weight: 700;">-</span>
+          </div>
+          <div id="comp-indep-advisory" class="advisory-pill pill-neutral" style="text-align: center;">WAITING</div>
+        </div>
+
+        <!-- Pooled SSM Card -->
+        <div class="comparison-card" id="comp-card-pooled">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+            <strong style="color: var(--accent-orange);">Pooled SSM (Complete Pooling)</strong>
+            <span class="badge badge-warning">Pooled</span>
+          </div>
+          <p style="font-size: 0.78rem; color: var(--text-muted); margin-bottom: 0.75rem;">
+            Forces all canaries to share a single common effect parameter. It is shown for diagnostic comparison only; it can dilute isolated-host harm.
+          </p>
+          <div style="font-size: 0.85rem; margin-bottom: 0.5rem;">
+            Mean Effect: <span id="comp-pooled-effect" style="font-family: var(--font-mono); font-weight: 700;">0.00%</span>
+          </div>
+          <div style="font-size: 0.85rem; margin-bottom: 0.5rem;">
+            Release Score: <span id="comp-pooled-score" style="font-family: var(--font-mono); font-weight: 700;">-</span>
+          </div>
+          <div style="font-size: 0.85rem; margin-bottom: 0.75rem;">
+            Max Host Risk: <span id="comp-pooled-risk" style="font-family: var(--font-mono); font-weight: 700;">-</span>
+          </div>
+          <div id="comp-pooled-advisory" class="advisory-pill pill-neutral" style="text-align: center;">WAITING</div>
+        </div>
+      </div>
+
+      <!-- Comparative Breakdown Table -->
+      <div class="card" style="margin-top: 1.25rem;">
+        <div class="card-title">
+          <span>Comparative Host Shrinkage Breakdown</span>
+        </div>
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Server ID</th>
+                <th>Hierarchical Effect \(\hat{a}_i\)</th>
+                <th>Hierarchical Risk</th>
+                <th>Independent Effect</th>
+                <th>Independent Risk</th>
+                <th>Pooled Common Effect</th>
+                <th>Pooled Risk</th>
+              </tr>
+            </thead>
+            <tbody id="comparison-table-body">
+              <tr><td colspan="7" style="text-align: center; color: var(--text-muted);">Awaiting active comparison telemetry.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================================= -->
+    <!-- Page 7: Fault Lab View (Developer View)                       -->
+    <!-- ============================================================= -->
+    <div id="page-faults" class="page-view">
+      <div class="grid-2">
+        <div>
+          <!-- Manual Fault Injection -->
+          <div class="card">
+            <div class="card-title">
+              <span>Manual Fault Injector</span>
+              <span class="badge badge-dev">DEVELOPER VIEW</span>
+            </div>
+            <div class="alert-box alert-warning">
+              <strong>STRICT FIREWALL:</strong> Fault ground truth is isolated in the evaluator store and is NEVER accessible to detector inference endpoints.
+            </div>
+
+            <form id="form-inject-fault">
+              <div class="grid-2">
+                <div class="form-group">
+                  <label>Fault Type</label>
+                  <select id="fault-type-select">
+                    <option value="RACK_NETWORK_LATENCY">Rack Network Latency (All Rack)</option>
+                    <option value="SERVER_OUTAGE">Server Outage (Crash)</option>
+                    <option value="FLEET_DEMAND_SPIKE">Fleet Demand Spike</option>
+                    <option value="CPU_SATURATION">CPU Saturation</option>
+                    <option value="PROCESS_MEMORY_LEAK">Process Memory Leak (MB/min)</option>
+                    <option value="RELEASE_LATENCY_REGRESSION">Release Latency Regression</option>
+                    <option value="ERROR_REGRESSION">Error Rate Regression</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Scope</label>
+                  <select id="fault-scope-select">
+                    <option value="RACK">Rack-wide</option>
+                    <option value="SERVER">Single Server</option>
+                    <option value="FLEET">Fleet-wide</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="grid-2">
+                <div class="form-group">
+                  <label>Target Identifier</label>
+                  <input type="text" id="fault-target-input" value="rack-0" required>
+                </div>
+                <div class="form-group">
+                  <label>Severity Magnitude</label>
+                  <input type="number" id="fault-severity-input" value="0.25" step="0.01">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label>Duration (Minutes)</label>
+                <input type="number" id="fault-duration-input" value="60" min="1">
+              </div>
+
+              <button type="submit" class="btn btn-danger" style="width: 100%;">Inject Simulated Fault</button>
+            </form>
+          </div>
+
+          <!-- Seeded Random Hazards Configuration -->
+          <div class="card">
+            <div class="card-title">
+              <span>Seeded Random Fault Schedule</span>
+              <span class="badge badge-class">Stochastic Hazards</span>
+            </div>
+            <form id="form-hazards-config">
+              <div style="margin-bottom: 0.75rem;">
+                <label style="display: inline-flex; align-items: center; cursor: pointer;">
+                  <input type="checkbox" id="cb-enable-stochastic" style="margin-right: 0.4rem;">
+                  Enable Background Stochastic Hazards
+                </label>
+              </div>
+
+              <div class="grid-2">
+                <div class="form-group">
+                  <label>Server Outage Hazard (per min)</label>
+                  <input type="number" id="hazard-server-rate" value="0.0005" step="0.0001">
+                </div>
+                <div class="form-group">
+                  <label>Rack Latency Hazard (per min)</label>
+                  <input type="number" id="hazard-rack-rate" value="0.0010" step="0.0001">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label>RNG Hazard Seed</label>
+                <input type="number" id="hazard-seed-input" value="42">
+              </div>
+
+              <button type="submit" class="btn btn-primary" style="width: 100%;">Apply Stochastic Schedule</button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Evaluator Ground Truth Store Table -->
+        <div class="card">
+          <div class="card-title">
+            <span>Evaluator Ground Truth Store</span>
+            <span class="badge badge-dev">Hidden Ground Truth</span>
+          </div>
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>Fault ID</th>
+                  <th>Type</th>
+                  <th>Scope / Target</th>
+                  <th>Timeline</th>
+                  <th>Severity</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="fault-truth-table-body"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================================= -->
+    <!-- Page 8: Ground Truth Audit & Gate G2 Calibration Matrix       -->
+    <!-- ============================================================= -->
+    <div id="page-evaluation" class="page-view">
+      <!-- Run Replay Controller -->
+      <div class="card" style="margin-bottom: 1.25rem;">
+        <div class="card-title">
+          <span>Simulation Run Replay & Scrubber</span>
+          <span class="badge badge-class">Recorded Timeline</span>
+        </div>
+        <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0.75rem;">
+          Scrub through historical simulation ticks to inspect past telemetry, fault states, and canary contrast.
+        </p>
+        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.75rem;">
+          <input type="range" id="replay-scrubber" min="0" max="0" value="0" style="flex: 1; cursor: pointer;">
+          <span id="replay-tick-label" style="font-family: var(--font-mono); font-weight: 700; min-width: 90px;">Tick: 0</span>
+        </div>
+        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+          <button id="btn-replay-play" class="btn btn-primary">▶ Play Replay</button>
+          <button id="btn-replay-pause" class="btn">⏸ Pause</button>
+          <button id="btn-replay-step" class="btn">+1 Step Replay</button>
+          <button id="btn-export-run" class="btn">Export Full Run (JSON)</button>
+          <label class="btn" style="cursor: pointer;">
+            Import Run (JSON)
+            <input type="file" id="input-import-run" accept=".json" style="display: none;">
+          </label>
+        </div>
+      </div>
+
+      <!-- Decision vs Truth Scorecard -->
+      <div class="card" style="margin-bottom: 1.25rem;">
+        <div class="card-title">
+          <span>Detector Decision vs Hidden Scenario Truth Comparison</span>
+          <div style="display: flex; gap: 0.5rem;">
+            <button id="btn-download-csv" class="btn">Download Telemetry CSV</button>
+            <button id="btn-download-json" class="btn">Download Evaluation JSON</button>
+          </div>
+        </div>
+
+        <div class="grid-2" style="margin-top: 1rem;">
+          <div style="background: var(--bg-primary); padding: 1.25rem; border-radius: 6px; border: 1px solid var(--border-color);">
+            <h4 style="margin-bottom: 0.5rem; color: var(--text-secondary);">EVALUATOR GROUND TRUTH</h4>
+            <div style="font-size: 1.1rem; font-weight: 700;" id="eval-true-fault">Evaluating...</div>
+            <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.25rem;">
+              True release regressions or memory leaks active during exposure.
+            </p>
+          </div>
+
+          <div style="background: var(--bg-primary); padding: 1.25rem; border-radius: 6px; border: 1px solid var(--border-color);">
+            <h4 style="margin-bottom: 0.5rem; color: var(--text-secondary);">DETECTOR ADVISORY DECISION</h4>
+            <div style="font-size: 1.1rem; font-weight: 700;" id="eval-detector-pause">Evaluating...</div>
+            <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.25rem;">
+              Decision calibrated from same-rack controls without oracle leakage.
+            </p>
+          </div>
+        </div>
+
+        <div style="margin-top: 1.25rem; text-align: center;">
+          <span style="font-size: 0.85rem; color: var(--text-secondary); margin-right: 0.5rem;">Overall Verdict:</span>
+          <span id="eval-verdict" class="badge badge-version" style="font-size: 0.9rem; padding: 0.3rem 0.8rem;">EVALUATING</span>
+        </div>
+      </div>
+
+      <!-- Gate G2 Validity Table Card -->
+      <div class="card">
+        <div class="card-title">
+          <span>Calibration Gate G2 Audit & Known Failure Cases</span>
+          <span class="badge badge-class">Gate G2 Audit</span>
+        </div>
+
+        <div class="alert-box alert-warning" style="margin-bottom: 1rem;">
+          <strong>Read the live policy badge first.</strong> A dashboard recommendation is valid only when its active model, policy, regime, and calibration artifact are compatible. This demo exposes the model and policy identifiers, but does not load a calibration artifact by hash; therefore it is a teaching/replay interface, not a release-control plane.
+        </div>
+        <div class="audit-summary-grid">
+          <div><strong>Saved plain-regime audit</strong><br><span>Gate G2 artifact: 118 of 119 cells passed; the overall artifact is <strong>FAIL</strong> because <code>hier_rank0</code> failed under label errors.</span></div>
+          <div><strong>Known open limitation</strong><br><span>The shared-workload-step failure remains open. Do not infer step-regime validity from a plain-regime result.</span></div>
+          <div><strong>How to compare methods</strong><br><span>Only methods with a passing calibration gate in the displayed regime may be compared on delay or power.</span></div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Server Drill-Down Modal -->
+  <div id="server-modal" class="modal-overlay" style="display: none;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="modal-server-title">Server Telemetry & SSM Evidence Inspection</h3>
+        <button id="modal-close-btn" class="btn" style="padding: 0.2rem 0.5rem; font-size: 1.1rem; line-height: 1;">&times;</button>
+      </div>
+      <div id="modal-server-body" class="modal-body"></div>
+    </div>
+  </div>
+
+  <!-- Rollback Confirmation Modal -->
+  <div id="rollback-confirm-modal" class="modal-overlay" style="display: none;">
+    <div class="modal-content" style="max-width: 480px;">
+      <div class="modal-header">
+        <h3 style="color: var(--accent-red);">Confirm Release Rollback</h3>
+        <button id="rollback-modal-close" class="btn" style="padding: 0.2rem 0.5rem; font-size: 1.1rem; line-height: 1;">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p id="rollback-modal-text" style="font-size: 0.88rem; margin-bottom: 1.25rem; line-height: 1.5;">
+          Are you sure you want to rollback the active release? This will revert canary servers to baseline version v1.0.0.
+        </p>
+        <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.82rem; margin-bottom: 1.25rem; color: var(--text-secondary); cursor: pointer;">
+          <input type="checkbox" id="cb-restart-process" checked>
+          Restart server process (clear allocated heap memory)
+        </label>
+        <div style="display: flex; gap: 0.75rem; justify-content: flex-end;">
+          <button id="rollback-modal-cancel" class="btn">Cancel</button>
+          <button id="rollback-modal-confirm" class="btn btn-danger">Confirm Rollback</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

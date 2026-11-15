@@ -1,7 +1,7 @@
-n_canaries,model,median_ms,p95_ms,p99_ms,machine
-10,hier,0.2503499999875203,0.3281600074842573,0.4044439991412223,"Intel64 Family 6 Model 167 Stepping 1, GenuineIntel"
-10,indep,0.2498500034562312,0.29500500386347994,0.42077799633261864,"Intel64 Family 6 Model 167 Stepping 1, GenuineIntel"
-50,hier,1.957350003067404,2.1754150016931817,2.3367730031895935,"Intel64 Family 6 Model 167 Stepping 1, GenuineIntel"
-50,indep,1.9888000097125769,2.2135200029879343,2.3274230057722893,"Intel64 Family 6 Model 167 Stepping 1, GenuineIntel"
-100,hier,13.806900002236944,18.067959988547955,53.56788899764078,"Intel64 Family 6 Model 167 Stepping 1, GenuineIntel"
-100,indep,16.406450005888473,17.60597500979202,21.697663009108666,"Intel64 Family 6 Model 167 Stepping 1, GenuineIntel"
+fleet_size,n_racks,servers_per_rack,n_canaries,n_ticks,total_time_sec,throughput_ticks_per_sec,median_ms_per_tick,p95_ms_per_tick,p99_ms_per_tick,peak_ram_mb,machine,physical_cores,logical_cpus,total_ram_gb,os,python_version
+12,2,6,2,60,0.054,1101.6,0.971,1.583,2.623,146.48,"AMD64 Family 25 Model 116 Stepping 1, AuthenticAMD",6,12,15.31,Windows 11 (10.0.26300),3.15.0
+24,4,6,4,60,0.084,716.3,1.472,2.053,3.952,151.22,"AMD64 Family 25 Model 116 Stepping 1, AuthenticAMD",6,12,15.31,Windows 11 (10.0.26300),3.15.0
+48,8,6,8,60,0.153,392.6,2.651,4.372,6.49,160.51,"AMD64 Family 25 Model 116 Stepping 1, AuthenticAMD",6,12,15.31,Windows 11 (10.0.26300),3.15.0
+96,16,6,16,60,0.293,205.0,5.147,7.128,11.767,179.56,"AMD64 Family 25 Model 116 Stepping 1, AuthenticAMD",6,12,15.31,Windows 11 (10.0.26300),3.15.0
+192,32,6,32,60,0.774,77.5,10.939,23.978,70.439,217.32,"AMD64 Family 25 Model 116 Stepping 1, AuthenticAMD",6,12,15.31,Windows 11 (10.0.26300),3.15.0
+384,64,6,64,60,2.286,26.2,36.266,105.582,130.13,293.76,"AMD64 Family 25 Model 116 Stepping 1, AuthenticAMD",6,12,15.31,Windows 11 (10.0.26300),3.15.0

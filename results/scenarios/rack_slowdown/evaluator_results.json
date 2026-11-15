@@ -1,0 +1,18 @@
+{
+  "scenario_name": "rack_slowdown",
+  "true_event_label": "FAULT_RACK_LATENCY",
+  "true_affected_hosts": [],
+  "alarm_tick": null,
+  "detection_status": "quiet",
+  "detection_delay": NaN,
+  "capped_time_to_success": NaN,
+  "localization": {
+    "topk_recall": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0
+  },
+  "final_infrastructure_advisory": "RACK_DEGRADED: rack-0",
+  "final_canary_release_advisory": "RUNNING",
+  "final_attribution": "NORMAL"
+}

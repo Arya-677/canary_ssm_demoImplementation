@@ -1,0 +1,17 @@
+{
+  "release_id": "rel-v1.4.0-cpu",
+  "version_tag": "v1.4.0-cpu",
+  "behavior_profile": {
+    "profile_type": "CPU_REGRESSION",
+    "severity": 0.35,
+    "duration": 120
+  },
+  "artifact": {
+    "artifact_filename": "serializer_v140.py",
+    "content_preview": "# Unvectorized serialization spinlock\nVERSION = 'v1.4.0-cpu'\n"
+  },
+  "metadata": {
+    "author": "core-team",
+    "description": "Release with CPU saturation bug"
+  }
+}
